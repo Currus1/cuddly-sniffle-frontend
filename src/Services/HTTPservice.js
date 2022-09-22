@@ -4,7 +4,7 @@ class HTTPservice {
 
     
     getMessage () {
-        return axios.get('https://localhost:7083/main');
+        return axios.get('http://localhost:5236/test');
     };
 
 }
