@@ -2,9 +2,8 @@ import axios from 'axios'
 
 class HTTPservice {
 
-    
     getMessage () {
-        return axios.get('http://localhost:5236/test');
+        return axios.get('http://localhost:5236/Driver');
     };
 
 }

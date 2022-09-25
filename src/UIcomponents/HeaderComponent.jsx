@@ -9,6 +9,7 @@ const HeaderComponent = () => (
                 <ul className ="navbar-nav navbar-collapse justify-content-end">
                     <li className="nav-link"><Link to={"/planning"}>Plan a trip</Link></li>
                     <li className="nav-link"><Link to={"/backend"}>Backend</Link></li>
+                    <li className="nav-link"><Link to={"/driver"}>Driver</Link></li>
                     <li className="nav-link">Login</li>
                     <li className="nav-link">Logout</li>
                 </ul>
