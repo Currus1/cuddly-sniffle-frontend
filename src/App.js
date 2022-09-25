@@ -6,7 +6,6 @@ import HeaderComponent from './UIcomponents/HeaderComponent';
 import FooterComponent from './UIcomponents/FooterComponent';
 import BackendComponent from './BackendComponents/BackendComponent';
 import PlanningComponent from './UIcomponents/PlanningComponent';
-import DriverComponent from './UIcomponents/DriverComponent';
 
 function App() {
   return (
@@ -16,7 +15,6 @@ function App() {
                 <Routes>
                     <Route path ="/backend" element={<BackendComponent/>}/>
                     <Route path ="/planning" element={<PlanningComponent/>}/>
-                    <Route path ="/driver" element={<DriverComponent/>}/>
                 </Routes>
                 <FooterComponent></FooterComponent>
         </BrowserRouter>
