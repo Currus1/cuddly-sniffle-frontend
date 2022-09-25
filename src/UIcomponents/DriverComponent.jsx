@@ -1,7 +1,7 @@
 import React from 'react'
 import '../bootstrap.css'
 import '../App.css'
-import './style/driverComponentCSS.css'
+import './style/DriverComponentCSS.css'
 import DatePicker from "react-datepicker";
 
 import "react-datepicker/dist/react-datepicker.css";
