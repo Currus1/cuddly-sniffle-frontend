@@ -2,9 +2,8 @@ import React, { useState } from 'react'
 import '../bootstrap.css'
 import '../App.css'
 import './styles/UserStyle.css'
-import { useEffect } from 'react'
+import UserAPI from '../UserServices/UserAPI'
 import axios from 'axios'
-import { TableRow } from '@mui/material'
 
 const UserComponent = () => {
 
@@ -20,15 +19,9 @@ const UserComponent = () => {
             document.getElementById("Phone").value != ''
         )
         {
-            axios.post('http://localhost:5236/User/Adding/',{
-                Name: data.Name,
-                Surname: data.Surname,
-                Birthdate: data.BirthDate,
-                Email: data.Email,
-                Phone: data.Phone,
-            })
+            UserAPI.addUser(data.Name, data.Surname, data.Birthdate, data.Email, data.Phone)
             .then(res => console.log(res))
-
+            
             console.log("Registered")
         } else {
             alert('Please make sure to enter all the fields')
@@ -36,7 +29,7 @@ const UserComponent = () => {
     }
 
     function LoadClicked () {
-        axios.get('http://localhost:5236/User/Users')
+        UserAPI.getAllUsers()
         .then(res => setData(res.data))
         .catch(err => console.log(err))
 
@@ -114,7 +107,7 @@ const UserComponent = () => {
                                 <tr key={item}>
                                     <td className='userData'>{item.Name}</td>
                                     <td className='userData'>{item.Surname}</td>
-                                    <td className='userData'>{item.BirthDate}</td>
+                                    <td className='userData'>{item.Birthdate}</td>
                                     <td className='userData'>{item.Email}</td>
                                     <td className='userData'>{item.Phone}</td>
                                 </tr>
