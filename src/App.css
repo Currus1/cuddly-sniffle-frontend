@@ -1,10 +1,9 @@
-
 .button-planning {
   background: #3c81b2;
   border-radius: 999px;
   box-shadow: #3c81b2 0 10px 20px -10px;
   box-sizing: border-box;
-  color: #FFFFFF;
+  color: #ffffff;
   cursor: pointer;
   font-family: sans-serif;
   font-size: 15px;
@@ -26,7 +25,7 @@
   border-radius: 999px;
   box-shadow: #b91425 0 10px 20px -10px;
   box-sizing: border-box;
-  color: #FFFFFF;
+  color: #ffffff;
   cursor: pointer;
   font-family: sans-serif;
   font-size: 15px;
