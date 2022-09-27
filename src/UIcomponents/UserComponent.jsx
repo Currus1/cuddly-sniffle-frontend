@@ -19,8 +19,23 @@ const UserComponent = () => {
             document.getElementById("Phone").value != ''
         )
         {
+            data.Name = document.getElementById("Name").value;
+            data.Surname = document.getElementById("Surname").value;
+            data.Birthdate = document.getElementById("Birthdate").value;
+            data.Email = document.getElementById("Email").value;
+            data.Phone = document.getElementById("Phone").value;
+            //console.log(data);
+            
             UserAPI.addUser(data.Name, data.Surname, data.Birthdate, data.Email, data.Phone)
             .then(res => console.log(res))
+            /*axios.post('http://localhost:5236/User/Adding/',{
+                Name: data.Name,
+                Surname: data.Surname,
+                Birthdate: data.Birthdate,
+                Email: data.Email,
+                Phone: data.Phone,
+            })
+            .then(res => console.log(res))*/
             
             console.log("Registered")
         } else {
@@ -30,6 +45,7 @@ const UserComponent = () => {
 
     function LoadClicked () {
         UserAPI.getAllUsers()
+        //axios.get('http://localhost:5236/User/Users')
         .then(res => setData(res.data))
         .catch(err => console.log(err))
 
