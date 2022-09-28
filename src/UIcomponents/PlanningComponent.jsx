@@ -1,13 +1,31 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "../bootstrap.css";
 import "../App.css";
+import UserAPI from "../UserServices/UserAPI.js";
+import DriverAPI from "../DriverServices/DriverAPI.js";
 
 const PlanningComponent = () => {
+  const [drivers, setDrivers] = useState([]);
+  const [users, setUsers] = useState([]);
+  const [user, setUser] = useState("");
+  const [driver, setDriver] = useState("");
+
+  useEffect(() => {
+    UserAPI.getAllUsers().then((response) => setUsers(response.data));
+    DriverAPI.GetAllDrivers().then((res) => setDrivers(res.data));
+  }, []);
+
+  const handleDriverChange = (event) => {
+    setDriver(event.target.value);
+  };
+
+  const handleUserChange = (event) => {
+    setUser(event.target.value);
+  };
+
   function SaveClicked() {
-    document.getElementById("ROuser").value =
-      document.getElementById("user").value;
-    document.getElementById("ROdriver").value =
-      document.getElementById("driver").value;
+    document.getElementById("ROuser").value = user;
+    document.getElementById("ROdriver").value = driver;
     document.getElementById("ROstartingPoint").value =
       document.getElementById("startingPoint").value;
     document.getElementById("ROdestination").value =
@@ -41,7 +59,7 @@ const PlanningComponent = () => {
           <table style={{ margin: "auto" }}>
             <tbody>
               <tr>
-                <td style={{ width: 450 }}>
+                <td>
                   <table>
                     <tbody>
                       <tr>
@@ -49,11 +67,15 @@ const PlanningComponent = () => {
                           <label>User</label>
                         </td>
                         <td>
-                          <input
-                            className="form-control"
-                            type="text"
-                            id="user"
-                          />
+                          <select
+                            style={{ width: "200px" }}
+                            value={user}
+                            onChange={handleUserChange}
+                          >
+                            {users.map((user) => (
+                              <option value={user.Name}>{user.Name}</option>
+                            ))}
+                          </select>
                         </td>
                       </tr>
                       <tr>
@@ -61,11 +83,15 @@ const PlanningComponent = () => {
                           <label>Driver</label>
                         </td>
                         <td>
-                          <input
-                            className="form-control"
-                            type="text"
-                            id="driver"
-                          />
+                          <select
+                            style={{ width: "200px" }}
+                            value={driver}
+                            onChange={handleDriverChange}
+                          >
+                            {drivers.map((driver) => (
+                              <option value={driver.Name}>{driver.Name}</option>
+                            ))}
+                          </select>
                         </td>
                       </tr>
                       <tr>
@@ -95,7 +121,7 @@ const PlanningComponent = () => {
                     </tbody>
                   </table>
                 </td>
-                <td style={{}}>
+                <td>
                   <table>
                     <tbody>
                       <tr>
