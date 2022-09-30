@@ -26,9 +26,9 @@ const TripComponent = () => {
           <tbody>
             {data.map((ongoingTrip) => (
               <tr key={ongoingTrip}>
-                <td>{ongoingTrip.id}</td>
-                <td>{ongoingTrip.tripStart}</td>
-                <td>{ongoingTrip.duration} (min)</td>
+                <td>{ongoingTrip.Id}</td>
+                <td>{ongoingTrip.TripStart}</td>
+                <td>{ongoingTrip.Duration} (min)</td>
               </tr>
             ))}
           </tbody>
