@@ -8,6 +8,7 @@ import BackendComponent from "./BackendComponents/BackendComponent";
 import PlanningComponent from "./UIcomponents/PlanningComponent";
 import UserComponent from "./UIcomponents/UserComponent";
 import DriverComponent from "./UIcomponents/DriverComponent";
+import TripComponent from "./UIcomponents/TripComponent"
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route path="/planning" element={<PlanningComponent />} />
           <Route path="/user" element={<UserComponent />} />
           <Route path="/driver" element={<DriverComponent />} />
+          <Route path="/trip" element={<TripComponent />} />
         </Routes>
         <FooterComponent></FooterComponent>
       </BrowserRouter>
