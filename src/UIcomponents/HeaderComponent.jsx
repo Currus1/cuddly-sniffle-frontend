@@ -5,18 +5,8 @@ import "../bootstrap.css";
 const HeaderComponent = () => (
   <header>
     <nav className="navbar navbar-expand-md navbar-dark bg-dark">
-      <div className="navbar-item">
-        <a
-          style={{
-            color: "white",
-            backgroundColor: "transparent",
-            textDecoration: "none",
-          }}
-          href="https://github.com/Tedas1"
-          target="_blank"
-        >
-          CURRUS
-        </a>
+      <div className="navbar-item" style={{ color: "white" }}>
+        CURRUS
       </div>
       <ul className="navbar-nav navbar-collapse justify-content-end">
         <li className="nav-link">
