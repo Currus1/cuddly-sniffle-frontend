@@ -21,7 +21,9 @@ const HeaderComponent = () => (
         <li className="nav-link">
           <Link to={"/driver"}>Driver</Link>
         </li>
-        <li className="nav-link">Login</li>
+        <li className="nav-link">
+          <Link to={"/trip"}>Ongoing Trips</Link>
+        </li>
         <li className="nav-link">Logout</li>
       </ul>
     </nav>
