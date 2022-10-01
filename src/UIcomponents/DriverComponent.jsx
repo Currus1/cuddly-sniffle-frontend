@@ -1,20 +1,29 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../bootstrap.css";
 import "../App.css";
 import "./styles/DriverStyle.css";
 import DriverAPI from "../DriverServices/DriverAPI";
-import axios from "axios";
 
 const DriverComponent = () => {
   const [data, setData] = useState([]);
 
+  useEffect(() => {
+    loadTable();
+  }, []); // initializing the table on load (once)
+
+  function loadTable(){
+    DriverAPI.GetAllDrivers()
+    .then((res) => setData(res.data))
+    .catch((err) => console.log(err));
+  }
+
   function SaveClicked() {
     if (
-      document.getElementById("Name").value != "" &&
-      document.getElementById("Surname").value != "" &&
-      document.getElementById("Birthdate").value != "" &&
-      document.getElementById("Email").value != "" &&
-      document.getElementById("Phone").value != ""
+      document.getElementById("Name").value !== "" &&
+      document.getElementById("Surname").value !== "" &&
+      document.getElementById("Birthdate").value !== "" &&
+      document.getElementById("Email").value !== "" &&
+      document.getElementById("Phone").value !== ""
     ) {
       data.Name = document.getElementById("Name").value;
       data.Surname = document.getElementById("Surname").value;
@@ -38,12 +47,10 @@ const DriverComponent = () => {
       alert("Please make sure to enter all the fields");
     }
   }
-
+  
+  // Load the drivers to data const via useState
   function LoadClicked() {
-    DriverAPI.GetAllDrivers()
-      .then((res) => setData(res.data))
-      .catch((err) => console.log(err));
-
+    loadTable();
     console.log(data);
   }
 
