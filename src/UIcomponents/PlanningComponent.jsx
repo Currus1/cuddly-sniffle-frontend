@@ -3,16 +3,23 @@ import "../bootstrap.css";
 import "../App.css";
 import UserAPI from "../UserServices/UserAPI.js";
 import DriverAPI from "../DriverServices/DriverAPI.js";
+import TripAPI from "../TripServices/TripAPI";
 
 const PlanningComponent = () => {
   const [drivers, setDrivers] = useState([]);
   const [users, setUsers] = useState([]);
   const [user, setUser] = useState("");
   const [driver, setDriver] = useState("");
+  const [vehicleType, setVehicleType] = useState("");
+  const [vehicleTypes, setVehicleTypes] = useState([]);
 
   useEffect(() => {
     UserAPI.getAllUsers().then((response) => setUsers(response.data));
-    DriverAPI.GetAllDrivers().then((res) => setDrivers(res.data));
+    DriverAPI.GetAllDrivers().then((response) => setDrivers(response.data));
+    TripAPI.getTripStatusEnum().then((response) =>
+      setVehicleTypes(response.data)
+    );
+    setVehicleType("Sedan"); // Initial value for select
   }, []);
 
   const handleDriverChange = (event) => {
@@ -21,6 +28,10 @@ const PlanningComponent = () => {
 
   const handleUserChange = (event) => {
     setUser(event.target.value);
+  };
+
+  const handleVehicleTypeChange = (event) => {
+    setVehicleType(event.target.value);
   };
 
   function SaveClicked() {
@@ -74,6 +85,22 @@ const PlanningComponent = () => {
                           >
                             {users.map((user) => (
                               <option value={user.Name}>{user.Name}</option>
+                            ))}
+                          </select>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <label>Vehicle type</label>
+                        </td>
+                        <td>
+                          <select
+                            style={{ width: "200px" }}
+                            value={vehicleType}
+                            onChange={handleVehicleTypeChange}
+                          >
+                            {vehicleTypes.map((type) => (
+                              <option value={type}>{type}</option>
                             ))}
                           </select>
                         </td>
