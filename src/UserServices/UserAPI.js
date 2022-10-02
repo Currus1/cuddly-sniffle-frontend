@@ -1,13 +1,13 @@
 import axios from "axios";
 
 class UserAPI {
-  addUser(Name, Surname, Birthdate, Email, Phone) {
+  addUser(name, surname, birthdate, email, phone) {
     axios.post("http://localhost:5236/User/Adding/", {
-      Name: Name,
-      Surname: Surname,
-      Birthdate: Birthdate,
-      Email: Email,
-      Phone: Phone,
+      Name: name,
+      Surname: surname,
+      Birthdate: birthdate,
+      Email: email,
+      Phone: phone,
     });
   }
 
