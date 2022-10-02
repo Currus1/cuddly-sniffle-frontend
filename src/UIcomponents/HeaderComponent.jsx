@@ -1,7 +1,7 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import "../bootstrap.css";
-
+import Dropdown from "react-bootstrap/Dropdown";
+import "./styles/DropdownStyle.css";
 const HeaderComponent = () => (
   <header>
     <nav className="navbar navbar-expand-md navbar-dark bg-dark">
@@ -9,22 +9,27 @@ const HeaderComponent = () => (
         CURRUS
       </div>
       <ul className="navbar-nav navbar-collapse justify-content-end">
-        <li className="nav-link">
-          <Link to={"/planning"}>Plan a trip</Link>
-        </li>
-        <li className="nav-link">
-          <Link to={"/backend"}>Backend</Link>
-        </li>
-        <li className="nav-link">
-          <Link to={"/user"}>User</Link>
-        </li>
-        <li className="nav-link">
-          <Link to={"/driver"}>Driver</Link>
-        </li>
-        <li className="nav-link">
-          <Link to={"/trip"}>Ongoing Trips</Link>
-        </li>
-        <li className="nav-link">Logout</li>
+        <Dropdown>
+          <Dropdown.Toggle className="dropdown" id="dropdown">
+            Actions
+          </Dropdown.Toggle>
+
+          <Dropdown.Menu className="dropdown-menu">
+            <Dropdown.Item className="dropdown-item" href="/trip">
+              Ongoing trips
+            </Dropdown.Item>
+            <Dropdown.Item className="dropdown-item" href="/user">
+              Users
+            </Dropdown.Item>
+            <Dropdown.Item className="dropdown-item" href="/driver">
+              Drivers
+            </Dropdown.Item>
+            <Dropdown.Divider></Dropdown.Divider>
+            <Dropdown.Item className="dropdown-item" href="/planning">
+              Plan a trip
+            </Dropdown.Item>
+          </Dropdown.Menu>
+        </Dropdown>
       </ul>
     </nav>
   </header>
