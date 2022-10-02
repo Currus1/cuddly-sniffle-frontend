@@ -9,7 +9,7 @@ const UserComponent = () => {
 
   useEffect(() => {
     loadUsers();
-  });
+  }, []);
 
   function loadUsers() {
     UserAPI.getAllUsers()

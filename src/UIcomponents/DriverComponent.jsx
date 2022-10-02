@@ -11,10 +11,10 @@ const DriverComponent = () => {
     loadTable();
   }, []); // initializing the table on load (once)
 
-  function loadTable(){
+  function loadTable() {
     DriverAPI.GetAllDrivers()
-    .then((res) => setData(res.data))
-    .catch((err) => console.log(err));
+      .then((res) => setData(res.data))
+      .catch((err) => console.log(err));
   }
 
   function SaveClicked() {
@@ -47,7 +47,7 @@ const DriverComponent = () => {
       alert("Please make sure to enter all the fields");
     }
   }
-  
+
   // Load the drivers to data const via useState
   function LoadClicked() {
     loadTable();
