@@ -6,6 +6,7 @@ import DriverAPI from "../DriverServices/DriverAPI.js";
 import TripAPI from "../TripServices/TripAPI";
 
 const PlanningComponent = () => {
+  const [data, setData] = useState([]);
   const [drivers, setDrivers] = useState([]);
   const [users, setUsers] = useState([]);
   const [user, setUser] = useState("");
@@ -35,6 +36,7 @@ const PlanningComponent = () => {
   };
 
   function SaveClicked() {
+    document.getElementById("ROid").value = document.getElementById("id").value;
     document.getElementById("ROuser").value = user;
     document.getElementById("ROdriver").value = driver;
     document.getElementById("ROstartingPoint").value =
@@ -45,16 +47,42 @@ const PlanningComponent = () => {
     document.getElementById("ROestimatedTime").value = "10";
   }
 
-  function PlanClicked() {
+  function ValidateFields() {
     if (
+      document.getElementById("ROid").value != "" &&
       document.getElementById("ROuser").value != "" &&
       document.getElementById("ROdriver").value != "" &&
       document.getElementById("ROstartingPoint").value != "" &&
       document.getElementById("ROdestination").value != "" &&
       document.getElementById("ROestimatedTime").value != ""
     ) {
-      // Register the trip here
-      console.log("Registered");
+      return true;
+    }
+    return false;
+  }
+
+  function SaveValues() {
+    data.Id = document.getElementById("ROid").value;
+    data.DriverId = document.getElementById("ROdriver").value;
+    data.UserId = document.getElementById("ROuser").value;
+    data.StartingPoint = document.getElementById("ROstartingPoint").value;
+    data.Destination = document.getElementById("ROdestination").value;
+    data.Seats = "4";
+    data.Hours = "1";
+    data.Minutes = "10";
+    data.EstimatedTripPrice = document.getElementById("ROestimatedTime").value;
+  }
+
+  function clearFields() {
+    console.log("clear");
+  }
+
+  function PlanClicked() {
+    if (ValidateFields()) {
+      SaveValues();
+      if (TripAPI.addTrip(data)) alert("Trip is added");
+      else alert("Server failed to add your trip");
+      clearFields();
     } else {
       alert("Please make sure to enter all the fields");
     }
@@ -73,6 +101,14 @@ const PlanningComponent = () => {
                 <td>
                   <table>
                     <tbody>
+                      <tr>
+                        <td>
+                          <label>Trip No.</label>
+                        </td>
+                        <td>
+                          <input className="form-control" type="text" id="id" />
+                        </td>
+                      </tr>
                       <tr>
                         <td>
                           <label>User</label>
@@ -151,6 +187,20 @@ const PlanningComponent = () => {
                 <td>
                   <table>
                     <tbody>
+                      <tr>
+                        <td>
+                          <label>Trip No.</label>
+                        </td>
+                        <td>
+                          <input
+                            className="form-control"
+                            type="text"
+                            id="ROid"
+                            readOnly
+                            placeholder="..."
+                          />
+                        </td>
+                      </tr>
                       <tr>
                         <td>
                           <label>User</label>
