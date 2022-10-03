@@ -24,6 +24,9 @@ const HeaderComponent = () => (
             <Dropdown.Item className="dropdown-item" href="/driver">
               Drivers
             </Dropdown.Item>
+            <Dropdown.Item className="dropdown-item" href="/trip">
+              All Trips
+            </Dropdown.Item>
             <Dropdown.Divider></Dropdown.Divider>
             <Dropdown.Item className="dropdown-item" href="/planning">
               Plan a trip

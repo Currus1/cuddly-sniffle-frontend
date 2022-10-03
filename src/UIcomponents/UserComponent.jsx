@@ -21,6 +21,7 @@ const UserComponent = () => {
 
   function saveUser() {
     UserAPI.addUser(
+      users.Id,
       users.Name,
       users.Surname,
       users.Birthdate,
@@ -31,12 +32,14 @@ const UserComponent = () => {
 
   function saveClicked() {
     if (
+      document.getElementById("Id").value !== "" &&
       document.getElementById("Name").value !== "" &&
       document.getElementById("Surname").value !== "" &&
       document.getElementById("Birthdate").value !== "" &&
       document.getElementById("Email").value !== "" &&
       document.getElementById("Phone").value !== ""
     ) {
+      users.Id = document.getElementById("Id").value;
       users.Name = document.getElementById("Name").value;
       users.Surname = document.getElementById("Surname").value;
       users.Birthdate = document.getElementById("Birthdate").value;
@@ -60,6 +63,14 @@ const UserComponent = () => {
         <h3 className="tableName">User Data</h3>
         <table className="inputTable">
           <tbody>
+            <tr>
+              <td className="inputLabel">
+                <label>Id:</label>
+              </td>
+              <td>
+                <input className="input" type="text" id="Id" />
+              </td>
+            </tr>
             <tr>
               <td className="inputLabel">
                 <label>Name:</label>
@@ -123,6 +134,7 @@ const UserComponent = () => {
         <table className="userTable">
           <thead className="userHeader">
             <tr>
+              <th className="userTableName headerData">Id</th>
               <th className="userTableName headerData">Name</th>
               <th className="userTableName headerData">Surname</th>
               <th className="userTableBirthdate headerData">Birthdate</th>
@@ -133,6 +145,7 @@ const UserComponent = () => {
           <tbody className="userTableBody">
             {users.map((user) => (
               <tr key={user}>
+                <td className="userData">{user.Id}</td>
                 <td className="userData">{user.Name}</td>
                 <td className="userData">{user.Surname}</td>
                 <td className="userData">{user.Birthdate}</td>

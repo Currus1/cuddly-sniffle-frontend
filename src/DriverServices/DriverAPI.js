@@ -1,13 +1,14 @@
 import axios from "axios";
 
 class DriverAPI {
-  AddingDriver(Name, Surname, Birthdate, Email, Phone, VehicleType, LicenseNumber) {
+  AddingDriver(Id, Name, Surname, Birthday, Email, PhoneNumber, VehicleType, LicenseNumber) {
     axios.post("http://localhost:5236/Driver/Adding/", {
+      Id: Id,
       Name: Name,
       Surname: Surname,
-      Birthdate: Birthdate,
+      Birthday: Birthday,
       Email: Email,
-      PhoneNumber: Phone,
+      PhoneNumber: PhoneNumber,
       VehicleType: VehicleType,
       LicenseNumber: LicenseNumber
     });
