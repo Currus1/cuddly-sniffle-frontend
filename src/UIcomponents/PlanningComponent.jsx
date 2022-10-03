@@ -84,7 +84,7 @@ const PlanningComponent = () => {
                             onChange={handleUserChange}
                           >
                             {users.map((user) => (
-                              <option value={user.Name}>{user.Name}</option>
+                              <option value={user.Id}>{user.Id}</option>
                             ))}
                           </select>
                         </td>
@@ -116,7 +116,7 @@ const PlanningComponent = () => {
                             onChange={handleDriverChange}
                           >
                             {drivers.map((driver) => (
-                              <option value={driver.Name}>{driver.Name}</option>
+                              <option value={driver.Id}>{driver.Id}</option>
                             ))}
                           </select>
                         </td>
