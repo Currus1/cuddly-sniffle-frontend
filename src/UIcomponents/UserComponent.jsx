@@ -1,49 +1,60 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../bootstrap.css";
 import "../App.css";
 import "./styles/UserStyle.css";
 import UserAPI from "../UserServices/UserAPI";
-import axios from "axios";
 
 const UserComponent = () => {
-  const [data, setData] = useState([]);
+  const [users, setUsers] = useState([]);
 
-  function SaveClicked() {
+  useEffect(() => {
+    loadUsers();
+  }, []);
+
+  function loadUsers() {
+    UserAPI.getAllUsers()
+      .then((res) => setUsers(res.data))
+      .catch((err) => console.log(err));
+
+    console.log(users);
+  }
+
+  function saveUser() {
+    UserAPI.addUser(
+      users.Id,
+      users.Name,
+      users.Surname,
+      users.Birthdate,
+      users.Email,
+      users.Phone
+    );
+  }
+
+  function saveClicked() {
     if (
       document.getElementById("Id").value !== "" &&
-      document.getElementById("Name").value != "" &&
-      document.getElementById("Surname").value != "" &&
-      document.getElementById("Birthdate").value != "" &&
-      document.getElementById("Email").value != "" &&
-      document.getElementById("Phone").value != ""
+      document.getElementById("Name").value !== "" &&
+      document.getElementById("Surname").value !== "" &&
+      document.getElementById("Birthdate").value !== "" &&
+      document.getElementById("Email").value !== "" &&
+      document.getElementById("Phone").value !== ""
     ) {
-      data.Id = document.getElementById("Id").value;
-      data.Name = document.getElementById("Name").value;
-      data.Surname = document.getElementById("Surname").value;
-      data.Birthdate = document.getElementById("Birthdate").value;
-      data.Email = document.getElementById("Email").value;
-      data.Phone = document.getElementById("Phone").value;
+      users.Id = document.getElementById("Id").value;
+      users.Name = document.getElementById("Name").value;
+      users.Surname = document.getElementById("Surname").value;
+      users.Birthdate = document.getElementById("Birthdate").value;
+      users.Email = document.getElementById("Email").value;
+      users.Phone = document.getElementById("Phone").value;
 
-      UserAPI.addUser(
-        data.Id,
-        data.Name,
-        data.Surname,
-        data.Birthdate,
-        data.Email,
-        data.Phone
-      );
+      saveUser();
       console.log("Registered");
     } else {
       alert("Please make sure to enter all the fields");
     }
   }
 
-  function LoadClicked() {
-    UserAPI.getAllUsers()
-      .then((res) => setData(res.data))
-      .catch((err) => console.log(err));
-
-    console.log(data);
+  function loadClicked() {
+    loadUsers();
   }
 
   return (
@@ -104,14 +115,14 @@ const UserComponent = () => {
         </table>
         <div>
           <button
-            onClick={SaveClicked}
+            onClick={saveClicked}
             style={{ margin: "10px 10px" }}
             className="button-save"
           >
             Save
           </button>
           <button
-            onClick={LoadClicked}
+            onClick={loadClicked}
             style={{ margin: "10px 10px" }}
             className="button-planning"
           >
@@ -132,14 +143,14 @@ const UserComponent = () => {
             </tr>
           </thead>
           <tbody className="userTableBody">
-            {data.map((item) => (
-              <tr key={item}>
-                <td className="userData">{item.Id}</td>
-                <td className="userData">{item.Name}</td>
-                <td className="userData">{item.Surname}</td>
-                <td className="userData">{item.Birthdate}</td>
-                <td className="userData">{item.Email}</td>
-                <td className="userData">{item.Phone}</td>
+            {users.map((user) => (
+              <tr key={user}>
+                <td className="userData">{user.Id}</td>
+                <td className="userData">{user.Name}</td>
+                <td className="userData">{user.Surname}</td>
+                <td className="userData">{user.Birthdate}</td>
+                <td className="userData">{user.Email}</td>
+                <td className="userData">{user.Phone}</td>
               </tr>
             ))}
           </tbody>
