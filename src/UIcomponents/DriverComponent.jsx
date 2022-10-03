@@ -22,14 +22,14 @@ const DriverComponent = () => {
       document.getElementById("Id").value !== "" &&
       document.getElementById("Name").value !== "" &&
       document.getElementById("Surname").value !== "" &&
-      document.getElementById("Birthday").value !== "" &&
+      document.getElementById("Birthdate").value !== "" &&
       document.getElementById("Email").value !== "" &&
       document.getElementById("PhoneNumber").value !== ""
     ) {
       data.Id = document.getElementById("Id").value;
       data.Name = document.getElementById("Name").value;
       data.Surname = document.getElementById("Surname").value;
-      data.Birthday = document.getElementById("Birthday").value;
+      data.Birthdate = document.getElementById("Birthdate").value;
       data.Email = document.getElementById("Email").value;
       data.PhoneNumber = document.getElementById("PhoneNumber").value;
       data.VehicleType = document.getElementById("VehicleType").value;
@@ -39,7 +39,7 @@ const DriverComponent = () => {
         data.Id,
         data.Name,
         data.Surname,
-        data.Birthday,
+        data.Birthdate,
         data.Email,
         data.PhoneNumber,
         data.VehicleType,
@@ -88,10 +88,10 @@ const DriverComponent = () => {
             </tr>
             <tr>
               <td>
-                <label>Birthday:</label>
+                <label>Birthdate:</label>
               </td>
               <td>
-                <input className="input" type="date" id="Birthday" />
+                <input className="input" type="date" id="Birthdate" />
               </td>
             </tr>
             <tr>
@@ -152,7 +152,7 @@ const DriverComponent = () => {
               <th className="userTableName headerData">Id</th>
               <th className="userTableName headerData">Name</th>
               <th className="userTableName headerData">Surname</th>
-              <th className="userTableBirthday headerData">Birthday</th>
+              <th className="userTableBirthday headerData">Birthdate</th>
               <th className="userTableEmail headerData">Email</th>
               <th children="userTablePhoneNumber headerData">Phone Number</th>
               <th children="userVehicleType headerData">Vehicle Type</th>
@@ -165,7 +165,7 @@ const DriverComponent = () => {
                 <td className="userData">{item.Id}</td>
                 <td className="userData">{item.Name}</td>
                 <td className="userData">{item.Surname}</td>
-                <td className="userData">{item.Birthday}</td>
+                <td className="userData">{item.Birthdate}</td>
                 <td className="userData">{item.Email}</td>
                 <td className="userData">{item.PhoneNumber}</td>
                 <td className="userData">{item.VehicleType}</td>

@@ -26,7 +26,7 @@ const UserComponent = () => {
       users.Surname,
       users.Birthdate,
       users.Email,
-      users.Phone
+      users.PhoneNumber
     );
   }
 
@@ -37,14 +37,14 @@ const UserComponent = () => {
       document.getElementById("Surname").value !== "" &&
       document.getElementById("Birthdate").value !== "" &&
       document.getElementById("Email").value !== "" &&
-      document.getElementById("Phone").value !== ""
+      document.getElementById("PhoneNumber").value !== ""
     ) {
       users.Id = document.getElementById("Id").value;
       users.Name = document.getElementById("Name").value;
       users.Surname = document.getElementById("Surname").value;
       users.Birthdate = document.getElementById("Birthdate").value;
       users.Email = document.getElementById("Email").value;
-      users.Phone = document.getElementById("Phone").value;
+      users.PhoneNumber = document.getElementById("PhoneNumber").value;
 
       saveUser();
       console.log("Registered");
@@ -108,7 +108,7 @@ const UserComponent = () => {
                 <label>Phone Number:</label>
               </td>
               <td>
-                <input className="input" type="text" id="Phone" />
+                <input className="input" type="text" id="PhoneNumber" />
               </td>
             </tr>
           </tbody>
@@ -150,7 +150,7 @@ const UserComponent = () => {
                 <td className="userData">{user.Surname}</td>
                 <td className="userData">{user.Birthdate}</td>
                 <td className="userData">{user.Email}</td>
-                <td className="userData">{user.Phone}</td>
+                <td className="userData">{user.PhoneNumber}</td>
               </tr>
             ))}
           </tbody>
