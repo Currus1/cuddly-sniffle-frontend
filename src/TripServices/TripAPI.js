@@ -5,7 +5,7 @@ class TripAPI {
     return axios.get("http://localhost:5236/OngoingTrip/All");
   }
 
-  getTripStatusEnum () {
+  getVehicleTypeEnum () {
     return axios.get("http://localhost:5236/VehicleType");
   }
 
