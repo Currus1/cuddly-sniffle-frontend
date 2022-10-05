@@ -5,7 +5,7 @@ import "./styles/DriverStyle.css";
 import DriverAPI from "../DriverServices/DriverAPI";
 
 const DriverComponent = () => {
-  const [data, setData] = useState([]);
+  const [drivers, setDriver] = useState([]);
 
   useEffect(() => {
     loadTable();
@@ -13,7 +13,7 @@ const DriverComponent = () => {
 
   function loadTable() {
     DriverAPI.GetAllDrivers()
-      .then((res) => setData(res.data))
+      .then((res) => setDriver(res.data))
       .catch((err) => console.log(err));
   }
 
@@ -26,25 +26,16 @@ const DriverComponent = () => {
       document.getElementById("Email").value !== "" &&
       document.getElementById("PhoneNumber").value !== ""
     ) {
-      data.Id = document.getElementById("Id").value;
-      data.Name = document.getElementById("Name").value;
-      data.Surname = document.getElementById("Surname").value;
-      data.Birthdate = document.getElementById("Birthdate").value;
-      data.Email = document.getElementById("Email").value;
-      data.PhoneNumber = document.getElementById("PhoneNumber").value;
-      data.VehicleType = document.getElementById("VehicleType").value;
-      data.LicenseNumber = document.getElementById("LicenseNumber").value;
+      drivers.Id = document.getElementById("Id").value;
+      drivers.Name = document.getElementById("Name").value;
+      drivers.Surname = document.getElementById("Surname").value;
+      drivers.Birthdate = document.getElementById("Birthdate").value;
+      drivers.Email = document.getElementById("Email").value;
+      drivers.PhoneNumber = document.getElementById("PhoneNumber").value;
+      drivers.VehicleType = document.getElementById("VehicleType").value;
+      drivers.LicenseNumber = document.getElementById("LicenseNumber").value;
 
-      DriverAPI.AddingDriver(
-        data.Id,
-        data.Name,
-        data.Surname,
-        data.Birthdate,
-        data.Email,
-        data.PhoneNumber,
-        data.VehicleType,
-        data.LicenseNumber
-      );
+      DriverAPI.AddingDriver(drivers);
       console.log("Registered");
     } else {
       alert("Please make sure to enter all the fields");
@@ -160,16 +151,16 @@ const DriverComponent = () => {
             </tr>
           </thead>
           <tbody className="userTableBody">
-            {data.map((item) => (
-              <tr key={item}>
-                <td className="userData">{item.Id}</td>
-                <td className="userData">{item.Name}</td>
-                <td className="userData">{item.Surname}</td>
-                <td className="userData">{item.Birthdate}</td>
-                <td className="userData">{item.Email}</td>
-                <td className="userData">{item.PhoneNumber}</td>
-                <td className="userData">{item.VehicleType}</td>
-                <td className="userData">{item.LicenseNumber}</td>
+            {drivers.map((driver) => (
+              <tr key={driver}>
+                <td className="userData">{driver.Id}</td>
+                <td className="userData">{driver.Name}</td>
+                <td className="userData">{driver.Surname}</td>
+                <td className="userData">{driver.Birthdate}</td>
+                <td className="userData">{driver.Email}</td>
+                <td className="userData">{driver.PhoneNumber}</td>
+                <td className="userData">{driver.VehicleType}</td>
+                <td className="userData">{driver.LicenseNumber}</td>
               </tr>
             ))}
           </tbody>
