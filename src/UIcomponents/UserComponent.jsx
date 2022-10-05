@@ -8,10 +8,10 @@ const UserComponent = () => {
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
-    loadUsers();
+    LoadUsers();
   }, []);
 
-  function loadUsers() {
+  function LoadUsers() {
     UserAPI.getAllUsers()
       .then((res) => setUsers(res.data))
       .catch((err) => console.log(err));
@@ -19,15 +19,8 @@ const UserComponent = () => {
     console.log(users);
   }
 
-  function saveUser() {
-    UserAPI.addUser(
-      users.Id,
-      users.Name,
-      users.Surname,
-      users.Birthdate,
-      users.Email,
-      users.PhoneNumber
-    );
+  function SaveUser() {
+    UserAPI.addUser(users);
   }
 
   function saveClicked() {
@@ -46,7 +39,7 @@ const UserComponent = () => {
       users.Email = document.getElementById("Email").value;
       users.PhoneNumber = document.getElementById("PhoneNumber").value;
 
-      saveUser();
+      SaveUser();
       console.log("Registered");
     } else {
       alert("Please make sure to enter all the fields");
@@ -54,7 +47,7 @@ const UserComponent = () => {
   }
 
   function loadClicked() {
-    loadUsers();
+    LoadUsers();
   }
 
   return (
