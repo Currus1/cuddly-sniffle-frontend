@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 const Checkbox = ({ id, title, handleChange, checked }) => {
   return (
     <div>
