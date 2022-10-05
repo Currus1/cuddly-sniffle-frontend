@@ -17,7 +17,7 @@ const PlanningComponent = () => {
   useEffect(() => {
     UserAPI.getAllUsers().then((response) => setUsers(response.data));
     DriverAPI.GetAllDrivers().then((response) => setDrivers(response.data));
-    TripAPI.getTripStatusEnum().then((response) =>
+    TripAPI.getVehicleTypeEnum().then((response) =>
       setVehicleTypes(response.data)
     );
     setVehicleType("Sedan"); // Initial value for select
