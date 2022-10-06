@@ -3,6 +3,9 @@ import "../bootstrap.css";
 import "../App.css";
 import "./styles/DriverStyle.css";
 import DriverAPI from "../DriverServices/DriverAPI";
+import { Grid, Paper, Avatar, Typography, TextField, Button } from '@material-ui/core'
+import PersonAddIcon from '@mui/icons-material/PersonAdd';
+
 
 const DriverComponent = () => {
   const [drivers, setDriver] = useState([]);
@@ -47,125 +50,30 @@ const DriverComponent = () => {
     loadTable();
   }
 
+  const avatarStyle = {backgroundColor: '#0099CC'}
+  const marginTop = {marginTop: 15}
+
   return (
     <>
-      <div className="userInputContainer">
-        <h3 className="tableName">Driver Data</h3>
-        <table className="inputTable">
-          <tbody>
-            <tr>
-              <td className="inputLabel">
-                <label>Id:</label>
-              </td>
-              <td>
-                <input className="input" type="text" id="Id" />
-              </td>
-            </tr>
-            <tr>
-              <td className="inputLabel">
-                <label>Name:</label>
-              </td>
-              <td>
-                <input className="input" type="text" id="Name" />
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <label>Surname:</label>
-              </td>
-              <td>
-                <input className="input" type="text" id="Surname" />
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <label>Birthdate:</label>
-              </td>
-              <td>
-                <input className="input" type="date" id="Birthdate" />
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <label>Email:</label>
-              </td>
-              <td>
-                <input className="input" type="email" id="Email" />
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <label>Phone Number:</label>
-              </td>
-              <td>
-                <input className="input" type="text" id="PhoneNumber" />
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <label>Vehicle Type:</label>
-              </td>
-              <td>
-                <input className="input" type="text" id="VehicleType" />
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <label>License Number:</label>
-              </td>
-              <td>
-                <input className="input" type="text" id="LicenseNumber" />
-              </td>
-            </tr>
-          </tbody>
-        </table>
-        <div>
-          <button
-            onClick={SaveClicked}
-            style={{ margin: "10px 10px" }}
-            className="button-save"
-          >
-            Save
-          </button>
-          <button
-            onClick={LoadClicked}
-            style={{ margin: "10px 10px" }}
-            className="button-planning"
-          >
-            Load
-          </button>
-        </div>
-      </div>
-      <div className="userContainer">
-        <table className="userTable">
-          <thead className="userHeader">
-            <tr>
-              <th className="userTableName headerData">Id</th>
-              <th className="userTableName headerData">Name</th>
-              <th className="userTableName headerData">Surname</th>
-              <th className="userTableBirthday headerData">Birthdate</th>
-              <th className="userTableEmail headerData">Email</th>
-              <th children="userTablePhoneNumber headerData">Phone Number</th>
-              <th children="userVehicleType headerData">Vehicle Type</th>
-              <th children="userLicenseNumber headerData">License Number</th>
-            </tr>
-          </thead>
-          <tbody className="userTableBody">
-            {drivers.map((driver) => (
-              <tr key={driver}>
-                <td className="userData">{driver.Id}</td>
-                <td className="userData">{driver.Name}</td>
-                <td className="userData">{driver.Surname}</td>
-                <td className="userData">{driver.Birthdate}</td>
-                <td className="userData">{driver.Email}</td>
-                <td className="userData">{driver.PhoneNumber}</td>
-                <td className="userData">{driver.VehicleType}</td>
-                <td className="userData">{driver.LicenseNumber}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+      <Grid>
+        <Paper elevation={20} className="paperStyle">
+          <Grid align='center'>
+            <Avatar style={avatarStyle}>
+              <PersonAddIcon/>
+            </Avatar>
+            <h2 className="headerStyle">Creating a driver</h2>
+            <Typography variant = 'caption'>Fill in all the fields below</Typography>
+            </Grid>
+            <form>
+              <TextField fullWidth label='Name' placeholder='Enter your name' style={marginTop}/>
+              <TextField fullWidth label='Surname' placeholder='Enter your surname' style={marginTop}/>
+              <TextField fullWidth label='Email' placeholder='Enter your email'style={marginTop}/>
+              <TextField fullWidth label='Phone number' placeholder='Enter your phone number' style={marginTop}/>
+              <TextField fullWidth label='License number' placeholder='Enter your license number' style={marginTop}/>
+              <Button type='submit' variant='contained' color='primary' style={marginTop}>Add</Button>
+            </form>
+        </Paper>
+      </Grid>
     </>
   );
 };
