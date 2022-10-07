@@ -12,6 +12,7 @@ import {
   Button,
 } from "@material-ui/core";
 import UserAPI from "../UserServices/UserAPI";
+import { avatarStyle, iconStyle, marginTop, bigMarginTop, buttonStyle } from './styles/muiStyle.js'
 
 const UserComponent = () => {
   const [user] = useState([]);
@@ -40,19 +41,6 @@ const UserComponent = () => {
       alert("Not all fields were filled!");
     }
   }
-
-  const avatarStyle = { backgroundColor: "#0099CC" };
-  const marginTop = { marginTop: 15 };
-  const bigMarginTop = { marginTop: 30 };
-  const buttonStyle = {
-    marginTop: 30,
-    backgroundColor: "#0099CC",
-    width: "100%",
-  };
-  const iconStyle = {
-    width: "40",
-    height: "40",
-  };
 
   return (
     <>

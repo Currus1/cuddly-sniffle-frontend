@@ -17,6 +17,7 @@ import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import TripAPI from "../TripServices/TripAPI";
 import DriverAPI from "../DriverServices/DriverAPI";
+import { avatarStyle, iconStyle, marginTop, bigMarginTop, buttonStyle } from './styles/muiStyle.js'
 
 
 const DriverComponent = () => {
@@ -62,19 +63,6 @@ const DriverComponent = () => {
 
   const handleVehicleTypeChange = (event) => {
     setVehicleType(event.target.value);
-  };
-
-  const avatarStyle = { backgroundColor: "#0099CC" };
-  const marginTop = { marginTop: 15 };
-  const bigMarginTop = { marginTop: 30 };
-  const buttonStyle = {
-    marginTop: 30,
-    backgroundColor: "#0099CC",
-    width: "100%",
-  };
-  const iconStyle = {
-    width: "40",
-    height: "40",
   };
 
   return (
