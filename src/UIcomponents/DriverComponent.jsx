@@ -16,10 +16,42 @@ import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import TripAPI from "../TripServices/TripAPI";
+import DriverAPI from "../DriverServices/DriverAPI";
+
 
 const DriverComponent = () => {
   const [vehicleType, setVehicleType] = useState("");
   const [vehicleTypes, setVehicleTypes] = useState([]);
+  const [driver] = useState([]);
+
+  function saveClicked() {
+    if (
+      document.getElementById("Id").value !== "" &&
+      document.getElementById("Name").value !== "" &&
+      document.getElementById("Surname").value !== "" &&
+      document.getElementById("Birthdate").value !== "" &&
+      document.getElementById("Email").value !== "" &&
+      document.getElementById("PhoneNumber").value !== "" &&
+      document.getElementById("LicenseNumber").value !== ""
+    ) {
+      
+      // ADDING DRIVER
+      driver.Id = document.getElementById("Id").value;
+      driver.Name = document.getElementById("Name").value;
+      driver.Surname = document.getElementById("Surname").value;
+      driver.Birthdate = document.getElementById("Birthdate").value;
+      driver.Email = document.getElementById("Email").value;
+      driver.VehicleType = vehicleType;
+      driver.PhoneNumber = document.getElementById("PhoneNumber").value;
+      driver.LicenseNumber = document.getElementById("LicenseNumber").value;
+
+      console.log("User is added.");
+      DriverAPI.addDriver(driver);
+    } else {
+      // ERROR
+      alert("Not all fields were filled!");
+    }
+  }
 
   useEffect(() => {
     TripAPI.getVehicleTypeEnum().then((response) =>
@@ -40,6 +72,10 @@ const DriverComponent = () => {
     backgroundColor: "#0099CC",
     width: "100%",
   };
+  const iconStyle = {
+    width: "40",
+    height: "40",
+  };
 
   return (
     <>
@@ -48,7 +84,7 @@ const DriverComponent = () => {
           <Grid align="center">
             <Avatar style={avatarStyle}>
               {" "}
-              <PersonAddIcon />{" "}
+              <PersonAddIcon style={iconStyle} />{" "}
             </Avatar>
             <h2 className="headerStyle">Creating a driver</h2>
             <Typography variant="caption">
@@ -56,6 +92,13 @@ const DriverComponent = () => {
             </Typography>
           </Grid>
           <form>
+          <TextField
+              fullWidth
+              label="Id"
+              id="Id"
+              placeholder="Driver's Id"
+              style={marginTop}
+            />
             <TextField
               fullWidth
               label="Name"
@@ -72,7 +115,7 @@ const DriverComponent = () => {
             />
             <TextField
               fullWidth
-              id="date"
+              id="Birthdate"
               label="Birthday"
               type="date"
               defaultValue="1999-12-25"
@@ -101,7 +144,7 @@ const DriverComponent = () => {
               </InputLabel>
               <Select
                 labelId="demo-simple-select-label"
-                id="demo-simple-select"
+                id="VehicleType"
                 value={vehicleType}
                 label="Vehicle type"
                 onChange={handleVehicleTypeChange}
@@ -115,11 +158,15 @@ const DriverComponent = () => {
             <TextField
               fullWidth
               label="License number"
-              id="VehicleType"
+              id="LicenseNumber"
               placeholder="Enter your license number"
               style={marginTop}
             />
-            <Button type="submit" variant="containeds" style={buttonStyle}>
+            <Button
+              onClick={saveClicked}
+              variant="containeds"
+              style={buttonStyle}
+            >
               Add
             </Button>
           </form>

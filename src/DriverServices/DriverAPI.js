@@ -1,7 +1,7 @@
 import axios from "axios";
 
 class DriverAPI {
-  AddingDriver(driver) {
+  addDriver(driver) {
     axios.post("http://localhost:5236/Driver/Adding/", {
       Id: driver.Id,
       Name: driver.Name,
