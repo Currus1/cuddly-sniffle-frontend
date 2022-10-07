@@ -72,6 +72,17 @@ const DriverComponent = () => {
             />
             <TextField
               fullWidth
+              id="date"
+              label="Birthday"
+              type="date"
+              defaultValue="1999-12-25"
+              style={bigMarginTop}
+              InputLabelProps={{
+                shrink: true,
+              }}
+            />
+            <TextField
+              fullWidth
               label="Email"
               id="Email"
               placeholder="Enter your email"
