@@ -17,7 +17,7 @@ import { avatarStyle, iconStyle, marginTop, bigMarginTop, buttonStyle } from './
 const UserComponent = () => {
   const [user] = useState([]);
 
-  function saveClicked() {
+  function SaveClicked() {
     if (
       document.getElementById("Id").value !== "" &&
       document.getElementById("Name").value !== "" &&
@@ -104,7 +104,7 @@ const UserComponent = () => {
               style={marginTop}
             />
             <Button
-              onClick={saveClicked}
+              onClick={SaveClicked}
               variant="containeds"
               style={buttonStyle}
             >

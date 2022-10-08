@@ -25,7 +25,7 @@ const DriverComponent = () => {
   const [vehicleTypes, setVehicleTypes] = useState([]);
   const [driver] = useState([]);
 
-  function saveClicked() {
+  function SaveClicked() {
     if (
       document.getElementById("Id").value !== "" &&
       document.getElementById("Name").value !== "" &&
@@ -151,7 +151,7 @@ const DriverComponent = () => {
               style={marginTop}
             />
             <Button
-              onClick={saveClicked}
+              onClick={SaveClicked}
               variant="containeds"
               style={buttonStyle}
             >
