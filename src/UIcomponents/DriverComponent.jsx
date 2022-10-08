@@ -2,181 +2,165 @@ import React, { useState, useEffect } from "react";
 import "../bootstrap.css";
 import "../App.css";
 import "./styles/DriverStyle.css";
+import {
+  Grid,
+  Paper,
+  Avatar,
+  Typography,
+  TextField,
+  Button,
+} from "@material-ui/core";
+import PersonAddIcon from "@mui/icons-material/PersonAdd";
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
+import FormControl from "@mui/material/FormControl";
+import Select from "@mui/material/Select";
+import TripAPI from "../TripServices/TripAPI";
 import DriverAPI from "../DriverServices/DriverAPI";
+import { avatarStyle, iconStyle, marginTop, bigMarginTop, buttonStyle } from './styles/muiStyle.js'
+
 
 const DriverComponent = () => {
-  const [data, setData] = useState([]);
-
-  useEffect(() => {
-    loadTable();
-  }, []); // initializing the table on load (once)
-
-  function loadTable() {
-    DriverAPI.GetAllDrivers()
-      .then((res) => setData(res.data))
-      .catch((err) => console.log(err));
-  }
+  const [vehicleType, setVehicleType] = useState("");
+  const [vehicleTypes, setVehicleTypes] = useState([]);
+  const [driver] = useState([]);
 
   function SaveClicked() {
     if (
       document.getElementById("Id").value !== "" &&
       document.getElementById("Name").value !== "" &&
       document.getElementById("Surname").value !== "" &&
-      document.getElementById("Birthday").value !== "" &&
+      document.getElementById("Birthdate").value !== "" &&
       document.getElementById("Email").value !== "" &&
-      document.getElementById("PhoneNumber").value !== ""
+      document.getElementById("PhoneNumber").value !== "" &&
+      document.getElementById("LicenseNumber").value !== ""
     ) {
-      data.Id = document.getElementById("Id").value;
-      data.Name = document.getElementById("Name").value;
-      data.Surname = document.getElementById("Surname").value;
-      data.Birthday = document.getElementById("Birthday").value;
-      data.Email = document.getElementById("Email").value;
-      data.PhoneNumber = document.getElementById("PhoneNumber").value;
-      data.VehicleType = document.getElementById("VehicleType").value;
-      data.LicenseNumber = document.getElementById("LicenseNumber").value;
+      
+      // ADDING DRIVER
+      driver.Id = document.getElementById("Id").value;
+      driver.Name = document.getElementById("Name").value;
+      driver.Surname = document.getElementById("Surname").value;
+      driver.Birthdate = document.getElementById("Birthdate").value;
+      driver.Email = document.getElementById("Email").value;
+      driver.VehicleType = vehicleType;
+      driver.PhoneNumber = document.getElementById("PhoneNumber").value;
+      driver.LicenseNumber = document.getElementById("LicenseNumber").value;
 
-      DriverAPI.AddingDriver(
-        data.Id,
-        data.Name,
-        data.Surname,
-        data.Birthday,
-        data.Email,
-        data.PhoneNumber,
-        data.VehicleType,
-        data.LicenseNumber
-      );
-      console.log("Registered");
+      console.log("User is added.");
+      DriverAPI.addDriver(driver);
     } else {
-      alert("Please make sure to enter all the fields");
+      // ERROR
+      alert("Not all fields were filled!");
     }
   }
 
-  // Load the drivers to data const via useState
-  function LoadClicked() {
-    loadTable();
-  }
+  useEffect(() => {
+    TripAPI.getVehicleTypeEnum().then((response) =>
+      setVehicleTypes(response.data)
+    );
+    setVehicleType("Sedan"); // Initial value for select
+  }, []);
+
+  const handleVehicleTypeChange = (event) => {
+    setVehicleType(event.target.value);
+  };
 
   return (
     <>
-      <div className="userInputContainer">
-        <h3 className="tableName">Driver Data</h3>
-        <table className="inputTable">
-          <tbody>
-            <tr>
-              <td className="inputLabel">
-                <label>Id:</label>
-              </td>
-              <td>
-                <input className="input" type="text" id="Id" />
-              </td>
-            </tr>
-            <tr>
-              <td className="inputLabel">
-                <label>Name:</label>
-              </td>
-              <td>
-                <input className="input" type="text" id="Name" />
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <label>Surname:</label>
-              </td>
-              <td>
-                <input className="input" type="text" id="Surname" />
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <label>Birthday:</label>
-              </td>
-              <td>
-                <input className="input" type="date" id="Birthday" />
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <label>Email:</label>
-              </td>
-              <td>
-                <input className="input" type="email" id="Email" />
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <label>Phone Number:</label>
-              </td>
-              <td>
-                <input className="input" type="text" id="PhoneNumber" />
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <label>Vehicle Type:</label>
-              </td>
-              <td>
-                <input className="input" type="text" id="VehicleType" />
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <label>License Number:</label>
-              </td>
-              <td>
-                <input className="input" type="text" id="LicenseNumber" />
-              </td>
-            </tr>
-          </tbody>
-        </table>
-        <div>
-          <button
-            onClick={SaveClicked}
-            style={{ margin: "10px 10px" }}
-            className="button-save"
-          >
-            Save
-          </button>
-          <button
-            onClick={LoadClicked}
-            style={{ margin: "10px 10px" }}
-            className="button-planning"
-          >
-            Load
-          </button>
-        </div>
-      </div>
-      <div className="userContainer">
-        <table className="userTable">
-          <thead className="userHeader">
-            <tr>
-              <th className="userTableName headerData">Id</th>
-              <th className="userTableName headerData">Name</th>
-              <th className="userTableName headerData">Surname</th>
-              <th className="userTableBirthday headerData">Birthday</th>
-              <th className="userTableEmail headerData">Email</th>
-              <th children="userTablePhoneNumber headerData">Phone Number</th>
-              <th children="userVehicleType headerData">Vehicle Type</th>
-              <th children="userLicenseNumber headerData">License Number</th>
-            </tr>
-          </thead>
-          <tbody className="userTableBody">
-            {data.map((item) => (
-              <tr key={item}>
-                <td className="userData">{item.Id}</td>
-                <td className="userData">{item.Name}</td>
-                <td className="userData">{item.Surname}</td>
-                <td className="userData">{item.Birthday}</td>
-                <td className="userData">{item.Email}</td>
-                <td className="userData">{item.PhoneNumber}</td>
-                <td className="userData">{item.VehicleType}</td>
-                <td className="userData">{item.LicenseNumber}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+      <Grid>
+        <Paper elevation={20} className="paperStyle">
+          <Grid align="center">
+            <Avatar style={avatarStyle}>
+              {" "}
+              <PersonAddIcon style={iconStyle} />{" "}
+            </Avatar>
+            <h2 className="headerStyle">Creating a driver</h2>
+            <Typography variant="caption">
+              Fill in all the fields below
+            </Typography>
+          </Grid>
+          <form>
+          <TextField
+              fullWidth
+              label="Id"
+              id="Id"
+              placeholder="Driver's Id"
+              style={marginTop}
+            />
+            <TextField
+              fullWidth
+              label="Name"
+              id="Name"
+              placeholder="Enter your name"
+              style={marginTop}
+            />
+            <TextField
+              fullWidth
+              label="Surname"
+              id="Surname"
+              placeholder="Enter your surname"
+              style={marginTop}
+            />
+            <TextField
+              fullWidth
+              id="Birthdate"
+              label="Birthday"
+              type="date"
+              defaultValue="1999-12-25"
+              style={bigMarginTop}
+              InputLabelProps={{
+                shrink: true,
+              }}
+            />
+            <TextField
+              fullWidth
+              label="Email"
+              id="Email"
+              placeholder="Enter your email"
+              style={marginTop}
+            />
+            <TextField
+              fullWidth
+              label="Phone number"
+              id="PhoneNumber"
+              placeholder="Enter your phone number"
+              style={marginTop}
+            />
+            <FormControl fullWidth>
+              <InputLabel id="demo-simple-select-label" style={bigMarginTop}>
+                Vehicle Type
+              </InputLabel>
+              <Select
+                labelId="demo-simple-select-label"
+                id="VehicleType"
+                value={vehicleType}
+                label="Vehicle type"
+                onChange={handleVehicleTypeChange}
+                style={bigMarginTop}
+              >
+                {vehicleTypes.map((type) => (
+                  <MenuItem value={type}>{type}</MenuItem>
+                ))}
+              </Select>
+            </FormControl>
+            <TextField
+              fullWidth
+              label="License number"
+              id="LicenseNumber"
+              placeholder="Enter your license number"
+              style={marginTop}
+            />
+            <Button
+              onClick={SaveClicked}
+              variant="containeds"
+              style={buttonStyle}
+            >
+              Add
+            </Button>
+          </form>
+        </Paper>
+      </Grid>
     </>
   );
 };
-
 export default DriverComponent;
