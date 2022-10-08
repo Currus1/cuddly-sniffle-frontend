@@ -12,7 +12,13 @@ import {
   Button,
 } from "@material-ui/core";
 import UserAPI from "../UserServices/UserAPI";
-import { avatarStyle, iconStyle, marginTop, bigMarginTop, buttonStyle } from './styles/muiStyle.js'
+import {
+  avatarStyle,
+  iconStyle,
+  marginTop,
+  bigMarginTop,
+  buttonStyle,
+} from "./styles/muiStyle.js";
 
 const UserComponent = () => {
   const [user] = useState([]);
@@ -105,7 +111,7 @@ const UserComponent = () => {
             />
             <Button
               onClick={SaveClicked}
-              variant="containeds"
+              variant="contained"
               style={buttonStyle}
             >
               Add

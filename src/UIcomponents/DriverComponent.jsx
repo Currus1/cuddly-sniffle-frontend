@@ -17,8 +17,13 @@ import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import TripAPI from "../TripServices/TripAPI";
 import DriverAPI from "../DriverServices/DriverAPI";
-import { avatarStyle, iconStyle, marginTop, bigMarginTop, buttonStyle } from './styles/muiStyle.js'
-
+import {
+  avatarStyle,
+  iconStyle,
+  marginTop,
+  bigMarginTop,
+  buttonStyle,
+} from "./styles/muiStyle.js";
 
 const DriverComponent = () => {
   const [vehicleType, setVehicleType] = useState("");
@@ -35,7 +40,6 @@ const DriverComponent = () => {
       document.getElementById("PhoneNumber").value !== "" &&
       document.getElementById("LicenseNumber").value !== ""
     ) {
-      
       // ADDING DRIVER
       driver.Id = document.getElementById("Id").value;
       driver.Name = document.getElementById("Name").value;
@@ -80,7 +84,7 @@ const DriverComponent = () => {
             </Typography>
           </Grid>
           <form>
-          <TextField
+            <TextField
               fullWidth
               label="Id"
               id="Id"
@@ -152,7 +156,7 @@ const DriverComponent = () => {
             />
             <Button
               onClick={SaveClicked}
-              variant="containeds"
+              variant="contained"
               style={buttonStyle}
             >
               Add
