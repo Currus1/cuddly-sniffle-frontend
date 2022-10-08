@@ -12,7 +12,7 @@ class UserAPI {
     });
   }
 
-  getAllUsers() {
+  GetAllUsers() {
     return axios.get("http://localhost:5236/User/Users");
   }
 }

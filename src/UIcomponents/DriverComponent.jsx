@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "../bootstrap.css";
 import "../App.css";
-import "./styles/DriverStyle.css";
 import {
   Grid,
   Paper,
@@ -9,6 +8,7 @@ import {
   Typography,
   TextField,
   Button,
+  Divider
 } from "@material-ui/core";
 import PersonAddIcon from "@mui/icons-material/PersonAdd";
 import InputLabel from "@mui/material/InputLabel";
@@ -23,6 +23,9 @@ import {
   marginTop,
   bigMarginTop,
   buttonStyle,
+  paperStyle,
+  headerStyle,
+  dividerStyle
 } from "./styles/muiStyle.js";
 
 const DriverComponent = () => {
@@ -50,8 +53,8 @@ const DriverComponent = () => {
       driver.PhoneNumber = document.getElementById("PhoneNumber").value;
       driver.LicenseNumber = document.getElementById("LicenseNumber").value;
 
-      console.log("User is added.");
-      DriverAPI.addDriver(driver);
+      console.log("Driver is added.");
+      DriverAPI.AddDriver(driver);
     } else {
       // ERROR
       alert("Not all fields were filled!");
@@ -62,7 +65,7 @@ const DriverComponent = () => {
     TripAPI.getVehicleTypeEnum().then((response) =>
       setVehicleTypes(response.data)
     );
-    setVehicleType("Sedan"); // Initial value for select
+    //setVehicleType("Sedan"); // Initial value for select
   }, []);
 
   const handleVehicleTypeChange = (event) => {
@@ -72,16 +75,17 @@ const DriverComponent = () => {
   return (
     <>
       <Grid>
-        <Paper elevation={20} className="paperStyle">
-          <Grid align="center">
+        <Paper elevation={20} style={paperStyle}>
+          <Grid align="left">
             <Avatar style={avatarStyle}>
               {" "}
               <PersonAddIcon style={iconStyle} />{" "}
             </Avatar>
-            <h2 className="headerStyle">Creating a driver</h2>
+            <h2 style={headerStyle}>Creating a driver</h2>
             <Typography variant="caption">
               Fill in all the fields below
             </Typography>
+            <Divider style={dividerStyle}/>
           </Grid>
           <form>
             <TextField

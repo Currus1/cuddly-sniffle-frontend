@@ -52,7 +52,7 @@ const UserComponent = () => {
     <>
       <Grid>
         <Paper elevation={20} className="paperStyle">
-          <Grid align="center">
+          <Grid align="left">
             <Avatar style={avatarStyle}>
               {" "}
               <PersonAddIcon style={iconStyle} />{" "}
