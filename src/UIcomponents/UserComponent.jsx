@@ -1,29 +1,23 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "../bootstrap.css";
 import "../App.css";
 import "./styles/UserStyle.css";
+import PersonAddIcon from "@mui/icons-material/PersonAdd";
+import {
+  Grid,
+  Paper,
+  Avatar,
+  Typography,
+  TextField,
+  Button,
+} from "@material-ui/core";
 import UserAPI from "../UserServices/UserAPI";
+import { avatarStyle, iconStyle, marginTop, bigMarginTop, buttonStyle } from './styles/muiStyle.js'
 
 const UserComponent = () => {
-  const [users, setUsers] = useState([]);
+  const [user] = useState([]);
 
-  useEffect(() => {
-    LoadUsers();
-  }, []);
-
-  function LoadUsers() {
-    UserAPI.getAllUsers()
-      .then((res) => setUsers(res.data))
-      .catch((err) => console.log(err));
-
-    console.log(users);
-  }
-
-  function SaveUser() {
-    UserAPI.addUser(users);
-  }
-
-  function saveClicked() {
+  function SaveClicked() {
     if (
       document.getElementById("Id").value !== "" &&
       document.getElementById("Name").value !== "" &&
@@ -32,123 +26,93 @@ const UserComponent = () => {
       document.getElementById("Email").value !== "" &&
       document.getElementById("PhoneNumber").value !== ""
     ) {
-      users.Id = document.getElementById("Id").value;
-      users.Name = document.getElementById("Name").value;
-      users.Surname = document.getElementById("Surname").value;
-      users.Birthdate = document.getElementById("Birthdate").value;
-      users.Email = document.getElementById("Email").value;
-      users.PhoneNumber = document.getElementById("PhoneNumber").value;
+      // ADDING USER
+      user.Id = document.getElementById("Id").value;
+      user.Name = document.getElementById("Name").value;
+      user.Surname = document.getElementById("Surname").value;
+      user.Birthdate = document.getElementById("Birthdate").value;
+      user.Email = document.getElementById("Email").value;
+      user.PhoneNumber = document.getElementById("PhoneNumber").value;
 
-      SaveUser();
-      console.log("Registered");
+      console.log("User is added.");
+      UserAPI.addUser(user);
     } else {
-      alert("Please make sure to enter all the fields");
+      // ERROR
+      alert("Not all fields were filled!");
     }
-  }
-
-  function loadClicked() {
-    LoadUsers();
   }
 
   return (
     <>
-      <div className="userInputContainer">
-        <h3 className="tableName">User Data</h3>
-        <table className="inputTable">
-          <tbody>
-            <tr>
-              <td className="inputLabel">
-                <label>Id:</label>
-              </td>
-              <td>
-                <input className="input" type="text" id="Id" />
-              </td>
-            </tr>
-            <tr>
-              <td className="inputLabel">
-                <label>Name:</label>
-              </td>
-              <td>
-                <input className="input" type="text" id="Name" />
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <label>Surname:</label>
-              </td>
-              <td>
-                <input className="input" type="text" id="Surname" />
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <label>Birthdate:</label>
-              </td>
-              <td>
-                <input className="input" type="date" id="Birthdate" />
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <label>Email:</label>
-              </td>
-              <td>
-                <input className="input" type="email" id="Email" />
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <label>Phone Number:</label>
-              </td>
-              <td>
-                <input className="input" type="text" id="PhoneNumber" />
-              </td>
-            </tr>
-          </tbody>
-        </table>
-        <div>
-          <button
-            onClick={saveClicked}
-            style={{ margin: "10px 10px" }}
-            className="button-save"
-          >
-            Save
-          </button>
-          <button
-            onClick={loadClicked}
-            style={{ margin: "10px 10px" }}
-            className="button-planning"
-          >
-            Load
-          </button>
-        </div>
-      </div>
-      <div className="userContainer">
-        <table className="userTable">
-          <thead className="userHeader">
-            <tr>
-              <th className="userTableName headerData">Id</th>
-              <th className="userTableName headerData">Name</th>
-              <th className="userTableName headerData">Surname</th>
-              <th className="userTableBirthdate headerData">Birthdate</th>
-              <th className="userTableEmail headerData">Email</th>
-              <th children="userTablePhone headerData">Phone Number</th>
-            </tr>
-          </thead>
-          <tbody className="userTableBody">
-            {users.map((user) => (
-              <tr key={user}>
-                <td className="userData">{user.Id}</td>
-                <td className="userData">{user.Name}</td>
-                <td className="userData">{user.Surname}</td>
-                <td className="userData">{user.Birthdate}</td>
-                <td className="userData">{user.Email}</td>
-                <td className="userData">{user.PhoneNumber}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+      <Grid>
+        <Paper elevation={20} className="paperStyle">
+          <Grid align="center">
+            <Avatar style={avatarStyle}>
+              {" "}
+              <PersonAddIcon style={iconStyle} />{" "}
+            </Avatar>
+            <h2 className="headerStyle">Creating a user</h2>
+            <Typography variant="caption">
+              Fill in all the fields below
+            </Typography>
+          </Grid>
+          <form>
+            <TextField
+              fullWidth
+              label="Id"
+              id="Id"
+              placeholder="User's Id"
+              style={marginTop}
+            />
+            <TextField
+              fullWidth
+              label="Name"
+              id="Name"
+              placeholder="Enter your name"
+              style={marginTop}
+            />
+            <TextField
+              fullWidth
+              label="Surname"
+              id="Surname"
+              placeholder="Enter your surname"
+              style={marginTop}
+            />
+            <TextField
+              fullWidth
+              id="Birthdate"
+              label="Birthday"
+              type="date"
+              defaultValue="1999-12-25"
+              style={bigMarginTop}
+              InputLabelProps={{
+                shrink: true,
+              }}
+            />
+            <TextField
+              fullWidth
+              label="Email"
+              id="Email"
+              placeholder="Enter your email"
+              style={marginTop}
+            />
+            <TextField
+              fullWidth
+              label="Phone number"
+              id="PhoneNumber"
+              placeholder="Enter your phone number"
+              style={marginTop}
+            />
+            <Button
+              onClick={SaveClicked}
+              variant="containeds"
+              style={buttonStyle}
+            >
+              Add
+            </Button>
+          </form>
+        </Paper>
+      </Grid>
     </>
   );
 };
