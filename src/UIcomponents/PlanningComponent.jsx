@@ -17,7 +17,7 @@ import {
 import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
 import CommuteIcon from "@mui/icons-material/Commute";
-import AddTaskIcon from '@mui/icons-material/AddTask';
+import AddTaskIcon from "@mui/icons-material/AddTask";
 import FormControl from "@mui/material/FormControl";
 import {
   avatarStyle,
@@ -26,9 +26,9 @@ import {
   bigMarginTop,
   buttonStyle,
   paperStyle,
-  paperStyleLeft,
   headerStyle,
   dividerStyle,
+  widePaperStyle,
 } from "./styles/muiStyle.js";
 
 const PlanningComponent = () => {
@@ -98,7 +98,7 @@ const PlanningComponent = () => {
     data.Minutes = "10";
     data.EstimatedTripPrice = document.getElementById("ROestimatedTime").value;
   }
-  
+
   function PlanClicked() {
     if (ValidateFields()) {
       SaveValues();
@@ -148,23 +148,23 @@ const PlanningComponent = () => {
             </Select>
           </FormControl>
           <FormControl fullWidth>
-              <InputLabel id="demo-simple-select-label" style={bigMarginTop}>
-                Vehicle Type
-              </InputLabel>
-              <Select
-                labelId="demo-simple-select-label"
-                id="VehicleType"
-                value={vehicleType}
-                label="Vehicle type"
-                onChange={handleVehicleTypeChange}
-                style={bigMarginTop}
-              >
-                {vehicleTypes.map((type) => (
-                  <MenuItem value={type}>{type}</MenuItem>
-                ))}
-              </Select>
-            </FormControl>
-            <FormControl fullWidth>
+            <InputLabel id="demo-simple-select-label" style={bigMarginTop}>
+              Vehicle Type
+            </InputLabel>
+            <Select
+              labelId="demo-simple-select-label"
+              id="VehicleType"
+              value={vehicleType}
+              label="Vehicle type"
+              onChange={handleVehicleTypeChange}
+              style={bigMarginTop}
+            >
+              {vehicleTypes.map((type) => (
+                <MenuItem value={type}>{type}</MenuItem>
+              ))}
+            </Select>
+          </FormControl>
+          <FormControl fullWidth>
             <InputLabel id="demo-simple-select-label" style={bigMarginTop}>
               Driver
             </InputLabel>
@@ -221,13 +221,103 @@ const PlanningComponent = () => {
             placeholder="Enter the estimated time price"
             style={marginTop}
           />
-          <Button
-              onClick={SaveClicked}
-              variant="contained"
-              style={buttonStyle}
+          <Button onClick={SaveClicked} variant="contained" style={buttonStyle}>
+            Add
+          </Button>
+        </Paper>
+        <Paper elevation={20} style={widePaperStyle}>
+          <Grid align="left">
+            <Avatar style={avatarStyle}>
+              {" "}
+              <AddTaskIcon style={iconStyle} />{" "}
+            </Avatar>
+            <h2 style={headerStyle}>Saving a trip</h2>
+            <Typography variant="caption">Check trip details below</Typography>
+            <Divider style={dividerStyle} />
+          </Grid>
+          <TextField
+            fullWidth
+            label="Trip Nr."
+            id="id"
+            placeholder="Trip number"
+            style={marginTop}
+            disabled
+          />
+          <FormControl fullWidth>
+            <InputLabel id="demo-simple-select-label" style={bigMarginTop}>
+              User
+            </InputLabel>
+            <Select
+              label="User:"
+              style={bigMarginTop}
             >
-              Add
-            </Button>
+            </Select>
+          </FormControl>
+          <FormControl fullWidth>
+            <InputLabel id="demo-simple-select-label" style={bigMarginTop}>
+              Vehicle Type
+            </InputLabel>
+            <Select
+              label="Vehicle type"
+              style={bigMarginTop}
+            >
+            </Select>
+          </FormControl>
+          <FormControl fullWidth>
+            <InputLabel id="demo-simple-select-label" style={bigMarginTop}>
+              Driver
+            </InputLabel>
+            <Select
+              label="Driver:"
+              style={bigMarginTop}
+            >
+            </Select>
+          </FormControl>
+          <TextField
+            fullWidth
+            label="Starting point"
+            id="startingPoint"
+            style={marginTop}
+            disabled
+          />
+          <TextField
+            fullWidth
+            label="Destination point"
+            id="startingPoint"
+            style={marginTop}
+            disabled
+          />
+          <TextField
+            fullWidth
+            label="Seat count"
+            id="seats"
+            style={marginTop}
+            disabled
+          />
+          <TextField
+            fullWidth
+            label="Hours"
+            id="hours"
+            style={marginTop}
+            disabled
+          />
+          <TextField
+            fullWidth
+            label="Minutes"
+            id="minutes"
+            style={marginTop}
+            disabled
+          />
+          <TextField
+            fullWidth
+            label="Estimated time price"
+            id="estimatedTripPrice"
+            style={marginTop}
+            disabled
+          />
+          <Button onClick={SaveClicked} variant="contained" style={buttonStyle}>
+            Add
+          </Button>
         </Paper>
       </Grid>
     </>
