@@ -236,7 +236,7 @@ const PlanningComponent = () => {
             style={marginTop}
           />
           <Button onClick={AddClicked} variant="contained" style={buttonStyle}>
-            Save
+            Add
           </Button>
         </Paper>
         <Paper elevation={20} style={widePaperStyle}>
@@ -321,7 +321,7 @@ const PlanningComponent = () => {
             disabled
           />
           <Button onClick={SaveClicked} variant="contained" style={buttonStyle}>
-            Add
+            Save
           </Button>
         </Paper>
       </Grid>
