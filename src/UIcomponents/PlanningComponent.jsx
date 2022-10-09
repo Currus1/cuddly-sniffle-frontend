@@ -238,80 +238,71 @@ const PlanningComponent = () => {
           <TextField
             fullWidth
             label="Trip Nr."
-            id="id"
+            id="ROid"
             placeholder="Trip number"
             style={marginTop}
             disabled
           />
-          <FormControl fullWidth>
-            <InputLabel id="demo-simple-select-label" style={bigMarginTop}>
-              User
-            </InputLabel>
-            <Select
-              label="User:"
-              style={bigMarginTop}
-            >
-            </Select>
-          </FormControl>
-          <FormControl fullWidth>
-            <InputLabel id="demo-simple-select-label" style={bigMarginTop}>
-              Vehicle Type
-            </InputLabel>
-            <Select
-              label="Vehicle type"
-              style={bigMarginTop}
-            >
-            </Select>
-          </FormControl>
-          <FormControl fullWidth>
-            <InputLabel id="demo-simple-select-label" style={bigMarginTop}>
-              Driver
-            </InputLabel>
-            <Select
-              label="Driver:"
-              style={bigMarginTop}
-            >
-            </Select>
-          </FormControl>
+          <TextField
+            fullWidth
+            label="User"
+            id="ROuser"
+            style={marginTop}
+            disabled
+          />
+          <TextField
+            fullWidth
+            label="Vehicle Type"
+            id="ROvehicleType"
+            style={marginTop}
+            disabled
+          />
+          <TextField
+            fullWidth
+            label="Driver"
+            id="ROdriver"
+            style={marginTop}
+            disabled
+          />
           <TextField
             fullWidth
             label="Starting point"
-            id="startingPoint"
+            id="ROstartingPoint"
             style={marginTop}
             disabled
           />
           <TextField
             fullWidth
             label="Destination point"
-            id="startingPoint"
+            id="ROdestination"
             style={marginTop}
             disabled
           />
           <TextField
             fullWidth
             label="Seat count"
-            id="seats"
+            id="ROseats"
             style={marginTop}
             disabled
           />
           <TextField
             fullWidth
             label="Hours"
-            id="hours"
+            id="ROhours"
             style={marginTop}
             disabled
           />
           <TextField
             fullWidth
             label="Minutes"
-            id="minutes"
+            id="ROminutes"
             style={marginTop}
             disabled
           />
           <TextField
             fullWidth
             label="Estimated time price"
-            id="estimatedTripPrice"
+            id="ROestimatedTripPrice"
             style={marginTop}
             disabled
           />
