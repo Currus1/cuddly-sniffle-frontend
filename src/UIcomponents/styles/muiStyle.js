@@ -11,13 +11,14 @@ export const iconStyle = {
   height: "40",
 };
 export const paperStyle = {
+  float: "left",
   width: "30%",
   padding: "30px 20px",
-  margin: "100px auto"
+  margin: "100px 3%"
 }
 export const headerStyle = {
   margin: 0,
-  marginTop: 15,
+  marginTop: 15,cd 
 }
 export const dividerStyle = {
   marginTop: 10,

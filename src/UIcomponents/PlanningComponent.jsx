@@ -17,6 +17,7 @@ import {
 import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
 import CommuteIcon from "@mui/icons-material/Commute";
+import AddTaskIcon from '@mui/icons-material/AddTask';
 import FormControl from "@mui/material/FormControl";
 import {
   avatarStyle,
@@ -25,6 +26,7 @@ import {
   bigMarginTop,
   buttonStyle,
   paperStyle,
+  paperStyleLeft,
   headerStyle,
   dividerStyle,
 } from "./styles/muiStyle.js";
@@ -96,17 +98,13 @@ const PlanningComponent = () => {
     data.Minutes = "10";
     data.EstimatedTripPrice = document.getElementById("ROestimatedTime").value;
   }
-
-  function clearFields() {
-    console.log("clear");
-  }
-
+  
   function PlanClicked() {
     if (ValidateFields()) {
       SaveValues();
       if (TripAPI.addTrip(data)) alert("Trip is added");
       else alert("Server failed to add your trip");
-      clearFields();
+      console.log("clear");
     } else {
       alert("Please make sure to enter all the fields");
     }
