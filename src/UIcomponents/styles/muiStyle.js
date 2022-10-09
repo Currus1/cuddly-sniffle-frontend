@@ -18,7 +18,7 @@ export const paperStyle = {
 }
 export const headerStyle = {
   margin: 0,
-  marginTop: 15,cd 
+  marginTop: 15,
 }
 export const dividerStyle = {
   marginTop: 10,
