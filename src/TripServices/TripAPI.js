@@ -13,7 +13,7 @@ class TripAPI {
     return axios.post("http://localhost:5236/Trip/Adding", {
       id: data.Id,
       driverId: data.DriverId,
-      userId: data.UserId,
+      userIds: [parseInt(data.UserId)],
       startingPoint: data.StartingPoint,
       destination: data.Destination,
       seats: data.Seats,

@@ -80,7 +80,7 @@ const PlanningComponent = () => {
       document.getElementById("estimatedTripPrice").value;
 
     //Calculate the trip time
-    document.getElementById("ROestimatedTime").value = "10";
+    document.getElementById("ROestimatedTime").value = 10;
   }
 
   function ValidateFields() {
@@ -110,7 +110,8 @@ const PlanningComponent = () => {
     data.Seats = document.getElementById("ROseats").value;
     data.Hours = document.getElementById("ROhours").value;
     data.Minutes = document.getElementById("ROminutes").value;
-    data.EstimatedTripPrice = document.getElementById("ROestimatedTime").value;
+    data.EstimatedTripPrice = document.getElementById("ROestimatedTripPrice").value;
+    data.EstimatedTripTime = document.getElementById("ROestimatedTime").value;
   }
 
   function AddClicked() {
@@ -202,7 +203,7 @@ const PlanningComponent = () => {
           <TextField
             fullWidth
             label="Destination point"
-            id="startingPoint"
+            id="destination"
             placeholder="Enter the destination point"
             style={marginTop}
           />
@@ -234,7 +235,7 @@ const PlanningComponent = () => {
             placeholder="Enter the estimated trip price"
             style={marginTop}
           />
-          <Button onClick={AddClicked} variant="contained" style={buttonStyle}>
+          <Button onClick={SaveClicked} variant="contained" style={buttonStyle}>
             Add
           </Button>
         </Paper>
@@ -250,7 +251,6 @@ const PlanningComponent = () => {
           </Grid>
           <TextField
             fullWidth
-            label="Trip Nr."
             id="ROid"
             placeholder="..."
             style={marginTop}
@@ -258,7 +258,6 @@ const PlanningComponent = () => {
           />
           <TextField
             fullWidth
-            label="User"
             id="ROuser"
             placeholder="..."
             style={marginTop}
@@ -266,7 +265,6 @@ const PlanningComponent = () => {
           />
           <TextField
             fullWidth
-            label="Vehicle Type"
             id="ROvehicleType"
             placeholder="..."
             style={marginTop}
@@ -274,7 +272,6 @@ const PlanningComponent = () => {
           />
           <TextField
             fullWidth
-            label="Driver"
             id="ROdriver"
             placeholder="..."
             style={marginTop}
@@ -282,7 +279,6 @@ const PlanningComponent = () => {
           />
           <TextField
             fullWidth
-            label="Starting point"
             id="ROstartingPoint"
             placeholder="..."
             style={marginTop}
@@ -290,7 +286,6 @@ const PlanningComponent = () => {
           />
           <TextField
             fullWidth
-            label="Destination point"
             id="ROdestination"
             placeholder="..."
             style={marginTop}
@@ -298,7 +293,6 @@ const PlanningComponent = () => {
           />
           <TextField
             fullWidth
-            label="Seat count"
             id="ROseats"
             placeholder="..."
             style={marginTop}
@@ -306,7 +300,6 @@ const PlanningComponent = () => {
           />
           <TextField
             fullWidth
-            label="Hours"
             id="ROhours"
             placeholder="..."
             style={marginTop}
@@ -314,21 +307,26 @@ const PlanningComponent = () => {
           />
           <TextField
             fullWidth
-            label="Minutes"
-            id="ROminutes"
+             id="ROminutes"
             placeholder="..."
             style={marginTop}
             disabled
           />
           <TextField
             fullWidth
-            label="Estimated trip price"
             id="ROestimatedTripPrice"
             placeholder="..."
             style={marginTop}
             disabled
           />
-          <Button onClick={SaveClicked} variant="contained" style={buttonStyle}>
+          <TextField
+            fullWidth
+            id="ROestimatedTime"
+            placeholder="..."
+            style={marginTop}
+            disabled
+          />
+          <Button onClick={AddClicked} variant="contained" style={buttonStyle}>
             Save
           </Button>
         </Paper>
