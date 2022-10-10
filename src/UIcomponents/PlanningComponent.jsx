@@ -107,9 +107,9 @@ const PlanningComponent = () => {
     data.UserId = document.getElementById("ROuser").value;
     data.StartingPoint = document.getElementById("ROstartingPoint").value;
     data.Destination = document.getElementById("ROdestination").value;
-    data.Seats = "4";
-    data.Hours = "1";
-    data.Minutes = "10";
+    data.Seats = document.getElementById("ROseats").value;
+    data.Hours = document.getElementById("ROhours").value;
+    data.Minutes = document.getElementById("ROminutes").value;
     data.EstimatedTripPrice = document.getElementById("ROestimatedTime").value;
   }
 
@@ -167,7 +167,6 @@ const PlanningComponent = () => {
             </InputLabel>
             <Select
               labelId="demo-simple-select-label"
-              id="VehicleType"
               value={vehicleType}
               label="Vehicle type"
               onChange={handleVehicleTypeChange}
@@ -253,7 +252,7 @@ const PlanningComponent = () => {
             fullWidth
             label="Trip Nr."
             id="ROid"
-            placeholder="Trip number"
+            placeholder="..."
             style={marginTop}
             disabled
           />
@@ -261,6 +260,7 @@ const PlanningComponent = () => {
             fullWidth
             label="User"
             id="ROuser"
+            placeholder="..."
             style={marginTop}
             disabled
           />
@@ -268,6 +268,7 @@ const PlanningComponent = () => {
             fullWidth
             label="Vehicle Type"
             id="ROvehicleType"
+            placeholder="..."
             style={marginTop}
             disabled
           />
@@ -275,6 +276,7 @@ const PlanningComponent = () => {
             fullWidth
             label="Driver"
             id="ROdriver"
+            placeholder="..."
             style={marginTop}
             disabled
           />
@@ -282,6 +284,7 @@ const PlanningComponent = () => {
             fullWidth
             label="Starting point"
             id="ROstartingPoint"
+            placeholder="..."
             style={marginTop}
             disabled
           />
@@ -289,6 +292,7 @@ const PlanningComponent = () => {
             fullWidth
             label="Destination point"
             id="ROdestination"
+            placeholder="..."
             style={marginTop}
             disabled
           />
@@ -296,6 +300,7 @@ const PlanningComponent = () => {
             fullWidth
             label="Seat count"
             id="ROseats"
+            placeholder="..."
             style={marginTop}
             disabled
           />
@@ -303,6 +308,7 @@ const PlanningComponent = () => {
             fullWidth
             label="Hours"
             id="ROhours"
+            placeholder="..."
             style={marginTop}
             disabled
           />
@@ -310,6 +316,7 @@ const PlanningComponent = () => {
             fullWidth
             label="Minutes"
             id="ROminutes"
+            placeholder="..."
             style={marginTop}
             disabled
           />
@@ -317,6 +324,7 @@ const PlanningComponent = () => {
             fullWidth
             label="Estimated trip price"
             id="ROestimatedTripPrice"
+            placeholder="..."
             style={marginTop}
             disabled
           />
