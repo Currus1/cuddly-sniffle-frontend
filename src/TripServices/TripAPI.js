@@ -19,7 +19,8 @@ class TripAPI {
       seats: data.Seats,
       hours: data.Hours,
       minutes: data.Minutes,
-      vehicleType: data.VehicleType
+      vehicleType: data.VehicleType,
+      distance: data.Distance
     });
   }
 }

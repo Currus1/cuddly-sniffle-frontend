@@ -76,6 +76,8 @@ const PlanningComponent = () => {
       document.getElementById("hours").value;
     document.getElementById("ROminutes").value =
       document.getElementById("minutes").value;
+    document.getElementById("ROdistance").value =
+      document.getElementById("distance").value;
   }
 
   function ValidateFields() {
@@ -87,7 +89,8 @@ const PlanningComponent = () => {
       document.getElementById("ROdestination").value != "" &&
       document.getElementById("ROseats").value != "" &&
       document.getElementById("ROhours").value != "" &&
-      document.getElementById("ROminutes").value != ""
+      document.getElementById("ROminutes").value != "" &&
+      document.getElementById("ROdistance").value != ""
     ) {
       return true;
     }
@@ -104,6 +107,7 @@ const PlanningComponent = () => {
     data.Hours = document.getElementById("ROhours").value;
     data.Minutes = document.getElementById("ROminutes").value;
     data.VehicleType = vehicleType;
+    data.Distance = document.getElementById("ROdistance").value;
   }
 
   function AddClicked() {
@@ -279,6 +283,13 @@ const PlanningComponent = () => {
           <TextField
             fullWidth
             id="ROdestination"
+            placeholder="..."
+            style={marginTop}
+            disabled
+          />
+          <TextField
+            fullWidth
+            id="ROdistance"
             placeholder="..."
             style={marginTop}
             disabled
