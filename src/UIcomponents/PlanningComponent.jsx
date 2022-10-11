@@ -3,7 +3,33 @@ import "../bootstrap.css";
 import "../App.css";
 import UserAPI from "../UserServices/UserAPI.js";
 import DriverAPI from "../DriverServices/DriverAPI.js";
+import InputLabel from "@mui/material/InputLabel";
 import TripAPI from "../TripServices/TripAPI";
+import {
+  Grid,
+  Paper,
+  Avatar,
+  Typography,
+  TextField,
+  Button,
+  Divider,
+} from "@material-ui/core";
+import Select from "@mui/material/Select";
+import MenuItem from "@mui/material/MenuItem";
+import CommuteIcon from "@mui/icons-material/Commute";
+import AddTaskIcon from "@mui/icons-material/AddTask";
+import FormControl from "@mui/material/FormControl";
+import {
+  avatarStyle,
+  iconStyle,
+  marginTop,
+  bigMarginTop,
+  buttonStyle,
+  paperStyle,
+  headerStyle,
+  dividerStyle,
+  widePaperStyle,
+} from "./styles/muiStyle.js";
 
 const PlanningComponent = () => {
   const [data, setData] = useState([]);
@@ -15,7 +41,7 @@ const PlanningComponent = () => {
   const [vehicleTypes, setVehicleTypes] = useState([]);
 
   useEffect(() => {
-    UserAPI.getAllUsers().then((response) => setUsers(response.data));
+    UserAPI.GetAllUsers().then((response) => setUsers(response.data));
     DriverAPI.GetAllDrivers().then((response) => setDrivers(response.data));
     TripAPI.getVehicleTypeEnum().then((response) =>
       setVehicleTypes(response.data)
@@ -38,13 +64,23 @@ const PlanningComponent = () => {
   function SaveClicked() {
     document.getElementById("ROid").value = document.getElementById("id").value;
     document.getElementById("ROuser").value = user;
+    document.getElementById("ROvehicleType").value = vehicleType;
     document.getElementById("ROdriver").value = driver;
     document.getElementById("ROstartingPoint").value =
       document.getElementById("startingPoint").value;
     document.getElementById("ROdestination").value =
       document.getElementById("destination").value;
+    document.getElementById("ROseats").value =
+      document.getElementById("seats").value;
+    document.getElementById("ROhours").value =
+      document.getElementById("hours").value;
+    document.getElementById("ROminutes").value =
+      document.getElementById("minutes").value;
+    document.getElementById("ROestimatedTripPrice").value =
+      document.getElementById("estimatedTripPrice").value;
+
     //Calculate the trip time
-    document.getElementById("ROestimatedTime").value = "10";
+    document.getElementById("ROestimatedTime").value = 10;
   }
 
   function ValidateFields() {
@@ -54,6 +90,10 @@ const PlanningComponent = () => {
       document.getElementById("ROdriver").value != "" &&
       document.getElementById("ROstartingPoint").value != "" &&
       document.getElementById("ROdestination").value != "" &&
+      document.getElementById("ROseats").value != "" &&
+      document.getElementById("ROhours").value != "" &&
+      document.getElementById("ROminutes").value != "" &&
+      document.getElementById("ROestimatedTripPrice").value != "" &&
       document.getElementById("ROestimatedTime").value != ""
     ) {
       return true;
@@ -67,22 +107,19 @@ const PlanningComponent = () => {
     data.UserId = document.getElementById("ROuser").value;
     data.StartingPoint = document.getElementById("ROstartingPoint").value;
     data.Destination = document.getElementById("ROdestination").value;
-    data.Seats = "4";
-    data.Hours = "1";
-    data.Minutes = "10";
-    data.EstimatedTripPrice = document.getElementById("ROestimatedTime").value;
+    data.Seats = document.getElementById("ROseats").value;
+    data.Hours = document.getElementById("ROhours").value;
+    data.Minutes = document.getElementById("ROminutes").value;
+    data.EstimatedTripPrice = document.getElementById("ROestimatedTripPrice").value;
+    data.EstimatedTripTime = document.getElementById("ROestimatedTime").value;
   }
 
-  function clearFields() {
-    console.log("clear");
-  }
-
-  function PlanClicked() {
+  function AddClicked() {
     if (ValidateFields()) {
       SaveValues();
       if (TripAPI.addTrip(data)) alert("Trip is added");
       else alert("Server failed to add your trip");
-      clearFields();
+      console.log("clear");
     } else {
       alert("Please make sure to enter all the fields");
     }
@@ -90,198 +127,210 @@ const PlanningComponent = () => {
 
   return (
     <>
-      <div style={{ textAlign: "center", padding: 10 }}>
-        <button onClick={PlanClicked} className="button-planning">
-          Plan
-        </button>
-        <div style={{ padding: 20 }}>
-          <table style={{ margin: "auto" }}>
-            <tbody>
-              <tr>
-                <td>
-                  <table>
-                    <tbody>
-                      <tr>
-                        <td>
-                          <label>Trip No.</label>
-                        </td>
-                        <td>
-                          <input className="form-control" type="text" id="id" />
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <label>User</label>
-                        </td>
-                        <td>
-                          <select
-                            style={{ width: "200px" }}
-                            value={user}
-                            onChange={handleUserChange}
-                          >
-                            {users.map((user) => (
-                              <option value={user.Id}>{user.Id}</option>
-                            ))}
-                          </select>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <label>Vehicle type</label>
-                        </td>
-                        <td>
-                          <select
-                            style={{ width: "200px" }}
-                            value={vehicleType}
-                            onChange={handleVehicleTypeChange}
-                          >
-                            {vehicleTypes.map((type) => (
-                              <option value={type}>{type}</option>
-                            ))}
-                          </select>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <label>Driver</label>
-                        </td>
-                        <td>
-                          <select
-                            style={{ width: "200px" }}
-                            value={driver}
-                            onChange={handleDriverChange}
-                          >
-                            {drivers.map((driver) => (
-                              <option value={driver.Id}>{driver.Id}</option>
-                            ))}
-                          </select>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <label>Starting Point</label>
-                        </td>
-                        <td>
-                          <input
-                            className="form-control"
-                            type="text"
-                            id="startingPoint"
-                          />
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <label>Destination</label>
-                        </td>
-                        <td>
-                          <input
-                            className="form-control"
-                            type="text"
-                            id="destination"
-                          />
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </td>
-                <td>
-                  <table>
-                    <tbody>
-                      <tr>
-                        <td>
-                          <label>Trip No.</label>
-                        </td>
-                        <td>
-                          <input
-                            className="form-control"
-                            type="text"
-                            id="ROid"
-                            readOnly
-                            placeholder="..."
-                          />
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <label>User</label>
-                        </td>
-                        <td>
-                          <input
-                            className="form-control"
-                            type="text"
-                            id="ROuser"
-                            readOnly
-                            placeholder="..."
-                          />
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <label>Driver</label>
-                        </td>
-                        <td>
-                          <input
-                            className="form-control"
-                            type="text"
-                            id="ROdriver"
-                            readOnly
-                            placeholder="..."
-                          />
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <label>Starting Point</label>
-                        </td>
-                        <td>
-                          <input
-                            className="form-control"
-                            type="text"
-                            id="ROstartingPoint"
-                            readOnly
-                            placeholder="..."
-                          />
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <label>Destination</label>
-                        </td>
-                        <td>
-                          <input
-                            className="form-control"
-                            type="text"
-                            id="ROdestination"
-                            readOnly
-                            placeholder="..."
-                          />
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </td>
-              </tr>
-              <tr>
-                <td style={{ textAlign: "right" }}>
-                  <label>Estimated Time</label>
-                </td>
-                <td>
-                  <input
-                    className="form-control"
-                    type="text"
-                    id="ROestimatedTime"
-                    readOnly
-                    placeholder="..."
-                  />
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        <button onClick={SaveClicked} className="button-save">
-          Save
-        </button>
-      </div>
+      <Grid>
+        <Paper elevation={20} style={paperStyle}>
+          <Grid align="left">
+            <Avatar style={avatarStyle}>
+              {" "}
+              <CommuteIcon style={iconStyle} />{" "}
+            </Avatar>
+            <h2 style={headerStyle}>Adding a trip</h2>
+            <Typography variant="caption">
+              Fill in all the fields below
+            </Typography>
+            <Divider style={dividerStyle} />
+          </Grid>
+          <TextField
+            fullWidth
+            label="Trip Nr."
+            id="id"
+            placeholder="Trip number"
+            style={marginTop}
+          />
+          <FormControl fullWidth>
+            <InputLabel id="demo-simple-select-label" style={bigMarginTop}>
+              User
+            </InputLabel>
+            <Select
+              value={user}
+              label="User:"
+              onChange={handleUserChange}
+              style={bigMarginTop}
+            >
+              {users.map((user) => (
+                <MenuItem value={user.Id}>{user.Id}</MenuItem>
+              ))}
+            </Select>
+          </FormControl>
+          <FormControl fullWidth>
+            <InputLabel id="demo-simple-select-label" style={bigMarginTop}>
+              Vehicle Type
+            </InputLabel>
+            <Select
+              labelId="demo-simple-select-label"
+              value={vehicleType}
+              label="Vehicle type"
+              onChange={handleVehicleTypeChange}
+              style={bigMarginTop}
+            >
+              {vehicleTypes.map((type) => (
+                <MenuItem value={type}>{type}</MenuItem>
+              ))}
+            </Select>
+          </FormControl>
+          <FormControl fullWidth>
+            <InputLabel id="demo-simple-select-label" style={bigMarginTop}>
+              Driver
+            </InputLabel>
+            <Select
+              value={driver}
+              label="Driver:"
+              onChange={handleDriverChange}
+              style={bigMarginTop}
+            >
+              {drivers.map((driver) => (
+                <MenuItem value={driver.id}>{driver.id}</MenuItem>
+              ))}
+            </Select>
+          </FormControl>
+          <TextField
+            fullWidth
+            label="Starting point"
+            id="startingPoint"
+            placeholder="Enter the starting point"
+            style={marginTop}
+          />
+          <TextField
+            fullWidth
+            label="Destination point"
+            id="destination"
+            placeholder="Enter the destination point"
+            style={marginTop}
+          />
+          <TextField
+            fullWidth
+            label="Seat count"
+            id="seats"
+            placeholder="Enter the amount of seats"
+            style={marginTop}
+          />
+          <TextField
+            fullWidth
+            label="Hours"
+            id="hours"
+            placeholder="Enter the amount of seats"
+            style={marginTop}
+          />
+          <TextField
+            fullWidth
+            label="Minutes"
+            id="minutes"
+            placeholder="Enter the amount of minutes"
+            style={marginTop}
+          />
+          <TextField
+            fullWidth
+            label="Estimated trip price"
+            id="estimatedTripPrice"
+            placeholder="Enter the estimated trip price"
+            style={marginTop}
+          />
+          <Button onClick={SaveClicked} variant="contained" style={buttonStyle}>
+            Add
+          </Button>
+        </Paper>
+        <Paper elevation={20} style={widePaperStyle}>
+          <Grid align="left">
+            <Avatar style={avatarStyle}>
+              {" "}
+              <AddTaskIcon style={iconStyle} />{" "}
+            </Avatar>
+            <h2 style={headerStyle}>Saving a trip</h2>
+            <Typography variant="caption">Check trip details below</Typography>
+            <Divider style={dividerStyle} />
+          </Grid>
+          <TextField
+            fullWidth
+            id="ROid"
+            placeholder="..."
+            style={marginTop}
+            disabled
+          />
+          <TextField
+            fullWidth
+            id="ROuser"
+            placeholder="..."
+            style={marginTop}
+            disabled
+          />
+          <TextField
+            fullWidth
+            id="ROvehicleType"
+            placeholder="..."
+            style={marginTop}
+            disabled
+          />
+          <TextField
+            fullWidth
+            id="ROdriver"
+            placeholder="..."
+            style={marginTop}
+            disabled
+          />
+          <TextField
+            fullWidth
+            id="ROstartingPoint"
+            placeholder="..."
+            style={marginTop}
+            disabled
+          />
+          <TextField
+            fullWidth
+            id="ROdestination"
+            placeholder="..."
+            style={marginTop}
+            disabled
+          />
+          <TextField
+            fullWidth
+            id="ROseats"
+            placeholder="..."
+            style={marginTop}
+            disabled
+          />
+          <TextField
+            fullWidth
+            id="ROhours"
+            placeholder="..."
+            style={marginTop}
+            disabled
+          />
+          <TextField
+            fullWidth
+             id="ROminutes"
+            placeholder="..."
+            style={marginTop}
+            disabled
+          />
+          <TextField
+            fullWidth
+            id="ROestimatedTripPrice"
+            placeholder="..."
+            style={marginTop}
+            disabled
+          />
+          <TextField
+            fullWidth
+            id="ROestimatedTime"
+            placeholder="..."
+            style={marginTop}
+            disabled
+          />
+          <Button onClick={AddClicked} variant="contained" style={buttonStyle}>
+            Save
+          </Button>
+        </Paper>
+      </Grid>
     </>
   );
 };

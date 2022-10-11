@@ -10,6 +10,7 @@ import {
   Typography,
   TextField,
   Button,
+  Divider
 } from "@material-ui/core";
 import UserAPI from "../UserServices/UserAPI";
 import {
@@ -18,11 +19,12 @@ import {
   marginTop,
   bigMarginTop,
   buttonStyle,
+  dividerStyle
 } from "./styles/muiStyle.js";
 
 const UserComponent = () => {
   const [user] = useState([]);
-
+  
   function SaveClicked() {
     if (
       document.getElementById("Id").value !== "" &&
@@ -51,8 +53,8 @@ const UserComponent = () => {
   return (
     <>
       <Grid>
-        <Paper elevation={20} className="paperStyle">
-          <Grid align="center">
+        <Paper elevation={20} className="paperStyle" align="left">
+          <Grid>
             <Avatar style={avatarStyle}>
               {" "}
               <PersonAddIcon style={iconStyle} />{" "}
@@ -61,6 +63,7 @@ const UserComponent = () => {
             <Typography variant="caption">
               Fill in all the fields below
             </Typography>
+            <Divider style={dividerStyle}/>
           </Grid>
           <form>
             <TextField
