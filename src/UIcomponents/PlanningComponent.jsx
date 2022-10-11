@@ -76,11 +76,6 @@ const PlanningComponent = () => {
       document.getElementById("hours").value;
     document.getElementById("ROminutes").value =
       document.getElementById("minutes").value;
-    document.getElementById("ROestimatedTripPrice").value =
-      document.getElementById("estimatedTripPrice").value;
-
-    //Calculate the trip time
-    document.getElementById("ROestimatedTime").value = 10;
   }
 
   function ValidateFields() {
@@ -92,9 +87,7 @@ const PlanningComponent = () => {
       document.getElementById("ROdestination").value != "" &&
       document.getElementById("ROseats").value != "" &&
       document.getElementById("ROhours").value != "" &&
-      document.getElementById("ROminutes").value != "" &&
-      document.getElementById("ROestimatedTripPrice").value != "" &&
-      document.getElementById("ROestimatedTime").value != ""
+      document.getElementById("ROminutes").value != ""
     ) {
       return true;
     }
@@ -110,8 +103,7 @@ const PlanningComponent = () => {
     data.Seats = document.getElementById("ROseats").value;
     data.Hours = document.getElementById("ROhours").value;
     data.Minutes = document.getElementById("ROminutes").value;
-    data.EstimatedTripPrice = document.getElementById("ROestimatedTripPrice").value;
-    data.EstimatedTripTime = document.getElementById("ROestimatedTime").value;
+    data.VehicleType = vehicleType;
   }
 
   function AddClicked() {
@@ -209,6 +201,13 @@ const PlanningComponent = () => {
           />
           <TextField
             fullWidth
+            label="Distance"
+            id="distance"
+            placeholder="Distance"
+            style={marginTop}
+          />
+          <TextField
+            fullWidth
             label="Seat count"
             id="seats"
             placeholder="Enter the amount of seats"
@@ -226,13 +225,6 @@ const PlanningComponent = () => {
             label="Minutes"
             id="minutes"
             placeholder="Enter the amount of minutes"
-            style={marginTop}
-          />
-          <TextField
-            fullWidth
-            label="Estimated trip price"
-            id="estimatedTripPrice"
-            placeholder="Enter the estimated trip price"
             style={marginTop}
           />
           <Button onClick={SaveClicked} variant="contained" style={buttonStyle}>
@@ -307,21 +299,7 @@ const PlanningComponent = () => {
           />
           <TextField
             fullWidth
-             id="ROminutes"
-            placeholder="..."
-            style={marginTop}
-            disabled
-          />
-          <TextField
-            fullWidth
-            id="ROestimatedTripPrice"
-            placeholder="..."
-            style={marginTop}
-            disabled
-          />
-          <TextField
-            fullWidth
-            id="ROestimatedTime"
+            id="ROminutes"
             placeholder="..."
             style={marginTop}
             disabled
