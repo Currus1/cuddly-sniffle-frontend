@@ -1,32 +1,15 @@
 import React, { useState, useEffect } from "react";
 import "../bootstrap.css";
 import "../App.css";
-import {
-  Grid,
-  Paper,
-  Avatar,
-  Typography,
-  TextField,
-  Button,
-  Divider
-} from "@material-ui/core";
-import PersonAddIcon from "@mui/icons-material/PersonAdd";
-import InputLabel from "@mui/material/InputLabel";
-import MenuItem from "@mui/material/MenuItem";
-import FormControl from "@mui/material/FormControl";
-import Select from "@mui/material/Select";
+import { Grid, Paper } from "@material-ui/core";
 import TripAPI from "../TripServices/TripAPI";
 import DriverAPI from "../DriverServices/DriverAPI";
 import {
-  avatarStyle,
-  iconStyle,
-  marginTop,
-  bigMarginTop,
-  buttonStyle,
   paperStyle,
-  headerStyle,
-  dividerStyle
 } from "./styles/muiStyle.js";
+import AddMemberDesignTop from "./reusableComponents/AddMemberBannerDesign";
+import AddDriverTable from "./reusableComponents/AddDriverTable";
+
 
 const DriverComponent = () => {
   const [vehicleType, setVehicleType] = useState("");
@@ -76,95 +59,9 @@ const DriverComponent = () => {
     <>
       <Grid>
         <Paper elevation={20} style={paperStyle}>
-          <Grid align="left">
-            <Avatar style={avatarStyle}>
-              {" "}
-              <PersonAddIcon style={iconStyle} />{" "}
-            </Avatar>
-            <h2 style={headerStyle}>Creating a driver</h2>
-            <Typography variant="caption">
-              Fill in all the fields below
-            </Typography>
-            <Divider style={dividerStyle}/>
-          </Grid>
+          <AddMemberDesignTop headerText={"Creating a driver"} />
           <form>
-            <TextField
-              fullWidth
-              label="Id"
-              id="Id"
-              placeholder="Driver's Id"
-              style={marginTop}
-            />
-            <TextField
-              fullWidth
-              label="Name"
-              id="Name"
-              placeholder="Enter your name"
-              style={marginTop}
-            />
-            <TextField
-              fullWidth
-              label="Surname"
-              id="Surname"
-              placeholder="Enter your surname"
-              style={marginTop}
-            />
-            <TextField
-              fullWidth
-              id="Birthdate"
-              label="Birthday"
-              type="date"
-              defaultValue="1999-12-25"
-              style={bigMarginTop}
-              InputLabelProps={{
-                shrink: true,
-              }}
-            />
-            <TextField
-              fullWidth
-              label="Email"
-              id="Email"
-              placeholder="Enter your email"
-              style={marginTop}
-            />
-            <TextField
-              fullWidth
-              label="Phone number"
-              id="PhoneNumber"
-              placeholder="Enter your phone number"
-              style={marginTop}
-            />
-            <FormControl fullWidth>
-              <InputLabel id="demo-simple-select-label" style={bigMarginTop}>
-                Vehicle Type
-              </InputLabel>
-              <Select
-                labelId="demo-simple-select-label"
-                id="VehicleType"
-                value={vehicleType}
-                label="Vehicle type"
-                onChange={handleVehicleTypeChange}
-                style={bigMarginTop}
-              >
-                {vehicleTypes.map((type) => (
-                  <MenuItem value={type}>{type}</MenuItem>
-                ))}
-              </Select>
-            </FormControl>
-            <TextField
-              fullWidth
-              label="License number"
-              id="LicenseNumber"
-              placeholder="Enter your license number"
-              style={marginTop}
-            />
-            <Button
-              onClick={SaveClicked}
-              variant="contained"
-              style={buttonStyle}
-            >
-              Add
-            </Button>
+            <AddDriverTable SaveClicked={SaveClicked} vehicleType={vehicleType} handleVehicleTypeChange={handleVehicleTypeChange} vehicleTypes={vehicleTypes}/>
           </form>
         </Paper>
       </Grid>
