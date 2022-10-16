@@ -8,7 +8,7 @@ import {
   footerCompanyStyle,
   footerLogoIConsStyle,
   footerCopyrightStyle,
-} from "./styles/muiFooterStyle.js";
+} from "./styles/FooterStyle.js";
 import "./styles/FooterStyle.css";
 
 const FooterComponent = () => (

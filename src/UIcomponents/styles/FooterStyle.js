@@ -7,7 +7,6 @@ export const footerStyle = {
     width: "100%",
 }
 export const footerLogoStyle = {
-    //backgroundColor: "red",
     height: "250px",
     fontSize: "70px",
     fontWeight: "bold",
@@ -22,7 +21,6 @@ export const footerLogoIConsStyle = {
     lineHeight: "75px"
 }
 export const footerLicensesStyle = {
-    //backgroundColor: "red",
     height: "250px",
     fontSize: "20px",
     paddingLeft: "10px",
@@ -30,7 +28,6 @@ export const footerLicensesStyle = {
     textAlign: "left"
 }
 export const footerCurrusFeatures = {
-    //backgroundColor: "red",
     height: "250px",
      fontSize: "20px",
     paddingLeft: "10px",
@@ -38,7 +35,6 @@ export const footerCurrusFeatures = {
     textAlign: "left"
 }
 export const footerCompanyStyle = {
-    //backgroundColor: "red",
     height: "250px",
     fontSize: "20px",
     paddingLeft: "10px",
