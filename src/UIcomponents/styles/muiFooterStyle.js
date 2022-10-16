@@ -4,10 +4,11 @@ export const footerStyle = {
     padding: "20px",
     bottom: "0",
     height: "430px",
-    width: "100%"
-};
+    width: "100%",
+}
 export const footerLogoStyle = {
-    height: "400px",
+    //backgroundColor: "red",
+    height: "250px",
     fontSize: "70px",
     fontWeight: "bold",
     lineHeight: "75px"
@@ -21,23 +22,29 @@ export const footerLogoIConsStyle = {
     lineHeight: "75px"
 }
 export const footerLicensesStyle = {
-    height: "160px",
+    //backgroundColor: "red",
+    height: "250px",
     fontSize: "20px",
     paddingLeft: "10px",
     paddingTop: "5px",
     textAlign: "left"
 }
 export const footerCurrusFeatures = {
-    height: "160px",
-    fontSize: "20px",
+    //backgroundColor: "red",
+    height: "250px",
+     fontSize: "20px",
     paddingLeft: "10px",
     paddingTop: "5px",
     textAlign: "left"
 }
 export const footerCompanyStyle = {
-    height: "160px",
+    //backgroundColor: "red",
+    height: "250px",
     fontSize: "20px",
     paddingLeft: "10px",
     paddingTop: "5px",
     textAlign: "left"
+}
+export const footerCopyrightStyle = {
+    textAlign: "center",
 }

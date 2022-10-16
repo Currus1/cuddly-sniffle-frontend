@@ -7,6 +7,7 @@ import {
   footerCurrusFeatures,
   footerCompanyStyle,
   footerLogoIConsStyle,
+  footerCopyrightStyle,
 } from "./styles/muiFooterStyle.js";
 import "./styles/FooterStyle.css";
 
@@ -14,7 +15,8 @@ const FooterComponent = () => (
   <Grid container style={footerStyle}>
     <Grid item xs={12} md={3} style={footerLogoStyle}>
       CURRUS
-      <hr />
+      <hr className="footerHr"/>
+      <p>Stay In Touch!</p>
       <Grid container style={footerLogoIConsStyle}>
         <Grid item xs={12} md={3}>
           <a href="#">
@@ -66,6 +68,9 @@ const FooterComponent = () => (
       <a href="#">Press</a> <br />
       <a href="#">Blog</a> <br />
       <a href="#">Brand guidelines</a>
+    </Grid>
+    <Grid item xs={12} md={12} style={footerCopyrightStyle}>
+      <address>© 2022 CURRUS, Inc. | <a href="#">Leave a review</a></address>
     </Grid>
   </Grid>
 );
