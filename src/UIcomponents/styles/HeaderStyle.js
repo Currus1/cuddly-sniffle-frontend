@@ -5,9 +5,8 @@ export const headerStyle = {
     width: "100%"
 }
 export const logoStyle = {
-    //backgroundColor: "red",
     height: "100%",
-}
+} 
 export const rightColumnStyle = {
     textAlign: "right"
 }
@@ -24,9 +23,7 @@ export const containedButtonStyle = {
 }
 export const containedButtonRightStyle = {
     backgroundColor: "white",
-    //color: "white",
-    //border: "2px solid",
-    marginLeft: "130px",
+    dmarginLeft: "130px",
     fontWeight: "bold",
     width: "180px"
 }

@@ -8,6 +8,7 @@ import UserComponent from "./UIcomponents/UserComponent";
 import DriverComponent from "./UIcomponents/DriverComponent";
 import TripComponent from "./UIcomponents/TripComponent"
 import GoogleMapsComponent from "./UIcomponents/GoogleMapsComponent";
+import ProfileComponent from "./UIcomponents/ProfileComponent";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <Route path="/driver" element={<DriverComponent />} />
           <Route path="/trip" element={<TripComponent />} />
           <Route path="/maps" element={<GoogleMapsComponent />} />
+          <Route path="/profle" element={<ProfileComponent />}/>
         </Routes>
         <FooterComponent></FooterComponent>
       </BrowserRouter>
