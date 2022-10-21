@@ -1,15 +1,15 @@
 import React, { useState } from "react";
-import { paperStyle, errorStyle } from "./styles/muiStyle.js";
 import { Grid, Paper } from "@material-ui/core";
+import { paperStyle, errorStyle } from "./styles/muiStyle.js";
 import ProfileBannerDesign from "./reusableComponents/ProfileBannerDesign.jsx";
-import AddProfileTable from "./reusableComponents/AddProfileTable.jsx";
-import UserAPI from "../UserServices/UserAPI.js";
+import RegisterProfileTable from "./reusableComponents/RegisterProfileTable.jsx";
+import UserAPI from "../UserServices/UserAPI";
 
-const ProfileComponent = () => {
+const RegisterComponent = () => {
   const [user] = useState([]);
   const [errorText, setErrorText] = useState('');
 
-  function SaveButtonClicked() {
+  function registerClicked() {
     if (
       document.getElementById("Name").value !== "" &&
       document.getElementById("Surname").value !== "" &&
@@ -18,16 +18,15 @@ const ProfileComponent = () => {
       document.getElementById("PhoneNumber").value !== ""
     ) {
       // ADDING USER
-      user.Id = 1;
       user.Name = document.getElementById("Name").value;
       user.Surname = document.getElementById("Surname").value;
       user.Birthdate = document.getElementById("Birthdate").value;
       user.Email = document.getElementById("Email").value;
       user.PhoneNumber = document.getElementById("PhoneNumber").value;
 
-      setErrorText('Your user is updated!');
-      console.log("User is updated.");
-      UserAPI.UpdateUser(user);
+      setErrorText("User Added Succesfully. Welcome To Currus!");
+      console.log("User is added.");
+      UserAPI.addUser(user);
     } else {
       // ERROR
       alert("Not all fields were filled!");
@@ -37,13 +36,19 @@ const ProfileComponent = () => {
   return (
     <>
       <Grid>
-        <Paper elevation={20} style={paperStyle}>
-          <ProfileBannerDesign headerText={"Teste Testaviciene"} smallText={"See and change your profile information"} />
-            <AddProfileTable saveClicked={SaveButtonClicked}></AddProfileTable>
-            <h5 style={errorStyle}>{errorText}</h5>
+        <Paper style={paperStyle}>
+          <ProfileBannerDesign
+            headerText={"Create an Account"}
+            smallText={"Enter your user details below"}
+          />
+          <RegisterProfileTable
+            buttonText={"Join Currus family!"}
+            buttonClickedEvent={registerClicked}
+          ></RegisterProfileTable>
+          <h5 style={errorStyle}>{errorText}</h5>
         </Paper>
       </Grid>
     </>
   );
 };
-export default ProfileComponent;
+export default RegisterComponent;

@@ -12,6 +12,17 @@ class UserAPI {
     });
   }
 
+  UpdateUser(users) {
+    axios.put("http://localhost:5236/User/Update", {
+      Id: users.Id,
+      Name: users.Name,
+      Surname: users.Surname,
+      Birthdate: users.Birthdate,
+      Email: users.Email,
+      PhoneNumber: users.PhoneNumber,
+    });
+  }
+
   GetAllUsers() {
     return axios.get("http://localhost:5236/User/Users");
   }

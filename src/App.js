@@ -9,6 +9,8 @@ import DriverComponent from "./UIcomponents/DriverComponent";
 import TripComponent from "./UIcomponents/TripComponent"
 import GoogleMapsComponent from "./UIcomponents/GoogleMapsComponent";
 import ProfileComponent from "./UIcomponents/ProfileComponent";
+import RegisterComponent from "./UIcomponents/RegisterComponent";
+
 
 function App() {
   return (
@@ -21,7 +23,8 @@ function App() {
           <Route path="/driver" element={<DriverComponent />} />
           <Route path="/trip" element={<TripComponent />} />
           <Route path="/maps" element={<GoogleMapsComponent />} />
-          <Route path="/profle" element={<ProfileComponent />}/>
+          <Route path="/profile" element={<ProfileComponent />}/>
+          <Route path="/register" element={<RegisterComponent />}/>
         </Routes>
         <FooterComponent></FooterComponent>
       </BrowserRouter>
