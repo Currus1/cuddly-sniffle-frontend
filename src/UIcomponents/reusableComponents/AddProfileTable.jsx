@@ -4,28 +4,35 @@ import {
   driverButtonStyle,
   saveButtonStyle,
   textFieldStyle,
-  marginTop
+  marginTop,
 } from "../styles/CustomLowButtonStyle";
 import InputLabel from "@mui/material/InputLabel";
 import FormControl from "@mui/material/FormControl";
+import MenuItem from "@mui/material/MenuItem";
 import Select from "@mui/material/Select";
 
-export default function AddProfileTable({saveClicked}) {
+export default function AddProfileTable({
+  saveClicked,
+  becomeADriverClicked,
+  vehicleType,
+  vehicleTypes,
+  handleVehicleTypeChange,
+}) {
   return (
     <>
       <Grid container>
         <Grid item xs={12} md={6}>
-        <TextField
+          <TextField
             style={textFieldStyle}
-            label="Name"
+            //label="Name"
             id="Name"
             placeholder="Enter your name"
           />
         </Grid>
         <Grid item xs={12} md={6}>
-        <TextField
+          <TextField
             style={textFieldStyle}
-            label="Surname"
+            //label="Surname"
             id="Surname"
             placeholder="Enter your surname"
           />
@@ -34,7 +41,7 @@ export default function AddProfileTable({saveClicked}) {
           <TextField
             style={textFieldStyle}
             id="Birthdate"
-            label="Birthday"
+            //label="Birthday"
             type="date"
             defaultValue="1999-12-25"
             InputLabelProps={{
@@ -45,7 +52,7 @@ export default function AddProfileTable({saveClicked}) {
         <Grid item xs={12} md={6} align="right">
           <TextField
             style={textFieldStyle}
-            label="Phone number"
+            //label="Phone number"
             id="PhoneNumber"
             placeholder="Enter your phone number"
           />
@@ -54,7 +61,7 @@ export default function AddProfileTable({saveClicked}) {
           <TextField
             style={marginTop}
             fullWidth
-            label="Email"
+            //label="Email"
             id="Email"
             placeholder="Enter your email"
           />
@@ -79,8 +86,14 @@ export default function AddProfileTable({saveClicked}) {
               labelId="demo-simple-select-label"
               id="VehicleType"
               label="Vehicle type"
+              value={vehicleType}
+              onChange={handleVehicleTypeChange}
               style={marginTop}
-            ></Select>
+            >
+              {vehicleTypes.map((type) => (
+                <MenuItem value={type}>{type}</MenuItem>
+              ))}
+            </Select>
           </FormControl>
         </Grid>
         <Grid item xs={12} md={12}>
@@ -93,7 +106,7 @@ export default function AddProfileTable({saveClicked}) {
           />
         </Grid>
         <Grid item xs={12} md={12}>
-          <Button fullWidth style={driverButtonStyle}>
+          <Button fullWidth style={driverButtonStyle} onClick={becomeADriverClicked}>
             Become a Driver!
           </Button>
         </Grid>

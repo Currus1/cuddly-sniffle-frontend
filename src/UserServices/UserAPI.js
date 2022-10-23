@@ -23,6 +23,23 @@ class UserAPI {
     });
   }
 
+  UpdateDriver(drivers) {
+    axios.put("http://localhost:5236/User/Update", {
+      Id: drivers.Id,
+      Name: drivers.Name,
+      Surname: drivers.Surname,
+      Birthdate: drivers.Birthdate,
+      Email: drivers.Email,
+      PhoneNumber: drivers.PhoneNumber,
+      VehicleType: drivers.VehicleType,
+      LicenseNumber: drivers.LicenseNumber,
+    });
+  }
+
+  GetUser(id){
+    return axios.get("http://localhost:5236/User/"+id)
+  }
+
   GetAllUsers() {
     return axios.get("http://localhost:5236/User/Users");
   }

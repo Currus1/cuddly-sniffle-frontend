@@ -47,7 +47,6 @@ const DriverComponent = () => {
     TripAPI.getVehicleTypeEnum().then((response) =>
       setVehicleTypes(response.data)
     );
-    //setVehicleType("Sedan"); // Initial value for select
   }, []);
 
   const handleVehicleTypeChange = (event) => {
