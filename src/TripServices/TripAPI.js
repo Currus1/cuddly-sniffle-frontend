@@ -1,8 +1,12 @@
 import axios from "axios";
 
 class TripAPI {
-  getOngoingTrips() {
-    return axios.get("http://localhost:5236/OngoingTrip/All");
+  getAllTripsByUserId(id) {
+    return axios.get(`http://localhost:5236/${id}/trips`);
+  }
+
+  getOneTripById(id) {
+    return axios.get(`http://localhost:5236/Trip/${id}`)
   }
 
   getVehicleTypeEnum () {

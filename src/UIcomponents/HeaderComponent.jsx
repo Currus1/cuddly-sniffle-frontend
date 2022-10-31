@@ -8,35 +8,6 @@ const HeaderComponent = () => (
       <div className="navbar-item" style={{ color: "white" }}>
         CURRUS
       </div>
-      <ul className="navbar-nav navbar-collapse justify-content-end">
-        <Dropdown>
-          <Dropdown.Toggle className="dropdown" id="dropdown">
-            Actions
-          </Dropdown.Toggle>
-
-          <Dropdown.Menu className="dropdown-menu">
-            <Dropdown.Item className="dropdown-item" href="/trip">
-              Ongoing trips
-            </Dropdown.Item>
-            <Dropdown.Item className="dropdown-item" href="/user">
-              Users
-            </Dropdown.Item>
-            <Dropdown.Item className="dropdown-item" href="/driver">
-              Drivers
-            </Dropdown.Item>
-            <Dropdown.Item className="dropdown-item" href="/trip">
-              All Trips
-            </Dropdown.Item>
-            <Dropdown.Item className="dropdown-item" href="/maps">
-              Map
-            </Dropdown.Item>
-            <Dropdown.Divider></Dropdown.Divider>
-            <Dropdown.Item className="dropdown-item" href="/planning">
-              Plan a trip
-            </Dropdown.Item>
-          </Dropdown.Menu>
-        </Dropdown>
-      </ul>
     </nav>
   </header>
 );
