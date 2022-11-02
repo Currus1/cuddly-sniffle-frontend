@@ -1,44 +1,37 @@
 import React from "react";
+import { Grid } from "@material-ui/core";
 import "../bootstrap.css";
-import Dropdown from "react-bootstrap/Dropdown";
-import "./styles/DropdownStyle.css";
-const HeaderComponent = () => (
-  <header>
-    <nav className="navbar navbar-expand-md navbar-dark bg-dark">
-      <div className="navbar-item" style={{ color: "white" }}>
-        CURRUS
-      </div>
-      <ul className="navbar-nav navbar-collapse justify-content-end">
-        <Dropdown>
-          <Dropdown.Toggle className="dropdown" id="dropdown">
-            Actions
-          </Dropdown.Toggle>
+import {
+  headerStyle,
+  logoStyle,
+  rightColumnStyle,
+  textButtonStyle,
+  containedButtonStyle,
+} from "./styles/HeaderStyle.js";
+import { iconStyle } from "./styles/muiStyle.js";
+import "./styles/HeaderStyle.css";
+import { Button } from "@material-ui/core";
+import Person2Icon from "@mui/icons-material/Person2";
 
-          <Dropdown.Menu className="dropdown-menu">
-            <Dropdown.Item className="dropdown-item" href="/trip">
-              Ongoing trips
-            </Dropdown.Item>
-            <Dropdown.Item className="dropdown-item" href="/user">
-              Users
-            </Dropdown.Item>
-            <Dropdown.Item className="dropdown-item" href="/driver">
-              Drivers
-            </Dropdown.Item>
-            <Dropdown.Item className="dropdown-item" href="/trip">
-              All Trips
-            </Dropdown.Item>
-            <Dropdown.Item className="dropdown-item" href="/maps">
-              Map
-            </Dropdown.Item>
-            <Dropdown.Divider></Dropdown.Divider>
-            <Dropdown.Item className="dropdown-item" href="/planning">
-              Plan a trip
-            </Dropdown.Item>
-          </Dropdown.Menu>
-        </Dropdown>
-      </ul>
-    </nav>
-  </header>
+const HeaderComponent = () => (
+  <Grid container style={headerStyle}>
+    <Grid item xs={12} md={6} style={logoStyle}>
+      <img
+        src="https://www.freeiconspng.com/thumbs/electricity-icon-png/electricity-icon--1.png"
+        alt=""
+        className="headerLogo"
+      />
+      <p className="headerLogoText">CURRUS</p>
+    </Grid>
+    <Grid item xs={12} md={6} style={rightColumnStyle}>
+      <Button variant="contained" style={containedButtonStyle} href="\register">
+        Register!
+      </Button>
+      <Button variant="text" style={textButtonStyle} href="\profile">
+        <Person2Icon style={iconStyle}></Person2Icon>
+      </Button>
+    </Grid>
+  </Grid>
 );
 
 export default HeaderComponent;

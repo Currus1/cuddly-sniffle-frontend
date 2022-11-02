@@ -10,7 +10,6 @@ import {
 import AddMemberDesignTop from "./reusableComponents/AddMemberBannerDesign";
 import AddDriverTable from "./reusableComponents/AddDriverTable";
 
-
 const DriverComponent = () => {
   const [vehicleType, setVehicleType] = useState("");
   const [vehicleTypes, setVehicleTypes] = useState([]);
@@ -48,7 +47,6 @@ const DriverComponent = () => {
     TripAPI.getVehicleTypeEnum().then((response) =>
       setVehicleTypes(response.data)
     );
-    //setVehicleType("Sedan"); // Initial value for select
   }, []);
 
   const handleVehicleTypeChange = (event) => {

@@ -10,6 +10,7 @@ import {
   footerCopyrightStyle,
 } from "./styles/FooterStyle.js";
 import "./styles/FooterStyle.css";
+import InstagramIcon from '@mui/icons-material/Instagram';
 
 const FooterComponent = () => (
   <Grid container style={footerStyle}>
@@ -37,7 +38,7 @@ const FooterComponent = () => (
         <Grid item xs={12} md={3}>
           <a href="#">
             <img
-              src="https://assets.stickpng.com/images/5a2fe479cc45e43754640849.png"
+              src="https://toppng.com/uploads/preview/twitter-icon-black-1154999496507pavdk1xp.png"
               alt=""
             />
           </a>
