@@ -36,8 +36,8 @@ class UserAPI {
     });
   }
 
-  GetUser(id){
-    return axios.get("http://localhost:5236/User/"+id)
+  GetUser(id) {
+    return axios.get("http://localhost:5236/User/" + id);
   }
 
   GetAllUsers() {

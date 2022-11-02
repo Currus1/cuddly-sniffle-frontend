@@ -18,9 +18,10 @@ const ProfileComponent = () => {
       setVehicleTypes(response.data)
     );
     setVehicleType("Sedan");
-    UserAPI.GetUser(1).then((response) => setResponse(response.data));
-    loadUserData(response)
-  }, []);
+    
+    UserAPI.GetUser(6).then((response) => setResponse(response.data), loadUserData(response));
+    //loadUserData(response)
+  });
 
   function loadUserData(response) {
     document.getElementById("Name").value = response.name
