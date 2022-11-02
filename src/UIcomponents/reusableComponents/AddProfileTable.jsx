@@ -15,6 +15,11 @@ export default function AddProfileTable({
   saveClicked,
   becomeADriverClicked,
   vehicleType,
+  name,
+  surname,
+  birthdate,
+  phoneNumber,
+  email,
   vehicleTypes,
   handleVehicleTypeChange,
 }) {
@@ -24,16 +29,16 @@ export default function AddProfileTable({
         <Grid item xs={12} md={6}>
           <TextField
             style={textFieldStyle}
-            //label="Name"
             id="Name"
+            value={name}
             placeholder="Enter your name"
           />
         </Grid>
         <Grid item xs={12} md={6}>
           <TextField
             style={textFieldStyle}
-            //label="Surname"
             id="Surname"
+            value={surname}
             placeholder="Enter your surname"
           />
         </Grid>
@@ -41,9 +46,9 @@ export default function AddProfileTable({
           <TextField
             style={textFieldStyle}
             id="Birthdate"
-            //label="Birthday"
             type="date"
             defaultValue="1999-12-25"
+            value={birthdate}
             InputLabelProps={{
               shrink: true,
             }}
@@ -52,8 +57,8 @@ export default function AddProfileTable({
         <Grid item xs={12} md={6} align="right">
           <TextField
             style={textFieldStyle}
-            //label="Phone number"
             id="PhoneNumber"
+            value={phoneNumber}
             placeholder="Enter your phone number"
           />
         </Grid>
@@ -61,8 +66,8 @@ export default function AddProfileTable({
           <TextField
             style={marginTop}
             fullWidth
-            //label="Email"
             id="Email"
+            value={email}
             placeholder="Enter your email"
           />
         </Grid>

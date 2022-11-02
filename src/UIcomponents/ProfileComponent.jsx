@@ -17,19 +17,13 @@ const ProfileComponent = () => {
     TripAPI.getVehicleTypeEnum().then((response) =>
       setVehicleTypes(response.data)
     );
+    
     setVehicleType("Sedan");
     
-    UserAPI.GetUser(6).then((response) => setResponse(response.data), loadUserData(response));
-    //loadUserData(response)
-  });
-
-  function loadUserData(response) {
-    document.getElementById("Name").value = response.name
-    document.getElementById("Surname").value = response.surname
-    document.getElementById("Birthdate").value = response.birthdate
-    document.getElementById("PhoneNumber").value = response.phoneNumber
-    document.getElementById("Email").value = response.email
-  }
+    UserAPI.GetUser(2).then((response) => 
+    setResponse(response.data)
+    );
+  }, []);
 
   const handleVehicleTypeChange = (event) => {
     setVehicleType(event.target.value);
@@ -101,6 +95,11 @@ const ProfileComponent = () => {
             saveClicked={SaveButtonClicked}
             becomeADriverClicked={BecomeADriverClicked}
             vehicleType={vehicleType}
+            name={response.name}
+            surname={response.surname}
+            birthdate={response.Birthdate}
+            phoneNumber={response.phoneNumber}
+            email={response.email}
             vehicleTypes={vehicleTypes}
             handleVehicleTypeChange={handleVehicleTypeChange}
           ></AddProfileTable>
