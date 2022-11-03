@@ -6,7 +6,7 @@ import {
   iconStyle,
   headerStyle,
   dividerStyle,
-} from "../styles/muiStyle.js";
+} from "../Styles/muiStyle.js";
 
 export default function AddMemberDesignTop({ headerText }) {
   return (
