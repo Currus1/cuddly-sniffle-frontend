@@ -5,7 +5,7 @@ import {
   saveButtonStyle,
   textFieldStyle,
   marginTop,
-} from "../styles/CustomLowButtonStyle";
+} from "../Styles/CustomLowButtonStyle";
 import InputLabel from "@mui/material/InputLabel";
 import FormControl from "@mui/material/FormControl";
 import MenuItem from "@mui/material/MenuItem";
@@ -111,7 +111,11 @@ export default function AddProfileTable({
           />
         </Grid>
         <Grid item xs={12} md={12}>
-          <Button fullWidth style={driverButtonStyle} onClick={becomeADriverClicked}>
+          <Button
+            fullWidth
+            style={driverButtonStyle}
+            onClick={becomeADriverClicked}
+          >
             Become a Driver!
           </Button>
         </Grid>

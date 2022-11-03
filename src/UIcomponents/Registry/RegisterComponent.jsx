@@ -1,13 +1,14 @@
 import React, { useState } from "react";
 import { Grid, Paper } from "@material-ui/core";
-import { paperStyle, errorStyle } from "./styles/muiStyle.js";
-import ProfileBannerDesign from "./reusableComponents/ProfileBannerDesign.jsx";
-import RegisterProfileTable from "./reusableComponents/RegisterProfileTable.jsx";
-import UserAPI from "../UserServices/UserAPI";
+import { paperStyle, errorStyle } from "../Styles/muiStyle.js";
+import ProfileBannerDesign from "../ReusableComponents/ProfileBannerDesign.jsx";
+import RegisterProfileTable from "../ReusableComponents/RegisterProfileTable.jsx";
+import UserAPI from "../../UserServices/UserAPI";
+import HeaderComponent from "../BaseHeader/HeaderComponent.jsx";
 
 const RegisterComponent = () => {
   const [user] = useState([]);
-  const [errorText, setErrorText] = useState('');
+  const [errorText, setErrorText] = useState("");
 
   function registerClicked() {
     if (
@@ -35,6 +36,7 @@ const RegisterComponent = () => {
 
   return (
     <>
+      <HeaderComponent />
       <Grid>
         <Paper style={paperStyle}>
           <ProfileBannerDesign

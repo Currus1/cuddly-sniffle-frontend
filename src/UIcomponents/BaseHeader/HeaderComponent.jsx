@@ -1,15 +1,15 @@
 import React from "react";
 import { Grid } from "@material-ui/core";
-import "../bootstrap.css";
 import {
   headerStyle,
   logoStyle,
   rightColumnStyle,
   textButtonStyle,
   containedButtonStyle,
-} from "./styles/HeaderStyle.js";
-import { iconStyle } from "./styles/muiStyle.js";
-import "./styles/HeaderStyle.css";
+  headerLogo,
+  headerLogoText,
+} from "./Styles/HeaderStyle.js";
+import { iconStyle } from "../Styles/muiStyle.js";
 import { Button } from "@material-ui/core";
 import Person2Icon from "@mui/icons-material/Person2";
 
@@ -19,9 +19,9 @@ const HeaderComponent = () => (
       <img
         src="https://www.freeiconspng.com/thumbs/electricity-icon-png/electricity-icon--1.png"
         alt=""
-        className="headerLogo"
+        style={headerLogo}
       />
-      <p className="headerLogoText">CURRUS</p>
+      <p style={headerLogoText}>CURRUS</p>
     </Grid>
     <Grid item xs={12} md={6} style={rightColumnStyle}>
       <Button variant="contained" style={containedButtonStyle} href="\register">

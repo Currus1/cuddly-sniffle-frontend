@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { paperStyle, errorStyle } from "./styles/muiStyle.js";
+import { paperStyle, errorStyle } from "../Styles/muiStyle.js";
 import { Grid, Paper } from "@material-ui/core";
-import TripAPI from "../TripServices/TripAPI";
-import ProfileBannerDesign from "./reusableComponents/ProfileBannerDesign.jsx";
-import AddProfileTable from "./reusableComponents/AddProfileTable.jsx";
-import UserAPI from "../UserServices/UserAPI.js";
+import TripAPI from "../../TripServices/TripAPI";
+import ProfileBannerDesign from "../ReusableComponents/ProfileBannerDesign.jsx";
+import AddProfileTable from "../ReusableComponents/AddProfileTable.jsx";
+import UserAPI from "../../UserServices/UserAPI.js";
+import HeaderComponent from "../BaseHeader/HeaderComponent.jsx";
 
 const ProfileComponent = () => {
   const [response, setResponse] = useState([]);
@@ -17,12 +18,10 @@ const ProfileComponent = () => {
     TripAPI.getVehicleTypeEnum().then((response) =>
       setVehicleTypes(response.data)
     );
-    
+
     setVehicleType("Sedan");
-    
-    UserAPI.GetUser(2).then((response) => 
-    setResponse(response.data)
-    );
+
+    UserAPI.GetUser(2).then((response) => setResponse(response.data));
   }, []);
 
   const handleVehicleTypeChange = (event) => {
@@ -73,7 +72,7 @@ const ProfileComponent = () => {
       user.Birthdate = document.getElementById("Birthdate").value;
       user.Email = document.getElementById("Email").value;
       user.PhoneNumber = document.getElementById("PhoneNumber").value;
-      
+
       setErrorText("Your driver is updated!");
       console.log("Driver is updated.");
       UserAPI.UpdateDriver(user);
@@ -85,6 +84,7 @@ const ProfileComponent = () => {
 
   return (
     <>
+      <HeaderComponent />
       <Grid>
         <Paper elevation={20} style={paperStyle}>
           <ProfileBannerDesign

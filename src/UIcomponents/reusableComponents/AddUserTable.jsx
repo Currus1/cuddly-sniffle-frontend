@@ -1,15 +1,8 @@
 import React from "react";
-import {
-    marginTop,
-    bigMarginTop,
-    buttonStyle,
-  } from "../styles/muiStyle.js";
-  import {
-    TextField,
-    Button,
-  } from "@material-ui/core";
+import { marginTop, bigMarginTop, buttonStyle } from "../Styles/muiStyle.js";
+import { TextField, Button } from "@material-ui/core";
 
-export default function AddUserTable({SaveClicked}) {
+export default function AddUserTable({ SaveClicked }) {
   return (
     <>
       <TextField

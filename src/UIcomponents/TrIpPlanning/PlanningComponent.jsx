@@ -1,10 +1,7 @@
 import React, { useEffect, useState } from "react";
-import "../bootstrap.css";
-import "../App.css";
-import UserAPI from "../UserServices/UserAPI.js";
-import DriverAPI from "../DriverServices/DriverAPI.js";
+import UserAPI from "../../UserServices/UserAPI.js";
 import InputLabel from "@mui/material/InputLabel";
-import TripAPI from "../TripServices/TripAPI";
+import TripAPI from "../../TripServices/TripAPI";
 import {
   Grid,
   Paper,
@@ -29,7 +26,7 @@ import {
   headerStyle,
   dividerStyle,
   widePaperStyle,
-} from "./styles/muiStyle.js";
+} from "../Styles/muiStyle.js";
 
 const PlanningComponent = () => {
   const [data, setData] = useState([]);
@@ -42,7 +39,6 @@ const PlanningComponent = () => {
 
   useEffect(() => {
     UserAPI.GetAllUsers().then((response) => setUsers(response.data));
-    DriverAPI.GetAllDrivers().then((response) => setDrivers(response.data));
     TripAPI.getVehicleTypeEnum().then((response) =>
       setVehicleTypes(response.data)
     );

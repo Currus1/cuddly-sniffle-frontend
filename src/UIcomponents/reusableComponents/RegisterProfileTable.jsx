@@ -3,15 +3,18 @@ import { Grid, Button, TextField } from "@material-ui/core";
 import {
   saveButtonStyle,
   textFieldStyle,
-  marginTop
-} from "../styles/CustomLowButtonStyle";
+  marginTop,
+} from "../Styles/CustomLowButtonStyle";
 
-export default function RegisterProfileTable({buttonText, buttonClickedEvent}) {
+export default function RegisterProfileTable({
+  buttonText,
+  buttonClickedEvent,
+}) {
   return (
     <>
       <Grid container>
         <Grid item xs={12} md={12}>
-        <TextField
+          <TextField
             fullWidth
             style={marginTop}
             label="Name"
@@ -20,7 +23,7 @@ export default function RegisterProfileTable({buttonText, buttonClickedEvent}) {
           />
         </Grid>
         <Grid item xs={12} md={12}>
-        <TextField
+          <TextField
             fullWidth
             style={marginTop}
             label="Surname"
@@ -61,7 +64,11 @@ export default function RegisterProfileTable({buttonText, buttonClickedEvent}) {
 
       <Grid container>
         <Grid item xs={12} md={12} align="right">
-          <Button fullWidth style={saveButtonStyle} onClick={buttonClickedEvent}>
+          <Button
+            fullWidth
+            style={saveButtonStyle}
+            onClick={buttonClickedEvent}
+          >
             {buttonText}
           </Button>
         </Grid>

@@ -1,32 +1,23 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
-import HeaderComponent from "./UIcomponents/HeaderComponent";
-import FooterComponent from "./UIcomponents/FooterComponent";
-import PlanningComponent from "./UIcomponents/PlanningComponent";
-import UserComponent from "./UIcomponents/UserComponent";
-import DriverComponent from "./UIcomponents/DriverComponent";
-import TripComponent from "./UIcomponents/TripComponent"
-import GoogleMapsComponent from "./UIcomponents/GoogleMapsComponent";
-import ProfileComponent from "./UIcomponents/ProfileComponent";
-import RegisterComponent from "./UIcomponents/RegisterComponent";
-
+import PlanningComponent from "./UIcomponents/TrIpPlanning/PlanningComponent";
+import GoogleMapsComponent from "./UIcomponents/GoogleMapIntegration/GoogleMapsComponent";
+import ProfileComponent from "./UIcomponents/Profile/ProfileComponent";
+import RegisterComponent from "./UIcomponents/Registry/RegisterComponent";
+import HomePageComponent from "./UIcomponents/LandingPage/HomePageComponent";
 
 function App() {
   return (
     <div className="CurrusApp">
       <BrowserRouter>
-        <HeaderComponent></HeaderComponent>
         <Routes>
           <Route path="/planning" element={<PlanningComponent />} />
-          <Route path="/user" element={<UserComponent />} />
-          <Route path="/driver" element={<DriverComponent />} />
-          <Route path="/trip" element={<TripComponent />} />
           <Route path="/maps" element={<GoogleMapsComponent />} />
           <Route path="/profile" element={<ProfileComponent />}/>
           <Route path="/register" element={<RegisterComponent />}/>
+          <Route path="/" element={<HomePageComponent/>} />
         </Routes>
-        <FooterComponent></FooterComponent>
       </BrowserRouter>
     </div>
   );
