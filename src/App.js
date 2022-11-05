@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
-import PlanningComponent from "./UIcomponents/TrIpPlanning/PlanningComponent";
+import PlanningComponent from "./UIcomponents/TripPlanning/PlanningComponent";
 import GoogleMapsComponent from "./UIcomponents/GoogleMapIntegration/GoogleMapsComponent";
 import ProfileComponent from "./UIcomponents/Profile/ProfileComponent";
 import RegisterComponent from "./UIcomponents/Registry/RegisterComponent";
