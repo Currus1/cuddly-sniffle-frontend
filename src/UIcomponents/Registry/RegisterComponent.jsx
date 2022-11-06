@@ -5,6 +5,8 @@ import ProfileBannerDesign from "../ReusableComponents/ProfileBannerDesign.jsx";
 import RegisterProfileTable from "../ReusableComponents/RegisterProfileTable.jsx";
 import UserAPI from "../../UserServices/UserAPI";
 import HeaderComponent from "../BaseHeader/HeaderComponent.jsx";
+import FooterComponent from "../BaseFooter/FooterComponent.jsx";
+import { backgroundStyle } from "../Styles/BackgroundStyle.js";
 
 const RegisterComponent = () => {
   const [user] = useState([]);
@@ -35,7 +37,7 @@ const RegisterComponent = () => {
   }
 
   return (
-    <>
+    <div style={backgroundStyle}>
       <HeaderComponent />
       <Grid>
         <Paper style={paperStyle}>
@@ -50,7 +52,8 @@ const RegisterComponent = () => {
           <h5 style={errorStyle}>{errorText}</h5>
         </Paper>
       </Grid>
-    </>
+      <FooterComponent />
+    </div>
   );
 };
 export default RegisterComponent;

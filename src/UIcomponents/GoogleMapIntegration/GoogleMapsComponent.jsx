@@ -3,6 +3,9 @@ import { GoogleMap, useJsApiLoader, Marker } from "@react-google-maps/api";
 import "./Styles/GoogleMapsStyle.css";
 import SecretAPI from "../../Services/SecretServices.js";
 import GoogleAutoComplete from "./GoogleAutoComplete.jsx";
+import { backgroundStyle } from "../Styles/BackgroundStyle";
+import HeaderComponent from "../BaseHeader/HeaderComponent";
+import FooterComponent from "../BaseFooter/FooterComponent";
 const useMapsApiKey = () => {
   const [key, setKey] = useState(undefined);
 
@@ -23,21 +26,25 @@ export default function GoogleMapsComponent() {
   if (!key) return null;
 
   return (
-    <div className="split-screen">
-      <div className="top-pane">
-        <MapLoader apiKey={key} />
-      </div>
-      <div className="bottom-pane">
-        <div>
-          <label>From</label>
-          <GoogleAutoComplete></GoogleAutoComplete>
+    <div style={backgroundStyle}>
+      <HeaderComponent />
+      <div className="split-screen">
+        <div className="top-pane">
+          <MapLoader apiKey={key} />
         </div>
-        <br />
-        <div>
-          <label>Where</label>
-          <GoogleAutoComplete></GoogleAutoComplete>
+        <div className="bottom-pane">
+          <div>
+            <label>From</label>
+            <GoogleAutoComplete></GoogleAutoComplete>
+          </div>
+          <br />
+          <div>
+            <label>Where</label>
+            <GoogleAutoComplete></GoogleAutoComplete>
+          </div>
         </div>
       </div>
+      <FooterComponent />
     </div>
   );
 }
