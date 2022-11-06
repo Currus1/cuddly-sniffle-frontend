@@ -2,7 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { AppBar, IconButton } from "@material-ui/core";
 import SortIcon from "@material-ui/icons/Sort";
-import "./Styles/PageStyle.css";
+import "../Styles/PageStyle.css";
 import Toolbar from "@mui/material/Toolbar";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import Collapse from "@mui/material/Collapse";
