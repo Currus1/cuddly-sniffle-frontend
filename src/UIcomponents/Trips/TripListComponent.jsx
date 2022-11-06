@@ -108,17 +108,4 @@ const TripListComponent = () => {
   );
 };
 
-// {trips.map((item) => (
-//   <Grid item key={item} xs={12} md={12} lg={12}>
-//     <TripCardComponent trip={item}></TripCardComponent>
-//   </Grid>
-// ))}
-
-// tripStatus={trip.TripStatus}
-//                       startingPoint={trip.StartingPoint}
-//                       destination={trip.Destination}
-//                       distance={trip.Distance}
-//                       hours={trip.Hours}
-//                       minutes={trip.Minutes}
-
 export default TripListComponent;
