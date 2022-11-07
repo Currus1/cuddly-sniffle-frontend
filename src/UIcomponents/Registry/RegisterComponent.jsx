@@ -1,18 +1,17 @@
 import React, { useState } from "react";
-import "../bootstrap.css";
-import "../App.css";
-import "./styles/UserStyle.css";
 import { Grid, Paper } from "@material-ui/core";
-import UserAPI from "../UserServices/UserAPI";
-import AddMemberDesignTop from "./reusableComponents/AddMemberBannerDesign";
-import AddUserTable from "./reusableComponents/AddUserTable";
+import { paperStyle, errorStyle } from "../Styles/muiStyle.js";
+import ProfileBannerDesign from "../ReusableComponents/ProfileBannerDesign.jsx";
+import RegisterProfileTable from "../ReusableComponents/RegisterProfileTable.jsx";
+import UserAPI from "../../UserServices/UserAPI";
+import HeaderComponent from "../BaseHeader/HeaderComponent.jsx";
 
-const UserComponent = () => {
+const RegisterComponent = () => {
   const [user] = useState([]);
+  const [errorText, setErrorText] = useState("");
 
-  function SaveClicked() {
+  function registerClicked() {
     if (
-      document.getElementById("Id").value !== "" &&
       document.getElementById("Name").value !== "" &&
       document.getElementById("Surname").value !== "" &&
       document.getElementById("Birthdate").value !== "" &&
@@ -20,13 +19,13 @@ const UserComponent = () => {
       document.getElementById("PhoneNumber").value !== ""
     ) {
       // ADDING USER
-      user.Id = document.getElementById("Id").value;
       user.Name = document.getElementById("Name").value;
       user.Surname = document.getElementById("Surname").value;
       user.Birthdate = document.getElementById("Birthdate").value;
       user.Email = document.getElementById("Email").value;
       user.PhoneNumber = document.getElementById("PhoneNumber").value;
 
+      setErrorText("User Added Succesfully. Welcome To Currus!");
       console.log("User is added.");
       UserAPI.addUser(user);
     } else {
@@ -37,16 +36,21 @@ const UserComponent = () => {
 
   return (
     <>
+      <HeaderComponent />
       <Grid>
-        <Paper elevation={20} className="paperStyle" align="left">
-          <AddMemberDesignTop headerText={"Creating a user"} />
-          <form>
-            <AddUserTable SaveClicked={SaveClicked}/>
-          </form>
+        <Paper style={paperStyle}>
+          <ProfileBannerDesign
+            headerText={"Create an Account"}
+            smallText={"Enter your user details below"}
+          />
+          <RegisterProfileTable
+            buttonText={"Join Currus family!"}
+            buttonClickedEvent={registerClicked}
+          ></RegisterProfileTable>
+          <h5 style={errorStyle}>{errorText}</h5>
         </Paper>
       </Grid>
     </>
   );
 };
-
-export default UserComponent;
+export default RegisterComponent;

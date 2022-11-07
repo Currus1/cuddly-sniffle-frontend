@@ -1,23 +1,26 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
-import HeaderComponent from "./UIcomponents/HeaderComponent";
-import FooterComponent from "./UIcomponents/FooterComponent";
-import UserComponent from "./UIcomponents/UserComponent";
-import TripComponent from "./UIcomponents/TripComponent"
-import GoogleMapsComponent from "./UIcomponents/GoogleMapsComponent";
+import TripComponent from "./UIcomponents/TripHistory/TripComponent"
+import PlanningComponent from "./UIcomponents/TripPlanning/PlanningComponent";
+import GoogleMapsComponent from "./UIcomponents/GoogleMapIntegration/GoogleMapsComponent";
+import ProfileComponent from "./UIcomponents/Profile/ProfileComponent";
+import RegisterComponent from "./UIcomponents/Registry/RegisterComponent";
+import HomePageComponent from "./UIcomponents/LandingPage/HomePageComponent";
 
 function App() {
   return (
     <div className="CurrusApp">
       <BrowserRouter>
-        <HeaderComponent></HeaderComponent>
         <Routes>
           <Route path="/user" element={<UserComponent />} />
           <Route path="/trips/history" element={<TripComponent />} />
+          <Route path="/planning" element={<PlanningComponent />} />
           <Route path="/maps" element={<GoogleMapsComponent />} />
+          <Route path="/profile" element={<ProfileComponent />}/>
+          <Route path="/register" element={<RegisterComponent />}/>
+          <Route path="/" element={<HomePageComponent/>} />
         </Routes>
-        <FooterComponent></FooterComponent>
       </BrowserRouter>
     </div>
   );
