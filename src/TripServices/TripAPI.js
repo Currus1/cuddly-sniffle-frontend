@@ -9,8 +9,18 @@ class TripAPI {
     return axios.get(`http://localhost:5236/Trip/${id}`)
   }
 
-  getVehicleTypeEnum () {
+  getVehicleTypes() {
     return axios.get("http://localhost:5236/VehicleType");
+  }
+
+  getTripStatuses() {
+    return axios.get("http://localhost:5236/TripStatus");
+  }
+
+  getTrips(tripStatus) {
+    return axios.get("http://localhost:5236/Trip/Trips", {
+      params: { tripStatus: tripStatus },
+    });
   }
 
   addTrip(data) {
@@ -24,7 +34,7 @@ class TripAPI {
       hours: data.Hours,
       minutes: data.Minutes,
       vehicleType: data.VehicleType,
-      distance: data.Distance
+      distance: data.Distance,
     });
   }
 }

@@ -27,6 +27,9 @@ import {
   dividerStyle,
   widePaperStyle,
 } from "../Styles/muiStyle.js";
+import FooterComponent from "../BaseFooter/FooterComponent.jsx";
+import HeaderComponent from "../BaseHeader/HeaderComponent.jsx";
+import { backgroundStyle } from "../Styles/BackgroundStyle.js";
 
 const PlanningComponent = () => {
   const [data, setData] = useState([]);
@@ -39,7 +42,7 @@ const PlanningComponent = () => {
 
   useEffect(() => {
     UserAPI.GetAllUsers().then((response) => setUsers(response.data));
-    TripAPI.getVehicleTypeEnum().then((response) =>
+    TripAPI.getVehicleTypes().then((response) =>
       setVehicleTypes(response.data)
     );
     setVehicleType("Sedan"); // Initial value for select
@@ -118,7 +121,8 @@ const PlanningComponent = () => {
   }
 
   return (
-    <>
+    <div style={backgroundStyle}>
+      <HeaderComponent />
       <Grid>
         <Paper elevation={20} style={paperStyle}>
           <Grid align="left">
@@ -316,7 +320,8 @@ const PlanningComponent = () => {
           </Button>
         </Paper>
       </Grid>
-    </>
+      <FooterComponent />
+    </div>
   );
 };
 
