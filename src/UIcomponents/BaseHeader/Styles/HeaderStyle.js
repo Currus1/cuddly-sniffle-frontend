@@ -12,7 +12,7 @@ export const rightColumnStyle = {
   textAlign: "right",
 };
 
-export const textButtonStyle = {
+export const iconButtonStyle = {
   marginRight: "5px",
   marginTop: "8px",
   color: "white",

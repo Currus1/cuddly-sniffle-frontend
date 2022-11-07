@@ -4,7 +4,7 @@ import {
   headerStyle,
   logoStyle,
   rightColumnStyle,
-  textButtonStyle,
+  iconButtonStyle,
   containedButtonStyle,
   headerLogo,
   headerLogoText,
@@ -12,6 +12,7 @@ import {
 import { iconStyle } from "../Styles/muiStyle.js";
 import { Button } from "@material-ui/core";
 import Person2Icon from "@mui/icons-material/Person2";
+import WorkHistoryIcon from "@mui/icons-material/WorkHistory";
 
 const HeaderComponent = () => (
   <Grid container style={headerStyle}>
@@ -27,7 +28,10 @@ const HeaderComponent = () => (
       <Button variant="contained" style={containedButtonStyle} href="\register">
         Register!
       </Button>
-      <Button variant="text" style={textButtonStyle} href="\profile">
+      <Button style={iconButtonStyle} href="\trips\history">
+        <WorkHistoryIcon style={iconStyle}></WorkHistoryIcon>
+      </Button>
+      <Button variant="text" style={iconButtonStyle} href="\profile">
         <Person2Icon style={iconStyle}></Person2Icon>
       </Button>
     </Grid>

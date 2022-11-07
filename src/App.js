@@ -14,7 +14,6 @@ function App() {
     <div className="CurrusApp">
       <BrowserRouter>
         <Routes>
-          <Route path="/user" element={<UserComponent />} />
           <Route path="/trips/history" element={<TripComponent />} />
           <Route path="/planning" element={<PlanningComponent />} />
           <Route path="/trips" element={<TripsComponent />} />

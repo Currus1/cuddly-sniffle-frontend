@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import logo from "../images/travel.png";
+import logo from "../../Images/travel.png";
 import TripLocation from "./TripLocation";
 import {
   Avatar,
@@ -7,15 +7,16 @@ import {
   ListItemAvatar,
   ListItem,
 } from "@mui/material";
+import "./Styles/TripHistoryStyle.css";
 
 const TripView = ({ id, dest, price }) => {
   return (
-    <div style={{ width: "400px" }}>
+    <div className="max-width">
       <ListItem>
-        <ListItemAvatar>
-          <Avatar alt="" src={logo} variant="rounded"></Avatar>
-        </ListItemAvatar>
         <ListItemButton>
+          <ListItemAvatar>
+            <Avatar alt="" src={logo} variant="rounded"></Avatar>
+          </ListItemAvatar>
           <TripLocation _dest={dest} _price={price}></TripLocation>
         </ListItemButton>
       </ListItem>

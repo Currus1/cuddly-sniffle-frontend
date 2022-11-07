@@ -7,6 +7,7 @@ export const buttonStyle = {
   width: "100%",
 };
 export const iconStyle = {
+  color: "white",
   width: "40",
   height: "40",
 };
