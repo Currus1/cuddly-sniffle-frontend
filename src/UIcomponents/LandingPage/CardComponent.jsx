@@ -11,7 +11,7 @@ import {
   cardTransparency,
   cardButton,
 } from "./Styles/HomePageCardsStyle.js";
-import "./Styles/PageStyle.css";
+import "../Styles/PageStyle.css";
 
 export default function GetARideCardComponent({ cardContent, checked }) {
   return (
