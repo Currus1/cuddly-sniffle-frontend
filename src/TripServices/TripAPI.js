@@ -25,7 +25,6 @@ class TripAPI {
   }
 
   addTrip(data) {
-<<<<<<< HEAD
     const content = {
       Latitude: data.Latitude,
       Longitude: data.Longitude,
@@ -41,20 +40,6 @@ class TripAPI {
     }
     console.log(content);
     return axios.post("http://localhost:5236/Trip/Adding", content);
-=======
-    return axios.post("http://localhost:5236/Trip/Adding", {
-      id: data.Id,
-      driverId: data.DriverId,
-      userIds: [parseInt(data.UserId)],
-      startingPoint: data.StartingPoint,
-      destination: data.Destination,
-      seats: data.Seats,
-      hours: data.Hours,
-      minutes: data.Minutes,
-      vehicleType: data.VehicleType,
-      distance: data.Distance,
-    });
->>>>>>> 9999c6c4e5ac9ba9560adaf0a93bfc5fec300e7c
   }
 }
 

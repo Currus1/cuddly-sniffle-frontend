@@ -16,22 +16,11 @@ import {
   fixedPaperStyle,
   tripSettingsItem,
   buttonStyle,
-<<<<<<< HEAD:src/UIcomponents/TrIpPlanning/PlanningComponent.jsx
   floatingGridStyle,
 } from "../Styles/PlanTripStyle";
 import TextFieldPaperDesign from "../ReusableComponents/TextFieldPaperDesign";
 import { avatarStyle, iconStyle, padding, errorStyle } from "../Styles/muiStyle.js";
 import TripAPI from "../../TripServices/TripAPI.js";
-=======
-  paperStyle,
-  headerStyle,
-  dividerStyle,
-  widePaperStyle,
-} from "../Styles/muiStyle.js";
-import FooterComponent from "../BaseFooter/FooterComponent.jsx";
-import HeaderComponent from "../BaseHeader/HeaderComponent.jsx";
-import { backgroundStyle } from "../Styles/BackgroundStyle.js";
->>>>>>> 9999c6c4e5ac9ba9560adaf0a93bfc5fec300e7c:src/UIcomponents/TripPlanning/PlanningComponent.jsx
 
 const PlanningComponent = () => {
   const [errorText, setErrorText] = useState("");
@@ -41,50 +30,7 @@ const PlanningComponent = () => {
   const [startingPoint, setStartingPoint] = useState();
   const [destination, setDestination] = useState();
 
-<<<<<<< HEAD:src/UIcomponents/TrIpPlanning/PlanningComponent.jsx
   function saveClicked() {
-=======
-  useEffect(() => {
-    UserAPI.GetAllUsers().then((response) => setUsers(response.data));
-    TripAPI.getVehicleTypes().then((response) =>
-      setVehicleTypes(response.data)
-    );
-    setVehicleType("Sedan"); // Initial value for select
-  }, []);
-
-  const handleDriverChange = (event) => {
-    setDriver(event.target.value);
-  };
-
-  const handleUserChange = (event) => {
-    setUser(event.target.value);
-  };
-
-  const handleVehicleTypeChange = (event) => {
-    setVehicleType(event.target.value);
-  };
-
-  function SaveClicked() {
-    document.getElementById("ROid").value = document.getElementById("id").value;
-    document.getElementById("ROuser").value = user;
-    document.getElementById("ROvehicleType").value = vehicleType;
-    document.getElementById("ROdriver").value = driver;
-    document.getElementById("ROstartingPoint").value =
-      document.getElementById("startingPoint").value;
-    document.getElementById("ROdestination").value =
-      document.getElementById("destination").value;
-    document.getElementById("ROseats").value =
-      document.getElementById("seats").value;
-    document.getElementById("ROhours").value =
-      document.getElementById("hours").value;
-    document.getElementById("ROminutes").value =
-      document.getElementById("minutes").value;
-    document.getElementById("ROdistance").value =
-      document.getElementById("distance").value;
-  }
-
-  function ValidateFields() {
->>>>>>> 9999c6c4e5ac9ba9560adaf0a93bfc5fec300e7c:src/UIcomponents/TripPlanning/PlanningComponent.jsx
     if (
       document.getElementById("seats").value != "" &&
       document.getElementById("hours").value != "" &&
@@ -114,7 +60,6 @@ const PlanningComponent = () => {
   }
 
   return (
-<<<<<<< HEAD:src/UIcomponents/TrIpPlanning/PlanningComponent.jsx
     <>
       <HeaderComponent />
       <Grid container style={floatingGridStyle}>
@@ -126,29 +71,6 @@ const PlanningComponent = () => {
             setLongitude={setLongitude}
             setLatitude={setLatitude}
             setCity = {setStartingPoint}
-=======
-    <div style={backgroundStyle}>
-      <HeaderComponent />
-      <Grid>
-        <Paper elevation={20} style={paperStyle}>
-          <Grid align="left">
-            <Avatar style={avatarStyle}>
-              {" "}
-              <CommuteIcon style={iconStyle} />{" "}
-            </Avatar>
-            <h2 style={headerStyle}>Adding a trip</h2>
-            <Typography variant="caption">
-              Fill in all the fields below
-            </Typography>
-            <Divider style={dividerStyle} />
-          </Grid>
-          <TextField
-            fullWidth
-            label="Trip Nr."
-            id="id"
-            placeholder="Trip number"
-            style={marginTop}
->>>>>>> 9999c6c4e5ac9ba9560adaf0a93bfc5fec300e7c:src/UIcomponents/TripPlanning/PlanningComponent.jsx
           />
         </Grid>
       </Grid>
@@ -224,8 +146,7 @@ const PlanningComponent = () => {
           </Paper>
         </Grid>
       </Grid>
-      <FooterComponent />
-    </div>
+    </>
   );
 };
 
