@@ -2,7 +2,6 @@ export const footerStyle = {
     textAlign: "center",
     padding: "20px",
     bottom: "0",
-    height: "430px",
     width: "100%",
     fontFamily: "Nunito Sans"
 }

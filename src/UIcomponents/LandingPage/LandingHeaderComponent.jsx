@@ -39,7 +39,7 @@ const HeaderComponent = () => {
       <Collapse
         in={checked}
         {...(checked ? { timeout: 1000 } : {})}
-        collapsedHeight={50}
+        collapsedheight={50}
       >
         <div style={centerText}>
           <h1 style={fontSize3}>Welcome</h1>

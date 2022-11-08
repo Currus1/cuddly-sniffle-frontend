@@ -1,6 +1,14 @@
 import axios from "axios";
 
 class TripAPI {
+  getAllTripsByUserId(id) {
+    return axios.get(`http://localhost:5236/${id}/trips`);
+  }
+
+  getOneTripById(id) {
+    return axios.get(`http://localhost:5236/Trip/${id}`)
+  }
+
   getVehicleTypes() {
     return axios.get("http://localhost:5236/VehicleType");
   }

@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
+import TripComponent from "./UIcomponents/TripHistory/TripComponent"
 import PlanningComponent from "./UIcomponents/TripPlanning/PlanningComponent";
 import TripsComponent from "./UIcomponents/Trips/TripsComponent";
 import GoogleMapsComponent from "./UIcomponents/GoogleMapIntegration/GoogleMapsComponent";
@@ -13,6 +14,7 @@ function App() {
     <div className="CurrusApp">
       <BrowserRouter>
         <Routes>
+          <Route path="/trips/history" element={<TripComponent />} />
           <Route path="/planning" element={<PlanningComponent />} />
           <Route path="/trips" element={<TripsComponent />} />
           <Route path="/maps" element={<GoogleMapsComponent />} />
