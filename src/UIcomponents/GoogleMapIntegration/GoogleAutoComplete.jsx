@@ -5,7 +5,7 @@ import PlacesAutocomplete, {
 } from "react-places-autocomplete";
 import scriptLoader from "react-async-script-loader";
 
-function GoogleAutoComplete({ isScriptLoaded, isScriptLoadSucceed }) {
+function GoogleAutoComplete({ isScriptLoaded, isScriptLoadSucceed, setLongitude, setLatitude, setCity }) {
   const [address, setAddress] = useState("");
 
   const handleChange = (value) => {
@@ -14,8 +14,14 @@ function GoogleAutoComplete({ isScriptLoaded, isScriptLoadSucceed }) {
 
   const handleSelect = () => {
     geocodeByAddress(address)
-      .then((results) => getLatLng(results[0]))
-      .then((latLng) => console.log("Success", latLng))
+      .then((results) => { 
+        setCity(results[0].formatted_address);
+        return getLatLng(results[0]);
+      })
+      .then((latLng) => {
+        setLongitude(latLng.lng);
+        setLatitude(latLng.lat);
+      })
       .catch((error) => console.error("Error", error));
   };
 

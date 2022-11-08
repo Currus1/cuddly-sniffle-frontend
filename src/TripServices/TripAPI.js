@@ -1,3 +1,4 @@
+import { ContentCopy } from "@mui/icons-material";
 import axios from "axios";
 
 class TripAPI {
@@ -6,18 +7,21 @@ class TripAPI {
   }
 
   addTrip(data) {
-    return axios.post("http://localhost:5236/Trip/Adding", {
-      id: data.Id,
-      driverId: data.DriverId,
-      userIds: [parseInt(data.UserId)],
-      startingPoint: data.StartingPoint,
-      destination: data.Destination,
-      seats: data.Seats,
-      hours: data.Hours,
-      minutes: data.Minutes,
-      vehicleType: data.VehicleType,
-      distance: data.Distance
-    });
+    const content = {
+      Latitude: data.Latitude,
+      Longitude: data.Longitude,
+      StartingPoint: data.StartingPoint,
+      Destination: data.Destination,
+      Seats: data.Seats,
+      Hours: data.Hours,
+      Minutes: data.Minutes,
+      Distance: data.Distance,
+      VehicleType: data.VehicleType,
+      EstimatedTripPrice: data.EstimatedTripPrice,
+      TripStatus: data.TripStatus
+    }
+    console.log(content);
+    return axios.post("http://localhost:5236/Trip/Adding", content);
   }
 }
 

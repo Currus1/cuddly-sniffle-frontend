@@ -1,6 +1,7 @@
 export const avatarStyle = { backgroundColor: "#0099CC" };
 export const marginTop = { marginTop: 15 };
 export const bigMarginTop = { marginTop: 30 };
+export const padding = { padding: "15px" };
 export const buttonStyle = {
   marginTop: 30,
   backgroundColor: "#0099CC",
