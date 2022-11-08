@@ -1,41 +1,35 @@
-import React from "react";
-import { Grid } from "@material-ui/core";
-import {
-  headerStyle,
-  logoStyle,
-  rightColumnStyle,
-  iconButtonStyle,
-  containedButtonStyle,
-  headerLogo,
-  headerLogoText,
-} from "./Styles/HeaderStyle.js";
-import { iconStyle } from "../Styles/muiStyle.js";
-import { Button } from "@material-ui/core";
-import Person2Icon from "@mui/icons-material/Person2";
-import WorkHistoryIcon from "@mui/icons-material/WorkHistory";
+import React, { useState } from "react";
+import AppBar from "@mui/material/AppBar";
+import Box from "@mui/material/Box";
+import Toolbar from "@mui/material/Toolbar";
+import IconButton from "@mui/material/IconButton";
+import Typography from "@mui/material/Typography";
+import Container from "@mui/material/Container";
+import Avatar from "@mui/material/Avatar";
+import Button from "@mui/material/Button";
+import Tooltip from "@mui/material/Tooltip";
+import MenuItem from "@mui/material/MenuItem";
+import AdbIcon from "@mui/icons-material/Adb";
+import DrawerComponent from "./DrawerComponent";
+import "./Styles/HeaderStyle.css";
 
-const HeaderComponent = () => (
-  <Grid container style={headerStyle}>
-    <Grid item xs={12} md={6} style={logoStyle}>
-      <img
-        src="https://www.freeiconspng.com/thumbs/electricity-icon-png/electricity-icon--1.png"
-        alt=""
-        style={headerLogo}
-      />
-      <p style={headerLogoText}>CURRUS</p>
-    </Grid>
-    <Grid item xs={12} md={6} style={rightColumnStyle}>
-      <Button variant="contained" style={containedButtonStyle} href="\register">
-        Register!
-      </Button>
-      <Button style={iconButtonStyle} href="\trips\history">
-        <WorkHistoryIcon style={iconStyle}></WorkHistoryIcon>
-      </Button>
-      <Button variant="text" style={iconButtonStyle} href="\profile">
-        <Person2Icon style={iconStyle}></Person2Icon>
-      </Button>
-    </Grid>
-  </Grid>
-);
+const HeaderComponent = () => {
+  const [open, setOpen] = useState(false);
+
+  const ToggleDrawer = () => {
+    setOpen(!open);
+  };
+
+  return (
+    <Box>
+      <AppBar position="static">
+        <Toolbar className="header-bgcolor">
+          <DrawerComponent></DrawerComponent>
+          <Typography color="inherit">CURRUS</Typography>
+        </Toolbar>
+      </AppBar>
+    </Box>
+  );
+};
 
 export default HeaderComponent;
