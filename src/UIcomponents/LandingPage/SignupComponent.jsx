@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "./Styles/PageStyle.css";
+import "../Styles/PageStyle.css";
 import { Grid, Paper, Typography } from "@material-ui/core";
 import { shadowPropButton, arrowProp } from "./Styles/AttributeStyle";
 import TrendingUpIcon from "@mui/icons-material/TrendingUp";

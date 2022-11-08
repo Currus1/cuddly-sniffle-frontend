@@ -6,6 +6,8 @@ import ProfileBannerDesign from "../ReusableComponents/ProfileBannerDesign.jsx";
 import AddProfileTable from "../ReusableComponents/AddProfileTable.jsx";
 import UserAPI from "../../UserServices/UserAPI.js";
 import HeaderComponent from "../BaseHeader/HeaderComponent.jsx";
+import { backgroundStyle } from "../Styles/BackgroundStyle.js";
+import FooterComponent from "../BaseFooter/FooterComponent.jsx";
 
 const ProfileComponent = () => {
   const [response, setResponse] = useState([]);
@@ -15,7 +17,7 @@ const ProfileComponent = () => {
   const [errorText, setErrorText] = useState("");
 
   useEffect(() => {
-    TripAPI.getVehicleTypeEnum().then((response) =>
+    TripAPI.getVehicleTypes().then((response) =>
       setVehicleTypes(response.data)
     );
 
@@ -83,7 +85,7 @@ const ProfileComponent = () => {
   }
 
   return (
-    <>
+    <div style={backgroundStyle}>
       <HeaderComponent />
       <Grid>
         <Paper elevation={20} style={paperStyle}>
@@ -106,7 +108,8 @@ const ProfileComponent = () => {
           <h5 style={errorStyle}>{errorText}</h5>
         </Paper>
       </Grid>
-    </>
+      <FooterComponent />
+    </div>
   );
 };
 export default ProfileComponent;

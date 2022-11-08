@@ -14,6 +14,7 @@ import {
   footerHr,
 } from "./Styles/FooterStyle.js";
 import "./Styles/FooterStyle.css";
+import "../Styles/PageStyle.css";
 import twitter from "../../Images/twitter.png";
 import facebook from "../../Images/facebook.png";
 import instagram from "../../Images/instagram.png";
