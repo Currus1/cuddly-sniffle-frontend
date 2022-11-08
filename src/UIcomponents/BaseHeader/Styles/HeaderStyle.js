@@ -1,3 +1,5 @@
+import backgroundImage from "../../../Images/landing_background.jpg";
+
 export const headerStyle = {
   textAlign: "left",
   height: "70px",
@@ -45,4 +47,10 @@ export const headerLogoText = {
   fontSize: "20px",
   marginLeft: "85px",
   marginTop: "-48px",
+};
+
+export const backgroundStyleDrawer = {
+  minHeight: "80vh",
+  backgroundImage: `url(${backgroundImage})`,
+  height: "100%",
 };

@@ -7,7 +7,7 @@ import TripsComponent from "./UIcomponents/Trips/TripsComponent";
 import GoogleMapsComponent from "./UIcomponents/GoogleMapIntegration/GoogleMapsComponent";
 import ProfileComponent from "./UIcomponents/Profile/ProfileComponent";
 import RegisterComponent from "./UIcomponents/Registry/RegisterComponent";
-import HomePageComponent from "./UIcomponents/LandingPage/HomePageComponent";
+import LandingPageComponent from "./UIcomponents/LandingPage/LandingPageComponent";
 
 function App() {
   return (
@@ -20,7 +20,7 @@ function App() {
           <Route path="/maps" element={<GoogleMapsComponent />} />
           <Route path="/profile" element={<ProfileComponent />} />
           <Route path="/register" element={<RegisterComponent />} />
-          <Route path="/" element={<HomePageComponent />} />
+          <Route path="/" element={<LandingPageComponent />} />
         </Routes>
       </BrowserRouter>
     </div>
