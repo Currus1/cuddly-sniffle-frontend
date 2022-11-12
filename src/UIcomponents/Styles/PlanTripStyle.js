@@ -7,13 +7,17 @@ export const baseContainerStyle = {
 }
 
 export const fullPaperStyle = {
-    width: "100%",
-    height: "100%",
+    width: "90%",
+    height: "40px",
+    marginLeft: "auto",
+    marginRight: "auto",
+    marginTop: "20px"
 }
 
 export const floatingGridStyle = {
-    marginTop: 40,
-    marginLeft: 40
+    marginTop: "90%",
+    marginLeft: "35px"
+
 }
 
 export const fixedPaperStyle = {
@@ -28,7 +32,7 @@ export const tripSettingsItem = {
 
 export const h3HeaderStyle = {
     marginTop: "6px",
-    marginLeft: "8px"
+    marginLeft: "25px"
 }
 
 export const settingsPaperStyle = {

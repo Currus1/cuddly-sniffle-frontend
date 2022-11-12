@@ -19,3 +19,24 @@
 .map-width {
     width: 100%;
 }
+
+.address-field {
+    width: 100%;
+    margin-top: 3px;
+    margin-left: 10px;
+}
+
+.button-save {
+    margin-left: 25px;
+    margin-top: 4px;
+    width: 60px;
+    border-radius: 30px;
+    border: 1px solid black;
+    background-color: #0099CC;
+}
+
+.button-save:hover {
+    margin-top: 3px;
+    border: 2px solid black;
+}
+
