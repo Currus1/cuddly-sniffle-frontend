@@ -39,7 +39,7 @@ const PlanningComponent = () => {
 
       TripAPI.addTrip(trip);
 
-      setErrorText("Trip added!");
+      setErrorText("Trip was created!");
     } else {
       setErrorText("error with given data");
     }
