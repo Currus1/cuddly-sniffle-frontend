@@ -1,327 +1,124 @@
-import React, { useEffect, useState } from "react";
-import UserAPI from "../../UserServices/UserAPI.js";
-import InputLabel from "@mui/material/InputLabel";
-import TripAPI from "../../TripServices/TripAPI";
-import {
-  Grid,
-  Paper,
-  Avatar,
-  Typography,
-  TextField,
-  Button,
-  Divider,
-} from "@material-ui/core";
-import Select from "@mui/material/Select";
-import MenuItem from "@mui/material/MenuItem";
-import CommuteIcon from "@mui/icons-material/Commute";
-import AddTaskIcon from "@mui/icons-material/AddTask";
-import FormControl from "@mui/material/FormControl";
-import {
-  avatarStyle,
-  iconStyle,
-  marginTop,
-  bigMarginTop,
-  buttonStyle,
-  paperStyle,
-  headerStyle,
-  dividerStyle,
-  widePaperStyle,
-} from "../Styles/muiStyle.js";
-import FooterComponent from "../BaseFooter/FooterComponent.jsx";
-import HeaderComponent from "../BaseHeader/HeaderComponent.jsx";
-import { backgroundStyle } from "../Styles/BackgroundStyle.js";
+import { React, useMemo, useState, useEffect } from "react";
+import { Grid } from "@material-ui/core";
+import HeaderComponent from "../BaseHeader/HeaderComponent";
+import TripAPI from "../../TripServices/TripAPI.js";
+import SecretAPI from "../../Services/SecretServices.js";
+import { GoogleMap, useJsApiLoader, Marker } from "@react-google-maps/api";
+import TripPlanningSaveComponent from "../ReusableComponents/TripPlanningSaveComponent";
+import EnterAddressComponent from "../ReusableComponents/EnterAddressComponent";
+import FooterComponent from "../BaseFooter/FooterComponent";
+import { backgroundStyle } from "../Styles/BackgroundStyle";
 
 const PlanningComponent = () => {
-  const [data, setData] = useState([]);
-  const [drivers, setDrivers] = useState([]);
-  const [users, setUsers] = useState([]);
-  const [user, setUser] = useState("");
-  const [driver, setDriver] = useState("");
-  const [vehicleType, setVehicleType] = useState("");
-  const [vehicleTypes, setVehicleTypes] = useState([]);
+  const [errorText, setErrorText] = useState("");
+  const [trip] = useState([]);
+  const [longitude, setLongitude] = useState();
+  const [latitude, setLatitude] = useState();
+  const [startingPoint, setStartingPoint] = useState();
+  const [destination, setDestination] = useState();
 
-  useEffect(() => {
-    UserAPI.GetAllUsers().then((response) => setUsers(response.data));
-    TripAPI.getVehicleTypes().then((response) =>
-      setVehicleTypes(response.data)
-    );
-    setVehicleType("Sedan"); // Initial value for select
-  }, []);
-
-  const handleDriverChange = (event) => {
-    setDriver(event.target.value);
-  };
-
-  const handleUserChange = (event) => {
-    setUser(event.target.value);
-  };
-
-  const handleVehicleTypeChange = (event) => {
-    setVehicleType(event.target.value);
-  };
-
-  function SaveClicked() {
-    document.getElementById("ROid").value = document.getElementById("id").value;
-    document.getElementById("ROuser").value = user;
-    document.getElementById("ROvehicleType").value = vehicleType;
-    document.getElementById("ROdriver").value = driver;
-    document.getElementById("ROstartingPoint").value =
-      document.getElementById("startingPoint").value;
-    document.getElementById("ROdestination").value =
-      document.getElementById("destination").value;
-    document.getElementById("ROseats").value =
-      document.getElementById("seats").value;
-    document.getElementById("ROhours").value =
-      document.getElementById("hours").value;
-    document.getElementById("ROminutes").value =
-      document.getElementById("minutes").value;
-    document.getElementById("ROdistance").value =
-      document.getElementById("distance").value;
-  }
-
-  function ValidateFields() {
+  function saveClicked() {
     if (
-      document.getElementById("ROid").value != "" &&
-      document.getElementById("ROuser").value != "" &&
-      document.getElementById("ROdriver").value != "" &&
-      document.getElementById("ROstartingPoint").value != "" &&
-      document.getElementById("ROdestination").value != "" &&
-      document.getElementById("ROseats").value != "" &&
-      document.getElementById("ROhours").value != "" &&
-      document.getElementById("ROminutes").value != "" &&
-      document.getElementById("ROdistance").value != ""
+      document.getElementById("seats").value != "" &&
+      document.getElementById("hours").value != "" &&
+      document.getElementById("minutes").value != "" &&
+      longitude &&
+      latitude
     ) {
-      return true;
-    }
-    return false;
-  }
+      trip.Latitude = latitude;
+      trip.Longitude = longitude;
+      trip.StartingPoint = startingPoint;
+      trip.Destination = destination;
+      trip.Seats = document.getElementById("seats").value;
+      trip.Hours = document.getElementById("hours").value;
+      trip.Minutes = document.getElementById("minutes").value;
+      trip.Distance = 100;
+      trip.VehicleType = 2;
+      trip.TripStatus = "Planned";
+      trip.EstimatedTripPrice = 12;
 
-  function SaveValues() {
-    data.Id = document.getElementById("ROid").value;
-    data.DriverId = document.getElementById("ROdriver").value;
-    data.UserId = document.getElementById("ROuser").value;
-    data.StartingPoint = document.getElementById("ROstartingPoint").value;
-    data.Destination = document.getElementById("ROdestination").value;
-    data.Seats = document.getElementById("ROseats").value;
-    data.Hours = document.getElementById("ROhours").value;
-    data.Minutes = document.getElementById("ROminutes").value;
-    data.VehicleType = vehicleType;
-    data.Distance = document.getElementById("ROdistance").value;
-  }
+      TripAPI.addTrip(trip);
 
-  function AddClicked() {
-    if (ValidateFields()) {
-      SaveValues();
-      if (TripAPI.addTrip(data)) alert("Trip is added");
-      else alert("Server failed to add your trip");
-      console.log("clear");
+      setErrorText("Trip was created!");
     } else {
-      alert("Please make sure to enter all the fields");
+      setErrorText("error with given data");
     }
   }
+
+  function Map() {
+    const center = useMemo(() => ({ lat: 54.689461, lng: 25.27986 }), []);
+    return (
+      <GoogleMap
+        zoom={14}
+        center={center}
+        mapContainerClassName="map-container"
+      >
+        <Marker position={center} />
+      </GoogleMap>
+    );
+  }
+
+  const useMapsApiKey = () => {
+    const [key, setKey] = useState(undefined);
+
+    useEffect(() => {
+      const getKey = async () => {
+        let res = await SecretAPI.getGoogleTripApiKey();
+        setKey(res.data);
+      };
+      getKey();
+    }, []);
+
+    return key;
+  };
+
+  const MapLoader = ({ apiKey }) => {
+    const { isLoaded } = useJsApiLoader({
+      googleMapsApiKey: apiKey,
+    });
+
+    if (!isLoaded) return <div>Loading...</div>;
+
+    return <Map />;
+  };
+
+  const key = useMapsApiKey();
+
+  if (!key) return null;
 
   return (
-    <div style={backgroundStyle}>
+    <>
       <HeaderComponent />
-      <Grid>
-        <Paper elevation={20} style={paperStyle}>
-          <Grid align="left">
-            <Avatar style={avatarStyle}>
-              {" "}
-              <CommuteIcon style={iconStyle} />{" "}
-            </Avatar>
-            <h2 style={headerStyle}>Adding a trip</h2>
-            <Typography variant="caption">
-              Fill in all the fields below
-            </Typography>
-            <Divider style={dividerStyle} />
+      <div style={backgroundStyle}>
+        <Grid container>
+          <Grid item xs={12} md={3}>
+            <EnterAddressComponent
+              setLongitude={setLongitude}
+              setLatitude={setLatitude}
+              setCity={setStartingPoint}
+              placeholder="Enter the starting address"
+            />
+
+            <EnterAddressComponent
+              setLongitude={setLongitude}
+              setLatitude={setLatitude}
+              setCity={setDestination}
+              placeholder="Enter the destination address"
+            />
+
+            <TripPlanningSaveComponent
+              saveClicked={saveClicked}
+              errorText={errorText}
+            />
           </Grid>
-          <TextField
-            fullWidth
-            label="Trip Nr."
-            id="id"
-            placeholder="Trip number"
-            style={marginTop}
-          />
-          <FormControl fullWidth>
-            <InputLabel id="demo-simple-select-label" style={bigMarginTop}>
-              User
-            </InputLabel>
-            <Select
-              value={user}
-              label="User:"
-              onChange={handleUserChange}
-              style={bigMarginTop}
-            >
-              {users.map((user) => (
-                <MenuItem value={user.Id}>{user.Id}</MenuItem>
-              ))}
-            </Select>
-          </FormControl>
-          <FormControl fullWidth>
-            <InputLabel id="demo-simple-select-label" style={bigMarginTop}>
-              Vehicle Type
-            </InputLabel>
-            <Select
-              labelId="demo-simple-select-label"
-              value={vehicleType}
-              label="Vehicle type"
-              onChange={handleVehicleTypeChange}
-              style={bigMarginTop}
-            >
-              {vehicleTypes.map((type) => (
-                <MenuItem value={type}>{type}</MenuItem>
-              ))}
-            </Select>
-          </FormControl>
-          <FormControl fullWidth>
-            <InputLabel id="demo-simple-select-label" style={bigMarginTop}>
-              Driver
-            </InputLabel>
-            <Select
-              value={driver}
-              label="Driver:"
-              onChange={handleDriverChange}
-              style={bigMarginTop}
-            >
-              {drivers.map((driver) => (
-                <MenuItem value={driver.id}>{driver.id}</MenuItem>
-              ))}
-            </Select>
-          </FormControl>
-          <TextField
-            fullWidth
-            label="Starting point"
-            id="startingPoint"
-            placeholder="Enter the starting point"
-            style={marginTop}
-          />
-          <TextField
-            fullWidth
-            label="Destination point"
-            id="destination"
-            placeholder="Enter the destination point"
-            style={marginTop}
-          />
-          <TextField
-            fullWidth
-            label="Distance"
-            id="distance"
-            placeholder="Distance"
-            style={marginTop}
-          />
-          <TextField
-            fullWidth
-            label="Seat count"
-            id="seats"
-            placeholder="Enter the amount of seats"
-            style={marginTop}
-          />
-          <TextField
-            fullWidth
-            label="Hours"
-            id="hours"
-            placeholder="Enter the amount of seats"
-            style={marginTop}
-          />
-          <TextField
-            fullWidth
-            label="Minutes"
-            id="minutes"
-            placeholder="Enter the amount of minutes"
-            style={marginTop}
-          />
-          <Button onClick={SaveClicked} variant="contained" style={buttonStyle}>
-            Add
-          </Button>
-        </Paper>
-        <Paper elevation={20} style={widePaperStyle}>
-          <Grid align="left">
-            <Avatar style={avatarStyle}>
-              {" "}
-              <AddTaskIcon style={iconStyle} />{" "}
-            </Avatar>
-            <h2 style={headerStyle}>Saving a trip</h2>
-            <Typography variant="caption">Check trip details below</Typography>
-            <Divider style={dividerStyle} />
+          <Grid item xs={12} md={9}>
+            <MapLoader apiKey={key} style={{ zIndex: "-1" }} />
           </Grid>
-          <TextField
-            fullWidth
-            id="ROid"
-            placeholder="..."
-            style={marginTop}
-            disabled
-          />
-          <TextField
-            fullWidth
-            id="ROuser"
-            placeholder="..."
-            style={marginTop}
-            disabled
-          />
-          <TextField
-            fullWidth
-            id="ROvehicleType"
-            placeholder="..."
-            style={marginTop}
-            disabled
-          />
-          <TextField
-            fullWidth
-            id="ROdriver"
-            placeholder="..."
-            style={marginTop}
-            disabled
-          />
-          <TextField
-            fullWidth
-            id="ROstartingPoint"
-            placeholder="..."
-            style={marginTop}
-            disabled
-          />
-          <TextField
-            fullWidth
-            id="ROdestination"
-            placeholder="..."
-            style={marginTop}
-            disabled
-          />
-          <TextField
-            fullWidth
-            id="ROdistance"
-            placeholder="..."
-            style={marginTop}
-            disabled
-          />
-          <TextField
-            fullWidth
-            id="ROseats"
-            placeholder="..."
-            style={marginTop}
-            disabled
-          />
-          <TextField
-            fullWidth
-            id="ROhours"
-            placeholder="..."
-            style={marginTop}
-            disabled
-          />
-          <TextField
-            fullWidth
-            id="ROminutes"
-            placeholder="..."
-            style={marginTop}
-            disabled
-          />
-          <Button onClick={AddClicked} variant="contained" style={buttonStyle}>
-            Save
-          </Button>
-        </Paper>
-      </Grid>
-      <FooterComponent />
-    </div>
+        </Grid>
+        <FooterComponent /> 
+      </div>
+      
+    </>
   );
 };
 
