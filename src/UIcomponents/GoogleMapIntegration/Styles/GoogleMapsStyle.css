@@ -29,6 +29,7 @@
 }
 
 .button-save {
+    cursor: default;
     margin-left: 25px;
     margin-top: 4px;
     width: 60px;
@@ -38,6 +39,7 @@
 }
 
 .button-save:hover {
+    cursor: pointer;
     margin-top: 3px;
     border: 2px solid black;
 }
