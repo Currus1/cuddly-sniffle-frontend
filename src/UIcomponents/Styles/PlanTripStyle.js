@@ -11,7 +11,8 @@ export const fullPaperStyle = {
     height: "40px",
     marginLeft: "auto",
     marginRight: "auto",
-    marginTop: "20px"
+    marginTop: "20px",
+    borderRadius: "25px"
 }
 
 export const floatingGridStyle = {
@@ -59,5 +60,7 @@ export const fullGridStyle = {
 }
 
 export const buttonStyle = {
-    backgroundColor: "#0099cc"
+    backgroundColor: "transparent",
+    borderRadius: "20px",
+    border: "1px solid black"
 }

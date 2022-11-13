@@ -56,8 +56,8 @@ export default function TripPlanningSaveComponent({saveClicked, errorText}) {
                 <TextField
                   fullWidth
                   id="hours"
-                  placeholder="Enter amount of hours that the trip will take"
-                  label="amount of hours"
+                  placeholder="Enter an hour when the trip starts"
+                  label="Hours"
                 />
               </Grid>
             </Grid>
@@ -66,8 +66,8 @@ export default function TripPlanningSaveComponent({saveClicked, errorText}) {
                 <TextField
                   fullWidth
                   id="minutes"
-                  placeholder="Enter amount of minutes that the trip will take"
-                  label="amount of minutes"
+                  placeholder="Enter minutes when the trip starts"
+                  label="Minutes"
                 />
               </Grid>
             </Grid>

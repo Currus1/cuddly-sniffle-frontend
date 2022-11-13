@@ -6,6 +6,8 @@ import SecretAPI from "../../Services/SecretServices.js";
 import { GoogleMap, useJsApiLoader, Marker } from "@react-google-maps/api";
 import TripPlanningSaveComponent from "../ReusableComponents/TripPlanningSaveComponent";
 import EnterAddressComponent from "../ReusableComponents/EnterAddressComponent";
+import FooterComponent from "../BaseFooter/FooterComponent";
+import { backgroundStyle } from "../Styles/BackgroundStyle";
 
 const PlanningComponent = () => {
   const [errorText, setErrorText] = useState("");
@@ -87,33 +89,34 @@ const PlanningComponent = () => {
   return (
     <>
       <HeaderComponent />
+      <div style={backgroundStyle}>
+        <Grid container>
+          <Grid item xs={12} md={3}>
+            <EnterAddressComponent
+              setLongitude={setLongitude}
+              setLatitude={setLatitude}
+              setCity={setStartingPoint}
+              placeholder="Enter the starting address"
+            />
 
-      <Grid container>
-        <Grid item xs={12} md={3}>
-          
-          <EnterAddressComponent
-            setLongitude={setLongitude}
-            setLatitude={setLatitude}
-            setCity={setStartingPoint}
-            placeholder="Enter starting point"
-          />
+            <EnterAddressComponent
+              setLongitude={setLongitude}
+              setLatitude={setLatitude}
+              setCity={setDestination}
+              placeholder="Enter the destination address"
+            />
 
-          <EnterAddressComponent
-            setLongitude={setLongitude}
-            setLatitude={setLatitude}
-            setCity={setStartingPoint}
-            placeholder="Enter destination point"
-          />
-
-          <TripPlanningSaveComponent
-            saveClicked={saveClicked}
-            errorText={errorText}
-          />
+            <TripPlanningSaveComponent
+              saveClicked={saveClicked}
+              errorText={errorText}
+            />
+          </Grid>
+          <Grid item xs={12} md={9}>
+            <MapLoader apiKey={key} style={{ zIndex: "-1" }} />
+          </Grid>
         </Grid>
-        <Grid item xs={12} md={9}>
-          <MapLoader apiKey={key} style={{ zIndex: "-1" }} />
-        </Grid>
-      </Grid>
+      </div>
+      <FooterComponent />
     </>
   );
 };
