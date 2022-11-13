@@ -115,8 +115,9 @@ const PlanningComponent = () => {
             <MapLoader apiKey={key} style={{ zIndex: "-1" }} />
           </Grid>
         </Grid>
+        <FooterComponent /> 
       </div>
-      <FooterComponent />
+      
     </>
   );
 };
