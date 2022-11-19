@@ -18,27 +18,28 @@ import "../Styles/PageStyle.css";
 import twitter from "../../Images/twitter.png";
 import facebook from "../../Images/facebook.png";
 import instagram from "../../Images/instagram.png";
+import currus from "../../Images/currusLogo/currus_transparent.png";
 
 const FooterComponent = () => (
   <Grid container style={footerStyle}>
     <Grid item xs={12} md={3} style={footerLogoStyle}>
-      CURRUS
+    <img src={currus} className="footerLogo"></img>
       <hr style={footerHr} />
       <p>Stay In Touch!</p>
       <Grid container style={footerLogoIConsStyle}>
         <Grid item xs={12} md={3}>
           <a href="#">
-            <img src={instagram} alt="instagram" />
+            <img src={instagram} alt="instagram" className="footerSocialIcons" />
           </a>
         </Grid>
         <Grid item xs={12} md={3}>
           <a href="#">
-            <img src={facebook} alt="facebook" />
+            <img src={facebook} alt="facebook" className="footerSocialIcons" />
           </a>
         </Grid>
         <Grid item xs={12} md={3}>
           <a href="#">
-            <img src={twitter} alt="twitter" />
+            <img src={twitter} alt="twitter" className="footerSocialIcons" />
           </a>
         </Grid>
       </Grid>
