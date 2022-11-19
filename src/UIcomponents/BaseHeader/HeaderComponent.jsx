@@ -2,16 +2,11 @@ import React, { useState } from "react";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
-import IconButton from "@mui/material/IconButton";
-import Typography from "@mui/material/Typography";
-import Container from "@mui/material/Container";
-import Avatar from "@mui/material/Avatar";
-import Button from "@mui/material/Button";
-import Tooltip from "@mui/material/Tooltip";
-import MenuItem from "@mui/material/MenuItem";
-import AdbIcon from "@mui/icons-material/Adb";
 import DrawerComponent from "./DrawerComponent";
 import "./Styles/HeaderStyle.css";
+import currus from "../../Images/currusLogo/Currus_3.png";
+
+
 
 const HeaderComponent = () => {
   const [open, setOpen] = useState(false);
@@ -25,7 +20,7 @@ const HeaderComponent = () => {
       <AppBar position="static">
         <Toolbar className="header-bgcolor">
           <DrawerComponent></DrawerComponent>
-          <Typography color="inherit">CURRUS</Typography>
+          <img src={currus} className="logo"></img>
         </Toolbar>
       </AppBar>
     </Box>

@@ -88,8 +88,8 @@ const PlanningComponent = () => {
 
   return (
     <>
-      <HeaderComponent />
       <div style={backgroundStyle}>
+      <HeaderComponent />
         <Grid container>
           <Grid item xs={12} md={3}>
             <EnterAddressComponent

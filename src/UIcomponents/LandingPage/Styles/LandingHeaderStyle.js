@@ -13,6 +13,8 @@ export const toolBar = {
 }
 
 export const appBar = {
+    width: "100%",
+    backgroundColor: "black",
     background: "none", 
     fontFamily: "Nunito Sans" 
 }
