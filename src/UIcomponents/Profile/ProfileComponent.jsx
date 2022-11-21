@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { paperStyle, errorStyle } from "../Styles/muiStyle.js";
 import { Grid, Paper } from "@material-ui/core";
-import TripAPI from "../../TripServices/TripAPI";
+import TripAPI from "../../Services/TripServices/TripAPI.js";
 import ProfileBannerDesign from "../ReusableComponents/ProfileBannerDesign.jsx";
-import AddProfileTable from "../ReusableComponents/AddProfileTable.jsx";
-import UserAPI from "../../UserServices/UserAPI.js";
+import ProfileTable from "./ProfileTable.jsx";
+import UserAPI from "../../Services/UserServices/UserAPI.js";
 import HeaderComponent from "../BaseHeader/HeaderComponent.jsx";
 import { backgroundStyle } from "../Styles/BackgroundStyle.js";
 import FooterComponent from "../BaseFooter/FooterComponent.jsx";
@@ -93,7 +93,7 @@ const ProfileComponent = () => {
             headerText={"Teste Testaviciene"}
             smallText={"See and change your profile information"}
           />
-          <AddProfileTable
+          <ProfileTable
             saveClicked={SaveButtonClicked}
             becomeADriverClicked={BecomeADriverClicked}
             vehicleType={vehicleType}
@@ -104,7 +104,7 @@ const ProfileComponent = () => {
             email={response.email}
             vehicleTypes={vehicleTypes}
             handleVehicleTypeChange={handleVehicleTypeChange}
-          ></AddProfileTable>
+          ></ProfileTable>
           <h5 style={errorStyle}>{errorText}</h5>
         </Paper>
       </Grid>

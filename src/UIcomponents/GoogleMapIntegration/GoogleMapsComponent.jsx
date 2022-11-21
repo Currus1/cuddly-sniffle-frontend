@@ -1,7 +1,7 @@
 import React, { useMemo, useState, useEffect } from "react";
 import { GoogleMap, useJsApiLoader, Marker } from "@react-google-maps/api";
 import "./Styles/GoogleMapsStyle.css";
-import SecretAPI from "../../Services/SecretServices.js";
+import SecretAPI from "../../Services/SecretServices/SecretServices.js";
 import GoogleAutoComplete from "./GoogleAutoComplete.jsx";
 import { backgroundStyle } from "../Styles/BackgroundStyle";
 import HeaderComponent from "../BaseHeader/HeaderComponent";

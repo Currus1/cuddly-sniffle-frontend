@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import TripAPI from "../../TripServices/TripAPI";
+import TripAPI from "../../Services/TripServices/TripAPI.js";
 import { Container, Grid, Paper, Button } from "@material-ui/core";
 import FormControl from "@mui/material/FormControl";
 import InputLabel from "@mui/material/InputLabel";
