@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import TripAPI from "../../TripServices/TripAPI.js";
+import TripAPI from "../../Services/TripServices/TripAPI.js";
 import TripView from "./TripView";
 import "../Styles/PageStyle.css";
 import FooterComponent from "../BaseFooter/FooterComponent.jsx";

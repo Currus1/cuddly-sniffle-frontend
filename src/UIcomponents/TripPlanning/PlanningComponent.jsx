@@ -1,11 +1,11 @@
 import { React, useMemo, useState, useEffect } from "react";
 import { Grid } from "@material-ui/core";
 import HeaderComponent from "../BaseHeader/HeaderComponent";
-import TripAPI from "../../TripServices/TripAPI.js";
-import SecretAPI from "../../Services/SecretServices.js";
+import TripAPI from "../../Services/TripServices/TripAPI.js";
+import SecretAPI from "../../Services/SecretServices/SecretServices.js";
 import { GoogleMap, useJsApiLoader, Marker } from "@react-google-maps/api";
-import TripPlanningSaveComponent from "../ReusableComponents/TripPlanningSaveComponent";
-import EnterAddressComponent from "../ReusableComponents/EnterAddressComponent";
+import TripPlanningSaveComponent from "./TripPlanningSaveComponent";
+import EnterAddressComponent from "./EnterAddressComponent";
 import FooterComponent from "../BaseFooter/FooterComponent";
 import { backgroundStyle } from "../Styles/BackgroundStyle";
 
@@ -41,7 +41,7 @@ const PlanningComponent = () => {
 
       setErrorText("Trip was created!");
     } else {
-      setErrorText("error with given data");
+      setErrorText("Error with given data");
     }
   }
 
@@ -115,9 +115,8 @@ const PlanningComponent = () => {
             <MapLoader apiKey={key} style={{ zIndex: "-1" }} />
           </Grid>
         </Grid>
-        <FooterComponent /> 
+        <FooterComponent />
       </div>
-      
     </>
   );
 };
