@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import logo from "../../Images/travel.png";
 import TripLocation from "./TripLocation";
 import {
@@ -7,11 +7,11 @@ import {
   ListItemAvatar,
   ListItem,
 } from "@mui/material";
-import "./Styles/TripHistoryStyle.css";
+import styles from "./Styles/TripHistoryStyle.module.css";
 
-const TripView = ({ id, dest, price }) => {
+const TripView = ({ dest, price }) => {
   return (
-    <div className="max-width">
+    <div className={styles.max_width}>
       <ListItem>
         <ListItemButton>
           <ListItemAvatar>

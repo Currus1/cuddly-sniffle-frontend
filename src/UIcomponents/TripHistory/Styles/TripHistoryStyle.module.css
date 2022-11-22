@@ -1,8 +1,8 @@
-.max-width {
+.max_width {
     width: 100%;
 }
 
-.center-content {
+.center_content {
     justify-content: center;
     display: flex;
 }
@@ -25,10 +25,10 @@
 
 .h1 {
     justify-content: center;
-     display: flex;
+    display: flex;
 }
 
-.text-center {
+.text_center {
     text-align: center;
 }
 

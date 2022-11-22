@@ -6,8 +6,8 @@ import HeaderComponent from "../BaseHeader/HeaderComponent.jsx";
 import backgroundStyle from "../Styles/BackgroundStyle.module.css";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
-import { Container, Grid } from "@mui/material";
-import "./Styles/TripHistoryStyle.css";
+import { Container } from "@mui/material";
+import styles from "./Styles/TripHistoryStyle.module.css";
 
 const TripComponent = () => {
   const [data, setData] = useState([]);
@@ -22,9 +22,9 @@ const TripComponent = () => {
       style={{ display: "flex", flexDirection: "column" }}
     >
       <HeaderComponent />
-      <Container className="flex">
-        <h1 className="h1">Trip History</h1>
-        <List className="container list">
+      <Container className={styles.flex}>
+        <h1 className={styles.h1}>Trip History</h1>
+        <List className={styles.list}>
           {data.length > 0 ? (
             data.map((trip) => (
               <ListItem>
@@ -35,10 +35,10 @@ const TripComponent = () => {
               </ListItem>
             ))
           ) : (
-            <div className="text-center">
+            <div className={styles.text_center}>
               <h2>You have no trips yet</h2>
               <h3>
-                <a className="a" href="/trips">
+                <a className={styles.a} href="/trips">
                   Join a trip now
                 </a>
               </h3>
