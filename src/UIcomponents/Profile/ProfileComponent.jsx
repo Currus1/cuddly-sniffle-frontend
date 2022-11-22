@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { paperStyle, errorStyle } from "../Styles/muiStyle.js";
+import styles from "./Styles/ProfileStyle.module.css";
 import { Grid, Paper } from "@material-ui/core";
 import TripAPI from "../../Services/TripServices/TripAPI.js";
 import ProfileBannerDesign from "../ReusableComponents/ProfileBannerDesign.jsx";
 import ProfileTable from "./ProfileTable.jsx";
 import UserAPI from "../../Services/UserServices/UserAPI.js";
 import HeaderComponent from "../BaseHeader/HeaderComponent.jsx";
-import { backgroundStyle } from "../Styles/BackgroundStyle.js";
+import backgroundStyle from "../Styles/BackgroundStyle.module.css";
 import FooterComponent from "../BaseFooter/FooterComponent.jsx";
 
 const ProfileComponent = () => {
@@ -85,10 +85,10 @@ const ProfileComponent = () => {
   }
 
   return (
-    <div style={backgroundStyle}>
+    <div className={backgroundStyle.bg}>
       <HeaderComponent />
       <Grid>
-        <Paper elevation={20} style={paperStyle}>
+        <Paper elevation={20} className={styles.paperStyle}>
           <ProfileBannerDesign
             headerText={"Teste Testaviciene"}
             smallText={"See and change your profile information"}
@@ -105,7 +105,7 @@ const ProfileComponent = () => {
             vehicleTypes={vehicleTypes}
             handleVehicleTypeChange={handleVehicleTypeChange}
           ></ProfileTable>
-          <h5 style={errorStyle}>{errorText}</h5>
+          <h5 className={styles.errorStyle}>{errorText}</h5>
         </Paper>
       </Grid>
       <FooterComponent />

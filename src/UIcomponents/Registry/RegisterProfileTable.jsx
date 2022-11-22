@@ -1,10 +1,6 @@
 import React from "react";
 import { Grid, Button, TextField } from "@material-ui/core";
-import {
-  saveButtonStyle,
-  textFieldStyle,
-  marginTop,
-} from "../Styles/CustomLowButtonStyle";
+import styles from "./Styles/RegistryStyle.module.css";
 
 export default function RegisterProfileTable({
   buttonText,
@@ -16,7 +12,7 @@ export default function RegisterProfileTable({
         <Grid item xs={12} md={12}>
           <TextField
             fullWidth
-            style={marginTop}
+            className={styles.marginTop}
             label="Name"
             id="Name"
             placeholder="Enter your name"
@@ -25,7 +21,7 @@ export default function RegisterProfileTable({
         <Grid item xs={12} md={12}>
           <TextField
             fullWidth
-            style={marginTop}
+            className={styles.marginTop}
             label="Surname"
             id="Surname"
             placeholder="Enter your surname"
@@ -33,7 +29,7 @@ export default function RegisterProfileTable({
         </Grid>
         <Grid item xs={12} md={6} align="left">
           <TextField
-            style={textFieldStyle}
+            className={styles.textFieldStyle}
             id="Birthdate"
             label="Birthday"
             type="date"
@@ -45,7 +41,7 @@ export default function RegisterProfileTable({
         </Grid>
         <Grid item xs={12} md={6} align="right">
           <TextField
-            style={textFieldStyle}
+            className={styles.textFieldStyle}
             label="Phone number"
             id="PhoneNumber"
             placeholder="Enter your phone number"
@@ -53,7 +49,7 @@ export default function RegisterProfileTable({
         </Grid>
         <Grid item xs={12} md={12}>
           <TextField
-            style={marginTop}
+            className={styles.marginTop}
             fullWidth
             label="Email"
             id="Email"
@@ -66,7 +62,7 @@ export default function RegisterProfileTable({
         <Grid item xs={12} md={12} align="right">
           <Button
             fullWidth
-            style={saveButtonStyle}
+            className={styles.saveButtonStyle}
             onClick={buttonClickedEvent}
           >
             {buttonText}

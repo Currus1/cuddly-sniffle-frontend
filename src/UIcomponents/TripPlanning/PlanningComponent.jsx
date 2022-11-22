@@ -7,7 +7,7 @@ import { GoogleMap, useJsApiLoader, Marker } from "@react-google-maps/api";
 import TripPlanningSaveComponent from "./TripPlanningSaveComponent";
 import EnterAddressComponent from "./EnterAddressComponent";
 import FooterComponent from "../BaseFooter/FooterComponent";
-import { backgroundStyle } from "../Styles/BackgroundStyle";
+import backgroundStyle from "../Styles/BackgroundStyle.module.css";
 
 const PlanningComponent = () => {
   const [errorText, setErrorText] = useState("");
@@ -89,7 +89,7 @@ const PlanningComponent = () => {
   return (
     <>
       <HeaderComponent />
-      <div style={backgroundStyle}>
+      <div className={backgroundStyle.bg}>
         <Grid container>
           <Grid item xs={12} md={3}>
             <EnterAddressComponent

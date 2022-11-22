@@ -4,11 +4,11 @@ import { makeStyles } from "@material-ui/styles";
 import HeaderComponent from "../BaseHeader/HeaderComponent";
 import FooterComponent from "../BaseFooter/FooterComponent";
 import TripListComponent from "./TripListComponent";
-import { backgroundStyle } from "../Styles/BackgroundStyle";
+import backgroundStyle from "../Styles/BackgroundStyle.module.css";
 
 const TripsComponent = () => {
   return (
-    <div style={backgroundStyle}>
+    <div className={backgroundStyle.bg}>
       <HeaderComponent />
       <TripListComponent />
       <FooterComponent />

@@ -1,0 +1,25 @@
+.iconStyle {
+    width: 100px;
+    height: 100px;
+}
+
+.avatarStyle {
+    width: 100px;
+    height: 100px;
+    background-color: #0099cc;
+}
+
+.h2Style {
+    font-size: 25px;
+    margin-right: 80px;
+    margin-top: 28px;
+}
+
+.lowMarginTop {
+    margin-top: -15px;
+}
+
+.dividerStyle {
+    margin-top: 10;
+    background-color: black;
+}

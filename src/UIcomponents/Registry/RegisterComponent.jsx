@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import { Grid, Paper } from "@material-ui/core";
-import { paperStyle, errorStyle } from "../Styles/muiStyle.js";
+import styles from "./Styles/RegistryStyle.module.css";
 import ProfileBannerDesign from "../ReusableComponents/ProfileBannerDesign.jsx";
 import RegisterProfileTable from "./RegisterProfileTable.jsx";
 import UserAPI from "../../Services/UserServices/UserAPI.js";
 import HeaderComponent from "../BaseHeader/HeaderComponent.jsx";
 import FooterComponent from "../BaseFooter/FooterComponent.jsx";
-import { backgroundStyle } from "../Styles/BackgroundStyle.js";
+import backgroundStyle from "../Styles/BackgroundStyle.module.css";
 
 const RegisterComponent = () => {
   const [user] = useState([]);
@@ -37,10 +37,10 @@ const RegisterComponent = () => {
   }
 
   return (
-    <div style={backgroundStyle}>
+    <div className={backgroundStyle.bg}>
       <HeaderComponent />
       <Grid>
-        <Paper style={paperStyle}>
+        <Paper className={styles.paperStyle}>
           <ProfileBannerDesign
             headerText={"Create an Account"}
             smallText={"Enter your user details below"}
@@ -49,7 +49,7 @@ const RegisterComponent = () => {
             buttonText={"Join Currus family!"}
             buttonClickedEvent={registerClicked}
           ></RegisterProfileTable>
-          <h5 style={errorStyle}>{errorText}</h5>
+          <h5 className={styles.errorStyle}>{errorText}</h5>
         </Paper>
       </Grid>
       <FooterComponent />
