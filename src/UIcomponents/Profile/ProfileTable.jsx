@@ -1,11 +1,6 @@
 import React from "react";
 import { Grid, Button, TextField } from "@material-ui/core";
-import {
-  driverButtonStyle,
-  saveButtonStyle,
-  textFieldStyle,
-  marginTop,
-} from "../Styles/CustomLowButtonStyle";
+import styles from "./Styles/ProfileStyle.module.css";
 import InputLabel from "@mui/material/InputLabel";
 import FormControl from "@mui/material/FormControl";
 import MenuItem from "@mui/material/MenuItem";
@@ -28,7 +23,7 @@ export default function AddProfileTable({
       <Grid container>
         <Grid item xs={12} md={6}>
           <TextField
-            style={textFieldStyle}
+            className={styles.textFieldStyle}
             id="Name"
             value={name}
             placeholder="Enter your name"
@@ -36,7 +31,7 @@ export default function AddProfileTable({
         </Grid>
         <Grid item xs={12} md={6}>
           <TextField
-            style={textFieldStyle}
+            className={styles.textFieldStyle}
             id="Surname"
             value={surname}
             placeholder="Enter your surname"
@@ -44,7 +39,7 @@ export default function AddProfileTable({
         </Grid>
         <Grid item xs={12} md={6} align="left">
           <TextField
-            style={textFieldStyle}
+            className={styles.textFieldStyle}
             id="Birthdate"
             type="date"
             defaultValue="1999-12-25"
@@ -56,7 +51,7 @@ export default function AddProfileTable({
         </Grid>
         <Grid item xs={12} md={6} align="right">
           <TextField
-            style={textFieldStyle}
+            className={styles.textFieldStyle}
             id="PhoneNumber"
             value={phoneNumber}
             placeholder="Enter your phone number"
@@ -64,7 +59,7 @@ export default function AddProfileTable({
         </Grid>
         <Grid item xs={12} md={12}>
           <TextField
-            style={marginTop}
+            className={styles.marginTop}
             fullWidth
             id="Email"
             value={email}
@@ -75,7 +70,11 @@ export default function AddProfileTable({
 
       <Grid container>
         <Grid item xs={12} md={12} align="right">
-          <Button fullWidth style={saveButtonStyle} onClick={saveClicked}>
+          <Button
+            fullWidth
+            className={styles.saveButtonStyle}
+            onClick={saveClicked}
+          >
             Save Changes!
           </Button>
         </Grid>
@@ -84,7 +83,10 @@ export default function AddProfileTable({
       <Grid container>
         <Grid item xs={12} md={12}>
           <FormControl fullWidth>
-            <InputLabel id="demo-simple-select-label" style={marginTop}>
+            <InputLabel
+              id="demo-simple-select-label"
+              className={styles.marginTop}
+            >
               Vehicle Type
             </InputLabel>
             <Select
@@ -93,7 +95,7 @@ export default function AddProfileTable({
               label="Vehicle type"
               value={vehicleType}
               onChange={handleVehicleTypeChange}
-              style={marginTop}
+              className={styles.marginTop}
             >
               {vehicleTypes.map((type) => (
                 <MenuItem value={type}>{type}</MenuItem>
@@ -107,13 +109,13 @@ export default function AddProfileTable({
             label="License number"
             id="LicenseNumber"
             placeholder="Enter your license number"
-            style={marginTop}
+            className={styles.marginTop}
           />
         </Grid>
         <Grid item xs={12} md={12}>
           <Button
             fullWidth
-            style={driverButtonStyle}
+            className={styles.driverButtonStyle}
             onClick={becomeADriverClicked}
           >
             Become a Driver!

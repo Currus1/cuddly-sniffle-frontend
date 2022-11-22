@@ -1,4 +1,4 @@
-.page-container {
+.page_container {
     position: relative;
     min-height: 100vh;
     display: flex;
@@ -8,7 +8,7 @@
     font-family: "Nunito Sans";
 }
 
-.half-page-container {
+.half_page_container {
     position: relative;
     min-height: 50vh;
     display: flex;
@@ -16,21 +16,4 @@
     align-items: center;
     height: 50vh;
     font-family: "Nunito Sans";
-}
-
-.page-container-no-centering {
-    min-height: 100vh;
-    height: 100vh;
-    font-family: "Nunito Sans";
-}
-
-.centering {
-    display: flex;
-    justify-content: center;
-}
-
-.grid-centering {
-    display: flex;
-    justify-content: center;
-    min-height: 54vh;
 }

@@ -2,7 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { AppBar, IconButton } from "@material-ui/core";
 import SortIcon from "@material-ui/icons/Sort";
-import "../Styles/PageStyle.css";
+import styles from "./Styles/PageStyle.module.css";
 import Toolbar from "@mui/material/Toolbar";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import Collapse from "@mui/material/Collapse";
@@ -10,7 +10,6 @@ import { Link as Scroll } from "react-scroll";
 import {
   titleHeader,
   titleText,
-  toolBar,
   appBar,
   sortIcon,
   centerText,
@@ -25,7 +24,7 @@ const HeaderComponent = () => {
     setChecked(true);
   }, []);
   return (
-    <div className="page-container" id="header">
+    <div className={styles.page_container} id="header">
       <AppBar style={appBar} elevation={0}>
         <Toolbar>
           <h1 style={titleHeader}>

@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from "react";
 import TripAPI from "../../Services/TripServices/TripAPI.js";
 import TripView from "./TripView";
-import "../Styles/PageStyle.css";
 import FooterComponent from "../BaseFooter/FooterComponent.jsx";
 import HeaderComponent from "../BaseHeader/HeaderComponent.jsx";
-import { backgroundStyle } from "../Styles/BackgroundStyle";
+import backgroundStyle from "../Styles/BackgroundStyle.module.css";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import { Container, Grid } from "@mui/material";
@@ -19,7 +18,8 @@ const TripComponent = () => {
 
   return (
     <div
-      style={{ ...backgroundStyle, display: "flex", flexDirection: "column" }}
+      className={backgroundStyle.bg}
+      style={{ display: "flex", flexDirection: "column" }}
     >
       <HeaderComponent />
       <Container className="flex">

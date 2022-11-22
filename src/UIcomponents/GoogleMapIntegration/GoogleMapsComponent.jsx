@@ -3,7 +3,7 @@ import { GoogleMap, useJsApiLoader, Marker } from "@react-google-maps/api";
 import "./Styles/GoogleMapsStyle.css";
 import SecretAPI from "../../Services/SecretServices/SecretServices.js";
 import GoogleAutoComplete from "./GoogleAutoComplete.jsx";
-import { backgroundStyle } from "../Styles/BackgroundStyle";
+import backgroundStyle from "../Styles/BackgroundStyle.module.css";
 import HeaderComponent from "../BaseHeader/HeaderComponent";
 import FooterComponent from "../BaseFooter/FooterComponent";
 const useMapsApiKey = () => {
@@ -26,7 +26,7 @@ export default function GoogleMapsComponent() {
   if (!key) return null;
 
   return (
-    <div style={backgroundStyle}>
+    <div className={backgroundStyle.bg}>
       <HeaderComponent />
       <div className="split-screen">
         <div className="top-pane">

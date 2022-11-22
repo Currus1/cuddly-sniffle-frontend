@@ -1,16 +1,14 @@
-import { makeStyles } from "@material-ui/styles";
 import CssBaseline from "@mui/material/CssBaseline/CssBaseline";
-import React, { useState, useEffect } from "react";
-import backgroundImage from "../../Images/landing_background.jpg";
+import React from "react";
 import LandingHeaderComponent from "./LandingHeaderComponent";
 import FooterComponent from "../BaseFooter/FooterComponent";
 import LandingPageCardsComponent from "./LandingPageCardsComponent";
 import SignUpComponent from "./SignupComponent";
+import backgroundStyle from "../Styles/BackgroundStyle.module.css";
 
 const HomePageComponent = () => {
-  const classes = useStyles();
   return (
-    <div className={classes.root}>
+    <div className={backgroundStyle.bg}>
       <CssBaseline />
       <LandingHeaderComponent />
       <LandingPageCardsComponent />
@@ -19,15 +17,5 @@ const HomePageComponent = () => {
     </div>
   );
 };
-
-const useStyles = makeStyles((theme) => ({
-  root: {
-    minHeight: "100vh",
-    backgroundImage: `url(${backgroundImage})`,
-    backgroundRepeat: "repeat",
-    backgroundSize: "cover",
-    height: "100%",
-  },
-}));
 
 export default HomePageComponent;

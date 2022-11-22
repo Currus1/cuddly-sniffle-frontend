@@ -1,0 +1,33 @@
+.paperStyle {
+    width: 30%;
+    padding: 30px 20px;
+    margin: 100px auto;
+}
+  
+.errorStyle {
+    color: green;
+    text-align: center;
+    margin-top: 20px;
+}
+  
+.driverButtonStyle {
+    color: #0099cc;
+    border: 2px solid #0099cc;
+    padding: 10px;
+    margin-top: 15px;
+}
+
+.marginTop {
+    margin-top: 15px;
+}
+
+.saveButtonStyle {
+    background-color: #0099cc;
+    padding: 10px;
+    margin-top: 15px;
+}
+
+.textFieldStyle {
+    margin-top: 20px;
+    width: 95%;
+}

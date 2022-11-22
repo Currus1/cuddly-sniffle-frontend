@@ -8,41 +8,29 @@ import {
   Button,
 } from "@material-ui/core";
 import ModeOfTravelIcon from "@mui/icons-material/ModeOfTravel";
-import {
-  h3HeaderStyle,
-  fixedPaperStyle,
-  tripSettingsItem,
-  buttonStyle,
-  floatingGridStyle,
-} from "../Styles/PlanTripStyle";
-import {
-  avatarStyle,
-  iconStyle,
-  padding,
-  errorStyle,
-} from "../Styles/muiStyle.js";
+import styles from "./Styles/PlanTripStyle.module.css";
 
 export default function TripPlanningSaveComponent({ saveClicked, errorText }) {
   return (
     <>
-      <Grid container style={floatingGridStyle}>
-        <Paper elevation={20} style={fixedPaperStyle}>
-          <Grid container style={padding}>
+      <Grid container className={styles.floatingGridStyle}>
+        <Paper elevation={20} className={styles.fixedPaperStyle}>
+          <Grid container className={styles.padding}>
             <Grid item xs={12} md={1}>
-              <Avatar style={avatarStyle}>
+              <Avatar className={styles.avatarStyle}>
                 {" "}
-                <ModeOfTravelIcon style={iconStyle} />{" "}
+                <ModeOfTravelIcon className={styles.iconStyle} />{" "}
               </Avatar>
             </Grid>
             <Grid item xs={12} md={11}>
-              <h3 style={h3HeaderStyle}>Plan a New Trip!</h3>
+              <h3 className={styles.h3}>Plan a New Trip!</h3>
             </Grid>
             <Typography variant="caption">
               Fill in all the fields below
             </Typography>
           </Grid>
           <Grid container>
-            <Grid item xs={12} md={10} style={tripSettingsItem}>
+            <Grid item xs={12} md={10} className={styles.tripSettingsItem}>
               <TextField
                 fullWidth
                 id="seats"
@@ -52,7 +40,7 @@ export default function TripPlanningSaveComponent({ saveClicked, errorText }) {
             </Grid>
           </Grid>
           <Grid container>
-            <Grid item xs={12} md={10} style={tripSettingsItem}>
+            <Grid item xs={12} md={10} className={styles.tripSettingsItem}>
               <TextField
                 fullWidth
                 id="hours"
@@ -62,7 +50,7 @@ export default function TripPlanningSaveComponent({ saveClicked, errorText }) {
             </Grid>
           </Grid>
           <Grid container>
-            <Grid item xs={12} md={10} style={tripSettingsItem}>
+            <Grid item xs={12} md={10} className={styles.tripSettingsItem}>
               <TextField
                 fullWidth
                 id="minutes"
@@ -72,11 +60,15 @@ export default function TripPlanningSaveComponent({ saveClicked, errorText }) {
             </Grid>
           </Grid>
           <Grid container>
-            <Grid item xs={12} md={10} style={tripSettingsItem}>
-              <Button style={buttonStyle} onClick={saveClicked} fullWidth>
+            <Grid item xs={12} md={10} className={styles.tripSettingsItem}>
+              <Button
+                className={styles.buttonStyle}
+                onClick={saveClicked}
+                fullWidth
+              >
                 Save The Trip!
               </Button>
-              <h5 style={errorStyle}>{errorText}</h5>
+              <h5 className={styles.errorStyle}>{errorText}</h5>
             </Grid>
           </Grid>
         </Paper>

@@ -1,12 +1,11 @@
-import React, { useState, useEffect } from "react";
-import "../Styles/PageStyle.css";
-import { Grid, Paper, Typography } from "@material-ui/core";
+import React from "react";
+import styles from "./Styles/PageStyle.module.css";
 import { shadowPropButton, arrowProp } from "./Styles/AttributeStyle";
 import TrendingUpIcon from "@mui/icons-material/TrendingUp";
 
 const HomePageCardsComponent = () => {
   return (
-    <div className="half-page-container">
+    <div className={styles.half_page_container}>
       <div>
         <h1>Ready to carpool?</h1>
         <a href="/register" style={shadowPropButton}>

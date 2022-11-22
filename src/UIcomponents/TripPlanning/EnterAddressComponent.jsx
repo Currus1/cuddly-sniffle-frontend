@@ -1,20 +1,21 @@
 import { React } from "react";
-import {
-  fullPaperStyle,
-  gridChildStyle,
-  textFieldStyle,
-} from "../Styles/PlanTripStyle";
+import styles from "./Styles/PlanTripStyle.module.css";
 import { Grid, Paper } from "@material-ui/core";
 import GoogleAutoComplete from "../GoogleMapIntegration/GoogleAutoComplete";
 
-export default function EnterAddressComponent({setLongitude, setLatitude, setCity, placeholder}) {
+export default function EnterAddressComponent({
+  setLongitude,
+  setLatitude,
+  setCity,
+  placeholder,
+}) {
   return (
     <>
-      <Paper elevation={20} style={fullPaperStyle}>
-        <Grid container style={gridChildStyle}>
+      <Paper elevation={20} className={styles.fullPaperStyle}>
+        <Grid container className={styles.gridChildStyle}>
           <Grid item xs={12} md={8}>
             <GoogleAutoComplete
-              style={textFieldStyle}
+              className={styles.textFieldStyle}
               setLongitude={setLongitude}
               setLatitude={setLatitude}
               setCity={setCity}
