@@ -1,0 +1,130 @@
+.footerStyle {
+    text-align: center;
+    padding: 20px;
+    bottom: 0;
+    width: 100%;
+    font-family: "Nunito Sans";
+}
+
+.footerLogoStyle {
+    height: 250px;
+    font-size: 70px;
+    line-height: 75px;
+}
+
+.footerLogoIconsStyle {
+    width: 55%;
+    margin-left: 30%;
+    margin-right: auto;
+    font-size: 70px;
+    font-weight: bold;
+    line-height: 75px;
+}
+
+.footerLicensesStyle {
+    height: 250px;
+    font-size: 20px;
+    padding-left: 10px;
+    padding-top: 5px;
+    text-align: left;
+}
+
+.footerCurrusFeatures {
+    height: 250px;
+    font-size: 20px;
+    padding-left: 10px;
+    padding-top: 5px;
+    text-align: left;
+}
+
+.footerCompanyStyle {
+    height: 250px;
+    font-size: 20px;
+    padding-left: 10px;
+    padding-top: 5px;
+    text-align: left;
+}
+
+.footerCopyrightStyle {
+    text-align: center;
+}
+
+.footerTextColorGreen {
+    color: #77A479;
+    font-family: "Nunito Sans";
+}
+
+.footerTextColorRed {
+    color: #A67777;
+    font-family: "Nunito Sans";
+}
+
+.footerTextColorYellow {
+    color: #A2A678;
+    font-family: "Nunito Sans";
+}
+
+.footerHr {
+    border: 1px solid black;
+    width: 55%;
+}
+
+a:link {
+    text-decoration: none;
+}
+  
+a:visited {
+    text-decoration: none;
+}
+  
+a:hover {
+    text-decoration: none;
+    color: #212529;
+    font-weight: bold;
+    font-size: 18px;
+}
+  
+a:active {
+    text-decoration: none;
+}
+  
+  
+html, body {
+      height: 100%;
+}
+  
+body {
+    font-family: "Nunito Sans";
+}
+  
+p {
+    font-size: 20px;
+    margin-bottom: -10px;
+    margin-top: -20px;
+}
+  
+h3,h2 {
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+  
+a,address {
+    color: white;
+    font-size: 17px;
+    font-weight: bold;
+}
+  
+address {
+    color: #212529;
+    margin-top: 110px;
+}
+  
+img {
+    width: 50px;
+}
+  
+img:hover {
+    -ms-transform: scale(1.1); /* IE 9 */
+    -webkit-transform: scale(1.1); /* Safari 3-8 */
+    transform: scale(1.1);
+}

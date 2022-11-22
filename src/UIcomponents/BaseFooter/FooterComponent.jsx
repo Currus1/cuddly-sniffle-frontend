@@ -1,30 +1,17 @@
 import { Grid } from "@material-ui/core";
 import React from "react";
-import {
-  footerStyle,
-  footerLogoStyle,
-  footerLicensesStyle,
-  footerCurrusFeatures,
-  footerCompanyStyle,
-  footerLogoIConsStyle,
-  footerCopyrightStyle,
-  footerTextColorYellow,
-  footerTextColorRed,
-  footerTextColorGreen,
-  footerHr,
-} from "./Styles/FooterStyle.js";
-import "./Styles/FooterStyle.css";
+import styles from "./Styles/FooterStyle.module.css";
 import twitter from "../../Images/twitter.png";
 import facebook from "../../Images/facebook.png";
 import instagram from "../../Images/instagram.png";
 
 const FooterComponent = () => (
-  <Grid container style={footerStyle}>
-    <Grid item xs={12} md={3} style={footerLogoStyle}>
+  <Grid container className={styles.footerStyle}>
+    <Grid item xs={12} md={3} className={styles.footerLogoStyle}>
       CURRUS
-      <hr style={footerHr} />
+      <hr className={styles.footerHr} />
       <p>Stay In Touch!</p>
-      <Grid container style={footerLogoIConsStyle}>
+      <Grid container className={styles.footerLogoIConsStyle}>
         <Grid item xs={12} md={3}>
           <a href="#">
             <img src={instagram} alt="instagram" />
@@ -42,80 +29,80 @@ const FooterComponent = () => (
         </Grid>
       </Grid>
     </Grid>
-    <Grid item xs={12} md={3} style={footerLicensesStyle}>
+    <Grid item xs={12} md={3} className={styles.footerLicensesStyle}>
       <h3>Legal</h3>
-      <a href="#" style={footerTextColorGreen}>
+      <a href="#" className={styles.footerTextColorGreen}>
         Terms Of Service
       </a>
       <br />
-      <a href="#" style={footerTextColorGreen}>
+      <a href="#" className={styles.footerTextColorGreen}>
         Privacy Policy
       </a>
       <br />
-      <a href="#" style={footerTextColorGreen}>
+      <a href="#" className={styles.footerTextColorGreen}>
         Cookies
       </a>
       <br />
-      <a href="#" style={footerTextColorGreen}>
+      <a href="#" className={styles.footerTextColorGreen}>
         Security
       </a>
     </Grid>
-    <Grid item xs={12} md={3} style={footerCurrusFeatures}>
+    <Grid item xs={12} md={3} className={styles.footerCurrusFeatures}>
       <h3>Partner with us</h3>
-      <a href="#" style={footerTextColorYellow}>
+      <a href="#" className={styles.footerTextColorYellow}>
         Sign up as a Driver
       </a>
       <br />
-      <a href="#" style={footerTextColorYellow}>
+      <a href="#" className={styles.footerTextColorYellow}>
         Sign up as a User
       </a>
       <br />
-      <a href="#" style={footerTextColorYellow}>
+      <a href="#" className={styles.footerTextColorYellow}>
         See ongoing trips
       </a>
       <br />
-      <a href="#" style={footerTextColorYellow}>
+      <a href="#" className={styles.footerTextColorYellow}>
         See all trips
       </a>
       <br />
-      <a href="#" style={footerTextColorYellow}>
+      <a href="#" className={styles.footerTextColorYellow}>
         Plan a trip
       </a>
       <br />
-      <a href="#" style={footerTextColorYellow}>
+      <a href="#" className={styles.footerTextColorYellow}>
         Go to the map
       </a>
     </Grid>
-    <Grid item xs={12} md={3} style={footerCompanyStyle}>
+    <Grid item xs={12} md={3} className={styles.footerCompanyStyle}>
       <h3>Company</h3>
-      <a href="#" style={footerTextColorRed}>
+      <a href="#" className={styles.footerTextColorRed}>
         About us
       </a>
       <br />
-      <a href="#" style={footerTextColorRed}>
+      <a href="#" className={styles.footerTextColorRed}>
         Careers
       </a>
       <br />
-      <a href="#" style={footerTextColorRed}>
+      <a href="#" className={styles.footerTextColorRed}>
         Green Plan
       </a>
       <br />
-      <a href="#" style={footerTextColorRed}>
+      <a href="#" className={styles.footerTextColorRed}>
         Press
       </a>
       <br />
-      <a href="#" style={footerTextColorRed}>
+      <a href="#" className={styles.footerTextColorRed}>
         Blog
       </a>
       <br />
-      <a href="#" style={footerTextColorRed}>
+      <a href="#" className={styles.footerTextColorRed}>
         Brand guidelines
       </a>
     </Grid>
-    <Grid item xs={12} md={12} style={footerCopyrightStyle}>
+    <Grid item xs={12} md={12} className={styles.footerCopyrightStyle}>
       <address>
         © 2022 CURRUS, Inc. |{" "}
-        <a href="#" style={footerTextColorYellow}>
+        <a href="#" className={styles.footerTextColorYellow}>
           Leave a review
         </a>
       </address>
