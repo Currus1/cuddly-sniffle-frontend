@@ -1,0 +1,24 @@
+.area {
+    padding-top: 50vh;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: none;
+}
+
+.card {
+    mix-blend-mode: multiply;
+    font-family: "Nunito Sans";
+    outline: none;
+    margin: 20px;
+}
+
+.cardTransparency {
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.cardButton {
+    background: none;
+    color: rgba(0, 0, 0, 1);
+}

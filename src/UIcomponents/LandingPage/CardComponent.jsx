@@ -6,24 +6,20 @@ import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { Collapse } from "@mui/material";
-import {
-  card,
-  cardTransparency,
-  cardButton,
-} from "./Styles/HomePageCardsStyle.js";
+import style from "./Styles/HomePageCardsStyle.module.css";
 
 export default function GetARideCardComponent({ cardContent, checked }) {
   return (
     <Collapse in={checked} {...(checked ? { timeout: 500 } : {})}>
       <div style={{ height: "100vh" }}>
-        <Card sx={{ maxWidth: 400 }} style={card}>
+        <Card sx={{ maxWidth: 400 }} className={style.card}>
           <CardMedia
             component="img"
             height="400"
             image={cardContent.image}
             alt="img"
           />
-          <div style={cardTransparency}>
+          <div className={style.cardTransparency}>
             <CardContent>
               <Typography gutterBottom variant="h5" component="div">
                 {cardContent.title}
@@ -33,7 +29,7 @@ export default function GetARideCardComponent({ cardContent, checked }) {
               </Typography>
             </CardContent>
             <CardActions>
-              <Button style={cardButton}>Learn More</Button>
+              <Button className={style.cardButton}>Learn More</Button>
             </CardActions>
           </div>
         </Card>
