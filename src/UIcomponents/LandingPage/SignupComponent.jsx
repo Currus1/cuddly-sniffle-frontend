@@ -1,18 +1,18 @@
 import React from "react";
 import styles from "./Styles/PageStyle.module.css";
-import { shadowPropButton, arrowProp } from "./Styles/AttributeStyle";
 import TrendingUpIcon from "@mui/icons-material/TrendingUp";
+import AttributeStyle from "./Styles/AttributeStyle.module.css";
 
 const HomePageCardsComponent = () => {
   return (
     <div className={styles.half_page_container}>
       <div>
         <h1>Ready to carpool?</h1>
-        <a href="/register" style={shadowPropButton}>
+        <a href="/register" className={AttributeStyle.shadowPropButton}>
           Sign up now
         </a>
         <br />
-        <TrendingUpIcon style={arrowProp}></TrendingUpIcon>
+        <TrendingUpIcon className={AttributeStyle.arrowProp}></TrendingUpIcon>
       </div>
     </div>
   );
