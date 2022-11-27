@@ -5,6 +5,7 @@ import PlacesAutocomplete, {
 } from "react-places-autocomplete";
 import { Grid } from "@material-ui/core";
 import scriptLoader from "react-async-script-loader";
+import styles from "./Styles/GoogleMapsStyle.module.css";
 
 function GoogleAutoComplete({
   isScriptLoaded,
@@ -47,7 +48,7 @@ function GoogleAutoComplete({
               }) => (
                 <div>
                   <input
-                    className="address-field"
+                    className={styles.address_field}
                     {...getInputProps({
                       placeholder: placeholder,
                     })}
@@ -72,7 +73,7 @@ function GoogleAutoComplete({
           </Grid>
 
           <Grid item xs={12} md={2}>
-            <button onClick={handleSelect} className="button-save">
+            <button onClick={handleSelect} className={styles.button_save}>
               Save
             </button>
           </Grid>
