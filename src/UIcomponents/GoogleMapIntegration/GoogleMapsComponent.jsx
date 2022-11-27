@@ -1,11 +1,12 @@
 import React, { useMemo, useState, useEffect } from "react";
 import { GoogleMap, useJsApiLoader, Marker } from "@react-google-maps/api";
-import "./Styles/GoogleMapsStyle.css";
 import SecretAPI from "../../Services/SecretServices/SecretServices.js";
 import GoogleAutoComplete from "./GoogleAutoComplete.jsx";
 import backgroundStyle from "../Styles/BackgroundStyle.module.css";
 import HeaderComponent from "../BaseHeader/HeaderComponent";
 import FooterComponent from "../BaseFooter/FooterComponent";
+import styles from "./Styles/GoogleMapsStyle.module.css";
+
 const useMapsApiKey = () => {
   const [key, setKey] = useState(undefined);
 
@@ -28,11 +29,11 @@ export default function GoogleMapsComponent() {
   return (
     <div className={backgroundStyle.bg}>
       <HeaderComponent />
-      <div className="split-screen">
-        <div className="top-pane">
+      <div className={styles.split_screen}>
+        <div className={styles.top_pane}>
           <MapLoader apiKey={key} />
         </div>
-        <div className="bottom-pane">
+        <div className={styles.bottom_pane}>
           <div>
             <label>From</label>
             <GoogleAutoComplete></GoogleAutoComplete>
@@ -62,7 +63,7 @@ const MapLoader = ({ apiKey }) => {
 function Map() {
   const center = useMemo(() => ({ lat: 54.689461, lng: 25.27986 }), []);
   return (
-    <GoogleMap zoom={14} center={center} mapContainerClassName="map-container">
+    <GoogleMap zoom={14} center={center} mapContainerClassName={styles.map_container}>
       <Marker position={center} />
     </GoogleMap>
   );
