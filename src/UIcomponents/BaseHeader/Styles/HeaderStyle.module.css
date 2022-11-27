@@ -1,0 +1,9 @@
+.header_bgcolor {
+    background-color: #000000;
+}
+
+.backgroundStyleDrawer {
+    min-height: 80vh;
+    background-image: url("../../../Images/landing_background.jpg");
+    height: 100%;
+}
