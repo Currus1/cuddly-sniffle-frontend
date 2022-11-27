@@ -1,0 +1,35 @@
+.titleHeader {
+    color: #2F3C7E;
+    flex-grow: 1;
+}
+
+.titleText {
+    color: #FBEAEB;
+}
+
+.toolBar {
+    width: 90%;
+    margin: 0 auto;
+}
+
+.appBar {
+    background: none;
+    font-family: "Nunito Sans";
+}
+
+.sortIcon {
+    color: #FFFFFF;
+    font-size: 2rem;
+}
+
+.centerText {
+    text-align: center;
+}
+
+.fontSize2 {
+    font-size: 2rem;
+}
+
+.fontSize3 {
+    font-size: 3rem;
+}
