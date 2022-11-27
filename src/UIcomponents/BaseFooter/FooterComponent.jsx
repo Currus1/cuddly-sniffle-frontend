@@ -19,7 +19,7 @@ import facebook from "../../Images/facebook.png";
 import instagram from "../../Images/instagram.png";
 
 const FooterComponent = () => (
-  <Grid container style={footerStyle}>
+   <Grid container style={footerStyle}>
     <Grid item xs={12} md={3} style={footerLogoStyle}>
       CURRUS
       <hr style={footerHr} />
