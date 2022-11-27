@@ -1,5 +1,4 @@
 import React from "react";
-import "./Styles/TripsStyle.css";
 import { Card, IconButton } from "@material-ui/core";
 import CardHeader from "@mui/material/CardHeader";
 import TimerSharpIcon from "@mui/icons-material/TimerSharp";
