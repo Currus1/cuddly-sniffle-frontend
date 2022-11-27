@@ -12,7 +12,7 @@ import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import MenuIcon from "@mui/icons-material/Menu";
-import { backgroundStyleDrawer } from "./Styles/HeaderStyle";
+import style from "./Styles/HeaderStyle.module.css"
 
 const drawerWidth = "30vh";
 
@@ -71,7 +71,7 @@ export default function TemporaryDrawer() {
           width={drawerWidth}
           textAlign="center"
           role="presentation"
-          style={backgroundStyleDrawer}
+          className={style.backgroundStyleDrawer}
         >
           {list}
         </Box>
