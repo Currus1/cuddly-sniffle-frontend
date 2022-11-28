@@ -5,15 +5,7 @@ import FormControl from "@mui/material/FormControl";
 import InputLabel from "@mui/material/InputLabel";
 import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
-import "./Styles/TripsStyle.css";
-import {
-  menuPaperStyle,
-  menuMarginStyle,
-  listPaperStyle,
-  titleHeaderStyle,
-  menuHeaderStyle,
-  buttonStyle,
-} from "./Styles/TripsStyle.js";
+import styles from "./Styles/TripStyle.module.css";
 import TripCardComponent from "./TripCardComponent.jsx";
 
 const TripListComponent = () => {
@@ -58,14 +50,14 @@ const TripListComponent = () => {
           alignItems="center"
         >
           <Grid item xs={12} md={12} lg={12}>
-            <h1 style={titleHeaderStyle}>Currus Trips</h1>
+            <h1 className={styles.titleHeaderStyle}>Currus Trips</h1>
           </Grid>
           <Grid item xs={12} md={6} lg={6}>
             <Paper elevation={10}>
-              <Grid style={menuPaperStyle} align="left">
-                <h2 style={menuHeaderStyle}>Choose trips:</h2>
+              <Grid className={styles.menuPaperStyle} align="left">
+                <h2 className={styles.menuHeaderStyle}>Choose trips:</h2>
                 <FormControl fullWidth>
-                  <InputLabel id="statusId" style={menuMarginStyle}>
+                  <InputLabel id="statusId" className={styles.menuMarginStyle}>
                     Status
                   </InputLabel>
                   <Select
@@ -74,7 +66,7 @@ const TripListComponent = () => {
                     value={tripStatus}
                     label="Status:"
                     onChange={handleTripStatusChange}
-                    style={menuMarginStyle}
+                    className={styles.menuMarginStyle}
                   >
                     {tripStatuses.map((type) => (
                       <MenuItem value={type}>{type}</MenuItem>
@@ -84,7 +76,7 @@ const TripListComponent = () => {
                 <Button
                   onClick={loadClicked}
                   variant="contained"
-                  style={buttonStyle}
+                  className={styles.buttonStyle}
                 >
                   Load Trips
                 </Button>
@@ -93,7 +85,7 @@ const TripListComponent = () => {
           </Grid>
           <Grid item xs={12} md={6} lg={6}>
             <Paper elevation={10}>
-              <Grid container spacing={3} style={listPaperStyle} align="left">
+              <Grid container spacing={3} className={styles.listPaperStyle} align="left">
                 {trips.map((trip) => (
                   <Grid item key={trip.id} xs={12} md={12} lg={12}>
                     <TripCardComponent trip={trip}></TripCardComponent>
