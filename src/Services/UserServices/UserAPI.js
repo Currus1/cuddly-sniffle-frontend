@@ -1,8 +1,8 @@
-import axios from "axios";
-
+import { getCustomHttp } from "../../CustomHooks/useCustomHttp";
 class UserAPI {
   addUser(users) {
-    axios.post("http://localhost:5236/User/Adding/", {
+    const http = getCustomHttp();
+    http.post("/User/Adding/", {
       Id: users.Id,
       Name: users.Name,
       Surname: users.Surname,
@@ -13,7 +13,8 @@ class UserAPI {
   }
 
   UpdateUser(users) {
-    axios.put("http://localhost:5236/User/Update", {
+    const http = getCustomHttp();
+    http.put("/User/Update", {
       Id: users.Id,
       Name: users.Name,
       Surname: users.Surname,
@@ -24,7 +25,8 @@ class UserAPI {
   }
 
   UpdateDriver(drivers) {
-    axios.put("http://localhost:5236/User/Update", {
+    const http = getCustomHttp();
+    http.put("/User/Update", {
       Id: drivers.Id,
       Name: drivers.Name,
       Surname: drivers.Surname,
@@ -37,11 +39,13 @@ class UserAPI {
   }
 
   GetUser(id) {
-    return axios.get("http://localhost:5236/User/"+id);
+    const http = getCustomHttp();
+    return http.get(`/User/${id}`);
   }
 
   GetAllUsers() {
-    return axios.get("http://localhost:5236/User/Users");
+    const http = getCustomHttp();
+    return http.get("/User/Users");
   }
 }
 

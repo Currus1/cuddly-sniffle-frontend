@@ -1,8 +1,9 @@
-import axios from "axios";
+import { getCustomHttp } from "../../CustomHooks/useCustomHttp";
 
 class SecretAPI {
   getGoogleTripApiKey() {
-    return axios.get("http://localhost:5236/ApiKey/Secrets/ApiKey");
+    const http = getCustomHttp();
+    return http.get("/ApiKey/Secrets/ApiKey");
   }
 }
 

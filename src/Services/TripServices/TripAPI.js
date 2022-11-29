@@ -1,30 +1,32 @@
-import { ContentCopy } from "@mui/icons-material";
-import axios from "axios";
-
+import { getCustomHttp } from "../../CustomHooks/useCustomHttp";
 class TripAPI {
   getAllTripsByUserId(id) {
-    return axios.get(`http://localhost:5236/${id}/trips`);
+    const http = getCustomHttp();
+    return http.get(`/${id}/trips`);
   }
 
   getOneTripById(id) {
-    return axios.get(`http://localhost:5236/Trip/${id}`)
+    const http = getCustomHttp();
+    return http.get(`/Trip/${id}`);
   }
 
   getVehicleTypes() {
-    return axios.get("http://localhost:5236/VehicleType");
+    const http = getCustomHttp();
+    return http.get("/VehicleType");
   }
 
   getTripStatuses() {
-    return axios.get("http://localhost:5236/TripStatus");
+    const http = getCustomHttp();
+    return http.get("/TripStatus");
   }
 
   getTrips(tripStatus) {
-    return axios.get("http://localhost:5236/Trip/Trips", {
-      params: { tripStatus: tripStatus },
-    });
+    const http = getCustomHttp();
+    return http.get("/Trip/Trips", { params: { tripStatus: tripStatus } });
   }
 
   addTrip(data) {
+    const http = getCustomHttp();
     const content = {
       Latitude: data.Latitude,
       Longitude: data.Longitude,
@@ -38,8 +40,7 @@ class TripAPI {
       EstimatedTripPrice: data.EstimatedTripPrice,
       TripStatus: data.TripStatus
     }
-    console.log(content);
-    return axios.post("http://localhost:5236/Trip/Adding", content);
+    return http.post("/Trip/Adding", content);
   }
 }
 
