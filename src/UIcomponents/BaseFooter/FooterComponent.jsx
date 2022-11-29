@@ -14,17 +14,17 @@ const FooterComponent = () => (
       <Grid container className={styles.footerLogoIConsStyle}>
         <Grid item xs={12} md={3}>
           <a href="#">
-            <img src={instagram} alt="instagram" />
+            <img src={instagram} className={styles.social_icons} alt="instagram"/>
           </a>
         </Grid>
         <Grid item xs={12} md={3}>
           <a href="#">
-            <img src={facebook} alt="facebook" />
+            <img src={facebook} className={styles.social_icons} alt="facebook" />
           </a>
         </Grid>
         <Grid item xs={12} md={3}>
           <a href="#">
-            <img src={twitter} alt="twitter" />
+            <img src={twitter} className={styles.social_icons} alt="twitter" />
           </a>
         </Grid>
       </Grid>

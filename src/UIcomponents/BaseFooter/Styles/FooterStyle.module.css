@@ -119,11 +119,11 @@ address {
     margin-top: 110px;
 }
   
-img {
+.social_icons {
     width: 50px;
 }
   
-img:hover {
+.social_icons:hover {
     -ms-transform: scale(1.1); /* IE 9 */
     -webkit-transform: scale(1.1); /* Safari 3-8 */
     transform: scale(1.1);

@@ -7,3 +7,9 @@
     background-image: url("../../../Images/landing_background.jpg");
     height: 100%;
 }
+
+.logo {
+    margin-left: 20px;
+    height: auto;
+    width: 670px;
+}
