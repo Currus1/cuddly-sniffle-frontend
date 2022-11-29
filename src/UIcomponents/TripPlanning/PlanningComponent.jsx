@@ -8,6 +8,8 @@ import TripPlanningSaveComponent from "./TripPlanningSaveComponent";
 import EnterAddressComponent from "./EnterAddressComponent";
 import FooterComponent from "../BaseFooter/FooterComponent";
 import backgroundStyle from "../Styles/BackgroundStyle.module.css";
+import AuthService from "../../Services/AuthServices/auth.service";
+import { useNavigate } from "react-router-dom";
 
 const PlanningComponent = () => {
   const [errorText, setErrorText] = useState("");
@@ -16,6 +18,14 @@ const PlanningComponent = () => {
   const [latitude, setLatitude] = useState();
   const [startingPoint, setStartingPoint] = useState();
   const [destination, setDestination] = useState();
+  const navigate = useNavigate("");
+
+  useEffect(() => {
+    const currentUser = AuthService.getCurrentUser();
+    if (!currentUser) {
+      navigate("/login");
+    }
+  }, []);
 
   function saveClicked() {
     if (

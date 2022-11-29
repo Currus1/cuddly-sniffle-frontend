@@ -12,7 +12,9 @@ import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import MenuIcon from "@mui/icons-material/Menu";
-import style from "./Styles/HeaderStyle.module.css"
+import style from "./Styles/HeaderStyle.module.css";
+import LogoutIcon from "@mui/icons-material/Logout";
+import AuthService from "../../Services/AuthServices/auth.service.js";
 
 const drawerWidth = "30vh";
 
@@ -22,6 +24,12 @@ export default function TemporaryDrawer() {
 
   const handleNavigation = (navigation) => {
     navigate(navigation);
+  };
+
+  const handleLogOut = () => {
+    AuthService.logout();
+    navigate("/");
+    window.location.reload();
   };
 
   const list = (
@@ -40,6 +48,14 @@ export default function TemporaryDrawer() {
             </ListItemButton>
           </ListItem>
         ))}
+        <ListItem disablePadding onClick={() => handleLogOut()}>
+          <ListItemButton>
+            <ListItemIcon>
+              <LogoutIcon></LogoutIcon>
+            </ListItemIcon>
+            <ListItemText>Sign out</ListItemText>
+          </ListItemButton>
+        </ListItem>
       </List>
       <Divider />
     </div>

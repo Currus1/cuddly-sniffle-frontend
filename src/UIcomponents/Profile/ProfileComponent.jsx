@@ -8,6 +8,8 @@ import UserAPI from "../../Services/UserServices/UserAPI.js";
 import HeaderComponent from "../BaseHeader/HeaderComponent.jsx";
 import backgroundStyle from "../Styles/BackgroundStyle.module.css";
 import FooterComponent from "../BaseFooter/FooterComponent.jsx";
+import AuthService from "../../Services/AuthServices/auth.service";
+import { useNavigate } from "react-router-dom";
 
 const ProfileComponent = () => {
   const [response, setResponse] = useState([]);
@@ -16,7 +18,15 @@ const ProfileComponent = () => {
   const [vehicleTypes, setVehicleTypes] = useState([]);
   const [errorText, setErrorText] = useState("");
 
+  const [redirect, setRedirect] = useState(null);
+  const navigate = useNavigate();
+
   useEffect(() => {
+    const currentUser = AuthService.getCurrentUser();
+    if (!currentUser) {
+      navigate("/login");
+    }
+
     TripAPI.getVehicleTypes().then((response) =>
       setVehicleTypes(response.data)
     );
