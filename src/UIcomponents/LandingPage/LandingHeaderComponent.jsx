@@ -1,30 +1,34 @@
 import React from "react";
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { AppBar, IconButton } from "@material-ui/core";
-import SortIcon from "@material-ui/icons/Sort";
 import Toolbar from "@mui/material/Toolbar";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import Collapse from "@mui/material/Collapse";
 import { Link as Scroll } from "react-scroll";
 import styles from "./Styles/PageStyle.module.css";
-import headerStyles from "./Styles/LandingHeaderStyle.module.css"
+import headerStyles from "./Styles/LandingHeaderStyle.module.css";
+import currus from "../../Images/logo/currus_long_1.png";
+import importedHeaderStyles from "../BaseHeader/Styles/HeaderStyle.module.css";
 
 const HeaderComponent = () => {
   const [checked, setChecked] = useState(false);
 
+  const navigate = useNavigate();
+
   useEffect(() => {
     setChecked(true);
   }, []);
+
   return (
     <div className={styles.page_container} id="header">
-      <AppBar className={headerStyles.appBar} elevation={0}>
-        <Toolbar>
-          <h1 className={headerStyles.titleHeader}>
-            C<span className={headerStyles.titleText}>UR</span>RUS
-          </h1>
-          <IconButton>
-            <SortIcon className={headerStyles.sortIcon}></SortIcon>
-          </IconButton>
+      <AppBar className={headerStyles.appBar}>
+        <Toolbar className={importedHeaderStyles.header_bgcolor}>
+          <img src={currus} className={importedHeaderStyles.logo}></img>
+          <div className={headerStyles.buttonDivs}>
+            <button className={importedHeaderStyles.loginButton} onClick={() => navigate("/login")}>Log In</button>
+            <button className={importedHeaderStyles.registerButton} onClick={() => navigate("/register")}>Register</button>
+          </div>
         </Toolbar>
       </AppBar>
       <Collapse
