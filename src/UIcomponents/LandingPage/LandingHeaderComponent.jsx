@@ -2,7 +2,6 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { AppBar, IconButton } from "@material-ui/core";
-import SortIcon from "@material-ui/icons/Sort";
 import Toolbar from "@mui/material/Toolbar";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import Collapse from "@mui/material/Collapse";
@@ -11,7 +10,6 @@ import styles from "./Styles/PageStyle.module.css";
 import headerStyles from "./Styles/LandingHeaderStyle.module.css";
 import currus from "../../Images/logo/currus_long_1.png";
 import importedHeaderStyles from "../BaseHeader/Styles/HeaderStyle.module.css";
-import { Navigate } from "react-router-dom";
 
 const HeaderComponent = () => {
   const [checked, setChecked] = useState(false);
