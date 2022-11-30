@@ -21,9 +21,6 @@ const HeaderComponent = () => {
     <div className={styles.page_container} id="header">
       <AppBar className={headerStyles.appBar}>
         <Toolbar className={importedHeaderStyles.header_bgcolor}>
-          <IconButton>
-            <SortIcon className={headerStyles.sortIcon}></SortIcon>
-          </IconButton>
           <img src={currus} className={importedHeaderStyles.logo}></img>
           <div className={headerStyles.buttonDivs}>
             <button className={importedHeaderStyles.loginButton}>Log In</button>
