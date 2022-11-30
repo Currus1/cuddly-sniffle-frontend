@@ -8,6 +8,7 @@ import Collapse from "@mui/material/Collapse";
 import { Link as Scroll } from "react-scroll";
 import styles from "./Styles/PageStyle.module.css";
 import headerStyles from "./Styles/LandingHeaderStyle.module.css"
+import currus from "../../Images/logo/currus_long_1.png"
 
 const HeaderComponent = () => {
   const [checked, setChecked] = useState(false);
@@ -19,9 +20,7 @@ const HeaderComponent = () => {
     <div className={styles.page_container} id="header">
       <AppBar className={headerStyles.appBar} elevation={0}>
         <Toolbar>
-          <h1 className={headerStyles.titleHeader}>
-            C<span className={headerStyles.titleText}>UR</span>RUS
-          </h1>
+          <img src={currus} className={headerStyles.logo}></img>
           <IconButton>
             <SortIcon className={headerStyles.sortIcon}></SortIcon>
           </IconButton>

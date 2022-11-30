@@ -8,6 +8,61 @@
     height: 100%;
 }
 
+.buttonDivs {
+    margin-left: 43%;
+    padding: 10px;
+}
+
+.registerButton {
+    width: 15vh;
+    height: 4vh;
+    border: none;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+    background-color: #FF5757;
+    border-radius: 30px;
+    color: white;
+    font-family: "montserrat";
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.loginButton {
+    width: 15vh;
+    height: 4vh;
+    border: none;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+    background-color: transparent;
+    border: 2px solid #FF5757;
+    border-radius: 30px;
+    color: white;
+    font-family: "montserrat";
+    font-weight: bold;
+    font-size: 18px;
+    margin-right: 20px;
+}
+
+.registerButton:hover {
+    border-radius: 10px;
+    background-color: #e23f3f;
+    -ms-transform: scale(1.05); /* IE 9 */
+    -webkit-transform: scale(1.05); /* Safari 3-8 */
+    transform: scale(1.05);
+}
+
+.loginButton:hover {
+    border-radius: 10px;
+    border-color: #e23f3f;
+    -ms-transform: scale(1.05); /* IE 9 */
+    -webkit-transform: scale(1.05); /* Safari 3-8 */
+    transform: scale(1.05);
+}
+
 .logo {
     margin-left: 20px;
     height: auto;

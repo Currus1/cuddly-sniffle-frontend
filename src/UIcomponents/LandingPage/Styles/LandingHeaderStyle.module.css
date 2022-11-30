@@ -1,6 +1,5 @@
 .titleHeader {
-    color: #2F3C7E;
-    flex-grow: 1;
+    color: black;
 }
 
 .titleText {
@@ -32,4 +31,10 @@
 
 .fontSize3 {
     font-size: 3rem;
+}
+
+.logo {
+    margin-left: 20px;
+    height: auto;
+    width: 670px;
 }
