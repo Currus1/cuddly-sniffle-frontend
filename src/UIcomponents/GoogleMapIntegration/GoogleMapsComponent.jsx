@@ -6,11 +6,18 @@ import backgroundStyle from "../Styles/BackgroundStyle.module.css";
 import HeaderComponent from "../BaseHeader/HeaderComponent";
 import FooterComponent from "../BaseFooter/FooterComponent";
 import styles from "./Styles/GoogleMapsStyle.module.css";
+import AuthService from "../../Services/AuthServices/auth.service";
+import { useNavigate } from "react-router-dom";
 
 const useMapsApiKey = () => {
   const [key, setKey] = useState(undefined);
+  const navigate = useNavigate("");
 
   useEffect(() => {
+    const currentUser = AuthService.getCurrentUser();
+    if (!currentUser) {
+      navigate("/login");
+    }
     const getKey = async () => {
       let res = await SecretAPI.getGoogleTripApiKey();
       setKey(res.data);
@@ -63,7 +70,11 @@ const MapLoader = ({ apiKey }) => {
 function Map() {
   const center = useMemo(() => ({ lat: 54.689461, lng: 25.27986 }), []);
   return (
-    <GoogleMap zoom={14} center={center} mapContainerClassName={styles.map_container}>
+    <GoogleMap
+      zoom={14}
+      center={center}
+      mapContainerClassName={styles.map_container}
+    >
       <Marker position={center} />
     </GoogleMap>
   );

@@ -7,6 +7,7 @@ import GoogleMapsComponent from "./UIcomponents/GoogleMapIntegration/GoogleMapsC
 import ProfileComponent from "./UIcomponents/Profile/ProfileComponent";
 import RegisterComponent from "./UIcomponents/Registry/RegisterComponent";
 import LandingPageComponent from "./UIcomponents/LandingPage/LandingPageComponent";
+import LoginComponent from "./UIcomponents/Login/LoginComponent"
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <Route path="/profile" element={<ProfileComponent />} />
           <Route path="/register" element={<RegisterComponent />} />
           <Route path="/" element={<LandingPageComponent />} />
+          <Route path="/login" element={<LoginComponent />} />
         </Routes>
       </BrowserRouter>
     </div>
