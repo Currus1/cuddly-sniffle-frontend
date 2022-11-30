@@ -7,8 +7,9 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import Collapse from "@mui/material/Collapse";
 import { Link as Scroll } from "react-scroll";
 import styles from "./Styles/PageStyle.module.css";
-import headerStyles from "./Styles/LandingHeaderStyle.module.css"
-import currus from "../../Images/logo/currus_long_1.png"
+import headerStyles from "./Styles/LandingHeaderStyle.module.css";
+import currus from "../../Images/logo/currus_long_1.png";
+import importedHeaderStyles from "../BaseHeader/Styles/HeaderStyle.module.css";
 
 const HeaderComponent = () => {
   const [checked, setChecked] = useState(false);
@@ -18,12 +19,16 @@ const HeaderComponent = () => {
   }, []);
   return (
     <div className={styles.page_container} id="header">
-      <AppBar className={headerStyles.appBar} elevation={0}>
-        <Toolbar>
-          <img src={currus} className={headerStyles.logo}></img>
+      <AppBar className={headerStyles.appBar}>
+        <Toolbar className={importedHeaderStyles.header_bgcolor}>
           <IconButton>
             <SortIcon className={headerStyles.sortIcon}></SortIcon>
           </IconButton>
+          <img src={currus} className={importedHeaderStyles.logo}></img>
+          <div className={headerStyles.buttonDivs}>
+            <button className={importedHeaderStyles.loginButton}>Log In</button>
+            <button className={importedHeaderStyles.registerButton}>Register</button>
+          </div>
         </Toolbar>
       </AppBar>
       <Collapse

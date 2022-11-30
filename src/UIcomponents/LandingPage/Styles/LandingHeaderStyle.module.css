@@ -7,18 +7,17 @@
 }
 
 .toolBar {
-    width: 90%;
-    margin: 0 auto;
+    width: 100%;
 }
 
 .appBar {
-    background: none;
+    width: 100%;
     font-family: "Nunito Sans";
 }
 
 .sortIcon {
     color: #FFFFFF;
-    font-size: 2rem;
+    font-size: 10rem;
 }
 
 .centerText {
@@ -31,6 +30,11 @@
 
 .fontSize3 {
     font-size: 3rem;
+}
+
+.buttonDivs {
+    margin-left: 42%;
+    padding: 10px;
 }
 
 .logo {
