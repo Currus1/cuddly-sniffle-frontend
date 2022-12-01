@@ -6,10 +6,10 @@ import Toolbar from "@mui/material/Toolbar";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import Collapse from "@mui/material/Collapse";
 import { Link as Scroll } from "react-scroll";
-import styles from "./Styles/PageStyle.module.css";
 import headerStyles from "./Styles/LandingHeaderStyle.module.css";
 import currus from "../../Images/logo/currus_long_1.png";
 import importedHeaderStyles from "../BaseHeader/Styles/HeaderStyle.module.css";
+import styles from "./Styles/PageStyle.module.css";
 
 const HeaderComponent = () => {
   const [checked, setChecked] = useState(false);
@@ -21,30 +21,41 @@ const HeaderComponent = () => {
   }, []);
 
   return (
-    <div className={styles.page_container} id="header">
+    <div id="header">
       <AppBar className={headerStyles.appBar}>
         <Toolbar className={importedHeaderStyles.header_bgcolor}>
           <img src={currus} className={importedHeaderStyles.logo}></img>
           <div className={headerStyles.buttonDivs}>
-            <button className={importedHeaderStyles.loginButton} onClick={() => navigate("/login")}>Log In</button>
-            <button className={importedHeaderStyles.registerButton} onClick={() => navigate("/register")}>Register</button>
+            <button
+              className={importedHeaderStyles.loginButton}
+              onClick={() => navigate("/login")}
+            >
+              Log In
+            </button>
+            <button
+              className={importedHeaderStyles.registerButton}
+              onClick={() => navigate("/register")}
+            >
+              Register
+            </button>
           </div>
         </Toolbar>
       </AppBar>
-      <Collapse
-        in={checked}
-        {...(checked ? { timeout: 1000 } : {})}
-        collapsedheight={50}
-      >
-        <div className={headerStyles.centerText}>
-          <h1 className={headerStyles.fontSize3}>Welcome</h1>
-          <Scroll to="home-page-cards-component" smooth={true}>
-            <IconButton>
-              <ExpandMoreIcon className={headerStyles.fontSize2} />
-            </IconButton>
-          </Scroll>
+      <div className={styles.banner_container}>
+        <div className={styles.banner_image}>
+          <div className={styles.banner_text_container}>
+            <div className={styles.banner_big_text}>
+              <h1>Cu<span className={styles.red_text}>rr</span>us</h1>
+            </div>
+            <div className={styles.banner_small_text}>
+              <h3>Share your ride with others!</h3>
+            </div>
+            <div className={styles.banner_button_container}>
+              <button className={styles.banner_button}>Carpool Now!</button>
+            </div>
+          </div>
         </div>
-      </Collapse>
+      </div>
     </div>
   );
 };
