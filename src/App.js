@@ -16,7 +16,7 @@ function App() {
         <Routes>
           <Route path="/trips/history" element={<TripComponent />} />
           <Route path="/planning" element={<PlanningComponent />} />
-          <Route path="/trips" element={<TripsComponent />} />
+          <Route path="/home" element={<TripsComponent />} />
           <Route path="/maps" element={<GoogleMapsComponent />} />
           <Route path="/profile" element={<ProfileComponent />} />
           <Route path="/register" element={<RegisterComponent />} />

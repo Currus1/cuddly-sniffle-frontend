@@ -7,7 +7,7 @@ const data = [
     {
       name: "Home",
       icon: <HomeIcon />,
-      navigation: "/trips",
+      navigation: "/home",
     },
     {
       name: "Profile",
