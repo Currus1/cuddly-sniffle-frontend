@@ -1,6 +1,5 @@
 .titleHeader {
-    color: #2F3C7E;
-    flex-grow: 1;
+    color: black;
 }
 
 .titleText {
@@ -8,18 +7,12 @@
 }
 
 .toolBar {
-    width: 90%;
-    margin: 0 auto;
+    width: 100%;
 }
 
 .appBar {
-    background: none;
+    width: 100%;
     font-family: "Nunito Sans";
-}
-
-.sortIcon {
-    color: #FFFFFF;
-    font-size: 2rem;
 }
 
 .centerText {
@@ -32,4 +25,15 @@
 
 .fontSize3 {
     font-size: 3rem;
+}
+
+.buttonDivs {
+    margin-left: 42%;
+    padding: 10px;
+}
+
+.logo {
+    margin-left: 20px;
+    height: auto;
+    width: 670px;
 }
