@@ -13,6 +13,8 @@ import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { useNavigate } from "react-router-dom";
 import { TextValidator, ValidatorForm } from "react-material-ui-form-validator";
+import Backdrop from "@mui/material/Backdrop";
+import CircularProgress from "@mui/material/CircularProgress";
 
 const theme = createTheme({
   palette: {
@@ -22,11 +24,25 @@ const theme = createTheme({
   },
 });
 
+const emailRegExp =
+  /@^([a-zA-Z0-9_\-\.]+)@(([a-zA-Z0-9\-]+\.)+)([a-zA-Z]{2,4}|[0-9]{1,3})$/g;
+
 export default function LoginComponent() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   const navigate = useNavigate();
+  const [open, setOpen] = useState(false);
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  const handleToggle = () => {
+    if (email.match(emailRegExp) && password.length > 0) {
+      setOpen(!open);
+    }
+  };
 
   useEffect(() => {
     if (AuthService.getCurrentUser() != null) {
@@ -38,9 +54,11 @@ export default function LoginComponent() {
     event.preventDefault();
     AuthService.login(email, password)
       .then(() => {
+        handleClose();
         navigate("/profile");
       })
       .catch((error) => {
+        handleClose();
         setErrorMessage(error.response.data.errors);
       });
   };
@@ -100,6 +118,7 @@ export default function LoginComponent() {
               fullWidth
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
+              onClick={handleToggle}
             >
               Sign In
             </Button>
@@ -107,6 +126,13 @@ export default function LoginComponent() {
               {"Don't have an account? Sign Up"}
             </Link>
           </ValidatorForm>
+          <Backdrop
+            sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
+            open={open}
+            onClick={handleClose}
+          >
+            <CircularProgress color="inherit" />
+          </Backdrop>
         </Box>
       </Container>
     </ThemeProvider>
