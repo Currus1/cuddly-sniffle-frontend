@@ -38,9 +38,9 @@ class UserAPI {
     });
   }
 
-  GetUser(id) {
+  GetUser() {
     const http = getCustomHttp();
-    return http.get(`/User/${id}`);
+    return http.get(`/User`);
   }
 
   GetAllUsers() {

@@ -30,7 +30,7 @@ export default function LoginComponent() {
 
   useEffect(() => {
     if (AuthService.getCurrentUser() != null) {
-      navigate("/");
+      navigate("/home");
     }
   }, []);
 

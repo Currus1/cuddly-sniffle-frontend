@@ -21,6 +21,8 @@ const theme = createTheme({
   },
 });
 var numberRegExp = /^((86|\+3706)\d{7})$/g;
+var strongPasswordRegExp =
+  /^(?=(.*[a-z]){1,})(?=(.*[A-Z]){1,})(?=(.*[0-9]){1,})(?=(.*[!@#$%^&*()\-__+.]){1,}).{4,}$/g;
 
 export default function RegisterComponent() {
   const [name, setName] = useState("");
@@ -29,6 +31,7 @@ export default function RegisterComponent() {
   const [password, setPassword] = useState("");
   const [repeatPassword, setRepeatPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
+  const [successMessage, setSuccessMessage] = useState("");
   const [birthDate, setBirthDate] = useState("");
   const [number, setNumber] = useState("");
 
@@ -52,9 +55,13 @@ export default function RegisterComponent() {
     return value.match(numberRegExp);
   });
 
+  ValidatorForm.addValidationRule("IsPasswordStrong", (value) => {
+    return value.match(strongPasswordRegExp);
+  });
+
   useEffect(() => {
     if (AuthService.getCurrentUser() != null) {
-      navigate("/");
+      navigate("/home");
     }
   }, []);
 
@@ -62,10 +69,12 @@ export default function RegisterComponent() {
     setErrorMessage("");
     event.preventDefault();
     AuthService.register(name, surname, email, password, birthDate, number)
-      .then(() => {
-        navigate("/profile");
+      .then((success) => {
+        setErrorMessage("");
+        setSuccessMessage(success.data.errors);
       })
       .catch((error) => {
+        setSuccessMessage("");
         setErrorMessage(error.response.data.errors);
       });
   };
@@ -165,10 +174,11 @@ export default function RegisterComponent() {
               label="Password"
               type="password"
               id="password2"
-              validators={["required", "PasswordLength"]}
+              validators={["required", "PasswordLength", "IsPasswordStrong"]}
               errorMessages={[
                 "Password field is required",
                 "Password length has to be at least 8 characters",
+                "Password has to contain at least one uppercase, lowercase letter, one digit and special character",
               ]}
               onChange={(event) => setPassword(event.target.value)}
               value={password}
@@ -193,6 +203,7 @@ export default function RegisterComponent() {
               of service and privacy policy.
             </FormLabel>
             <div style={{ color: "red" }}>{errorMessage}</div>
+            <div style={{ color: "green" }}>{successMessage}</div>
             <Button
               type="submit"
               fullWidth
