@@ -12,6 +12,8 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { useNavigate } from "react-router-dom";
 import { TextValidator, ValidatorForm } from "react-material-ui-form-validator";
 import { FormLabel } from "@mui/material";
+import Backdrop from "@mui/material/Backdrop";
+import CircularProgress from "@mui/material/CircularProgress";
 
 const theme = createTheme({
   palette: {
@@ -20,9 +22,14 @@ const theme = createTheme({
     },
   },
 });
-var numberRegExp = /^((86|\+3706)\d{7})$/g;
-var strongPasswordRegExp =
+const numberRegExp = /^((86|\+3706)\d{7})$/g;
+const strongPasswordRegExp =
   /^(?=(.*[a-z]){1,})(?=(.*[A-Z]){1,})(?=(.*[0-9]){1,})(?=(.*[!@#$%^&*()\-__+.]){1,}).{4,}$/g;
+const emailRegExp =
+  /^([a-zA-Z0-9_\-\.]+)@(([a-zA-Z0-9\-]+\.)+)([a-zA-Z]{2,4}|[0-9]{1,3})$/g;
+const birthDateRegExp = /^\d{4}-\d{2}-\d{2}$/g;
+const oldDate = new Date("1900-01-01");
+const ageLimitMs = 504997216000; // 16 years ~
 
 export default function RegisterComponent() {
   const [name, setName] = useState("");
@@ -34,8 +41,55 @@ export default function RegisterComponent() {
   const [successMessage, setSuccessMessage] = useState("");
   const [birthDate, setBirthDate] = useState("");
   const [number, setNumber] = useState("");
-
+  const [open, setOpen] = useState(false);
   const navigate = useNavigate();
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  const handleToggle = () => {
+    var today = new Date();
+    var inputDate = new Date(birthDate);
+
+    if (
+      name.length > 0 &&
+      surname.length > 0 &&
+      birthDate.match(birthDateRegExp) &&
+      email.match(emailRegExp) &&
+      number.match(numberRegExp) &&
+      password.match(strongPasswordRegExp) &&
+      password.match(repeatPassword) &&
+      open == false &&
+      today.getTime() - ageLimitMs > inputDate.getTime() &&
+      oldDate.getTime() < inputDate.getTime()
+    ) {
+      setOpen(!open);
+    }
+  };
+
+  ValidatorForm.addValidationRule("isAgeNotTooOld", (value) => {
+    var inputDate = new Date(value);
+    if (
+      value.match(birthDateRegExp) &&
+      oldDate.getTime() < inputDate.getTime()
+    ) {
+      return true;
+    }
+    return false;
+  });
+
+  ValidatorForm.addValidationRule("isAgeValid", (value) => {
+    var today = new Date();
+    var inputDate = new Date(value);
+    if (
+      value.match(birthDateRegExp) &&
+      today.getTime() - ageLimitMs > inputDate.getTime()
+    ) {
+      return true;
+    }
+    return false;
+  });
 
   ValidatorForm.addValidationRule("isPasswordMatch", (value) => {
     if (value !== password) {
@@ -70,10 +124,12 @@ export default function RegisterComponent() {
     event.preventDefault();
     AuthService.register(name, surname, email, password, birthDate, number)
       .then((success) => {
+        handleClose();
         setErrorMessage("");
         setSuccessMessage(success.data.errors);
       })
       .catch((error) => {
+        handleClose();
         setSuccessMessage("");
         setErrorMessage(error.response.data.errors);
       });
@@ -133,8 +189,12 @@ export default function RegisterComponent() {
               name="birthDate"
               autoFocus
               type="date"
-              validators={["required"]}
-              errorMessages={["Surname field is required"]}
+              validators={["required", "isAgeValid", "isAgeNotTooOld"]}
+              errorMessages={[
+                "Birth Date field is required",
+                "You have to be at least 16 years old",
+                "There is no such old human. Pick correct birth date!",
+              ]}
               onChange={(event) => setBirthDate(event.target.value)}
               value={birthDate}
             />
@@ -209,6 +269,7 @@ export default function RegisterComponent() {
               fullWidth
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
+              onClick={handleToggle}
             >
               Sign Up
             </Button>
@@ -216,6 +277,13 @@ export default function RegisterComponent() {
               {"Have an account? Log in"}
             </Link>
           </ValidatorForm>
+          <Backdrop
+            sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
+            open={open}
+            onClick={handleClose}
+          >
+            <CircularProgress color="inherit" />
+          </Backdrop>
         </Box>
       </Container>
     </ThemeProvider>
