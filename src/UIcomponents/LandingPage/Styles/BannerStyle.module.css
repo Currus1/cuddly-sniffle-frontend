@@ -1,0 +1,69 @@
+.banner_image {
+    width: 100%;
+    height: 100%;
+    background-image: url("../../../Images/VariousImages/banner_design_2.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.red_text {
+    color: #FF5757;
+}
+
+.banner_text_container {
+    width: 100%;
+    text-align: center;
+    color: white;
+}
+
+.banner_big_text {
+    width: fit-content;
+    height: fit-content;
+    padding-top: 10vh;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: -3%;
+    font-size: 5vh;
+}
+
+.banner_small_text {
+    width:fit-content;
+    height: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 2vh;
+}
+
+.banner_button_container {
+    width: fit-content;
+    height: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 2%;
+}
+
+.banner_button {
+    display: inline-block;
+    min-width: 10vh;
+    width: 40vh;
+    height: 5vh;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+    background-color: transparent;
+    border: 2px solid #FF5757;
+    border-radius: 30px;
+    color: white;
+    font-family: "montserrat";
+    font-weight: bold;
+    font-size: 15px;
+}
+
+.banner_button:hover {
+    border-radius: 10px;
+    border-color: #e23f3f;
+    -ms-transform: scale(1.05); /* IE 9 */
+    -webkit-transform: scale(1.05); /* Safari 3-8 */
+    transform: scale(1.05);
+}

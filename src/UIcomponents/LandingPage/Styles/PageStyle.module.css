@@ -17,3 +17,9 @@
     height: 50vh;
     font-family: "Nunito Sans";
 }
+
+.banner_container {
+    height: 53vh;
+    position: relative;
+    background-color: black;
+}

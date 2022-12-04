@@ -1,6 +1,7 @@
 import CssBaseline from "@mui/material/CssBaseline/CssBaseline";
 import React, { useEffect } from "react";
 import LandingHeaderComponent from "./LandingHeaderComponent";
+import LandingBannerComponent from "./LandingBannerComponent";
 import FooterComponent from "../BaseFooter/FooterComponent";
 import LandingPageCardsComponent from "./LandingPageCardsComponent";
 import SignUpComponent from "./SignupComponent";
@@ -21,6 +22,7 @@ const HomePageComponent = () => {
     <div className={backgroundStyle.bg}>
       <CssBaseline />
       <LandingHeaderComponent />
+      <LandingBannerComponent />
       <LandingPageCardsComponent />
       <SignUpComponent />
       <FooterComponent />
