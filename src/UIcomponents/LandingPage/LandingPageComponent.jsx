@@ -20,7 +20,7 @@ const HomePageComponent = () => {
   }, []);
 
   return (
-    <div className={backgroundStyle.bg}>
+    <div>
       <CssBaseline />
       <LandingHeaderComponent />
       <LandingBannerComponent />
