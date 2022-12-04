@@ -19,11 +19,11 @@
 .banner_big_text {
     width: fit-content;
     height: fit-content;
-    padding-top: 4vh;
+    padding-top: 10vh;
     margin-left: auto;
     margin-right: auto;
     margin-bottom: -3%;
-    font-size: 3.5rem;
+    font-size: 5vh;
 }
 
 .banner_small_text {
@@ -31,7 +31,7 @@
     height: fit-content;
     margin-left: auto;
     margin-right: auto;
-    font-size: 1.5rem;
+    font-size: 2vh;
 }
 
 .banner_button_container {
@@ -43,6 +43,8 @@
 }
 
 .banner_button {
+    display: inline-block;
+    min-width: 10vh;
     width: 40vh;
     height: 5vh;
     text-align: center;
