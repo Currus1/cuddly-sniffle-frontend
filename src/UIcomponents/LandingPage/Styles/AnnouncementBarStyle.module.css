@@ -1,0 +1,29 @@
+.container { 
+  width: 100%;  
+  animation: scrollText 20s infinite linear;
+}
+
+.announcement {
+  margin: 0;
+  font-size: 1.5vh;
+  color: black;
+  transition: all 2s ease;
+  display: flex;
+}
+
+.announcement_text {
+  width: 100%;
+  line-height: 4vh;
+  font-size: 0.7vw;
+  font-family: "montserrat";
+  font-weight: bold;
+}
+
+@keyframes scrollText {
+  from {
+    transform: translateX(-60%);
+  }
+  to {
+    transform: translateX(100%);
+  }
+}
