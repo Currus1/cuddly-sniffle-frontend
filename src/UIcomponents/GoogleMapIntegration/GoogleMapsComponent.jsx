@@ -6,17 +6,17 @@ import backgroundStyle from "../Styles/BackgroundStyle.module.css";
 import HeaderComponent from "../BaseHeader/HeaderComponent";
 import FooterComponent from "../BaseFooter/FooterComponent";
 import styles from "./Styles/GoogleMapsStyle.module.css";
-import AuthService from "../../Services/AuthServices/auth.service";
 import { useNavigate } from "react-router-dom";
+import { useUserValidation } from "../../CustomHooks/useUserValidation.js";
 
 const useMapsApiKey = () => {
   const [key, setKey] = useState(undefined);
   const navigate = useNavigate("");
+  var isValid = useUserValidation();
 
   useEffect(() => {
-    const currentUser = AuthService.getCurrentUser();
-    if (!currentUser) {
-      navigate("/login");
+    if (!isValid) {
+      navigate("/");
     }
     const getKey = async () => {
       let res = await SecretAPI.getGoogleTripApiKey();

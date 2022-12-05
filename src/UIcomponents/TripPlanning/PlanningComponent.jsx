@@ -8,22 +8,22 @@ import TripPlanningSaveComponent from "./TripPlanningSaveComponent";
 import EnterAddressComponent from "./EnterAddressComponent";
 import FooterComponent from "../BaseFooter/FooterComponent";
 import backgroundStyle from "../Styles/BackgroundStyle.module.css";
-import AuthService from "../../Services/AuthServices/auth.service";
+import { useUserValidation } from "../../CustomHooks/useUserValidation";
 import { useNavigate } from "react-router-dom";
 
 const PlanningComponent = () => {
   const [errorText, setErrorText] = useState("");
   const [trip] = useState([]);
-  const [longitude, setLongitude] = useState();
-  const [latitude, setLatitude] = useState();
-  const [startingPoint, setStartingPoint] = useState();
-  const [destination, setDestination] = useState();
+  const [longitude, setLongitude] = useState("");
+  const [latitude, setLatitude] = useState("");
+  const [startingPoint, setStartingPoint] = useState("");
+  const [destination, setDestination] = useState("");
   const navigate = useNavigate("");
+  var isValid = useUserValidation();
 
   useEffect(() => {
-    const currentUser = AuthService.getCurrentUser();
-    if (!currentUser) {
-      navigate("/login");
+    if (!isValid) {
+      navigate("/");
     }
   }, []);
 

@@ -1,23 +1,22 @@
 import React, { useState, useEffect } from "react";
-import styles from "./Styles/ProfileStyle.module.css";
-import { Grid, Paper } from "@material-ui/core";
-import TripAPI from "../../Services/TripServices/TripAPI.js";
+import { Grid } from "@material-ui/core";
 import UserAPI from "../../Services/UserServices/UserAPI.js";
-import HeaderComponent from "../BaseHeader/HeaderComponent.jsx";
-import backgroundStyle from "../Styles/BackgroundStyle.module.css";
-import FooterComponent from "../BaseFooter/FooterComponent.jsx";
-import AuthService from "../../Services/AuthServices/auth.service";
 import { useNavigate } from "react-router-dom";
+import { TextField } from "@material-ui/core";
+import AccountBoxIcon from "@mui/icons-material/AccountBox";
+import DriverDialog from "./DriverDialog";
+import { useUserValidation } from "../../CustomHooks/useUserValidation";
 
 const ProfileComponent = () => {
   const [user, setUser] = useState([]);
   const [errorText, setErrorText] = useState("");
+  const [dialogOpen, setDialogOpen] = useState("");
   const navigate = useNavigate();
+  var isValid = useUserValidation();
 
   useEffect(() => {
-    const currentUser = AuthService.getCurrentUser();
-    if (!currentUser) {
-      navigate("/login");
+    if (!isValid) {
+      navigate("/");
     }
     UserAPI.GetUser()
       .then((userInfo) => {
@@ -31,13 +30,84 @@ const ProfileComponent = () => {
   }, []);
 
   return (
-    <div
-      className={backgroundStyle.bg}
-      style={{ display: "flex", flexDirection: "column" }}
-    >
-      <HeaderComponent />
-      <Grid style={{ height: "60vh" }}>lol</Grid>
-      <FooterComponent />
+    <div style={{ display: "flex", justifyContent: "center" }}>
+      <Grid
+        alignItems="center"
+        style={{ display: "flex" }}
+        container
+        direction="column"
+      >
+        <AccountBoxIcon sx={{ fontSize: 70 }} />
+        <TextField
+          margin="dense"
+          label="Name"
+          id="Name"
+          variant="filled"
+          value={user.name}
+          InputLabelProps={{
+            shrink: true,
+          }}
+          InputProps={{
+            readOnly: true,
+          }}
+        />
+        <TextField
+          margin="dense"
+          label="Surname"
+          id="Surname"
+          variant="filled"
+          InputLabelProps={{
+            shrink: true,
+          }}
+          InputProps={{
+            readOnly: true,
+          }}
+          value={user.surname}
+        />
+        <TextField
+          margin="dense"
+          id="Birthdate"
+          label="Birthday"
+          variant="filled"
+          defaultValue="undefined"
+          value={user.birthDate}
+          InputLabelProps={{
+            shrink: true,
+          }}
+          InputProps={{
+            readOnly: true,
+          }}
+        />
+        <TextField
+          margin="dense"
+          label="Phone number"
+          InputLabelProps={{
+            shrink: true,
+          }}
+          InputProps={{
+            readOnly: true,
+          }}
+          id="PhoneNumber"
+          variant="filled"
+          value={user.number}
+        />
+        <TextField
+          margin="dense"
+          label="Email"
+          InputLabelProps={{
+            shrink: true,
+          }}
+          InputProps={{
+            readOnly: true,
+          }}
+          id="Email"
+          variant="filled"
+          value={user.email}
+        />
+        <div style={{ marginTop: "5%" }}>
+          <DriverDialog></DriverDialog>
+        </div>
+      </Grid>
     </div>
   );
 };

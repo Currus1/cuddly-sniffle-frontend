@@ -18,7 +18,7 @@
 }
 
 .marginTop {
-    margin-top: 15px;
+    margin-top: 5%;
 }
 
 .saveButtonStyle {
@@ -28,6 +28,5 @@
 }
 
 .textFieldStyle {
-    margin-top: 20px;
     width: 95%;
 }
