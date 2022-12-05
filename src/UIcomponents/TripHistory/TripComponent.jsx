@@ -8,17 +8,17 @@ import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import { Container } from "@mui/material";
 import styles from "./Styles/TripHistoryStyle.module.css";
-import AuthService from "../../Services/AuthServices/auth.service";
+import { useUserValidation } from "../../CustomHooks/useUserValidation.js";
 import { useNavigate } from "react-router-dom";
 
 const TripComponent = () => {
   const navigate = useNavigate("");
   const [data, setData] = useState([]);
+  var isValid = useUserValidation();
 
   useEffect(() => {
-    const currentUser = AuthService.getCurrentUser();
-    if (!currentUser) {
-      navigate("/login");
+    if (!isValid) {
+      navigate("/");
     }
     TripAPI.getAllTripsByUserId(19).then((res) => setData(res.data)); // Fixed number
   }, []);
