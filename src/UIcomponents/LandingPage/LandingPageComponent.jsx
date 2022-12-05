@@ -8,6 +8,7 @@ import SignUpComponent from "./SignupComponent";
 import backgroundStyle from "../Styles/BackgroundStyle.module.css";
 import { useNavigate } from "react-router-dom";
 import AuthService from "../../Services/AuthServices/auth.service";
+import LandingAnnouncementBar from "./LandingAnnouncementBar";
 
 const HomePageComponent = () => {
   const navigate = useNavigate();
@@ -19,10 +20,11 @@ const HomePageComponent = () => {
   }, []);
 
   return (
-    <div className={backgroundStyle.bg}>
+    <div>
       <CssBaseline />
       <LandingHeaderComponent />
       <LandingBannerComponent />
+      <LandingAnnouncementBar />
       <LandingPageCardsComponent />
       <SignUpComponent />
       <FooterComponent />

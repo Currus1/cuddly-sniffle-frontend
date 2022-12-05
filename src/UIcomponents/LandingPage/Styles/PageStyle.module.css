@@ -1,25 +1,35 @@
 .page_container {
-    position: relative;
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    font-family: "Nunito Sans";
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-family: "Nunito Sans";
 }
 
 .half_page_container {
-    position: relative;
-    min-height: 50vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 50vh;
-    font-family: "Nunito Sans";
+  position: relative;
+  min-height: 50vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50vh;
+  font-family: "Nunito Sans";
 }
 
 .banner_container {
-    height: 53vh;
-    position: relative;
-    background-color: black;
+  height: 53vh;
+  position: relative;
+  background-color: black;
+}
+
+.announcement_bar_container {
+  height: 4vh;
+  background-color: #CCCC;
+  display: flex;
+  position: relative;
+  margin: auto;
+  overflow: hidden;
+  z-index: 1;
 }
