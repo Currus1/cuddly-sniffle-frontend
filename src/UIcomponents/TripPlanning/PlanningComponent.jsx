@@ -10,6 +10,9 @@ import FooterComponent from "../BaseFooter/FooterComponent";
 import backgroundStyle from "../Styles/BackgroundStyle.module.css";
 import { useUserValidation } from "../../CustomHooks/useUserValidation";
 import { useNavigate } from "react-router-dom";
+import UserAPI from "../../Services/UserServices/UserAPI";
+
+const driverLicenseRegExp = /^\d{8}$/;
 
 const PlanningComponent = () => {
   const [errorText, setErrorText] = useState("");
@@ -25,6 +28,18 @@ const PlanningComponent = () => {
     if (!isValid) {
       navigate("/");
     }
+    UserAPI.GetUser()
+      .then((userInfo) => {
+        if (
+          userInfo.data.driversLicense == null ||
+          !userInfo.data.driversLicense.match(driverLicenseRegExp)
+        ) {
+          navigate("/");
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }, []);
 
   function saveClicked() {

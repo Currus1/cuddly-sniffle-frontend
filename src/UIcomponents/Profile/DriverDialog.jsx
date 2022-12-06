@@ -11,9 +11,14 @@ import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import { TextValidator, ValidatorForm } from "react-material-ui-form-validator";
+import UserAPI from "../../Services/UserServices/UserAPI";
 
 const licenseNumberRegExp = /^[A-Z]{3}\d{3}$/;
 const driverLicenseRegExp = /^\d{8}$/;
+const sedan = "SEDAN";
+const suv = "SUV";
+const ev = "EV";
+const van = "VAN";
 
 export default function FormDialog() {
   const [open, setOpen] = useState(false);
@@ -52,12 +57,19 @@ export default function FormDialog() {
   };
 
   const handleJoin = () => {
+    if (
+      licenseNumber.match(licenseNumberRegExp) &&
+      driversLicense.match(driverLicenseRegExp) &&
+      vehicleType.length > 0
+    ) {
+      UserAPI.UpdateDriver(licenseNumber, driversLicense, vehicleType);
+    }
+
     setOpen(false);
+    window.location.reload();
   };
 
-  const handleSubmit = () => {
-    console.log("submit will be soon");
-  };
+  const handleSubmit = () => {};
 
   return (
     <div>
@@ -97,10 +109,10 @@ export default function FormDialog() {
                 value={vehicleType}
                 onChange={handleChange}
               >
-                <MenuItem value={0}>Sedan</MenuItem>
-                <MenuItem value={1}>SUV</MenuItem>
-                <MenuItem value={2}>EV</MenuItem>
-                <MenuItem value={3}>VAN</MenuItem>
+                <MenuItem value={sedan}>Sedan</MenuItem>
+                <MenuItem value={suv}>SUV</MenuItem>
+                <MenuItem value={ev}>EV</MenuItem>
+                <MenuItem value={van}>VAN</MenuItem>
               </Select>
             </FormControl>
 

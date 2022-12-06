@@ -24,18 +24,13 @@ class UserAPI {
     });
   }
 
-  UpdateDriver(drivers) {
+  UpdateDriver(LicenseNumber, DriversLicense, VehicleType) {
     const http = getCustomHttp();
-    http.put("/User/Update", {
-      Id: drivers.Id,
-      Name: drivers.Name,
-      Surname: drivers.Surname,
-      Birthdate: drivers.Birthdate,
-      Email: drivers.Email,
-      PhoneNumber: drivers.PhoneNumber,
-      VehicleType: drivers.VehicleType,
-      LicenseNumber: drivers.LicenseNumber,
-    });
+    http.put("/User/Driver", {
+      VehicleType: VehicleType,
+      LicenseNumber: LicenseNumber,
+      DriversLicense: DriversLicense,
+    })
   }
 
   GetUser() {
