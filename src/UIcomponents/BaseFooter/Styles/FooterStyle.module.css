@@ -1,4 +1,5 @@
 .footerStyle {
+    justify-content: center;
     text-align: center;
     padding: 20px;
     bottom: 0;
@@ -9,15 +10,6 @@
 .footerLogoStyle {
     height: 250px;
     font-size: 70px;
-    line-height: 75px;
-}
-
-.footerLogoIconsStyle {
-    width: 55%;
-    margin-left: 30%;
-    margin-right: auto;
-    font-size: 70px;
-    font-weight: bold;
     line-height: 75px;
 }
 
@@ -49,18 +41,10 @@
     text-align: center;
 }
 
-.footerTextColorGreen {
-    color: #77A479;
-    font-family: "Nunito Sans";
-}
 
-.footerTextColorRed {
-    color: #A67777;
-    font-family: "Nunito Sans";
-}
 
-.footerTextColorYellow {
-    color: #A2A678;
+.footerTextColor {
+    color: #808080;
     font-family: "Nunito Sans";
 }
 

@@ -20,9 +20,9 @@ const ProfileComponent = () => {
   var isValid = useUserValidation();
 
   useEffect(() => {
-    if (!isValid) {
-      navigate("/");
-    }
+    // if (!isValid) {
+    //   navigate("/");
+    // }
     UserAPI.GetUser()
       .then((userInfo) => {
         if (
