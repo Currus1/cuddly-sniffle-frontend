@@ -1,6 +1,6 @@
 import * as React from "react";
 import data from "../../Static/DrawerContent.js";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Box from "@mui/material/Box";
 import Divider from "@mui/material/Divider";
@@ -15,12 +15,33 @@ import MenuIcon from "@mui/icons-material/Menu";
 import style from "./Styles/HeaderStyle.module.css";
 import LogoutIcon from "@mui/icons-material/Logout";
 import AuthService from "../../Services/AuthServices/auth.service.js";
+import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
+import UserAPI from "../../Services/UserServices/UserAPI.js";
 
+const driverLicenseRegExp = /^\d{8}$/;
 const drawerWidth = "30vh";
 
 export default function TemporaryDrawer() {
   const navigate = useNavigate();
   const [open, setOpen] = useState(false);
+  const [status, setStatus] = useState("");
+
+  useEffect(() => {
+    UserAPI.GetUser()
+      .then((userInfo) => {
+        if (
+          userInfo.data.driversLicense != null &&
+          userInfo.data.driversLicense.match(driverLicenseRegExp)
+        ) {
+          setStatus("Driver");
+        } else {
+          setStatus("User");
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
 
   const handleNavigation = (navigation) => {
     navigate(navigation);
@@ -48,10 +69,25 @@ export default function TemporaryDrawer() {
             </ListItemButton>
           </ListItem>
         ))}
+        {status == "Driver" ? (
+          <ListItem
+            disablePadding
+            onClick={() => {
+              navigate("/planning");
+            }}
+          >
+            <ListItemButton>
+              <ListItemIcon>
+                <LogoutIcon></LogoutIcon>
+              </ListItemIcon>
+              <ListItemText>Create a trip</ListItemText>
+            </ListItemButton>
+          </ListItem>
+        ) : null}
         <ListItem disablePadding onClick={() => handleLogOut()}>
           <ListItemButton>
             <ListItemIcon>
-              <LogoutIcon></LogoutIcon>
+              <AddCircleOutlineIcon></AddCircleOutlineIcon>
             </ListItemIcon>
             <ListItemText>Sign out</ListItemText>
           </ListItemButton>
