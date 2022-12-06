@@ -43,9 +43,16 @@ const ProfileComponent = () => {
   }, []);
 
   return (
-    <div>
+    <div style={{ backgroundColor: "#F0F0F0" }}>
       <HeaderComponent />
-      <div style={{ display: "flex", justifyContent: "center" }}>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          marginTop: "2%",
+          marginBottom: "2%",
+        }}
+      >
         <Grid
           alignItems="center"
           style={{ display: "flex" }}
@@ -54,32 +61,47 @@ const ProfileComponent = () => {
         >
           <AccountBoxIcon sx={{ fontSize: 70 }} />
           <TextField
+            style={{ backgroundColor: "#808080" }}
             margin="dense"
             label="Name"
             id="Name"
             variant="filled"
             value={user.name}
             InputLabelProps={{
+              style: {
+                color: "white",
+              },
               shrink: true,
             }}
             InputProps={{
+              style: {
+                color: "white",
+              },
               readOnly: true,
             }}
           />
           <TextField
+            style={{ backgroundColor: "#808080" }}
             margin="dense"
             label="Surname"
             id="Surname"
             variant="filled"
             InputLabelProps={{
+              style: {
+                color: "white",
+              },
               shrink: true,
             }}
             InputProps={{
+              style: {
+                color: "white",
+              },
               readOnly: true,
             }}
             value={user.surname}
           />
           <TextField
+            style={{ backgroundColor: "#808080" }}
             margin="dense"
             id="Birthdate"
             label="Birthday"
@@ -87,19 +109,32 @@ const ProfileComponent = () => {
             defaultValue="undefined"
             value={user.birthDate}
             InputLabelProps={{
+              style: {
+                color: "white",
+              },
               shrink: true,
             }}
             InputProps={{
+              style: {
+                color: "white",
+              },
               readOnly: true,
             }}
           />
           <TextField
+            style={{ backgroundColor: "#808080" }}
             margin="dense"
             label="Phone number"
             InputLabelProps={{
+              style: {
+                color: "white",
+              },
               shrink: true,
             }}
             InputProps={{
+              style: {
+                color: "white",
+              },
               readOnly: true,
             }}
             id="PhoneNumber"
@@ -107,12 +142,19 @@ const ProfileComponent = () => {
             value={user.number}
           />
           <TextField
+            style={{ backgroundColor: "#808080" }}
             margin="dense"
             label="Email"
             InputLabelProps={{
+              style: {
+                color: "white",
+              },
               shrink: true,
             }}
             InputProps={{
+              style: {
+                color: "white",
+              },
               readOnly: true,
             }}
             id="Email"
@@ -120,12 +162,19 @@ const ProfileComponent = () => {
             value={user.email}
           />
           <TextField
+            style={{ backgroundColor: "#808080" }}
             margin="dense"
             label="Status"
             InputLabelProps={{
+              style: {
+                color: "white",
+              },
               shrink: true,
             }}
             InputProps={{
+              style: {
+                color: "white",
+              },
               readOnly: true,
             }}
             id="Status"
@@ -134,12 +183,19 @@ const ProfileComponent = () => {
           />
           {status == "Driver" ? (
             <TextField
+              style={{ backgroundColor: "#808080" }}
               margin="dense"
               label="Drivers License Number"
               InputLabelProps={{
+                style: {
+                  color: "white",
+                },
                 shrink: true,
               }}
               InputProps={{
+                style: {
+                  color: "white",
+                },
                 readOnly: true,
               }}
               id="DriversLicense"
@@ -149,12 +205,19 @@ const ProfileComponent = () => {
           ) : null}
           {status == "Driver" ? (
             <TextField
+              style={{ backgroundColor: "#808080" }}
               margin="dense"
               label="Vehicle Type"
               InputLabelProps={{
+                style: {
+                  color: "white",
+                },
                 shrink: true,
               }}
               InputProps={{
+                style: {
+                  color: "white",
+                },
                 readOnly: true,
               }}
               id="VehicleType"
@@ -165,12 +228,19 @@ const ProfileComponent = () => {
 
           {status == "Driver" ? (
             <TextField
+              style={{ backgroundColor: "#808080" }}
               margin="dense"
               label="Vehicle Type"
               InputLabelProps={{
+                style: {
+                  color: "white",
+                },
                 shrink: true,
               }}
               InputProps={{
+                style: {
+                  color: "white",
+                },
                 readOnly: true,
               }}
               id="VehicleType"

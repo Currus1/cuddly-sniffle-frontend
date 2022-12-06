@@ -12,6 +12,8 @@ import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import { TextValidator, ValidatorForm } from "react-material-ui-form-validator";
 import UserAPI from "../../Services/UserServices/UserAPI";
+import styles from "./Styles/ProfileStyle.module.css";
+import { makeStyles } from "@material-ui/core/styles";
 
 const licenseNumberRegExp = /^[A-Z]{3}\d{3}$/;
 const driverLicenseRegExp = /^\d{8}$/;
@@ -20,14 +22,20 @@ const suv = "SUV";
 const ev = "EV";
 const van = "VAN";
 
+const useStyles = makeStyles({
+  dialog: {
+    backgroundColor: "#F0F0F0",
+  },
+});
+
 export default function FormDialog() {
   const [open, setOpen] = useState(false);
   const [licenseNumber, setLicenseNumber] = useState("");
   const [vehicleType, setVehicleType] = useState("Sedan");
   const [driversLicense, setDriversLicense] = useState("");
+  const classes = useStyles();
 
   const handleChange = (event) => {
-    console.log("?");
     setVehicleType(event.target.value);
   };
 
@@ -73,67 +81,87 @@ export default function FormDialog() {
 
   return (
     <div>
-      <Button variant="outlined" onClick={handleClickOpen}>
+      <Button
+        className={styles.driveButton}
+        variant="outlined"
+        onClick={handleClickOpen}
+      >
         Drive & Earn
       </Button>
-      <Dialog open={open} onClose={handleClose}>
-        <DialogTitle>Become A CURRUS Driver</DialogTitle>
-        <DialogContent>
-          <DialogContentText>
-            To become a driver you have to provide the following information.
-          </DialogContentText>
-          <ValidatorForm style={{ marginTop: "5%" }} onSubmit={handleSubmit}>
-            <TextValidator
-              InputLabelProps={{ shrink: true }}
-              fullWidth
-              name="licenseNumber"
-              type="text"
-              id="LicenseNumber"
-              label="Drivers License Number"
-              validators={["DriversLicense"]}
-              errorMessages={[
-                "Wrong format! Drivers License consist 8 symbols and only numbers.",
-              ]}
-              onChange={(event) => setDriversLicense(event.target.value)}
-              value={driversLicense}
-            />
-            <FormControl
-              fullWidth
-              style={{ color: "black", marginTop: "10%", marginBottom: "10%" }}
-            >
-              <InputLabel id="vehicleTypeLbl">Vehicle Type</InputLabel>
-              <Select
-                label="Vehicle Type"
-                labelId="vehicleTypeLbl"
+      <Dialog
+        open={open}
+        classes={{ root: classes.dialog }}
+        onClose={handleClose}
+      >
+        <div style={{ backgroundColor: "#F0F0F0" }}>
+          <DialogTitle>Become A CURRUS Driver</DialogTitle>
+          <DialogContent>
+            <DialogContentText>
+              To become a driver you have to provide the following information.
+            </DialogContentText>
+            <ValidatorForm style={{ marginTop: "5%" }} onSubmit={handleSubmit}>
+              <TextValidator
+                InputLabelProps={{ shrink: true }}
                 fullWidth
-                value={vehicleType}
-                onChange={handleChange}
+                name="licenseNumber"
+                type="text"
+                id="LicenseNumber"
+                label="Drivers License Number"
+                validators={["DriversLicense"]}
+                errorMessages={[
+                  "Wrong format! Drivers License consist 8 symbols and only numbers.",
+                ]}
+                onChange={(event) => setDriversLicense(event.target.value)}
+                value={driversLicense}
+              />
+              <FormControl
+                fullWidth
+                style={{
+                  color: "black",
+                  marginTop: "10%",
+                  marginBottom: "10%",
+                }}
               >
-                <MenuItem value={sedan}>Sedan</MenuItem>
-                <MenuItem value={suv}>SUV</MenuItem>
-                <MenuItem value={ev}>EV</MenuItem>
-                <MenuItem value={van}>VAN</MenuItem>
-              </Select>
-            </FormControl>
+                <InputLabel id="vehicleTypeLbl">Vehicle Type</InputLabel>
+                <Select
+                  label="Vehicle Type"
+                  labelId="vehicleTypeLbl"
+                  fullWidth
+                  value={vehicleType}
+                  onChange={handleChange}
+                >
+                  <MenuItem value={sedan}>Sedan</MenuItem>
+                  <MenuItem value={suv}>SUV</MenuItem>
+                  <MenuItem value={ev}>EV</MenuItem>
+                  <MenuItem value={van}>VAN</MenuItem>
+                </Select>
+              </FormControl>
 
-            <TextValidator
-              InputLabelProps={{ shrink: true }}
-              fullWidth
-              name="licenseNumber"
-              type="text"
-              id="LicenseNumber"
-              label="Vehicle License Number"
-              validators={["LicenseNumber"]}
-              errorMessages={["Wrong format! Possible format may be: 'ABC123'"]}
-              onChange={(event) => setLicenseNumber(event.target.value)}
-              value={licenseNumber}
-            />
-          </ValidatorForm>
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={handleClose}>Cancel</Button>
-          <Button onClick={handleJoin}>Join!</Button>
-        </DialogActions>
+              <TextValidator
+                InputLabelProps={{ shrink: true }}
+                fullWidth
+                name="licenseNumber"
+                type="text"
+                id="LicenseNumber"
+                label="Vehicle License Number"
+                validators={["LicenseNumber"]}
+                errorMessages={[
+                  "Wrong format! Possible format may be: 'ABC123'",
+                ]}
+                onChange={(event) => setLicenseNumber(event.target.value)}
+                value={licenseNumber}
+              />
+            </ValidatorForm>
+          </DialogContent>
+          <DialogActions>
+            <Button className={styles.driveButton} onClick={handleClose}>
+              Cancel
+            </Button>
+            <Button className={styles.driveButton} onClick={handleJoin}>
+              Join!
+            </Button>
+          </DialogActions>
+        </div>
       </Dialog>
     </div>
   );
