@@ -17,6 +17,14 @@
     padding-top: 3vh;
     padding-bottom: 2vh;
     font-size: 2vh;
+    text-align: center;
+}
+
+.biggerText {
+    font-size: 2.5vh;
+    text-align: center;
+    margin-bottom: 1.3vh;
+    margin-top: 0.1vh;
 }
 
 .image {
