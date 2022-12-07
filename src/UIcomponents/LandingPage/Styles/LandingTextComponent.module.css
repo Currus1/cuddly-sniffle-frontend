@@ -1,0 +1,33 @@
+.text_container {
+    width: 100%;
+    height: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    --border: 3px solid #FF5757;
+    border-radius: 2vh;
+    text-align:justify;
+    padding-top: 1vh;
+    padding-right: 1vh;
+    padding-left: 1vh;
+}
+
+.paragraph {
+    width: 100%;
+    height: fit-content;
+    padding-top: 3vh;
+    padding-bottom: 2vh;
+    font-size: 2vh;
+}
+
+.image {
+    width: 90%;
+    height: 200px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 1vh;
+    margin-bottom: 2vh;
+    border-radius: 3vh;
+    background-image: url("../../../Images/VariousImages/banner_design_1.jpg");
+    background-position-x: 55%;
+    background-position-y: 45%;
+}

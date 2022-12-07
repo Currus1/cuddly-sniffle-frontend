@@ -7,7 +7,7 @@ const LandingAnnouncementBar = () => {
       <div className={announcementStyle.container}>
         <div className={announcementStyle.announcement_text}>
           <p className={announcementStyle.announcement}>
-            🚀 Think of some kind of a text here 🚀
+            🚀 Join us today and help us make carpooling the best way to travel! 🚀
           </p>
         </div>
       </div>

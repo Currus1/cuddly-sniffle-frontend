@@ -26,10 +26,20 @@
 
 .announcement_bar_container {
   height: 4vh;
-  background-color: #CCCC;
+  background-color: #cccc;
   display: flex;
   position: relative;
   margin: auto;
   overflow: hidden;
   z-index: 1;
+}
+
+.img_text_container {
+  width: 90%;
+  height: fit-content;
+  padding-left: 1vh;
+  padding-right: 1vh;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 3vh;
 }

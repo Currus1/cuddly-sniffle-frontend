@@ -5,10 +5,10 @@ import LandingBannerComponent from "./LandingBannerComponent";
 import FooterComponent from "../BaseFooter/FooterComponent";
 import LandingPageCardsComponent from "./LandingPageCardsComponent";
 import SignUpComponent from "./SignupComponent";
-import backgroundStyle from "../Styles/BackgroundStyle.module.css";
 import { useNavigate } from "react-router-dom";
 import AuthService from "../../Services/AuthServices/auth.service";
 import LandingAnnouncementBar from "./LandingAnnouncementBar";
+import LandingTextComponent from "./LandingTextComponent";
 
 const HomePageComponent = () => {
   const navigate = useNavigate();
@@ -25,6 +25,7 @@ const HomePageComponent = () => {
       <LandingHeaderComponent />
       <LandingBannerComponent />
       <LandingAnnouncementBar />
+      <LandingTextComponent />
       <LandingPageCardsComponent />
       <SignUpComponent />
       <FooterComponent />

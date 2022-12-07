@@ -1,6 +1,6 @@
 .area {
-    padding-top: 50vh;
-    height: 100vh;
+    padding-top: 15vh;
+    height: fit-content;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -16,9 +16,4 @@
 
 .cardTransparency {
     background: rgba(0, 0, 0, 0.2);
-}
-
-.cardButton {
-    background: none;
-    color: rgba(0, 0, 0, 1);
 }
