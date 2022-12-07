@@ -1,6 +1,6 @@
 .area {
-    padding-top: 5vh;
-    height: 100vh;
+    padding-top: 15vh;
+    height: fit-content;
     display: flex;
     justify-content: center;
     align-items: center;

@@ -3,7 +3,7 @@
     height: fit-content;
     margin-left: auto;
     margin-right: auto;
-    border: 3px solid #FF5757;
+    --border: 3px solid #FF5757;
     border-radius: 2vh;
     text-align:justify;
     padding-top: 1vh;
@@ -14,7 +14,7 @@
 .paragraph {
     width: 100%;
     height: fit-content;
-    padding-top: 2vh;
+    padding-top: 3vh;
     padding-bottom: 2vh;
     font-size: 2vh;
 }
@@ -26,6 +26,7 @@
     margin-right: auto;
     margin-top: 1vh;
     margin-bottom: 2vh;
+    border-radius: 3vh;
     background-image: url("../../../Images/VariousImages/banner_design_1.jpg");
     background-position-x: 55%;
     background-position-y: 45%;

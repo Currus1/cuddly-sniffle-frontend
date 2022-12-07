@@ -115,7 +115,7 @@ const FooterComponent = () => (
 
     <Grid item xs={12} md={12} className={styles.footerCopyrightStyle}>
       <address>
-        © 2022 CURRUS, Inc. |{" "}
+        © 2022 Commútify, Inc. |{" "}
         <a href="#" className={styles.footerTextColor}>
           Leave a review
         </a>

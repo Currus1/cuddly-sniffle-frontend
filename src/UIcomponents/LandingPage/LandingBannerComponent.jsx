@@ -9,7 +9,7 @@ const LandingComponent = () => {
         <div className={bannerStyles.banner_text_container}>
           <div className={bannerStyles.banner_big_text}>
             <h1>
-              Co<span className={bannerStyles.red_text}>mm</span>utify
+              Co<span className={bannerStyles.red_text}>mm</span>útify
             </h1>
           </div>
           <div className={bannerStyles.banner_small_text}>

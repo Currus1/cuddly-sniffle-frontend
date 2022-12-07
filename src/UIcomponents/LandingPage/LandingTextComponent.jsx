@@ -9,17 +9,10 @@ const LandingImageAndTextComponent = () => {
         <Grid container>
           <Grid item xs={12} md={5}>
             <p className={componentStyles.paragraph}>
-              <em>
-                <strong>Commutify</strong>
-              </em>{" "}
-              is a service that allows people to share rides to work, school, or
-              other destinations. It is a great way to save money, reduce
-              emissions, and relieve stress on the roads. Our company helps to
-              match up would-be carpoolers and schedule rides. We provide an
-              easy to use online platform that helps people find and book rides
-              with other people in their area. We also provide customer service
-              and support to ensure a safe and enjoyable experience for
-              everyone.
+              Be a Part of a <em>Sharing Community:</em> 
+              <ul>
+                <li>Sveikas</li>
+              </ul>
             </p>
           </Grid>
           <Grid item xs={12} md={7}>
