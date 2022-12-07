@@ -17,7 +17,7 @@ const FooterComponent = () => (
     >
       Commútify
       <hr className={styles.footerHr} />
-      <p>Stay In Touch!</p>
+      <p className={styles.footerText}>Stay In Touch!</p>
       <Grid container style={{ display: "flex", justifyContent: "center" }}>
         <Grid item xs={3} md={1}>
           <a href="#">
