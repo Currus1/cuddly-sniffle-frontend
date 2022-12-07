@@ -81,7 +81,7 @@ body {
     font-family: "Nunito Sans";
 }
   
-p {
+.footerText {
     font-size: 20px;
     margin-bottom: -10px;
     margin-top: -20px;
