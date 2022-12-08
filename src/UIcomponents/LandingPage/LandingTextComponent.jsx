@@ -18,11 +18,17 @@ const LandingImageAndTextComponent = () => {
           </Grid>
           <Grid item xs={12} md={7}>
             <p className={componentStyles.image}>
-              💰 Save money and time on your daily commute 💰 <br />⛽ Reduce
-              your carbon footprint and help the environment ⛽ <br />
-              💨 Fast and easy setup 💨 <br />
-              🚗 Join an active community of carpoolers 🚗 <br />
-              🚵 Track your carpooling activity and miles 🚵
+              ✅ Join the Carpooling Revolution - Join Commútify! ✅ <br />
+
+              👇 Learn more about us or read one of our epic blogs here: 👇
+              <div className={componentStyles.button_container}>
+                <button className={componentStyles.learnMoreButton}>
+                  Learn More
+                </button>
+                <button className={componentStyles.learnMoreButton}>
+                  Blogs
+                </button>
+              </div>
             </p>
           </Grid>
         </Grid>
