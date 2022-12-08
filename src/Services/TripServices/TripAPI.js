@@ -1,8 +1,13 @@
 import { getCustomHttp } from "../../CustomHooks/useCustomHttp";
 class TripAPI {
-  getAllTripsByUserId(id) {
+  getAllTripsByUserId() {
     const http = getCustomHttp();
-    return http.get(`/${id}/trips`);
+    return http.get(`/Trip/GetAll`);
+  }
+
+  getTripDriver(driverId) {
+    const http = getCustomHttp();
+    return http.get(`/Trip/Driver`, { params: {driverId: driverId}})
   }
 
   getOneTripById(id) {

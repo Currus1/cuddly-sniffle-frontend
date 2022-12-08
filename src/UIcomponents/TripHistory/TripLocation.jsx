@@ -7,15 +7,18 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 
-const TripLocation = ({ _dest, _price }) => {
+const TripLocation = ({ trip }) => {
   return (
     <TableContainer component={Paper}>
       <Table>
         <TableHead></TableHead>
         <TableBody>
           <TableRow>
-            <TableCell align="left">{_dest}</TableCell>
-            <TableCell align="right">{_price}$</TableCell>
+            <TableCell width={"5%"} align="left">
+              {trip.destination}
+            </TableCell>
+            <TableCell align="left">({trip.tripStatus})</TableCell>
+            <TableCell align="right">{trip.estimatedTripPrice}$</TableCell>
           </TableRow>
         </TableBody>
       </Table>

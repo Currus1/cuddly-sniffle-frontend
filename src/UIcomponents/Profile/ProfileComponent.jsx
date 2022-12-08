@@ -230,7 +230,7 @@ const ProfileComponent = () => {
             <TextField
               style={{ backgroundColor: "#808080" }}
               margin="dense"
-              label="Vehicle Type"
+              label="License Number"
               InputLabelProps={{
                 style: {
                   color: "white",
@@ -243,7 +243,7 @@ const ProfileComponent = () => {
                 },
                 readOnly: true,
               }}
-              id="VehicleType"
+              id="LicenseNumber"
               variant="filled"
               value={user.licenseNumber}
             />

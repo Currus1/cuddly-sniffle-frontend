@@ -8,19 +8,56 @@ import {
   ListItem,
 } from "@mui/material";
 import styles from "./Styles/TripHistoryStyle.module.css";
+import {
+  Button,
+  Dialog,
+  DialogContent,
+  DialogTitle,
+  Typography,
+} from "@material-ui/core";
+import TripDialog from "./TripDialog";
+import TripAPI from "../../Services/TripServices/TripAPI";
 
-const TripView = ({ dest, price }) => {
+const TripView = ({ trip }) => {
+  const [open, setOpen] = React.useState(false);
+  const [driver, setDriver] = React.useState(false);
+
+  const handleClick = () => {
+    const fetchData = async () => {
+      try {
+        await TripAPI.getTripDriver(trip.driverId).then((res) =>
+          setDriver(res.data)
+        );
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    fetchData();
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
   return (
-    <div className={styles.max_width}>
+    <>
       <ListItem>
-        <ListItemButton>
+        <ListItemButton onClick={handleClick}>
           <ListItemAvatar>
             <Avatar alt="" src={logo} variant="rounded"></Avatar>
           </ListItemAvatar>
-          <TripLocation _dest={dest} _price={price}></TripLocation>
+          <TripLocation trip={trip}></TripLocation>
         </ListItemButton>
       </ListItem>
-    </div>
+      <TripDialog
+        driver={driver}
+        trip={trip}
+        driver={driver}
+        open={open}
+        onClose={handleClose}
+      />
+    </>
   );
 };
 
