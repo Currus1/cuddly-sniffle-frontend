@@ -1,5 +1,4 @@
 import React from "react";
-import { useState, useEffect, useMemo } from "react";
 import {
   Dialog,
   DialogContent,
@@ -9,12 +8,8 @@ import {
 import {
   GoogleMap,
   Marker,
-  Polyline,
   LoadScript,
-  useLoadScript,
 } from "@react-google-maps/api";
-import { LatLng, LatLngBounds } from "google-maps-react";
-import destImg from "../../Images/map_destination.png";
 import styles from "./Styles/TripDialogStyle.module.css";
 
 export default function TripDialog({ trip, driver, open, onClose, google }) {
