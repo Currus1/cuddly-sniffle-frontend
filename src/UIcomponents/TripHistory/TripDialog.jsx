@@ -1,49 +1,90 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import {
   Dialog,
   DialogContent,
   DialogTitle,
   Typography,
 } from "@material-ui/core";
-import { Map, GoogleApiWrapper } from "google-maps-react";
-import TripAPI from "../../Services/TripServices/TripAPI";
+import {
+  GoogleMap,
+  Marker,
+  Polyline,
+  LoadScript,
+  useLoadScript,
+} from "@react-google-maps/api";
+import { LatLng, LatLngBounds } from "google-maps-react";
+import destImg from "../../Images/map_destination.png";
+import styles from "./Styles/TripDialogStyle.module.css";
 
-function TripDialog({ trip, driver, open, onClose, google }) {
+export default function TripDialog({ trip, driver, open, onClose, google }) {
+  function findCenter(startCoords, endCoords) {
+    const centerX = (startCoords.lat + endCoords.lat) / 2;
+    const centerY = (startCoords.lng + endCoords.lng) / 2;
+    return { lat: centerX, lng: centerY };
+  }
+
+  const startCoords = { lat: trip.sLatitude, lng: trip.sLongitude };
+  const destCoords = { lat: trip.dLatitude, lng: trip.dLongitude };
+  const center = findCenter(startCoords, destCoords);
+
   return (
-    <Dialog open={open} onClose={onClose}>
-      <DialogTitle>Trip Details</DialogTitle>
-      <DialogContent>
-        {/* <Map
-          google={google}
-          zoom={8}
-          initialCenter={{
-            lat: lat,
-            lng: lng,
-          }}
-        /> */}
+    <Dialog
+      style={{ backgroundColor: "#F0F0F0" }}
+      open={open}
+      onClose={onClose}
+    >
+      <div style={{ backgroundColor: "#F0F0F0", color: "black" }}>
+        <DialogTitle>Trip Details</DialogTitle>
         <DialogContent>
-          <Typography>Starting Point: {trip.startingPoint}</Typography>
-          <Typography>Destination: {trip.destination}</Typography>
-          <Typography>Driver Id: {driver.id}</Typography>
-          <Typography>Name: {driver.name}</Typography>
-          <Typography>Surname: {driver.surname}</Typography>
-          <Typography>Destination: {trip.destination}</Typography>
-          <Typography>
-            Duration: {trip.hours}h {trip.minutes}min
-          </Typography>
-          <Typography>Distance: {trip.distance} km</Typography>
-          <Typography>Vehicle type: {trip.vehicleType}</Typography>
-          <Typography>Price: {trip.estimatedTripPrice}</Typography>
-          <Typography>Status: {trip.tripStatus}</Typography>
-          <Typography>Lat: {trip.latitude}</Typography>
-          <Typography>Lng: {trip.longitude}</Typography>
+          <div style={{ justifyContent: "center", display: "flex" }}>
+            <LoadScript googleMapsApiKey={process.env.REACT_APP_GOOGLE_MAP_API}>
+              <GoogleMap
+                options={{
+                  disableDefaultUI: true,
+                }}
+                center={center}
+                zoom={11}
+                mapContainerStyle={{
+                  height: "30vh",
+                  width: "30vh",
+                  position: "relative",
+                }}
+              >
+                <Marker
+                  icon={{
+                    url: "https://maps.google.com/mapfiles/ms/icons/green-dot.png",
+                  }}
+                  position={startCoords}
+                />
+                <Marker
+                  icon={{
+                    url: "https://maps.google.com/mapfiles/ms/icons/red-dot.png",
+                  }}
+                  position={destCoords}
+                />
+              </GoogleMap>
+            </LoadScript>
+          </div>
+
+          <DialogTitle>Driver Information</DialogTitle>
+          <DialogContent className={styles.dialogText}>
+            <Typography>Driver Id: {driver.id}</Typography>
+            <Typography>
+              Personal Name: {driver.name} {driver.surname}
+            </Typography>
+            <Typography></Typography>
+          </DialogContent>
+          <DialogTitle>Trip Information</DialogTitle>
+          <DialogContent className={styles.dialogText}>
+            <Typography>
+              Duration: {trip.hours}h {trip.minutes}min
+            </Typography>
+            <Typography>Distance: {trip.distance} km</Typography>
+            <Typography>Price: {trip.estimatedTripPrice}€</Typography>
+          </DialogContent>
         </DialogContent>
-      </DialogContent>
+      </div>
     </Dialog>
   );
 }
-
-export default GoogleApiWrapper({
-  apiKey: `${process.env.REACT_APP_GOOGLE_MAP_API}`,
-})(TripDialog);

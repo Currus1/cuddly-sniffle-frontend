@@ -42,11 +42,7 @@ const TripComponent = () => {
         <h1 className={styles.h1}>Trip History</h1>
         <List className={styles.list}>
           {data.length > 0 ? (
-            data.map((trip) => (
-              <ListItem>
-                <TripView trip={trip}></TripView>
-              </ListItem>
-            ))
+            data.map((trip) => <TripView key={trip.id} trip={trip}></TripView>)
           ) : (
             <div className={styles.text_center}>
               <h2>You have no trips yet</h2>
