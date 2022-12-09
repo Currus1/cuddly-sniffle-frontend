@@ -1,13 +1,3 @@
-.page_container {
-  position: relative;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  font-family: "Nunito Sans";
-}
-
 .half_page_container {
   position: relative;
   min-height: 50vh;
