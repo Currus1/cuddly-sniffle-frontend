@@ -53,7 +53,6 @@ const TripView = ({ trip }) => {
       <TripDialog
         driver={driver}
         trip={trip}
-        driver={driver}
         open={open}
         onClose={handleClose}
       />

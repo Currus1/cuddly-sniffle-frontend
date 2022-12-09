@@ -7,14 +7,7 @@ import instagram from "../../Images/instagram.png";
 
 const FooterComponent = () => (
   <Grid container className={styles.footerStyle}>
-    <Grid
-      justifyContent="center"
-      item
-      xs={12}
-      sm={12}
-      md={8}
-      className={styles.footerLogoStyle}
-    >
+    <Grid item xs={12} sm={12} md={8} className={styles.footerLogoStyle}>
       Commútify
       <hr className={styles.footerHr} />
       <p className={styles.footerText}>Stay In Touch!</p>
