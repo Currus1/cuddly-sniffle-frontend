@@ -8,15 +8,19 @@ import DriverDialog from "./DriverDialog";
 import { useUserValidation } from "../../CustomHooks/useUserValidation";
 import HeaderComponent from "../BaseHeader/HeaderComponent";
 import FooterComponent from "../BaseFooter/FooterComponent";
+import ErrorAlertComponent from "../ReusableComponents/ErrorAlertComponent";
+import SuccessAlertComponent from "../ReusableComponents/SuccessAlertComponent";
 
 const driverLicenseRegExp = /^\d{8}$/;
+const errorAlertText = "You are a bad boy";
+const successAlertText = "You are a good boy";
 
 const ProfileComponent = () => {
   const [user, setUser] = useState([]);
-  const [errorText, setErrorText] = useState("");
-  const [dialogOpen, setDialogOpen] = useState("");
   const navigate = useNavigate();
   const [status, setStatus] = useState("");
+  const [alertErrorOpen, setAlertErrorOpen] = useState(false);
+  const [alertSuccessOpen, setAlertSuccessOpen] = useState(false);
   var isValid = useUserValidation();
 
   useEffect(() => {
@@ -25,6 +29,8 @@ const ProfileComponent = () => {
     }
     UserAPI.GetUser()
       .then((userInfo) => {
+        setAlertErrorOpen(true);
+        setAlertSuccessOpen(true);
         if (
           userInfo.data.driversLicense != null &&
           userInfo.data.driversLicense.match(driverLicenseRegExp)
@@ -44,7 +50,12 @@ const ProfileComponent = () => {
 
   return (
     <div style={{ backgroundColor: "#F0F0F0" }}>
-      <HeaderComponent />
+      {alertErrorOpen == true ? (
+        <ErrorAlertComponent text={errorAlertText} />
+      ) : null}
+      {alertSuccessOpen == true ? (
+        <SuccessAlertComponent text={successAlertText} />
+      ) : null}
       <div
         style={{
           display: "flex",
