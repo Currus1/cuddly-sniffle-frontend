@@ -1,0 +1,71 @@
+.container {
+  width: 100%;
+  height: fit-content;
+  background-color: white;
+  position: relative;
+  margin: auto;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.image_container {
+  height: 40vh;
+  background-image: url("../../../Images/VariousImages/driver_masks.svg");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: right;
+}
+
+.text_container {
+  width: fit-content;
+  height: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 9vh;
+  font-size: 1.9vh;
+  text-align: center;
+  font-weight: bold;
+  word-spacing: 0.5vh;
+  opacity: 75%;
+}
+
+.button_container {
+  display: block;
+  width: fit-content;
+  height: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 1vh;
+}
+
+.learnMoreButton {
+  display: inline-block;
+  width: fit-content;
+  height: fit-content;
+  margin: 1vh;
+  margin-top: 4vh;
+  padding: 1.4vh;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+  border-radius: 30px;
+  color: white;
+  font-family: "montserrat";
+  font-weight: bold;
+  font-size: 15px;
+  transition-duration: 0.15s;
+  border: none;
+  text-decoration: none;
+  background-color: #ff5757;
+  color: white;
+}
+
+.learnMoreButton:hover {
+  border-radius: 10px;
+  border-color: #e23f3f;
+  -ms-transform: scale(1.05); /* IE 9 */
+  -webkit-transform: scale(1.05); /* Safari 3-8 */
+  transform: scale(1.05);
+  transition-duration: 0.15s;
+}

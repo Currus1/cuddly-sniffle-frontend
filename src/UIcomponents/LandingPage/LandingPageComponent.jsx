@@ -9,7 +9,7 @@ import { useNavigate } from "react-router-dom";
 import AuthService from "../../Services/AuthServices/auth.service";
 import LandingTextComponent from "./LandingTextComponent";
 import AnnouncementBar from "../ReusableComponents/AnnouncementBar";
-import styles from "./Styles/PageStyle.module.css";
+import BecomeDriverComponent from "../ReusableComponents/BecomeDriverComponent";
 
 const HomePageComponent = () => {
   const navigate = useNavigate();
@@ -28,6 +28,7 @@ const HomePageComponent = () => {
       <AnnouncementBar text={"🚀 Join us today and help us make carpooling the best way to travel! 🚀"}/>
       <LandingTextComponent />
       <LandingPageCardsComponent />
+      <BecomeDriverComponent />
       <SignUpComponent />
       <FooterComponent />
     </div>

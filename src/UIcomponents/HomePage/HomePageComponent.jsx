@@ -4,6 +4,7 @@ import FooterComponent from "../BaseFooter/FooterComponent";
 import HomePageBannerComponent from "./HomePageBannerComponent";
 import { useNavigate } from "react-router-dom";
 import { useUserValidation } from "../../CustomHooks/useUserValidation";
+import BecomeDriverComponent from "../ReusableComponents/BecomeDriverComponent";
 
 const TripsComponent = () => {
   const navigate = useNavigate("");
@@ -20,6 +21,7 @@ const TripsComponent = () => {
     <div>
       <HeaderComponent />
       <HomePageBannerComponent />
+      <BecomeDriverComponent />
       <FooterComponent />
     </div>
   );
