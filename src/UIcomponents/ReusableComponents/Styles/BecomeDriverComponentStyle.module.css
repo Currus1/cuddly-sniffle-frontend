@@ -21,7 +21,8 @@
   height: fit-content;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 9vh;
+  margin-top: 5vh;
+  padding: 1vh;
   font-size: 1.9vh;
   text-align: center;
   font-weight: bold;
