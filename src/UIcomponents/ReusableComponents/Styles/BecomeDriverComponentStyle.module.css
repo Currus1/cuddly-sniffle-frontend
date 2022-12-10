@@ -13,14 +13,14 @@
   background-image: url("../../../Images/VariousImages/driver_masks.svg");
   background-repeat: no-repeat;
   background-size: contain;
-  background-position: right;
+  background-position: center;
 }
 
 .text_container {
   width: fit-content;
   height: fit-content;
-  margin-left: auto;
-  margin-right: auto;
+  --margin-left: auto;
+  --margin-right: auto;
   margin-top: 9vh;
   font-size: 1.9vh;
   text-align: center;
