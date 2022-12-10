@@ -14,16 +14,6 @@
   background-color: black;
 }
 
-.announcement_bar_container {
-  height: 4vh;
-  background-color: #cccc;
-  display: flex;
-  position: relative;
-  margin: auto;
-  overflow: hidden;
-  z-index: 1;
-}
-
 .img_text_container {
   position: block;
   width: 80%;
