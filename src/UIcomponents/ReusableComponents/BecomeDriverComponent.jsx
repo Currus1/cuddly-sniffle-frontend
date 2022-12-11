@@ -11,8 +11,8 @@ export default function BecomeDriverComponent() {
         <Grid item md={6} xs={12}>
           <div>
             <p className={styles.text_container}>
-              <h1>💸 Earn With Your Routine! 💸</h1> <br />
-               Jump in the train and earn by doing nothing extra! 
+              <h1>Earn With Your Routine!</h1> <br />
+              💸 Jump in the train and earn by doing nothing extra! 💸 
               <div className={styles.button_container}>
                 <button className={styles.learnMoreButton}>
                   Become a Driver!
