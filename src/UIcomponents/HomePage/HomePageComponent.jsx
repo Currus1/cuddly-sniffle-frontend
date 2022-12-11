@@ -5,6 +5,7 @@ import HomePageBannerComponent from "./HomePageBannerComponent";
 import { useNavigate } from "react-router-dom";
 import { useUserValidation } from "../../CustomHooks/useUserValidation";
 import BecomeDriverComponent from "../ReusableComponents/BecomeDriverComponent";
+import InfoCardsComponent from "../ReusableComponents/InfoCardsComponent";
 
 const TripsComponent = () => {
   const navigate = useNavigate("");
@@ -22,6 +23,7 @@ const TripsComponent = () => {
       <HeaderComponent />
       <HomePageBannerComponent />
       <BecomeDriverComponent />
+      <InfoCardsComponent />
       <FooterComponent />
     </div>
   );
