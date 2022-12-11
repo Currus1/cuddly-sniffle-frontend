@@ -10,6 +10,11 @@ class TripAPI {
     return http.get(`/Trip/Driver`, { params: {driverId: driverId}})
   }
 
+  addUserToTrip(tripId) {
+    const http = getCustomHttp();
+    return http.post(`/Trip/UserAdd`, { params: {tripId: tripId}})
+  }
+
   getOneTripById(id) {
     const http = getCustomHttp();
     return http.get(`/Trip/${id}`);
