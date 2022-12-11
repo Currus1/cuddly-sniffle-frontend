@@ -1,0 +1,55 @@
+:root {
+  --container_height: 35vh;
+}
+
+.container {
+  width: 100%;
+  height: fit-content;
+  background-color: rgb(180, 175, 175);
+  position: relative;
+  margin: auto;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.item_container {
+  width: 100%;
+  height: var(--container_height);;
+  position: relative;
+  text-align: center;
+}
+
+.item {
+  position: relative;
+  top: 10%;
+}
+
+.item_header {
+  font-family: "montserrat";
+  font-weight: bold;
+  font-size: 2.3vh;
+}
+
+.money_logo {
+  height: 7vh;
+  background-image: url("../../../Images/Icons/money.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+}
+
+.environment_logo {
+  height: 7vh;
+  background-image: url("../../../Images/Icons/environment.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+}
+
+.people_logo {
+  height: 7vh;
+  background-image: url("../../../Images/Icons/people.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+}
