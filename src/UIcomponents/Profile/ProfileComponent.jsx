@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Grid } from "@material-ui/core";
 import UserAPI from "../../Services/UserServices/UserAPI.js";
 import { useNavigate } from "react-router-dom";
@@ -22,6 +22,7 @@ const ProfileComponent = () => {
   const [alertErrorOpen, setAlertErrorOpen] = useState(false);
   const [alertSuccessOpen, setAlertSuccessOpen] = useState(false);
   var isValid = useUserValidation();
+  const hasReloaded = sessionStorage.getItem("hasReloaded");
 
   useEffect(() => {
     if (!isValid) {
@@ -38,6 +39,10 @@ const ProfileComponent = () => {
           setStatus("Driver");
         } else {
           setStatus("User");
+          if (!hasReloaded) {
+            sessionStorage.setItem("hasReloaded", true);
+            window.location.reload();
+          }
         }
         var array = userInfo.data.birthDate.split("T");
         userInfo.data.birthDate = array[0];

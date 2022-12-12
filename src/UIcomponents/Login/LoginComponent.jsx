@@ -55,7 +55,7 @@ export default function LoginComponent() {
     AuthService.login(email, password)
       .then(() => {
         handleClose();
-        navigate("/profile");
+        navigate("/home");
       })
       .catch((error) => {
         handleClose();

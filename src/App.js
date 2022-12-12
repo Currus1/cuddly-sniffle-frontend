@@ -7,6 +7,7 @@ import ProfileComponent from "./UIcomponents/Profile/ProfileComponent";
 import RegisterComponent from "./UIcomponents/Registry/RegisterComponent";
 import LandingPageComponent from "./UIcomponents/LandingPage/LandingPageComponent";
 import LoginComponent from "./UIcomponents/Login/LoginComponent"
+import ErrorAlertComponent from "./UIcomponents/ReusableComponents/ErrorAlertComponent"
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
           <Route path="/register" element={<RegisterComponent />} />
           <Route path="/" element={<LandingPageComponent />} />
           <Route path="/login" element={<LoginComponent />} />
+          <Route path="/*" element={<ErrorAlertComponent text={"This page does not exist! "} wrongPage={true}/>} />
         </Routes>
       </BrowserRouter>
     </div>
