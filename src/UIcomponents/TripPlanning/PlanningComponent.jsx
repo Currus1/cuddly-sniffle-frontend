@@ -1,4 +1,4 @@
-import { React, useMemo, useState, useEffect } from "react";
+import { React, useMemo, useState, useEffect, useRef } from "react";
 import { Grid } from "@material-ui/core";
 import HeaderComponent from "../BaseHeader/HeaderComponent";
 import TripAPI from "../../Services/TripServices/TripAPI.js";
@@ -9,20 +9,35 @@ import EnterAddressComponent from "./EnterAddressComponent";
 import FooterComponent from "../BaseFooter/FooterComponent";
 import backgroundStyle from "../Styles/BackgroundStyle.module.css";
 import { useUserValidation } from "../../CustomHooks/useUserValidation";
-import { useNavigate } from "react-router-dom";
+import { useAsyncError, useNavigate } from "react-router-dom";
 import UserAPI from "../../Services/UserServices/UserAPI";
+import ErrorAlertComponent from "../ReusableComponents/ErrorAlertComponent";
+import SuccessAlertComponent from "../ReusableComponents/SuccessAlertComponent";
+import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
+import { TextValidator, ValidatorForm } from "react-material-ui-form-validator";
+import styles from "./Styles/PlanTripStyle.module.css";
+
+import Button from "@mui/material/Button";
 
 const driverLicenseRegExp = /^\d{8}$/;
+const tripDateRegExp = /^\d{4}-\d{2}-\d{2}$/;
+const threeDaysInMs = 259200000;
+const twoMonthsInMs = 5184000000;
 
 const PlanningComponent = () => {
-  const [errorText, setErrorText] = useState("");
-  const [trip] = useState([]);
-  const [longitude, setLongitude] = useState("");
-  const [latitude, setLatitude] = useState("");
-  const [startingPoint, setStartingPoint] = useState("");
-  const [destination, setDestination] = useState("");
   const navigate = useNavigate("");
   var isValid = useUserValidation();
+  const [alertErrorOpen, setAlertErrorOpen] = useState(false);
+  const [alertSuccessOpen, setAlertSuccessOpen] = useState(false);
+  const errorAlertText = "Sorry. You cannot create a trip!";
+  const successAlertText = "Trip created successfully!";
+  const [tripDate, setTripDate] = useState("");
+  const [price, setPrice] = useState("");
+  const [seats, setSeats] = useState("");
+  const [vehicleType, setVehicleType] = useState("");
+
+  const handleToggle = () => {};
 
   useEffect(() => {
     if (!isValid) {
@@ -36,112 +51,170 @@ const PlanningComponent = () => {
         ) {
           navigate("/");
         }
+        var number = getSeatNumber(userInfo.data.vehicleType);
+        setVehicleType(userInfo.data.vehicleType);
+        setSeats(number);
       })
       .catch((error) => {
-        console.log(error);
+        setAlertErrorOpen(true);
       });
   }, []);
 
-  function saveClicked() {
-    if (
-      document.getElementById("seats").value != "" &&
-      document.getElementById("hours").value != "" &&
-      document.getElementById("minutes").value != "" &&
-      longitude &&
-      latitude
-    ) {
-      trip.Latitude = latitude;
-      trip.Longitude = longitude;
-      trip.StartingPoint = startingPoint;
-      trip.Destination = destination;
-      trip.Seats = document.getElementById("seats").value;
-      trip.Hours = document.getElementById("hours").value;
-      trip.Minutes = document.getElementById("minutes").value;
-      trip.Distance = 100;
-      trip.VehicleType = 2;
-      trip.TripStatus = "Planned";
-      trip.EstimatedTripPrice = 12;
-
-      TripAPI.addTrip(trip);
-
-      setErrorText("Trip was created!");
-    } else {
-      setErrorText("Error with given data");
+  function getSeatNumber(VehicleType) {
+    switch (VehicleType) {
+      case "SUV":
+        return 6;
+      case "EV":
+        return 4;
+      case "VAN":
+        return 12;
+      case "SEDAN":
+        return 4;
     }
   }
 
-  function Map() {
-    const center = useMemo(() => ({ lat: 54.689461, lng: 25.27986 }), []);
-    return (
-      <GoogleMap
-        zoom={14}
-        center={center}
-        mapContainerClassName="map-container"
-      >
-        <Marker position={center} />
-      </GoogleMap>
-    );
-  }
+  ValidatorForm.addValidationRule("tripDatePast", (value) => {
+    var inputDate = new Date(value);
+    var today = new Date();
+    if (value.match(tripDateRegExp) && today.getTime() < inputDate.getTime()) {
+      return true;
+    }
+    return false;
+  });
 
-  const useMapsApiKey = () => {
-    const [key, setKey] = useState(undefined);
+  ValidatorForm.addValidationRule("tripDateClose", (value) => {
+    var today = new Date();
+    var inputDate = new Date(value);
+    if (
+      value.match(tripDateRegExp) &&
+      inputDate.getTime() - threeDaysInMs > today.getTime()
+    ) {
+      return true;
+    }
+    return false;
+  });
 
-    useEffect(() => {
-      const getKey = async () => {
-        let res = await SecretAPI.getGoogleTripApiKey();
-        setKey(res.data);
-      };
-      getKey();
-    }, []);
+  ValidatorForm.addValidationRule("price", (value) => {
+    if (value <= 0) {
+      return false;
+    }
+    return true;
+  });
 
-    return key;
+  ValidatorForm.addValidationRule("tripDateLong", (value) => {
+    var today = new Date();
+    var inputDate = new Date(value);
+    if (
+      value.match(tripDateRegExp) &&
+      inputDate.getTime() - twoMonthsInMs < today.getTime()
+    ) {
+      return true;
+    }
+    return false;
+  });
+
+  ValidatorForm.addValidationRule("SeatsMax", (value) => {
+    var number = getSeatNumber(vehicleType);
+    if (value <= number) {
+      return true;
+    }
+    return false;
+  });
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
   };
-
-  const MapLoader = ({ apiKey }) => {
-    const { isLoaded } = useJsApiLoader({
-      googleMapsApiKey: apiKey,
-    });
-
-    if (!isLoaded) return <div>Loading...</div>;
-
-    return <Map />;
-  };
-
-  const key = useMapsApiKey();
-
-  if (!key) return null;
 
   return (
     <>
-      <HeaderComponent />
-      <div className={backgroundStyle.bg}>
-        <Grid container>
-          <Grid item xs={12} md={3}>
-            <EnterAddressComponent
-              setLongitude={setLongitude}
-              setLatitude={setLatitude}
-              setCity={setStartingPoint}
-              placeholder="Enter the starting address"
-            />
+      {alertErrorOpen == true ? (
+        <ErrorAlertComponent text={errorAlertText} />
+      ) : null}
+      {alertSuccessOpen == true ? (
+        <SuccessAlertComponent text={successAlertText} />
+      ) : null}
+      <Box
+        sx={{
+          marginTop: 8,
+          marginBottom: 8,
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+        }}
+      >
+        <Typography component="h1" variant="h5">
+          Planner
+        </Typography>
+        <ValidatorForm onSubmit={handleSubmit}>
+          <TextValidator
+            InputLabelProps={{ shrink: true }}
+            margin="normal"
+            fullWidth
+            id="tripDate"
+            label="Trip Date"
+            name="tripDate"
+            autoFocus
+            type="date"
+            validators={["tripDatePast", "tripDateClose", "tripDateLong"]}
+            errorMessages={[
+              "Trip Date cannot be in the past",
+              "Trip Date should be at least 3 days from now",
+              "Trip Date should not be more than two months from now",
+            ]}
+            onChange={(event) => {
+              setTripDate(event.target.value);
+            }}
+            value={tripDate}
+          />
+          <TextValidator
+            margin="normal"
+            fullWidth
+            id="price"
+            label="Price per Person (€)"
+            name="price"
+            type="number"
+            autoFocus
+            validators={["price"]}
+            errorMessages={["Price cannot be less than zero"]}
+            onChange={(event) => {
+              setPrice(event.target.value);
+            }}
+            value={price}
+          />
+          <TextValidator
+            margin="normal"
+            fullWidth
+            id="seats"
+            label="Seats"
+            name="seats"
+            type="number"
+            autoComplete="seats"
+            validators={["SeatsMax"]}
+            errorMessages={["Seats number beyond limit"]}
+            onChange={(event) => {
+              setSeats(event.target.value);
+            }}
+            value={seats}
+          />
 
-            <EnterAddressComponent
-              setLongitude={setLongitude}
-              setLatitude={setLatitude}
-              setCity={setDestination}
-              placeholder="Enter the destination address"
-            />
-
-            <TripPlanningSaveComponent
-              saveClicked={saveClicked}
-              errorText={errorText}
-            />
-          </Grid>
-          <Grid item xs={12} md={9}>
-            <MapLoader apiKey={key} style={{ zIndex: "-1" }} />
-          </Grid>
-        </Grid>
-        <FooterComponent />
-      </div>
+          <div
+            style={{
+              justifyContent: "center",
+              display: "flex",
+              marginTop: "10%",
+            }}
+          >
+            <Button
+              className={styles.createButton}
+              variant="outlined"
+              onClick={() => {}}
+            >
+              CREATE
+            </Button>
+          </div>
+        </ValidatorForm>
+      </Box>
+      <FooterComponent />
     </>
   );
 };

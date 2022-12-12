@@ -5,7 +5,7 @@ import Collapse from "@mui/material/Collapse";
 import IconButton from "@mui/material/IconButton";
 import CloseIcon from "@mui/icons-material/Close";
 
-const AlertComponent = ({ text }) => {
+const AlertComponent = ({ text, wrongPage }) => {
   const [alertErrorOpen, setAlertErrorOpen] = useState(false);
 
   useEffect(() => {
@@ -30,9 +30,30 @@ const AlertComponent = ({ text }) => {
         >
           <AlertTitle style={{ fontWeight: "bold" }}>Error!</AlertTitle>
           {text}
+          {wrongPage === true ? <LinkToHome /> : null}
         </Alert>
       </Collapse>
     </div>
+  );
+};
+
+const LinkToHome = () => {
+  return (
+    <>
+      <strong>
+        Click here{" "}
+        <a
+          href="/home"
+          style={{
+            color: "inherit",
+            fontSize: "inherit",
+            textDecorationLine: "underline",
+          }}
+        >
+          home
+        </a>
+      </strong>
+    </>
   );
 };
 

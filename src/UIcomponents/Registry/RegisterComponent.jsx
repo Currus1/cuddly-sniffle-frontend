@@ -22,12 +22,12 @@ const theme = createTheme({
     },
   },
 });
-const numberRegExp = /^((86|\+3706)\d{7})$/g;
+const numberRegExp = /^((86|\+3706)\d{7})$/;
 const strongPasswordRegExp =
-  /^(?=(.*[a-z]){1,})(?=(.*[A-Z]){1,})(?=(.*[0-9]){1,})(?=(.*[!@#$%^&*()\-__+.]){1,}).{4,}$/g;
+  /^(?=(.*[a-z]){1,})(?=(.*[A-Z]){1,})(?=(.*[0-9]){1,})(?=(.*[!@#$%^&*()\-__+.]){1,}).{4,}$/;
 const emailRegExp =
-  /^([a-zA-Z0-9_\-\.]+)@(([a-zA-Z0-9\-]+\.)+)([a-zA-Z]{2,4}|[0-9]{1,3})$/g;
-const birthDateRegExp = /^\d{4}-\d{2}-\d{2}$/g;
+  /^([a-zA-Z0-9_\-\.]+)@(([a-zA-Z0-9\-]+\.)+)([a-zA-Z]{2,4}|[0-9]{1,3})$/;
+const birthDateRegExp = /^\d{4}-\d{2}-\d{2}$/;
 const oldDate = new Date("1900-01-01");
 const ageLimitMs = 504997216000; // 16 years ~
 
