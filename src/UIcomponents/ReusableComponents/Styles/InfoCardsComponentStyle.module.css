@@ -31,11 +31,11 @@
 }
 
 .money_logo {
-  height: 7vh;
-  background-image: url("../../../Images/Icons/money.png");
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: center;
+    height: 7vh;
+    background-image: url("../../../Images/Icons/money.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
 }
 
 .environment_logo {

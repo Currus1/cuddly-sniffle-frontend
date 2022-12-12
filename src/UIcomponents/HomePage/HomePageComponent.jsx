@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { useUserValidation } from "../../CustomHooks/useUserValidation";
 import BecomeDriverComponent from "../ReusableComponents/BecomeDriverComponent";
 import InfoCardsComponent from "../ReusableComponents/InfoCardsComponent";
+import HomePageTripsComponent from "./HomePageTripsComponent";
 
 const TripsComponent = () => {
   const navigate = useNavigate("");
@@ -23,6 +24,7 @@ const TripsComponent = () => {
       <HeaderComponent />
       <HomePageBannerComponent />
       <BecomeDriverComponent />
+      <HomePageTripsComponent />
       <InfoCardsComponent />
       <FooterComponent />
     </div>
