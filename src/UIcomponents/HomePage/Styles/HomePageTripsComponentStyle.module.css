@@ -1,0 +1,10 @@
+.container {
+    width: 100%;
+    background-color: #ccc;
+    padding-top: 5vh;
+    padding-bottom: 5vh;
+}
+
+.listPaperStyle {
+    padding: 20px;
+}
