@@ -1,43 +1,46 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import Box from "@mui/material/Box";
 import { useNavigate } from "react-router-dom";
-import { AppBar } from "@material-ui/core";
 import Toolbar from "@mui/material/Toolbar";
-import headerStyles from "./Styles/LandingHeaderStyle.module.css";
-import currus from "../../Images/logo/currus_long_1.png";
-import importedHeaderStyles from "../BaseHeader/Styles/HeaderStyle.module.css";
+import styles from "../BaseHeader/Styles/HeaderStyle.module.css";
+import currus from "../../Images/logo/currus_logo_2.png";
+import { Grid } from "@mui/material";
+import AppBar from "@mui/material/AppBar";
 
 const HeaderComponent = () => {
-  const [checked, setChecked] = useState(false);
-
   const navigate = useNavigate();
-
-  useEffect(() => {
-    setChecked(true);
-  }, []);
-
   return (
-    <div id="header">
-      <AppBar className={headerStyles.appBar}>
-        <Toolbar className={importedHeaderStyles.header_bgcolor}>
-          <img src={currus} className={importedHeaderStyles.logo}></img>
-          <div className={headerStyles.buttonDivs}>
-            <button
-              className={importedHeaderStyles.loginButton}
-              onClick={() => navigate("/login")}
-            >
-              Log In
-            </button>
-            <button
-              className={importedHeaderStyles.registerButton}
-              onClick={() => navigate("/register")}
-            >
-              Register
-            </button>
+    <Box>
+      <div>
+        <Toolbar className={styles.header_container}>
+          <img src={currus} className={styles.logo}></img>
+          <div
+            direction={"column"}
+            spacing={1}
+            className={styles.buttons_container}
+          >
+            <Grid container direction={"column"} spacing={0.7}>
+              <Grid item xs={6} md={6}>
+                <button
+                  className={styles.loginButton}
+                  onClick={() => navigate("/login")}
+                >
+                  Log In
+                </button>
+              </Grid>
+              <Grid item xs={6} md={6}>
+                <button
+                  className={styles.registerButton}
+                  onClick={() => navigate("/register")}
+                >
+                  Register
+                </button>
+              </Grid>
+            </Grid>
           </div>
         </Toolbar>
-      </AppBar>
-    </div>
+      </div>
+    </Box>
   );
 };
 export default HeaderComponent;

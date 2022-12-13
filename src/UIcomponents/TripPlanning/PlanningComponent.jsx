@@ -196,6 +196,7 @@ const PlanningComponent = () => {
 
   return (
     <ThemeProvider theme={theme}>
+      <HeaderComponent />
       <CssBaseline />
       {alertErrorOpen == true ? (
         <ErrorAlertComponent text={errorAlertText} />

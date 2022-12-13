@@ -100,14 +100,15 @@ export default function TemporaryDrawer() {
   return (
     <div>
       <IconButton
+        style={{ color: "#F0F0F0" }}
         size="large"
         edge="start"
-        color="inherit"
         aria-label="logo"
         onClick={() => setOpen(true)}
       >
         <MenuIcon />
       </IconButton>
+
       <Drawer
         anchor="left"
         open={open}
@@ -117,6 +118,7 @@ export default function TemporaryDrawer() {
         }}
       >
         <Box
+          style={{ backgroundColor: "#F0F0F0" }}
           color="black"
           p={2}
           height="100%"

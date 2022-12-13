@@ -10,20 +10,8 @@ class UserAPI {
       Email: users.Email,
       PhoneNumber: users.PhoneNumber,
     });
-  }
-
-  UpdateUser(users) {
-    const http = getCustomHttp();
-    http.put("/User/Update", {
-      Id: users.Id,
-      Name: users.Name,
-      Surname: users.Surname,
-      Birthdate: users.Birthdate,
-      Email: users.Email,
-      PhoneNumber: users.PhoneNumber,
-    });
-  }
-
+  } 
+  
   UpdateDriver(LicenseNumber, DriversLicense, VehicleType) {
     const http = getCustomHttp();
     http.put("/User/Driver", {
