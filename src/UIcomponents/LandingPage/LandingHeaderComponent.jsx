@@ -2,8 +2,8 @@ import React from "react";
 import Box from "@mui/material/Box";
 import { useNavigate } from "react-router-dom";
 import Toolbar from "@mui/material/Toolbar";
-import styles from "../BaseHeader/Styles/HeaderStyle.module.css";
-import currus from "../../Images/logo/currus_logo_2.png";
+import styles from "./Styles/LandingHeaderStyle.module.css";
+import logo from "../../Images/logo/logo.svg";
 import { Grid } from "@mui/material";
 import AppBar from "@mui/material/AppBar";
 
@@ -13,7 +13,7 @@ const HeaderComponent = () => {
     <Box>
       <div>
         <Toolbar className={styles.header_container}>
-          <img src={currus} className={styles.logo}></img>
+          <img src={logo} className={styles.logo}></img>
           <div
             direction={"column"}
             spacing={1}
