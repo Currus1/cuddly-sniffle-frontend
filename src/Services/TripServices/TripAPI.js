@@ -35,20 +35,19 @@ class TripAPI {
     return http.get("/Trip/Trips", { params: { tripStatus: tripStatus } });
   }
 
-  addTrip(data) {
+  addTrip(sLatitude, sLongitude, dLatitude, dLongitude, startingPoint,
+          destination, estimatedTripPrice, seats, tripDate) {
     const http = getCustomHttp();
     const content = {
-      Latitude: data.Latitude,
-      Longitude: data.Longitude,
-      StartingPoint: data.StartingPoint,
-      Destination: data.Destination,
-      Seats: data.Seats,
-      Hours: data.Hours,
-      Minutes: data.Minutes,
-      Distance: data.Distance,
-      VehicleType: data.VehicleType,
-      EstimatedTripPrice: data.EstimatedTripPrice,
-      TripStatus: data.TripStatus
+      sLatitude: sLatitude,
+      sLongitude: sLongitude,
+      dLatitude: dLatitude,
+      dLongitude: dLongitude,
+      startingPoint: startingPoint,
+      destination: destination,
+      estimatedTripPrice: estimatedTripPrice,
+      seats: seats,
+      tripDate: tripDate,
     }
     return http.post("/Trip/Adding", content);
   }

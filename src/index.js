@@ -4,6 +4,13 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 
+// Add the Google Maps API script
+const script = document.createElement("script");
+script.id = "placesScript";
+script.src = `https://maps.googleapis.com/maps/api/js?key=${process.env.REACT_APP_GOOGLE_MAP_API}&libraries=places`;
+script.async = true;
+document.head.appendChild(script);
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
     <App />

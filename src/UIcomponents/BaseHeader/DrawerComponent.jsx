@@ -78,7 +78,7 @@ export default function TemporaryDrawer() {
           >
             <ListItemButton>
               <ListItemIcon>
-                <LogoutIcon></LogoutIcon>
+                <AddCircleOutlineIcon></AddCircleOutlineIcon>
               </ListItemIcon>
               <ListItemText>Create a trip</ListItemText>
             </ListItemButton>
@@ -87,7 +87,7 @@ export default function TemporaryDrawer() {
         <ListItem disablePadding onClick={() => handleLogOut()}>
           <ListItemButton>
             <ListItemIcon>
-              <AddCircleOutlineIcon></AddCircleOutlineIcon>
+              <LogoutIcon></LogoutIcon>
             </ListItemIcon>
             <ListItemText>Sign out</ListItemText>
           </ListItemButton>
