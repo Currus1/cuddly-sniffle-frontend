@@ -2,7 +2,6 @@ import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import PlanningComponent from "./UIcomponents/TripPlanning/PlanningComponent";
 import HomePageComponent from "./UIcomponents/HomePage/HomePageComponent.jsx";
-import GoogleMapsComponent from "./UIcomponents/GoogleMapIntegration/GoogleMapsComponent";
 import ProfileComponent from "./UIcomponents/Profile/ProfileComponent";
 import RegisterComponent from "./UIcomponents/Registry/RegisterComponent";
 import LandingPageComponent from "./UIcomponents/LandingPage/LandingPageComponent";

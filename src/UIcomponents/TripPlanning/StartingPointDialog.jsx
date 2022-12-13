@@ -4,7 +4,6 @@ import Button from "@mui/material/Button";
 import Dialog from "@mui/material/Dialog";
 import DialogContent from "@mui/material/DialogContent";
 import styles from "./Styles/PlanTripStyle.module.css";
-import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
@@ -13,14 +12,7 @@ import CloseIcon from "@mui/icons-material/Close";
 import Slide from "@mui/material/Slide";
 import GoogleAutoComplete from "../GoogleMapIntegration/GoogleAutoComplete";
 import Box from "@mui/material/Box";
-import { TextField } from "@material-ui/core";
-import InputAdornment from "@mui/material/InputAdornment";
-import AccountCircle from "@mui/icons-material/AccountCircle";
-import LocationOnIcon from "@mui/icons-material/LocationOn";
-import NearMeIcon from "@mui/icons-material/NearMe";
-import PlacesAutocomplete from "react-places-autocomplete";
 import { geocodeByAddress, getLatLng } from "react-places-autocomplete";
-import FooterComponent from "../BaseFooter/FooterComponent";
 
 const Transition = React.forwardRef((props, ref) => {
   return <Slide direction="up" ref={ref} {...props} />;
@@ -154,7 +146,6 @@ export default function AutocompleteDialog({
           }}
         >
           <GoogleAutoComplete
-            inputId="address"
             dest={dest}
             setDest={setDest}
             start={start}

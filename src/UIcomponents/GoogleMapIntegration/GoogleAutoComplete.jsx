@@ -1,15 +1,11 @@
-import { useRef, useEffect, useState } from "react";
 import React from "react";
 import PlacesAutocomplete from "react-places-autocomplete";
-import { geocodeByAddress, getLatLng } from "react-places-autocomplete";
 import { TextField } from "@material-ui/core";
-import { Place } from "@material-ui/icons";
 import InputAdornment from "@mui/material/InputAdornment";
-import AccountCircle from "@mui/icons-material/AccountCircle";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import NearMeIcon from "@mui/icons-material/NearMe";
 
-const AutoComplete = ({ inputId, start, dest, setStart, setDest }) => {
+const AutoComplete = ({ start, dest, setStart, setDest }) => {
   const handleSelectStart = (address) => {
     var arr = address.split(",");
     var newArr = arr.map(function (element, index) {
