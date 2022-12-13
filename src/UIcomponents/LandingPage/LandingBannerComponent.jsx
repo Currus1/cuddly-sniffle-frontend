@@ -1,8 +1,11 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import styles from "./Styles/PageStyle.module.css";
 import bannerStyles from "./Styles/BannerStyle.module.css";
 
 const LandingComponent = () => {
+  const navigate = useNavigate();
+
   return (
     <div className={styles.banner_container}>
       <div className={bannerStyles.banner_image}>
@@ -16,7 +19,7 @@ const LandingComponent = () => {
             <h3>Share your ride with others!</h3>
           </div>
           <div className={bannerStyles.banner_button_container}>
-            <button className={bannerStyles.banner_button}>Carpool Now!</button>
+            <button className={bannerStyles.banner_button} onClick={() => navigate("/register")}>Carpool Now!</button>
           </div>
         </div>
       </div>
