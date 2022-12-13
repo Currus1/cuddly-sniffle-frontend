@@ -1,15 +1,8 @@
 import { React, useMemo, useState, useEffect, useRef } from "react";
-import { Grid } from "@material-ui/core";
 import HeaderComponent from "../BaseHeader/HeaderComponent";
-import TripAPI from "../../Services/TripServices/TripAPI.js";
-import SecretAPI from "../../Services/SecretServices/SecretServices.js";
-import { GoogleMap, useJsApiLoader, Marker } from "@react-google-maps/api";
-import TripPlanningSaveComponent from "./TripPlanningSaveComponent";
-import EnterAddressComponent from "./EnterAddressComponent";
 import FooterComponent from "../BaseFooter/FooterComponent";
-import backgroundStyle from "../Styles/BackgroundStyle.module.css";
 import { useUserValidation } from "../../CustomHooks/useUserValidation";
-import { useAsyncError, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import UserAPI from "../../Services/UserServices/UserAPI";
 import ErrorAlertComponent from "../ReusableComponents/ErrorAlertComponent";
 import SuccessAlertComponent from "../ReusableComponents/SuccessAlertComponent";
@@ -17,27 +10,75 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import { TextValidator, ValidatorForm } from "react-material-ui-form-validator";
 import styles from "./Styles/PlanTripStyle.module.css";
-
+import StartingPointDialog from "./StartingPointDialog";
 import Button from "@mui/material/Button";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
+import CssBaseline from "@mui/material/CssBaseline";
+import TripAPI from "../../Services/TripServices/TripAPI";
 
 const driverLicenseRegExp = /^\d{8}$/;
 const tripDateRegExp = /^\d{4}-\d{2}-\d{2}$/;
 const threeDaysInMs = 259200000;
 const twoMonthsInMs = 5184000000;
+const theme = createTheme({
+  palette: {
+    background: {
+      default: "#F0F0F0",
+    },
+  },
+});
 
 const PlanningComponent = () => {
   const navigate = useNavigate("");
   var isValid = useUserValidation();
   const [alertErrorOpen, setAlertErrorOpen] = useState(false);
   const [alertSuccessOpen, setAlertSuccessOpen] = useState(false);
-  const errorAlertText = "Sorry. You cannot create a trip!";
-  const successAlertText = "Trip created successfully!";
+  const [errorAlertText, setErrorAlertText] = useState("Error");
+  const [successAlertText, setSuccessAlertText] = useState("Success");
   const [tripDate, setTripDate] = useState("");
   const [price, setPrice] = useState("");
   const [seats, setSeats] = useState("");
   const [vehicleType, setVehicleType] = useState("");
+  const [startingPoint, setStartingPoint] = useState("");
+  const [destination, setDestination] = useState("");
 
-  const handleToggle = () => {};
+  const handleClick = () => {
+    if (
+      tripDate.match(tripDateRegExp) &&
+      price > 0 &&
+      seats > 0 &&
+      seats <= getSeatNumber(vehicleType) &&
+      sessionStorage.getItem("SLatitude") != null &&
+      sessionStorage.getItem("SLongitude") != null &&
+      sessionStorage.getItem("DLatitude") != null &&
+      sessionStorage.getItem("DLongitude") != null &&
+      sessionStorage.getItem("start") != null &&
+      sessionStorage.getItem("dest") != null
+    ) {
+      TripAPI.addTrip(
+        sessionStorage.getItem("SLatitude"),
+        sessionStorage.getItem("SLongitude"),
+        sessionStorage.getItem("DLatitude"),
+        sessionStorage.getItem("DLongitude"),
+        sessionStorage.getItem("start"),
+        sessionStorage.getItem("dest"),
+        price,
+        seats,
+        tripDate
+      )
+        .then((res) => {
+          setSuccessAlertText("You have created trip succesfully!");
+          setAlertSuccessOpen(true);
+        })
+        .catch((err) => {
+          setErrorAlertText("Server refused your request!");
+          setAlertErrorOpen(true);
+        });
+    } else {
+      setErrorAlertText("You have to fill in all the fields!");
+      setAlertErrorOpen(true);
+    }
+  };
 
   useEffect(() => {
     if (!isValid) {
@@ -56,8 +97,22 @@ const PlanningComponent = () => {
         setSeats(number);
       })
       .catch((error) => {
+        setErrorAlertText("Server error! Please comeback later!");
         setAlertErrorOpen(true);
       });
+    if (
+      sessionStorage.getItem("SLatitude") != null &&
+      sessionStorage.getItem("SLongitude") != null &&
+      sessionStorage.getItem("DLatitude") != null &&
+      sessionStorage.getItem("DLongitude") != null &&
+      sessionStorage.getItem("start") != null &&
+      sessionStorage.getItem("dest") != null
+    ) {
+      setStartingPoint(sessionStorage.getItem("start"));
+      setDestination(sessionStorage.getItem("dest"));
+    } else {
+      sessionStorage.clear();
+    }
   }, []);
 
   function getSeatNumber(VehicleType) {
@@ -73,10 +128,24 @@ const PlanningComponent = () => {
     }
   }
 
+  ValidatorForm.addValidationRule("empty", (value) => {
+    if (value.length > 0) {
+      return true;
+    }
+    return false;
+  });
+
   ValidatorForm.addValidationRule("tripDatePast", (value) => {
     var inputDate = new Date(value);
     var today = new Date();
     if (value.match(tripDateRegExp) && today.getTime() < inputDate.getTime()) {
+      return true;
+    }
+    return false;
+  });
+
+  ValidatorForm.addValidationRule("tripDateRegEx", (value) => {
+    if (value.match(tripDateRegExp)) {
       return true;
     }
     return false;
@@ -126,7 +195,8 @@ const PlanningComponent = () => {
   };
 
   return (
-    <>
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
       {alertErrorOpen == true ? (
         <ErrorAlertComponent text={errorAlertText} />
       ) : null}
@@ -155,8 +225,14 @@ const PlanningComponent = () => {
             name="tripDate"
             autoFocus
             type="date"
-            validators={["tripDatePast", "tripDateClose", "tripDateLong"]}
+            validators={[
+              "tripDateRegEx",
+              "tripDatePast",
+              "tripDateClose",
+              "tripDateLong",
+            ]}
             errorMessages={[
+              "Trip Date should match format mm/dd/yyyy",
               "Trip Date cannot be in the past",
               "Trip Date should be at least 3 days from now",
               "Trip Date should not be more than two months from now",
@@ -196,6 +272,46 @@ const PlanningComponent = () => {
             }}
             value={seats}
           />
+          <TextValidator
+            margin="normal"
+            fullWidth
+            id="seats"
+            label="Starting Point"
+            name="seats"
+            validators={["empty"]}
+            errorMessages={["Starting Point should not be empty"]}
+            value={startingPoint}
+            InputProps={{
+              readOnly: true,
+            }}
+          />
+          <TextValidator
+            margin="normal"
+            fullWidth
+            id="seats"
+            label="Destination"
+            name="seats"
+            validators={["empty"]}
+            errorMessages={["Destination should not be empty"]}
+            value={destination}
+            InputProps={{
+              readOnly: true,
+            }}
+          />
+
+          <div
+            style={{
+              justifyContent: "center",
+              display: "flex",
+              marginTop: "10%",
+            }}
+          >
+            <StartingPointDialog
+              text="Select Trip Route"
+              setStartingPoint={setStartingPoint}
+              setDestination={setDestination}
+            />
+          </div>
 
           <div
             style={{
@@ -205,9 +321,10 @@ const PlanningComponent = () => {
             }}
           >
             <Button
+              type="submit"
               className={styles.createButton}
               variant="outlined"
-              onClick={() => {}}
+              onClick={handleClick}
             >
               CREATE
             </Button>
@@ -215,7 +332,7 @@ const PlanningComponent = () => {
         </ValidatorForm>
       </Box>
       <FooterComponent />
-    </>
+    </ThemeProvider>
   );
 };
 
