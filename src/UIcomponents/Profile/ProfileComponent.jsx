@@ -30,8 +30,6 @@ const ProfileComponent = () => {
     }
     UserAPI.GetUser()
       .then((userInfo) => {
-        setAlertErrorOpen(true);
-        setAlertSuccessOpen(true);
         if (
           userInfo.data.driversLicense != null &&
           userInfo.data.driversLicense.match(driverLicenseRegExp)
@@ -49,12 +47,14 @@ const ProfileComponent = () => {
         setUser(userInfo.data);
       })
       .catch((error) => {
+        setAlertErrorOpen(true);
         console.log(error);
       });
   }, []);
 
   return (
     <div style={{ backgroundColor: "#F0F0F0" }}>
+      <HeaderComponent />
       {alertErrorOpen == true ? (
         <ErrorAlertComponent text={errorAlertText} />
       ) : null}

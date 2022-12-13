@@ -1,12 +1,12 @@
 .header_container {
-    background-color: #000000;
+    background-color: #808080;
 }
 
 .logo {
-    margin-left: -2vh;
-    margin-top: -2vh;
-    margin-bottom: -1vh;
-    width: 14vh;
+    background-color: #808080;
+    margin-left: 3vh;
+    width: fit-content;
+    height: fit-content;
 }
 
 .buttons_container {

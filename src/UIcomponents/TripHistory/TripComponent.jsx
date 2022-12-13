@@ -37,7 +37,7 @@ const TripComponent = () => {
       className={styles.bg}
       style={{ display: "flex", flexDirection: "column" }}
     >
-      {/* <HeaderComponent /> */}
+      <HeaderComponent />
       <Container className={styles.flex}>
         <h1 className={styles.h1}>Trip History</h1>
         <List className={styles.list}>
