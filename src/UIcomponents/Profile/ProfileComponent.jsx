@@ -42,8 +42,8 @@ const ProfileComponent = () => {
             window.location.reload();
           }
         }
-        var array = userInfo.data.birthDate.split("T");
-        userInfo.data.birthDate = array[0];
+        var array = userInfo.data.birthdate.split("T");
+        userInfo.data.birthdate = array[0];
         setUser(userInfo.data);
       })
       .catch((error) => {

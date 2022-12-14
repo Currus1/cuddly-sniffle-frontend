@@ -5,11 +5,7 @@ import {
   DialogTitle,
   Typography,
 } from "@material-ui/core";
-import {
-  GoogleMap,
-  Marker,
-  LoadScript,
-} from "@react-google-maps/api";
+import { GoogleMap, Marker, LoadScript } from "@react-google-maps/api";
 import styles from "./Styles/TripDialogStyle.module.css";
 
 export default function TripDialog({ trip, driver, open, onClose, google }) {

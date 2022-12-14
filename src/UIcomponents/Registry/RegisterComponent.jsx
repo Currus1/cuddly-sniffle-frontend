@@ -39,8 +39,8 @@ export default function RegisterComponent() {
   const [repeatPassword, setRepeatPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
-  const [birthDate, setBirthDate] = useState("");
-  const [number, setNumber] = useState("");
+  const [birthdate, setBirthdate] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
   const [open, setOpen] = useState(false);
   const navigate = useNavigate();
 
@@ -50,14 +50,14 @@ export default function RegisterComponent() {
 
   const handleToggle = () => {
     var today = new Date();
-    var inputDate = new Date(birthDate);
+    var inputDate = new Date(birthdate);
 
     if (
       name.length > 0 &&
       surname.length > 0 &&
-      birthDate.match(birthDateRegExp) &&
+      birthdate.match(birthDateRegExp) &&
       email.match(emailRegExp) &&
-      number.match(numberRegExp) &&
+      phoneNumber.match(numberRegExp) &&
       password.match(strongPasswordRegExp) &&
       password.match(repeatPassword) &&
       open == false &&
@@ -122,7 +122,7 @@ export default function RegisterComponent() {
   const handleSubmit = (event) => {
     setErrorMessage("");
     event.preventDefault();
-    AuthService.register(name, surname, email, password, birthDate, number)
+    AuthService.register(name, surname, email, password, birthdate, phoneNumber)
       .then((success) => {
         handleClose();
         setErrorMessage("");
@@ -195,8 +195,8 @@ export default function RegisterComponent() {
                 "You have to be at least 16 years old",
                 "There is no such old human. Pick correct birth date!",
               ]}
-              onChange={(event) => setBirthDate(event.target.value)}
-              value={birthDate}
+              onChange={(event) => setBirthdate(event.target.value)}
+              value={birthdate}
             />
             <TextValidator
               margin="normal"
@@ -214,9 +214,9 @@ export default function RegisterComponent() {
             <TextValidator
               margin="normal"
               fullWidth
-              id="number"
+              id="phoneNumber"
               label="Phone Number"
-              name="number"
+              name="Phone Number"
               autoComplete="number"
               autoFocus
               validators={["required", "PhoneNumberValid"]}
@@ -224,8 +224,8 @@ export default function RegisterComponent() {
                 "Phone Number field is required",
                 "Phone Number format is wrong",
               ]}
-              onChange={(event) => setNumber(event.target.value)}
-              value={number}
+              onChange={(event) => setPhoneNumber(event.target.value)}
+              value={phoneNumber}
             />{" "}
             <TextValidator
               margin="normal"

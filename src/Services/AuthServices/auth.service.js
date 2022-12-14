@@ -23,7 +23,7 @@ class AuthService {
         sessionStorage.clear();
       }
     
-      register(name, surname, email, password, birthDate, number) {
+      register(name, surname, email, password, birthdate, phoneNumber){
         return axios.post(API_URL + "/register", {
           name,
           surname,
