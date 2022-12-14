@@ -29,8 +29,8 @@ class AuthService {
           surname,
           email,
           password, 
-          birthDate,
-          number
+          birthdate,
+          phoneNumber
         });
       }
     

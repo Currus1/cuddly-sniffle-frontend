@@ -123,7 +123,7 @@ const ProfileComponent = () => {
             label="Birthday"
             variant="filled"
             defaultValue="undefined"
-            value={user.birthDate}
+            value={user.birthdate}
             InputLabelProps={{
               style: {
                 color: "white",
@@ -155,7 +155,7 @@ const ProfileComponent = () => {
             }}
             id="PhoneNumber"
             variant="filled"
-            value={user.number}
+            value={user.phoneNumber}
           />
           <TextField
             style={{ backgroundColor: "#808080" }}
