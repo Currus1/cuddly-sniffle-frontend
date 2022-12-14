@@ -12,7 +12,7 @@ export default function BecomeDriverComponent() {
           <div>
             <p className={styles.text_container}>
               <h1>Earn With Your Routine!</h1> <br />
-              💸 Jump in the train and earn by doing nothing extra! 💸 
+              Jump in the train and earn by doing nothing Extra
               <div className={styles.button_container}>
                 <button className={styles.learnMoreButton}>
                   Become a Driver!

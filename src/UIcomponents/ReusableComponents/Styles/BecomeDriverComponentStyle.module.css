@@ -56,13 +56,13 @@
   transition-duration: 0.15s;
   border: none;
   text-decoration: none;
-  background-color: #ff5757;
+  background-color: #8AC53F;
   color: white;
 }
 
 .learnMoreButton:hover {
   border-radius: 10px;
-  border-color: #e23f3f;
+  border-color: #8AC53F;
   -ms-transform: scale(1.05); /* IE 9 */
   -webkit-transform: scale(1.05); /* Safari 3-8 */
   transform: scale(1.05);
