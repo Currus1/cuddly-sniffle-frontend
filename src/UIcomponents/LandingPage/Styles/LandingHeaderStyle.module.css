@@ -33,17 +33,19 @@
 }
 
 .registerButton {
+    color: black;
     width: 15vh;
     height: 4vh;
     border: none;
+    margin-right: 3vh;
     text-align: center;
     text-decoration: none;
     display: inline-block;
     cursor: pointer;
-    background-color: #FF5757;
+    background-color: transparent;
+    border: 2px solid #e3e3e3;
     border-radius: 30px;
-    color: white;
-    font-family: "montserrat";
+    /* font-family: "montserrat"; */
     font-weight: bold;
     font-size: 15px;
     transition-duration: 0.15s;
@@ -60,9 +62,9 @@
     display: inline-block;
     cursor: pointer;
     background-color: transparent;
-    border: 2px solid #FF5757;
+    border: 2px solid #e3e3e3;
     border-radius: 30px;
-    font-family: "montserrat";
+    /* font-family: "montserrat"; */
     font-weight: bold;
     font-size: 15px;
     transition-duration: 0.15s;
@@ -70,7 +72,7 @@
 
 .registerButton:hover {
     border-radius: 10px;
-    background-color: #e23f3f;
+    border-color: #989898;
     -ms-transform: scale(1.05); /* IE 9 */
     -webkit-transform: scale(1.05); /* Safari 3-8 */
     transform: scale(1.05);
@@ -79,26 +81,30 @@
 
 .loginButton:hover {
     border-radius: 10px;
-    border-color: #e23f3f;
+    border-color: #989898;
     -ms-transform: scale(1.05); /* IE 9 */
     -webkit-transform: scale(1.05); /* Safari 3-8 */
     transform: scale(1.05);
     transition-duration: 0.15s;
 }
 
-.buttons_container {
+.buttonsContainer {
     align-items: right;
     margin-left: auto;
-    margin-right: -4vh;
+}
+
+.iconsContainer {
+    align-items: right;
+    margin-left: auto;
+    margin-right: 0vh;
 }
 
 .header_container {
-    background-color: #F0F0F0;
+    background-color: #74E39A;
 }
 
 .logo {
-    background-color: #F0F0F0;
-    margin-left: -2vh;
+    background-color: #74E39A;
     width: fit-content;
     height: fit-content;
 }

@@ -30,6 +30,7 @@
 
 .image {
   width: 90%;
+  margin-top: 2rem;
   height: fit-content;
   padding: 1vh;
   margin-left: auto;
