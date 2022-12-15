@@ -23,9 +23,7 @@ const TripsComponent = () => {
     <div>
       <HeaderComponent />
       <HomePageBannerComponent />
-      <BecomeDriverComponent />
       <HomePageTripsComponent />
-      <InfoCardsComponent />
       <FooterComponent />
     </div>
   );
