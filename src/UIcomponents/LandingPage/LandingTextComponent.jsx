@@ -17,9 +17,8 @@ const LandingImageAndTextComponent = () => {
             </p>
           </Grid>
           <Grid item xs={12} md={7}>
-            <p className={componentStyles.image}>
+            <div className={componentStyles.image}>
               ✅ Join the Carpooling Revolution - Join Commútify! ✅ <br />
-
               👇 Learn more about us or read one of our epic blogs here: 👇
               <div className={componentStyles.button_container}>
                 <button className={componentStyles.learnMoreButton}>
@@ -29,7 +28,7 @@ const LandingImageAndTextComponent = () => {
                   Blogs
                 </button>
               </div>
-            </p>
+            </div>
           </Grid>
         </Grid>
       </div>

@@ -100,7 +100,7 @@ export default function TemporaryDrawer() {
   return (
     <div>
       <IconButton
-        style={{ color: "black" }}
+        style={{ color: "black", alignContent: "end", alignItems: "end" }}
         size="large"
         edge="start"
         aria-label="logo"
