@@ -18,7 +18,7 @@ const TripLocation = ({ trip }) => {
               {trip.destination}
             </TableCell>
             <TableCell align="left">({trip.tripStatus})</TableCell>
-            <TableCell align="right">{trip.estimatedTripPrice}$</TableCell>
+            <TableCell align="right">{trip.estimatedTripPrice} €</TableCell>
           </TableRow>
         </TableBody>
       </Table>
