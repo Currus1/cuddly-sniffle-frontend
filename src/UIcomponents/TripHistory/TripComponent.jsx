@@ -12,6 +12,8 @@ import { useUserValidation } from "../../CustomHooks/useUserValidation.js";
 import { useNavigate } from "react-router-dom";
 import "./Styles/TripHistoryStyle.module.css";
 import { useRef } from "react";
+import ErrorAlertComponent from "../ReusableComponents/ErrorAlertComponent";
+import SuccessAlertComponent from "../ReusableComponents/SuccessAlertComponent";
 
 const TripComponent = () => {
   const navigate = useNavigate("");
