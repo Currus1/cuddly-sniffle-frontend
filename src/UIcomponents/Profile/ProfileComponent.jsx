@@ -12,8 +12,6 @@ import ErrorAlertComponent from "../ReusableComponents/ErrorAlertComponent";
 import SuccessAlertComponent from "../ReusableComponents/SuccessAlertComponent";
 
 const driverLicenseRegExp = /^\d{8}$/;
-const errorAlertText = "You are a bad boy";
-const successAlertText = "You are a good boy";
 
 const ProfileComponent = () => {
   const [user, setUser] = useState([]);
@@ -21,6 +19,8 @@ const ProfileComponent = () => {
   const [status, setStatus] = useState("");
   const [alertErrorOpen, setAlertErrorOpen] = useState(false);
   const [alertSuccessOpen, setAlertSuccessOpen] = useState(false);
+  const [errorAlertText, setErrorAlertText] = useState("Error!");
+  const [successAlertText, SetSuccessAlertText] = useState("Error!");
   var isValid = useUserValidation();
   const hasReloaded = sessionStorage.getItem("hasReloaded");
 
@@ -47,8 +47,8 @@ const ProfileComponent = () => {
         setUser(userInfo.data);
       })
       .catch((error) => {
+        setErrorAlertText("Server failed loading the data!");
         setAlertErrorOpen(true);
-        console.log(error);
       });
   }, []);
 

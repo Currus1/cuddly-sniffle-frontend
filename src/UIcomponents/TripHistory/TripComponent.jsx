@@ -17,6 +17,10 @@ const TripComponent = () => {
   const navigate = useNavigate("");
   const [data, setData] = useState([]);
   var isValid = useUserValidation();
+  const [alertErrorOpen, setAlertErrorOpen] = useState(false);
+  const [alertSuccessOpen, setAlertSuccessOpen] = useState(false);
+  const [errorAlertText, setErrorAlertText] = useState("Error");
+  const [successAlertText, setSuccessAlertText] = useState("Success");
 
   useEffect(() => {
     if (!isValid) {
@@ -26,7 +30,8 @@ const TripComponent = () => {
       try {
         await TripAPI.getAllTripsByUserId().then((res) => setData(res.data));
       } catch (error) {
-        console.error(error);
+        setErrorAlertText("Server failed loading the data!");
+        setAlertErrorOpen(true);
       }
     };
     fetchData();
@@ -38,6 +43,12 @@ const TripComponent = () => {
       style={{ display: "flex", flexDirection: "column" }}
     >
       <HeaderComponent />
+      {alertErrorOpen == true ? (
+        <ErrorAlertComponent text={errorAlertText} />
+      ) : null}
+      {alertSuccessOpen == true ? (
+        <SuccessAlertComponent text={successAlertText} />
+      ) : null}
       <Container className={styles.flex}>
         <h1 className={styles.h1}>Trip History</h1>
         <List className={styles.list}>
