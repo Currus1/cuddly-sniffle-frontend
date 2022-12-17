@@ -26,7 +26,6 @@ const ProfileComponent = () => {
     vehicleType: "",
     licenseNumber: "",
   });
-
   const navigate = useNavigate();
   const [status, setStatus] = useState("");
   const [alertErrorOpen, setAlertErrorOpen] = useState(false);
@@ -109,11 +108,6 @@ const ProfileComponent = () => {
             md={6}
           >
             <TextField
-              sx={{
-                "&.MuiFilledInput-underline": {
-                  borderBottomColor: "orange",
-                },
-              }}
               InputLabelProps={{
                 style: {
                   color: "black",
@@ -127,6 +121,7 @@ const ProfileComponent = () => {
                   fontFamily: "montserrat",
                 },
                 readOnly: true,
+                disableUnderline: true,
               }}
               label="First Name"
               id="Name"
@@ -163,6 +158,7 @@ const ProfileComponent = () => {
                   fontFamily: "montserrat",
                 },
                 readOnly: true,
+                disableUnderline: true,
               }}
               value={user.surname}
               onChange={() => {}}
@@ -194,6 +190,7 @@ const ProfileComponent = () => {
                   fontFamily: "montserrat",
                 },
                 readOnly: true,
+                disableUnderline: true,
               }}
               onChange={() => {}}
             />
@@ -222,6 +219,7 @@ const ProfileComponent = () => {
                   fontFamily: "montserrat",
                 },
                 readOnly: true,
+                disableUnderline: true,
               }}
               id="Status"
               variant="filled"
@@ -271,6 +269,7 @@ const ProfileComponent = () => {
                   fontFamily: "montserrat",
                 },
                 readOnly: true,
+                disableUnderline: true,
               }}
               id="PhoneNumber"
               variant="filled"
@@ -295,6 +294,7 @@ const ProfileComponent = () => {
                   fontFamily: "montserrat",
                 },
                 shrink: true,
+                disableUnderline: true,
               }}
               InputProps={{
                 style: {
@@ -302,6 +302,7 @@ const ProfileComponent = () => {
                   fontFamily: "montserrat",
                 },
                 readOnly: true,
+                disableUnderline: true,
               }}
               id="Email"
               variant="filled"
@@ -351,6 +352,7 @@ const ProfileComponent = () => {
                     fontFamily: "montserrat",
                   },
                   readOnly: true,
+                  disableUnderline: true,
                 }}
                 id="DriversLicense"
                 variant="filled"
@@ -384,6 +386,7 @@ const ProfileComponent = () => {
                     fontFamily: "montserrat",
                   },
                   readOnly: true,
+                  disableUnderline: true,
                 }}
                 id="VehicleType"
                 variant="filled"
@@ -418,6 +421,8 @@ const ProfileComponent = () => {
                     fontFamily: "montserrat",
                   },
                   readOnly: true,
+
+                  disableUnderline: true,
                 }}
                 id="LicenseNumber"
                 variant="filled"
@@ -430,8 +435,6 @@ const ProfileComponent = () => {
             style={{ display: "flex", justifyContent: "center" }}
             item
             xs={12}
-            sm={6}
-            md={6}
           >
             {status == "User" ? <DriverDialog /> : null}
           </Grid>
