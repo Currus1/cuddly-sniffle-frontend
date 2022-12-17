@@ -10,7 +10,9 @@ const FooterComponent = () => (
     <Grid item xs={12} sm={12} md={8} className={styles.footerLogoStyle}>
       Commútify
       <hr className={styles.footerHr} />
-      <p className={styles.footerText}>Stay In Touch!</p>
+      <p className={styles.footerText}>
+        <b>Stay In Touch!</b>
+      </p>
       <Grid container style={{ display: "flex", justifyContent: "center" }}>
         <Grid item xs={3} md={1}>
           <a href="#">
@@ -38,7 +40,7 @@ const FooterComponent = () => (
       </Grid>
     </Grid>
     <Grid container justifyContent="center">
-      <Grid item xs={12} sm={4} md={2} className={styles.footerLicensesStyle}>
+      <Grid item xs={12} sm={4} md={3} className={styles.footerSectionStyle}>
         <h3>Legal</h3>
         <a href="#" className={styles.footerTextColor}>
           Terms Of Service
@@ -56,7 +58,7 @@ const FooterComponent = () => (
           Security
         </a>
       </Grid>
-      <Grid item xs={12} sm={4} md={2} className={styles.footerCurrusFeatures}>
+      <Grid item xs={12} sm={4} md={3} className={styles.footerSectionStyle}>
         <h3>Partner with us</h3>
         <a href="#" className={styles.footerTextColor}>
           Sign up
@@ -78,7 +80,7 @@ const FooterComponent = () => (
           Influencers
         </a>
       </Grid>
-      <Grid item xs={12} sm={4} md={1} className={styles.footerCompanyStyle}>
+      <Grid item xs={12} sm={4} md={3} className={styles.footerSectionStyle}>
         <h3>Company</h3>
         <a href="#" className={styles.footerTextColor}>
           About us
@@ -106,7 +108,12 @@ const FooterComponent = () => (
       </Grid>
     </Grid>
 
-    <Grid item xs={12} md={12} className={styles.footerCopyrightStyle}>
+    <Grid
+      style={{ marginBottom: "5vh" }}
+      item
+      xs={12}
+      className={styles.footerCopyrightStyle}
+    >
       <address>
         © 2022 Commútify, Inc. |{" "}
         <a href="#" className={styles.footerTextColor}>
