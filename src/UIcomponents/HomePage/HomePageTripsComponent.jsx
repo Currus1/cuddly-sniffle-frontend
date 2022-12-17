@@ -5,35 +5,20 @@ import { Container, Grid, Paper } from "@material-ui/core";
 import TripCardComponent from "./TripCardComponent.jsx";
 
 export default function HomePageTripsComponent() {
-  const [tripStatus, setTripStatus] = useState("");
   const [tripStatuses, setTripStatuses] = useState([]);
   const [trips, setTrips] = useState([]);
 
   useEffect(() => {
-    TripAPI.getTripStatuses().then((response) =>
-      setTripStatuses(response.data)
-    );
-    setTripStatus("Planned");
     loadTrips("Planned");
   }, []);
 
-  const handleTripStatusChange = (event) => {
-    setTripStatus(event.target.value);
-  };
-
   const loadTrips = (status) => {
     TripAPI.getTrips(status)
-      .then((res) => setTrips(res.data))
+      .then((res) => {
+        setTrips(res.data);
+        console.log(res.data);
+      })
       .catch((err) => console.log(err));
-    console.log(trips);
-  };
-
-  const loadClicked = () => {
-    if (tripStatus !== "") {
-      loadTrips(tripStatus);
-    } else {
-      alert("Empty Field!");
-    }
   };
 
   return (
