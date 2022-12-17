@@ -11,7 +11,7 @@ import TripComponent from "./UIcomponents/TripHistory/TripComponent"
 
 function App() {
   return (
-    <div className="CurrusApp">
+    <div className="commutify_app">
       <BrowserRouter>
         <Routes>
           <Route path="/trips/history" element={<TripComponent />} />

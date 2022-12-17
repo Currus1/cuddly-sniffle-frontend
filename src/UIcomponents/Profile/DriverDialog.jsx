@@ -24,7 +24,7 @@ const van = "VAN";
 
 const useStyles = makeStyles({
   dialog: {
-    backgroundColor: "#F0F0F0",
+    backgroundColor: "#E8E5DA",
   },
 });
 
@@ -93,15 +93,46 @@ export default function FormDialog() {
         classes={{ root: classes.dialog }}
         onClose={handleClose}
       >
-        <div style={{ backgroundColor: "#F0F0F0" }}>
-          <DialogTitle>Become A CURRUS Driver</DialogTitle>
+        <div style={{ backgroundColor: "#E8E5DA" }}>
+          <DialogTitle style={{ color: "#7BC950", fontFamily: "montserrat" }}>
+            Become a Commútify Driver
+          </DialogTitle>
           <DialogContent>
-            <DialogContentText>
+            <DialogContentText
+              style={{ color: "black", fontFamily: "montserrat" }}
+            >
               To become a driver you have to provide the following information.
             </DialogContentText>
             <ValidatorForm style={{ marginTop: "5%" }} onSubmit={handleSubmit}>
               <TextValidator
-                InputLabelProps={{ shrink: true }}
+                sx={{
+                  ".MuiOutlinedInput-notchedOutline": {
+                    borderColor: "#7BC950",
+                  },
+                  "&:hover .Mui-focused .MuiOutlinedInput-notchedOutline": {
+                    borderColor: "#47682C",
+                  },
+                  ".Mui-focused .MuiOutlinedInput-notchedOutline": {
+                    borderColor: "#7BC950",
+                  },
+                  "&:hover .MuiOutlinedInput-notchedOutline": {
+                    borderColor: "#47682C",
+                  },
+                }}
+                InputLabelProps={{
+                  style: {
+                    color: "black",
+                    fontFamily: "montserrat",
+                  },
+                  shrink: true,
+                }}
+                InputProps={{
+                  style: {
+                    color: "black",
+                    fontFamily: "montserrat",
+                  },
+                }}
+                placeholder="e.g. 51241243"
                 fullWidth
                 name="licenseNumber"
                 type="text"
@@ -117,32 +148,91 @@ export default function FormDialog() {
               <FormControl
                 fullWidth
                 style={{
-                  color: "black",
                   marginTop: "10%",
                   marginBottom: "10%",
                 }}
               >
-                <InputLabel id="vehicleTypeLbl">Vehicle Type</InputLabel>
+                <InputLabel
+                  style={{ color: "black", fontFamily: "montserrat" }}
+                  id="vehicleTypeLbl"
+                >
+                  Vehicle type
+                </InputLabel>
                 <Select
+                  sx={{
+                    ".MuiOutlinedInput-notchedOutline": {
+                      borderColor: "#7BC950",
+                    },
+                    "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
+                      borderColor: "#47682C",
+                    },
+                    "&:hover .MuiOutlinedInput-notchedOutline": {
+                      borderColor: "#47682C",
+                    },
+                    ".MuiSvgIcon-root ": {
+                      fill: "#47682C !important",
+                    },
+                  }}
+                  InputProps={{
+                    style: {
+                      color: "black",
+                      fontFamily: "montserrat",
+                    },
+                  }}
                   label="Vehicle Type"
                   labelId="vehicleTypeLbl"
                   fullWidth
                   value={vehicleType}
                   onChange={handleChange}
                 >
-                  <MenuItem value={sedan}>Sedan</MenuItem>
-                  <MenuItem value={suv}>SUV</MenuItem>
-                  <MenuItem value={ev}>EV</MenuItem>
-                  <MenuItem value={van}>VAN</MenuItem>
+                  <MenuItem className={styles.textColor} value={sedan}>
+                    Sedan
+                  </MenuItem>
+                  <MenuItem className={styles.textColor} value={suv}>
+                    SUV
+                  </MenuItem>
+                  <MenuItem className={styles.textColor} value={ev}>
+                    EV
+                  </MenuItem>
+                  <MenuItem className={styles.textColor} value={van}>
+                    VAN
+                  </MenuItem>
                 </Select>
               </FormControl>
 
               <TextValidator
-                InputLabelProps={{ shrink: true }}
+                sx={{
+                  ".MuiOutlinedInput-notchedOutline": {
+                    borderColor: "#7BC950",
+                  },
+                  "&:hover .Mui-focused .MuiOutlinedInput-notchedOutline": {
+                    borderColor: "#47682C",
+                  },
+                  ".Mui-focused .MuiOutlinedInput-notchedOutline": {
+                    borderColor: "#7BC950",
+                  },
+                  "&:hover .MuiOutlinedInput-notchedOutline": {
+                    borderColor: "#47682C",
+                  },
+                }}
+                InputLabelProps={{
+                  style: {
+                    color: "black",
+                    fontFamily: "montserrat",
+                  },
+                  shrink: true,
+                }}
+                InputProps={{
+                  style: {
+                    color: "black",
+                    fontFamily: "montserrat",
+                  },
+                }}
                 fullWidth
                 name="licenseNumber"
                 type="text"
                 id="LicenseNumber"
+                placeholder="e.g. ABC123"
                 label="Vehicle License Number"
                 validators={["LicenseNumber"]}
                 errorMessages={[

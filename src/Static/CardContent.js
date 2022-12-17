@@ -5,7 +5,7 @@ import MoneyImage from "../Images/save-money.png"
 const CardContent = [
     {
         title: "Get a ride",
-        description : "Smooth travel planning. Plan your trips easily with CURRUS day-to-day, month-to-month.",
+        description : "Smooth travel planning. Plan your trips easily with Commútify day-to-day, month-to-month.",
         image : CarImage
     }, 
     {
