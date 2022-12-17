@@ -81,13 +81,9 @@ export default function FormDialog() {
 
   return (
     <div>
-      <Button
-        className={styles.driveButton}
-        variant="outlined"
-        onClick={handleClickOpen}
-      >
+      <button className={styles.driveButton} onClick={handleClickOpen}>
         Drive & Earn
-      </Button>
+      </button>
       <Dialog
         open={open}
         classes={{ root: classes.dialog }}
@@ -109,14 +105,14 @@ export default function FormDialog() {
                   ".MuiOutlinedInput-notchedOutline": {
                     borderColor: "#7BC950",
                   },
-                  "&:hover .Mui-focused .MuiOutlinedInput-notchedOutline": {
-                    borderColor: "#47682C",
-                  },
-                  ".Mui-focused .MuiOutlinedInput-notchedOutline": {
-                    borderColor: "#7BC950",
-                  },
                   "&:hover .MuiOutlinedInput-notchedOutline": {
                     borderColor: "#47682C",
+                  },
+                  "&:hover .Mui-focused .MuiOutlinedInput-notchedOutline": {
+                    borderColor: "#47682C !important",
+                  },
+                  ".Mui-focused .MuiOutlinedInput-notchedOutline": {
+                    borderColor: "#7BC950 !important",
                   },
                 }}
                 InputLabelProps={{
@@ -205,14 +201,14 @@ export default function FormDialog() {
                   ".MuiOutlinedInput-notchedOutline": {
                     borderColor: "#7BC950",
                   },
-                  "&:hover .Mui-focused .MuiOutlinedInput-notchedOutline": {
-                    borderColor: "#47682C",
-                  },
-                  ".Mui-focused .MuiOutlinedInput-notchedOutline": {
-                    borderColor: "#7BC950",
-                  },
                   "&:hover .MuiOutlinedInput-notchedOutline": {
                     borderColor: "#47682C",
+                  },
+                  "&:hover .Mui-focused .MuiOutlinedInput-notchedOutline": {
+                    borderColor: "#47682C !important",
+                  },
+                  ".Mui-focused .MuiOutlinedInput-notchedOutline": {
+                    borderColor: "#7BC950 !important",
                   },
                 }}
                 InputLabelProps={{
@@ -244,12 +240,12 @@ export default function FormDialog() {
             </ValidatorForm>
           </DialogContent>
           <DialogActions>
-            <Button className={styles.driveButton} onClick={handleClose}>
+            <button className={styles.driveButton} onClick={handleClose}>
               Cancel
-            </Button>
-            <Button className={styles.driveButton} onClick={handleJoin}>
+            </button>
+            <button className={styles.driveButton} onClick={handleJoin}>
               Join!
-            </Button>
+            </button>
           </DialogActions>
         </div>
       </Dialog>

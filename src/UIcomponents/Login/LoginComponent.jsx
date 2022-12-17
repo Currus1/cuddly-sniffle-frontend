@@ -15,6 +15,8 @@ import { useNavigate } from "react-router-dom";
 import { TextValidator, ValidatorForm } from "react-material-ui-form-validator";
 import Backdrop from "@mui/material/Backdrop";
 import CircularProgress from "@mui/material/CircularProgress";
+import FooterComponent from "../BaseFooter/FooterComponent";
+import styles from "./Styles/LoginComponentStyle.module.css";
 
 const theme = createTheme({
   palette: {
@@ -66,75 +68,121 @@ export default function LoginComponent() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <Container component="main" maxWidth="xs">
-        <Box
-          sx={{
-            marginTop: 8,
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
+      <Box
+        sx={{
+          marginTop: "8vh",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          marginBottom: "25vh",
+        }}
+      >
+        <Avatar sx={{ m: 1, backgroundColor: "#7BC950" }}>
+          <LockOutlinedIcon />
+        </Avatar>
+        <Typography style={{ color: "#7BC950" }} component="h1" variant="h5">
+          Sign in
+        </Typography>
+        <ValidatorForm
+          onSubmit={handleSubmit}
+          style={{
+            width: "30vh",
           }}
         >
-          <Avatar sx={{ m: 1 }}>
-            <LockOutlinedIcon />
-          </Avatar>
-          <Typography component="h1" variant="h5">
-            Sign in
-          </Typography>
-          <ValidatorForm onSubmit={handleSubmit}>
-            <TextValidator
-              margin="normal"
-              fullWidth
-              id="email"
-              label="Email Address"
-              name="email"
-              autoComplete="email"
-              autoFocus
-              validators={["required", "isEmail"]}
-              errorMessages={["Email field is required", "Email is not valid"]}
-              onChange={(event) => setEmail(event.target.value)}
-              value={email}
-            />
-            <TextValidator
-              margin="normal"
-              fullWidth
-              name="password"
-              label="Password"
-              type="password"
-              id="password"
-              autoComplete="current-password"
-              validators={["required"]}
-              errorMessages={["Password field is required"]}
-              onChange={(event) => setPassword(event.target.value)}
-              value={password}
-            />
-            <div style={{ color: "red" }}>{errorMessage}</div>
-            <FormControlLabel
-              control={<Checkbox value="remember" color="primary" />}
-              label="Remember me"
-            />
-            <Button
-              type="submit"
-              fullWidth
-              variant="contained"
-              sx={{ mt: 3, mb: 2 }}
-              onClick={handleToggle}
-            >
-              Sign In
-            </Button>
-            <Link href="/register" underline="hover" variant="string">
-              {"Don't have an account? Sign Up"}
-            </Link>
-          </ValidatorForm>
-          <Backdrop
-            sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
-            open={open}
-            onClick={handleClose}
+          <TextValidator
+            sx={{
+              ".MuiOutlinedInput-notchedOutline": {
+                borderColor: "#7BC950",
+              },
+              "&:hover .MuiOutlinedInput-notchedOutline": {
+                borderColor: "#47682C",
+              },
+              "&:hover .Mui-focused .MuiOutlinedInput-notchedOutline": {
+                borderColor: "#47682C !important",
+              },
+              ".Mui-focused .MuiOutlinedInput-notchedOutline": {
+                borderColor: "#7BC950 !important",
+              },
+            }}
+            InputProps={{
+              style: {
+                color: "black",
+                fontFamily: "montserrat",
+              },
+            }}
+            placeholder="Email Address"
+            margin="normal"
+            fullWidth
+            id="email"
+            name="email"
+            autoComplete="email"
+            validators={["required", "isEmail"]}
+            errorMessages={["Email field is required", "Email is not valid"]}
+            onChange={(event) => setEmail(event.target.value)}
+            value={email}
+          />
+          <TextValidator
+            sx={{
+              ".MuiOutlinedInput-notchedOutline": {
+                borderColor: "#7BC950",
+              },
+              "&:hover .MuiOutlinedInput-notchedOutline": {
+                borderColor: "#47682C",
+              },
+              "&:hover .Mui-focused .MuiOutlinedInput-notchedOutline": {
+                borderColor: "#47682C !important",
+              },
+              ".Mui-focused .MuiOutlinedInput-notchedOutline": {
+                borderColor: "#7BC950 !important",
+              },
+            }}
+            InputProps={{
+              style: {
+                color: "black",
+                fontFamily: "montserrat",
+              },
+            }}
+            placeholder="Password"
+            margin="normal"
+            fullWidth
+            name="password"
+            type="password"
+            id="password"
+            validators={["required"]}
+            errorMessages={["Password field is required"]}
+            onChange={(event) => setPassword(event.target.value)}
+            value={password}
+          />
+          <div style={{ color: "red" }}>{errorMessage}</div>
+
+          <div
+            style={{
+              justifyContent: "center",
+              display: "flex",
+            }}
           >
-            <CircularProgress color="inherit" />
-          </Backdrop>
-        </Box>
-      </Container>
+            <button className={styles.loginButton} onClick={handleToggle}>
+              Sign In
+            </button>
+          </div>
+        </ValidatorForm>
+        <Link
+          href="/register"
+          underline="hover"
+          variant="string"
+          style={{ color: "#47682C" }}
+        >
+          {"Don't have an account? Sign Up"}
+        </Link>
+        <Backdrop
+          sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
+          open={open}
+          onClick={handleClose}
+        >
+          <CircularProgress color="inherit" />
+        </Backdrop>
+      </Box>
+      <FooterComponent />
     </ThemeProvider>
   );
 }
