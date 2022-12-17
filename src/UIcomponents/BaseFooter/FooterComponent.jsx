@@ -13,7 +13,13 @@ const FooterComponent = () => (
       <p className={styles.footerText}>
         <b>Stay In Touch!</b>
       </p>
-      <Grid container style={{ display: "flex", justifyContent: "center" }}>
+      <Grid
+        container
+        style={{
+          display: "flex",
+          justifyContent: "center",
+        }}
+      >
         <Grid item xs={3} md={1}>
           <a href="#">
             <img
@@ -39,9 +45,9 @@ const FooterComponent = () => (
         </Grid>
       </Grid>
     </Grid>
-    <Grid container justifyContent="center">
+    <Grid container justifyContent="center" style={{ marginTop: "5vh" }}>
       <Grid item xs={12} sm={4} md={3} className={styles.footerSectionStyle}>
-        <h3>Legal</h3>
+        <h3 style={{ fontSize: "1.4rem" }}>Legal</h3>
         <a href="#" className={styles.footerTextColor}>
           Terms Of Service
         </a>
@@ -59,7 +65,7 @@ const FooterComponent = () => (
         </a>
       </Grid>
       <Grid item xs={12} sm={4} md={3} className={styles.footerSectionStyle}>
-        <h3>Partner with us</h3>
+        <h3 style={{ fontSize: "1.4rem" }}>Partner with us</h3>
         <a href="#" className={styles.footerTextColor}>
           Sign up
         </a>
@@ -81,7 +87,7 @@ const FooterComponent = () => (
         </a>
       </Grid>
       <Grid item xs={12} sm={4} md={3} className={styles.footerSectionStyle}>
-        <h3>Company</h3>
+        <h3 style={{ fontSize: "1.4rem" }}>Company</h3>
         <a href="#" className={styles.footerTextColor}>
           About us
         </a>
