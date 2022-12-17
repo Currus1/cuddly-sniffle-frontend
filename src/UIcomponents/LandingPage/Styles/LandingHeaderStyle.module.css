@@ -32,6 +32,24 @@
     padding: 10px;
 }
 
+.loginButton {
+    color: white;
+    width: 15vh;
+    height: 4vh;
+    border: none;
+    margin-right: 3vh;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+    background-color: #47682C;
+    border: 2px solid #47682C;
+    border-radius: 30px;
+    font-family: "montserrat";
+    font-size: 15px;
+    transition-duration: 0.15s;
+}
+
 .registerButton {
     color: black;
     width: 15vh;
@@ -43,45 +61,26 @@
     display: inline-block;
     cursor: pointer;
     background-color: transparent;
-    border: 2px solid #e3e3e3;
+    border: 2px solid #47682C;
     border-radius: 30px;
-    /* font-family: "montserrat"; */
-    font-weight: bold;
+    font-family: "montserrat";
     font-size: 15px;
     transition-duration: 0.15s;
 }
 
-.loginButton {
-    color: black;
-    width: 15vh;
-    height: 4vh;
-    border: none;
-    margin-right: 3vh;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    cursor: pointer;
-    background-color: transparent;
-    border: 2px solid #e3e3e3;
-    border-radius: 30px;
-    /* font-family: "montserrat"; */
-    font-weight: bold;
-    font-size: 15px;
-    transition-duration: 0.15s;
-}
-
-.registerButton:hover {
+.loginButton:hover {
     border-radius: 10px;
-    border-color: #989898;
+    border-color: #7BC950;
+    background-color:#7BC950;
     -ms-transform: scale(1.05); /* IE 9 */
     -webkit-transform: scale(1.05); /* Safari 3-8 */
     transform: scale(1.05);
     transition-duration: 0.15s;
 }
 
-.loginButton:hover {
+.registerButton:hover {
     border-radius: 10px;
-    border-color: #989898;
+    border-color: #7BC950;
     -ms-transform: scale(1.05); /* IE 9 */
     -webkit-transform: scale(1.05); /* Safari 3-8 */
     transform: scale(1.05);
@@ -100,11 +99,11 @@
 }
 
 .header_container {
-    background-color: #74E39A;
+    background-color: #E8E5DA;
 }
 
 .logo {
-    background-color: #74E39A;
+    background-color: #E8E5DA;
     width: fit-content;
     height: fit-content;
 }

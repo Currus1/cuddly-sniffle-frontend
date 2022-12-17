@@ -4,7 +4,6 @@ import { useNavigate } from "react-router-dom";
 import Toolbar from "@mui/material/Toolbar";
 import styles from "./Styles/LandingHeaderStyle.module.css";
 import logo from "../../Images/logo/logo.svg";
-import mobileLogo from "../../Images/logo/mobileLogo.svg";
 import { Grid } from "@mui/material";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import IconButton from "@mui/material/IconButton";
@@ -46,11 +45,15 @@ const HeaderComponent = () => {
       <div>
         <Toolbar className={styles.header_container}>
           {matches ? (
-            <img src={logo} className={styles.logo}></img>
+            <img
+              src={logo}
+              style={{ height: "80px", width: "150px" }}
+              className={styles.logo}
+            ></img>
           ) : (
             <img
-              src={mobileLogo}
-              style={{ marginLeft: "-1vh" }}
+              src={logo}
+              style={{ marginLeft: "0vh", height: "80px", width: "150px" }}
               className={styles.logo}
             ></img>
           )}

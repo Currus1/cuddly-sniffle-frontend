@@ -100,7 +100,7 @@ export default function TemporaryDrawer() {
   return (
     <div>
       <IconButton
-        style={{ color: "black", alignContent: "end", alignItems: "end" }}
+        style={{ color: "#47682C" }}
         size="large"
         edge="start"
         aria-label="logo"
@@ -110,7 +110,7 @@ export default function TemporaryDrawer() {
       </IconButton>
 
       <Drawer
-        anchor="left"
+        anchor="right"
         open={open}
         onClose={() => setOpen(false)}
         ModalProps={{
