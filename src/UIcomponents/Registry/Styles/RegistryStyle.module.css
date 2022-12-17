@@ -24,3 +24,32 @@
     margin-top: 20px;
     width: 95%;
 }
+
+.registerButton {
+    color: white;
+    width: 15vh;
+    align-items: center;
+    height: 4vh;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    background-color: #47682C;
+    border: 2px solid #47682C;
+    border-radius: 30px;
+    font-family: "montserrat";
+    font-size: 1rem;
+    transition-duration: 0.15s;
+    margin-top: 2vh;
+    margin-bottom: 2vh;
+}
+
+.registerButton:hover {
+    font-weight: bold;
+    border-radius: 10px;
+    background-color: #7BC950;
+    border: none;
+    -ms-transform: scale(1.05); /* IE 9 */
+    -webkit-transform: scale(1.05); /* Safari 3-8 */
+    transform: scale(1.05);
+    transition-duration: 0.15s;
+}

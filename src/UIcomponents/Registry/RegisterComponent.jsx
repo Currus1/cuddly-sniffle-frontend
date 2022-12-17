@@ -14,6 +14,8 @@ import { TextValidator, ValidatorForm } from "react-material-ui-form-validator";
 import { FormLabel } from "@mui/material";
 import Backdrop from "@mui/material/Backdrop";
 import CircularProgress from "@mui/material/CircularProgress";
+import styles from "./Styles/RegistryStyle.module.css";
+import FooterComponent from "../BaseFooter/FooterComponent";
 
 const theme = createTheme({
   palette: {
@@ -147,18 +149,46 @@ export default function RegisterComponent() {
             alignItems: "center",
           }}
         >
-          <Avatar sx={{ m: 1 }}>
+          <Avatar sx={{ m: 1 }} style={{ backgroundColor: "#7BC950" }}>
             <HowToRegIcon />
           </Avatar>
-          <Typography component="h1" variant="h5">
+          <Typography
+            style={{
+              color: "#7BC950",
+              fontWeight: "bolder",
+              fontFamily: "montserrat",
+            }}
+            component="h1"
+            variant="h5"
+          >
             Register
           </Typography>
           <ValidatorForm onSubmit={handleSubmit}>
             <TextValidator
+              sx={{
+                ".MuiOutlinedInput-notchedOutline": {
+                  borderColor: "#7BC950",
+                },
+                "&:hover .MuiOutlinedInput-notchedOutline": {
+                  borderColor: "#47682C",
+                },
+                "&:hover .Mui-focused .MuiOutlinedInput-notchedOutline": {
+                  borderColor: "#47682C !important",
+                },
+                ".Mui-focused .MuiOutlinedInput-notchedOutline": {
+                  borderColor: "#7BC950 !important",
+                },
+              }}
+              InputProps={{
+                style: {
+                  color: "black",
+                  fontFamily: "montserrat",
+                },
+              }}
               margin="normal"
               fullWidth
               id="name"
-              label="Name"
+              placeholder="Name"
               name="name"
               autoComplete="name"
               autoFocus
@@ -168,10 +198,30 @@ export default function RegisterComponent() {
               value={name}
             />
             <TextValidator
+              sx={{
+                ".MuiOutlinedInput-notchedOutline": {
+                  borderColor: "#7BC950",
+                },
+                "&:hover .MuiOutlinedInput-notchedOutline": {
+                  borderColor: "#47682C",
+                },
+                "&:hover .Mui-focused .MuiOutlinedInput-notchedOutline": {
+                  borderColor: "#47682C !important",
+                },
+                ".Mui-focused .MuiOutlinedInput-notchedOutline": {
+                  borderColor: "#7BC950 !important",
+                },
+              }}
+              InputProps={{
+                style: {
+                  color: "black",
+                  fontFamily: "montserrat",
+                },
+              }}
               margin="normal"
               fullWidth
               id="surname"
-              label="Surname"
+              placeholder="Surname"
               name="surname"
               autoComplete="surname"
               autoFocus
@@ -181,7 +231,33 @@ export default function RegisterComponent() {
               value={surname}
             />
             <TextValidator
-              InputLabelProps={{ shrink: true }}
+              sx={{
+                ".MuiOutlinedInput-notchedOutline": {
+                  borderColor: "#7BC950",
+                },
+                "&:hover .MuiOutlinedInput-notchedOutline": {
+                  borderColor: "#47682C",
+                },
+                "&:hover .Mui-focused .MuiOutlinedInput-notchedOutline": {
+                  borderColor: "#47682C !important",
+                },
+                ".Mui-focused .MuiOutlinedInput-notchedOutline": {
+                  borderColor: "#7BC950 !important",
+                },
+              }}
+              InputProps={{
+                style: {
+                  color: "black",
+                  fontFamily: "montserrat",
+                },
+              }}
+              InputLabelProps={{
+                shrink: true,
+                style: {
+                  color: "black",
+                  fontFamily: "montserrat",
+                },
+              }}
               margin="normal"
               fullWidth
               id="birthDate"
@@ -199,23 +275,62 @@ export default function RegisterComponent() {
               value={birthdate}
             />
             <TextValidator
+              sx={{
+                ".MuiOutlinedInput-notchedOutline": {
+                  borderColor: "#7BC950",
+                },
+                "&:hover .MuiOutlinedInput-notchedOutline": {
+                  borderColor: "#47682C",
+                },
+                "&:hover .Mui-focused .MuiOutlinedInput-notchedOutline": {
+                  borderColor: "#47682C !important",
+                },
+                ".Mui-focused .MuiOutlinedInput-notchedOutline": {
+                  borderColor: "#7BC950 !important",
+                },
+              }}
+              InputProps={{
+                style: {
+                  color: "black",
+                  fontFamily: "montserrat",
+                },
+              }}
+              placeholder="Email Address"
               margin="normal"
               fullWidth
               id="email"
-              label="Email Address"
               name="email"
               autoComplete="email"
-              autoFocus
               validators={["required", "isEmail"]}
               errorMessages={["Email field is required", "Email is not valid"]}
               onChange={(event) => setEmail(event.target.value)}
               value={email}
             />
             <TextValidator
+              sx={{
+                ".MuiOutlinedInput-notchedOutline": {
+                  borderColor: "#7BC950",
+                },
+                "&:hover .MuiOutlinedInput-notchedOutline": {
+                  borderColor: "#47682C",
+                },
+                "&:hover .Mui-focused .MuiOutlinedInput-notchedOutline": {
+                  borderColor: "#47682C !important",
+                },
+                ".Mui-focused .MuiOutlinedInput-notchedOutline": {
+                  borderColor: "#7BC950 !important",
+                },
+              }}
+              InputProps={{
+                style: {
+                  color: "black",
+                  fontFamily: "montserrat",
+                },
+              }}
               margin="normal"
               fullWidth
               id="phoneNumber"
-              label="Phone Number"
+              placeholder="Phone Number"
               name="Phone Number"
               autoComplete="number"
               autoFocus
@@ -228,10 +343,30 @@ export default function RegisterComponent() {
               value={phoneNumber}
             />{" "}
             <TextValidator
+              sx={{
+                ".MuiOutlinedInput-notchedOutline": {
+                  borderColor: "#7BC950",
+                },
+                "&:hover .MuiOutlinedInput-notchedOutline": {
+                  borderColor: "#47682C",
+                },
+                "&:hover .Mui-focused .MuiOutlinedInput-notchedOutline": {
+                  borderColor: "#47682C !important",
+                },
+                ".Mui-focused .MuiOutlinedInput-notchedOutline": {
+                  borderColor: "#7BC950 !important",
+                },
+              }}
+              InputProps={{
+                style: {
+                  color: "black",
+                  fontFamily: "montserrat",
+                },
+              }}
               margin="normal"
               fullWidth
               name="password2"
-              label="Password"
+              placeholder="Password"
               type="password"
               id="password2"
               validators={["required", "PasswordLength", "IsPasswordStrong"]}
@@ -244,10 +379,30 @@ export default function RegisterComponent() {
               value={password}
             />
             <TextValidator
+              sx={{
+                ".MuiOutlinedInput-notchedOutline": {
+                  borderColor: "#7BC950",
+                },
+                "&:hover .MuiOutlinedInput-notchedOutline": {
+                  borderColor: "#47682C",
+                },
+                "&:hover .Mui-focused .MuiOutlinedInput-notchedOutline": {
+                  borderColor: "#47682C !important",
+                },
+                ".Mui-focused .MuiOutlinedInput-notchedOutline": {
+                  borderColor: "#7BC950 !important",
+                },
+              }}
+              InputProps={{
+                style: {
+                  color: "black",
+                  fontFamily: "montserrat",
+                },
+              }}
               margin="normal"
               fullWidth
               name="repeatPassword"
-              label="Confirm Password"
+              placeholder="Confirm Password"
               type="password"
               id="repeatPassword"
               validators={["required", "isPasswordMatch"]}
@@ -258,23 +413,28 @@ export default function RegisterComponent() {
               onChange={(event) => setRepeatPassword(event.target.value)}
               value={repeatPassword}
             />
-            <FormLabel>
+            <FormLabel style={{ fontFamily: "montserrat", color: "#7BC950" }}>
               * By clicking "Sign Up", you confirm that you agree to our terms
               of service and privacy policy.
             </FormLabel>
             <div style={{ color: "red" }}>{errorMessage}</div>
             <div style={{ color: "green" }}>{successMessage}</div>
-            <Button
-              type="submit"
-              fullWidth
-              variant="contained"
-              sx={{ mt: 3, mb: 2 }}
-              onClick={handleToggle}
+            <div style={{ display: "flex", justifyContent: "center" }}>
+              <button
+                className={styles.registerButton}
+                type="submit"
+                onClick={handleToggle}
+              >
+                Sign Up
+              </button>
+            </div>
+            <Link
+              href="/login"
+              underline="hover"
+              variant="string"
+              style={{ color: "#47682C" }}
             >
-              Sign Up
-            </Button>
-            <Link href="/login" underline="hover" variant="string">
-              {"Have an account? Log in"}
+              {"Have an account? Sign in"}
             </Link>
           </ValidatorForm>
           <Backdrop
@@ -286,6 +446,7 @@ export default function RegisterComponent() {
           </Backdrop>
         </Box>
       </Container>
+      <FooterComponent />
     </ThemeProvider>
   );
 }
