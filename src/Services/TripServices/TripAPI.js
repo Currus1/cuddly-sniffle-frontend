@@ -25,11 +25,6 @@ class TripAPI {
     return http.get("/VehicleType");
   }
 
-  getTripStatuses() {
-    const http = getCustomHttp();
-    return http.get("/TripStatus");
-  }
-
   getTrips(tripStatus) {
     const http = getCustomHttp();
     return http.get("/Trip/Trips", { params: { tripStatus: tripStatus } });
