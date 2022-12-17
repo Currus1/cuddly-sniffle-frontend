@@ -10,8 +10,16 @@ const FooterComponent = () => (
     <Grid item xs={12} sm={12} md={8} className={styles.footerLogoStyle}>
       Commútify
       <hr className={styles.footerHr} />
-      <p className={styles.footerText}>Stay In Touch!</p>
-      <Grid container style={{ display: "flex", justifyContent: "center" }}>
+      <p className={styles.footerText}>
+        <b>Stay In Touch!</b>
+      </p>
+      <Grid
+        container
+        style={{
+          display: "flex",
+          justifyContent: "center",
+        }}
+      >
         <Grid item xs={3} md={1}>
           <a href="#">
             <img
@@ -37,9 +45,9 @@ const FooterComponent = () => (
         </Grid>
       </Grid>
     </Grid>
-    <Grid container justifyContent="center">
-      <Grid item xs={12} sm={4} md={2} className={styles.footerLicensesStyle}>
-        <h3>Legal</h3>
+    <Grid container justifyContent="center" style={{ marginTop: "5vh" }}>
+      <Grid item xs={12} sm={4} md={3} className={styles.footerSectionStyle}>
+        <h3 style={{ fontSize: "1.4rem" }}>Legal</h3>
         <a href="#" className={styles.footerTextColor}>
           Terms Of Service
         </a>
@@ -56,8 +64,8 @@ const FooterComponent = () => (
           Security
         </a>
       </Grid>
-      <Grid item xs={12} sm={4} md={2} className={styles.footerCurrusFeatures}>
-        <h3>Partner with us</h3>
+      <Grid item xs={12} sm={4} md={3} className={styles.footerSectionStyle}>
+        <h3 style={{ fontSize: "1.4rem" }}>Partner with us</h3>
         <a href="#" className={styles.footerTextColor}>
           Sign up
         </a>
@@ -78,8 +86,8 @@ const FooterComponent = () => (
           Influencers
         </a>
       </Grid>
-      <Grid item xs={12} sm={4} md={1} className={styles.footerCompanyStyle}>
-        <h3>Company</h3>
+      <Grid item xs={12} sm={4} md={3} className={styles.footerSectionStyle}>
+        <h3 style={{ fontSize: "1.4rem" }}>Company</h3>
         <a href="#" className={styles.footerTextColor}>
           About us
         </a>
@@ -106,7 +114,12 @@ const FooterComponent = () => (
       </Grid>
     </Grid>
 
-    <Grid item xs={12} md={12} className={styles.footerCopyrightStyle}>
+    <Grid
+      style={{ marginBottom: "5vh" }}
+      item
+      xs={12}
+      className={styles.footerCopyrightStyle}
+    >
       <address>
         © 2022 Commútify, Inc. |{" "}
         <a href="#" className={styles.footerTextColor}>
