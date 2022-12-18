@@ -1,10 +1,149 @@
 .container {
-    width: 100%;
-    background-color: white;
-    padding-top: 5vh;
-    padding-bottom: 5vh;
+  width: 100%;
+  background-color: white;
+  padding-top: 5vh;
+  padding-bottom: 5vh;
 }
 
 .listPaperStyle {
-    padding: 20px;
+  padding: 20px;
+}
+
+.card {
+  padding: 1vh;
+}
+
+.visitIcon {
+  width: 3vh;
+  height: 3vh;
+  margin-top: 1.4vh;
+  padding-right: 1vh;
+}
+
+.top_container {
+  height: fit-content;
+  margin-bottom: 0.5vh;
+}
+
+.driver_icon_container {
+  display: flex;
+}
+
+.driver_icon {
+  width: 3vh;
+  height: 3vh;
+  margin-top: 0.4vh;
+  padding-right: 0.5vh;
+}
+
+.driver_initials {
+  font-family: "montserrat";
+  font-weight: bold;
+  margin-left: 1vh;
+  margin-top: 1vh;
+}
+
+.date {
+  font-family: "montserrat";
+  font-weight: bold;
+  margin-left: 1vh;
+  margin-top: 1vh;
+}
+
+.locations_container {
+  width: 100%;
+  height: 100%;
+  /* background-color: red; */
+}
+
+.info_container {
+  width: 100%;
+  height: 100%;
+  /* background-color: blue; */
+}
+
+.seatIcon {
+  width: 3vh;
+  height: 3vh;
+}
+
+.middle_container {
+  height: fit-content;
+  /* background-color: green; */
+}
+
+.point_div {
+  display: flex;
+}
+
+.point_text {
+  font-family: "montserrat";
+  font-weight: bold;
+}
+
+.car_info_container {
+  display: flex;
+  /* margin-top: -0.5vh; */
+}
+
+.price_container {
+  margin-left: -0.5vh;
+  margin-top: 1vh;
+  display: flex;
+}
+
+.est_price_text {
+  font-family: "montserrat";
+  font-weight: bold;
+  font-size: 1.8vh;
+  margin-left: 1vh;
+  margin-right: 0.5vh;
+  margin-top: 0.3vh;
+}
+
+.break {
+  flex-basis: 100%;
+  height: 0;
+}
+
+.price {
+  font-family: "montserrat";
+  font-weight: bold;
+  font-size: 1.8vh;
+  margin-left: 1vh;
+  margin-top: 0.3vh;
+  color: #8ac53f;
+}
+
+.euro_sign {
+  font-family: "montserrat";
+  font-weight: bold;
+  font-size: 1.6vh;
+  margin-left: 1vh;
+  margin-top: 0.4vh;
+}
+
+.join_button {
+  width: 100%;
+  background-color: #47682c !important;
+  font-family: "montserrat";
+  font-weight: bold;
+  transition-duration: 0.15s;
+}
+
+.join_button:hover {
+  background-color: #8ac53f !important;
+  -ms-transform: scale(1.05); /* IE 9 */
+  -webkit-transform: scale(1.05); /* Safari 3-8 */
+  transform: scale(1.05);
+  transition-duration: 0.15s;
+}
+
+.joined_button {
+  width: 100%;
+  background-color: rgb(185, 183, 183) !important;
+  border: 2px solid #47682c !important;
+  color: black !important;
+  font-family: "montserrat";
+  font-weight: bold;
 }

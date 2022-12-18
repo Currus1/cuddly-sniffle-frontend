@@ -20,6 +20,7 @@
 }
 
 .item {
+  width: 99%;
   position: relative;
   top: 10%;
 }
