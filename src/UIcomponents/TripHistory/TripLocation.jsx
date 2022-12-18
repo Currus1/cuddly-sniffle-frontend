@@ -1,5 +1,5 @@
 import React from "react";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -9,9 +9,12 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 
 const TripLocation = ({ trip }) => {
+  const [state, setState] = useState(false);
+
   useEffect(() => {
     var tripRegex = trip.tripDate.split("T");
     trip.tripDate = tripRegex[0];
+    setState(true);
   }, []);
 
   return (
@@ -32,13 +35,16 @@ const TripLocation = ({ trip }) => {
             >
               {trip.destination}
             </TableCell>
-            <TableCell
-              style={{ fontFamily: "montserrat", fontWeight: "bolder" }}
-              width={"60%"}
-              align="right"
-            >
-              {trip.tripDate}
-            </TableCell>
+            {state == true ? (
+              <TableCell
+                style={{ fontFamily: "montserrat", fontWeight: "bolder" }}
+                width={"60%"}
+                align="right"
+              >
+                {trip.tripDate}
+              </TableCell>
+            ) : null}
+
             <TableCell
               style={{ fontFamily: "montserrat", fontWeight: "bolder" }}
               align="right"
