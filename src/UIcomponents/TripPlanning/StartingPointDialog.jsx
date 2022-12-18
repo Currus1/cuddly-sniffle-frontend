@@ -13,10 +13,14 @@ import Slide from "@mui/material/Slide";
 import GoogleAutoComplete from "../GoogleMapIntegration/GoogleAutoComplete";
 import Box from "@mui/material/Box";
 import { geocodeByAddress, getLatLng } from "react-places-autocomplete";
+import { GoogleMap, Marker, LoadScript } from "@react-google-maps/api";
 
 const Transition = React.forwardRef((props, ref) => {
   return <Slide direction="up" ref={ref} {...props} />;
 });
+
+const startCoordsVals = { lat: 54.731461, lng: 25.2621 };
+const destCoordsVals = { lat: 54.726421, lng: 25.3288 };
 
 export default function AutocompleteDialog({
   text,
@@ -24,8 +28,26 @@ export default function AutocompleteDialog({
   setDestination,
 }) {
   const [open, setOpen] = useState(false);
-  const [start, setStart] = useState("");
-  const [dest, setDest] = useState("");
+  const [start, setStart] = useState("Didlaukio g. 59, Vilnius");
+  const [dest, setDest] = useState("Saulėtekio al. 4, Vilnius");
+  const [startCoords, setStartCoords] = useState(startCoordsVals);
+  const [destCoords, setDestCoords] = useState(destCoordsVals);
+
+  const center = findCenter(startCoords, destCoords);
+
+  function findCenter(startCoords, endCoords) {
+    const centerX = (startCoords.lat + endCoords.lat) / 2;
+    const centerY = (startCoords.lng + endCoords.lng) / 2;
+    return { lat: centerX, lng: centerY };
+  }
+
+  const handleClear = () => {
+    setStart("");
+    setDest("");
+    const coordsVals = { lat: 54.687157, lng: 25.279652 };
+    setStartCoords(coordsVals);
+    setDestCoords(coordsVals);
+  };
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -108,13 +130,13 @@ export default function AutocompleteDialog({
 
   return (
     <div>
-      <Button
-        className={styles.createButton}
-        variant="outlined"
+      <button
+        style={{ width: "100%", height: "100%" }}
+        className={styles.button}
         onClick={handleClickOpen}
       >
         {text}
-      </Button>
+      </button>
 
       <Dialog
         fullScreen
@@ -122,7 +144,7 @@ export default function AutocompleteDialog({
         onClose={handleClose}
         TransitionComponent={Transition}
       >
-        <AppBar sx={{ position: "relative", backgroundColor: "#808080" }}>
+        <AppBar sx={{ position: "relative", backgroundColor: "#7BC950" }}>
           <Toolbar>
             <IconButton
               edge="start"
@@ -132,17 +154,33 @@ export default function AutocompleteDialog({
             >
               <CloseIcon />
             </IconButton>
-            <Typography sx={{ ml: 2, flex: 1 }} variant="h6" component="div">
-              Select
-            </Typography>
-            <Button autoFocus color="inherit" onClick={handleSaveClose}>
-              save
-            </Button>
+            <Typography
+              sx={{ ml: 2, flex: 1 }}
+              variant="h6"
+              component="div"
+            ></Typography>
+            <button
+              style={{ marginRight: "1vh" }}
+              className={styles.saveButton}
+              autoFocus
+              color="inherit"
+              onClick={handleClear}
+            >
+              Clear
+            </button>
+            <button
+              className={styles.saveButton}
+              autoFocus
+              color="inherit"
+              onClick={handleSaveClose}
+            >
+              Save
+            </button>
           </Toolbar>
         </AppBar>
         <Box
           sx={{
-            backgroundColor: "#F0F0F0",
+            backgroundColor: "#E8E5DA",
           }}
         >
           <GoogleAutoComplete
@@ -150,9 +188,44 @@ export default function AutocompleteDialog({
             setDest={setDest}
             start={start}
             setStart={setStart}
+            setDestCoords={setDestCoords}
+            setStartCoords={setStartCoords}
           />
         </Box>
-        <DialogContent style={{ backgroundColor: "#F0F0F0" }}></DialogContent>
+        <DialogContent
+          style={{
+            backgroundColor: "#E8E5DA",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <GoogleMap
+            options={{
+              disableDefaultUI: true,
+            }}
+            center={center}
+            zoom={11}
+            mapContainerStyle={{
+              height: "50vh",
+              width: "50vh",
+              position: "relative",
+            }}
+          >
+            <Marker
+              icon={{
+                url: "https://maps.google.com/mapfiles/ms/icons/green-dot.png",
+              }}
+              position={startCoords}
+            />
+            <Marker
+              icon={{
+                url: "https://maps.google.com/mapfiles/ms/icons/red-dot.png",
+              }}
+              position={destCoords}
+            />
+          </GoogleMap>
+        </DialogContent>
       </Dialog>
     </div>
   );

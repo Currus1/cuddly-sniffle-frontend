@@ -29,33 +29,31 @@ export default function TripDialog({ trip, driver, open, onClose, google }) {
         <DialogTitle>Trip Details</DialogTitle>
         <DialogContent>
           <div style={{ justifyContent: "center", display: "flex" }}>
-            <LoadScript googleMapsApiKey={process.env.REACT_APP_GOOGLE_MAP_API}>
-              <GoogleMap
-                options={{
-                  disableDefaultUI: true,
+            <GoogleMap
+              options={{
+                disableDefaultUI: true,
+              }}
+              center={center}
+              zoom={11}
+              mapContainerStyle={{
+                height: "30vh",
+                width: "30vh",
+                position: "relative",
+              }}
+            >
+              <Marker
+                icon={{
+                  url: "https://maps.google.com/mapfiles/ms/icons/green-dot.png",
                 }}
-                center={center}
-                zoom={11}
-                mapContainerStyle={{
-                  height: "30vh",
-                  width: "30vh",
-                  position: "relative",
+                position={startCoords}
+              />
+              <Marker
+                icon={{
+                  url: "https://maps.google.com/mapfiles/ms/icons/red-dot.png",
                 }}
-              >
-                <Marker
-                  icon={{
-                    url: "https://maps.google.com/mapfiles/ms/icons/green-dot.png",
-                  }}
-                  position={startCoords}
-                />
-                <Marker
-                  icon={{
-                    url: "https://maps.google.com/mapfiles/ms/icons/red-dot.png",
-                  }}
-                  position={destCoords}
-                />
-              </GoogleMap>
-            </LoadScript>
+                position={destCoords}
+              />
+            </GoogleMap>
           </div>
 
           <DialogTitle>Driver Information</DialogTitle>
