@@ -8,8 +8,8 @@
   text-align: center;
   font-weight: bold;
   word-spacing: 0.5vh;
-  color: white;
   border-radius: 2vh;
-  background-color: black;
+  background-color: rgb(123, 201, 80, 0.3);
+  color: "#7BC950";
   opacity: 75%;
 }

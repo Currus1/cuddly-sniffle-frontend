@@ -5,7 +5,7 @@ import {
   DialogTitle,
   Typography,
 } from "@material-ui/core";
-import { GoogleMap, Marker, LoadScript } from "@react-google-maps/api";
+import { GoogleMap, Marker } from "@react-google-maps/api";
 import styles from "./Styles/TripDialogStyle.module.css";
 
 export default function TripDialog({ trip, driver, open, onClose, google }) {
@@ -21,12 +21,12 @@ export default function TripDialog({ trip, driver, open, onClose, google }) {
 
   return (
     <Dialog
-      style={{ backgroundColor: "#F0F0F0" }}
+      style={{ backgroundColor: "#E8E5DA" }}
       open={open}
       onClose={onClose}
     >
-      <div style={{ backgroundColor: "#F0F0F0", color: "black" }}>
-        <DialogTitle>Trip Details</DialogTitle>
+      <div style={{ backgroundColor: "#E8E5DA", color: "black" }}>
+        <DialogTitle style={{ color: "#7BC950" }}>Trip Details</DialogTitle>
         <DialogContent>
           <div style={{ justifyContent: "center", display: "flex" }}>
             <GoogleMap
@@ -56,7 +56,9 @@ export default function TripDialog({ trip, driver, open, onClose, google }) {
             </GoogleMap>
           </div>
 
-          <DialogTitle>Driver Information</DialogTitle>
+          <DialogTitle style={{ color: "#7BC950" }}>
+            Driver Information
+          </DialogTitle>
           <DialogContent className={styles.dialogText}>
             <Typography>Driver Id: {driver.id}</Typography>
             <Typography>
@@ -64,7 +66,9 @@ export default function TripDialog({ trip, driver, open, onClose, google }) {
             </Typography>
             <Typography></Typography>
           </DialogContent>
-          <DialogTitle>Trip Information</DialogTitle>
+          <DialogTitle style={{ color: "#7BC950" }}>
+            Trip Information
+          </DialogTitle>
           <DialogContent className={styles.dialogText}>
             <Typography>
               Duration: {trip.hours}h {trip.minutes}min

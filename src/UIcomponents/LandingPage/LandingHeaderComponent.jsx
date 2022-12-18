@@ -101,16 +101,22 @@ const HeaderComponent = () => {
                   "aria-labelledby": "menuButton",
                 }}
               >
-                <MenuItem onClick={handleCloseLogin}>
+                <MenuItem
+                  onClick={handleCloseLogin}
+                  style={{ color: "black", fontFamily: "montserrat" }}
+                >
                   <ListItemIcon>
-                    <LoginIcon />
+                    <LoginIcon style={{ color: "#47682C" }} />
                   </ListItemIcon>
                   Log In
                 </MenuItem>
                 <Divider />
-                <MenuItem onClick={handleCloseRegister}>
+                <MenuItem
+                  onClick={handleCloseRegister}
+                  style={{ color: "black", fontFamily: "montserrat" }}
+                >
                   <ListItemIcon>
-                    <HowToRegIcon />
+                    <HowToRegIcon style={{ color: "#47682C" }} />
                   </ListItemIcon>
                   Register
                 </MenuItem>

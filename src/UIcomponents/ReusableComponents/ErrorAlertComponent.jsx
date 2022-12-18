@@ -4,6 +4,7 @@ import AlertTitle from "@mui/material/AlertTitle";
 import Collapse from "@mui/material/Collapse";
 import IconButton from "@mui/material/IconButton";
 import CloseIcon from "@mui/icons-material/Close";
+import PageNotFound from "../ReusableComponents/PageNotFound";
 
 const AlertComponent = ({ text, wrongPage }) => {
   const [alertErrorOpen, setAlertErrorOpen] = useState(false);
@@ -33,6 +34,7 @@ const AlertComponent = ({ text, wrongPage }) => {
           {wrongPage === true ? <LinkToHome /> : null}
         </Alert>
       </Collapse>
+      {wrongPage === true ? <PageNotFound /> : null}
     </div>
   );
 };

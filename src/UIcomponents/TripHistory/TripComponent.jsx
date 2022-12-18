@@ -3,9 +3,7 @@ import TripAPI from "../../Services/TripServices/TripAPI.js";
 import TripView from "./TripView";
 import FooterComponent from "../BaseFooter/FooterComponent.jsx";
 import HeaderComponent from "../BaseHeader/HeaderComponent.jsx";
-import backgroundStyle from "../Styles/BackgroundStyle.module.css";
 import List from "@mui/material/List";
-import ListItem from "@mui/material/ListItem";
 import { Container } from "@mui/material";
 import styles from "./Styles/TripHistoryStyle.module.css";
 import { useUserValidation } from "../../CustomHooks/useUserValidation.js";
@@ -14,6 +12,7 @@ import "./Styles/TripHistoryStyle.module.css";
 import { useRef } from "react";
 import ErrorAlertComponent from "../ReusableComponents/ErrorAlertComponent";
 import SuccessAlertComponent from "../ReusableComponents/SuccessAlertComponent";
+import TripHistoryCardComponent from "../ReusableComponents/TripHistoryCardComponent";
 
 const TripComponent = () => {
   const navigate = useNavigate("");
@@ -58,7 +57,7 @@ const TripComponent = () => {
             data.map((trip) => <TripView key={trip.id} trip={trip}></TripView>)
           ) : (
             <div className={styles.text_center}>
-              <h2>You have no trips yet</h2>
+              <h2 style={{ color: "#7BC950" }}>You have no trips yet</h2>
               <h3>
                 <a className={styles.a} href="/home">
                   Join a trip now
@@ -68,6 +67,7 @@ const TripComponent = () => {
           )}
         </List>
       </Container>
+      <TripHistoryCardComponent />
       <FooterComponent />
     </div>
   );

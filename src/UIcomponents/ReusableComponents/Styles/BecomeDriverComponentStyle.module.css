@@ -17,10 +17,24 @@
   overflow: hidden;
   z-index: 1;
 }
+.not_found_image_container {
+  height: 40vh;
+  background-image: url("../../../Images/notFound.svg");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+}
 
+.trip_history_image_container{
+  height: 40vh;
+  background-image: url("../../../Images/orderRide.svg");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+}
 .profile_image_container {
   height: 40vh;
-  background-image: url("../../../Images/profile.svg");
+  background-image: url("../../../Images/profileHand.svg");
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;

@@ -12,7 +12,7 @@ import ErrorAlertComponent from "../ReusableComponents/ErrorAlertComponent";
 import SuccessAlertComponent from "../ReusableComponents/SuccessAlertComponent";
 import Box from "@mui/material/Box";
 import useMediaQuery from "@mui/material/useMediaQuery";
-import ProfileCardComponent from "../ReusableComponents/ProfileComponent";
+import ProfileCardComponent from "../ReusableComponents/ProfileCardComponent";
 
 const driverLicenseRegExp = /^\d{8}$/;
 
