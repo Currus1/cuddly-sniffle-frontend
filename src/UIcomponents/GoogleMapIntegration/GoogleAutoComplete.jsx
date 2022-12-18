@@ -1,12 +1,29 @@
 import React from "react";
 import PlacesAutocomplete from "react-places-autocomplete";
-import { TextField } from "@material-ui/core";
+import { Input, TextField } from "@material-ui/core";
 import InputAdornment from "@mui/material/InputAdornment";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import NearMeIcon from "@mui/icons-material/NearMe";
+import { geocodeByAddress, getLatLng } from "react-places-autocomplete";
 
-const AutoComplete = ({ start, dest, setStart, setDest }) => {
+const AutoComplete = ({
+  start,
+  dest,
+  setStart,
+  setDest,
+  setStartCoords,
+  setDestCoords,
+}) => {
   const handleSelectStart = (address) => {
+    geocodeByAddress(address)
+      .then((results) => getLatLng(results[0]))
+      .then((latLng) => {
+        var startCoordsVals = { lat: latLng.lat, lng: latLng.lng };
+        setStartCoords(startCoordsVals);
+      })
+      .catch((error) => {
+        console.error("Error", error);
+      });
     var arr = address.split(",");
     var newArr = arr.map(function (element, index) {
       if (!element.toLowerCase().includes("municipality")) {
@@ -18,6 +35,15 @@ const AutoComplete = ({ start, dest, setStart, setDest }) => {
   };
 
   const handleSelectDest = (address) => {
+    geocodeByAddress(address)
+      .then((results) => getLatLng(results[0]))
+      .then((latLng) => {
+        var destCoordsVals = { lat: latLng.lat, lng: latLng.lng };
+        setDestCoords(destCoordsVals);
+      })
+      .catch((error) => {
+        console.error("Error", error);
+      });
     var arr = address.split(",");
     var newArr = arr.map(function (element, index) {
       if (!element.toLowerCase().includes("municipality")) {
@@ -46,8 +72,13 @@ const AutoComplete = ({ start, dest, setStart, setDest }) => {
               placeholder="Starting location"
               id="startingPoint"
               InputProps={{
+                style: {
+                  color: "black",
+                  fontWeight: "bolder",
+                  fontFamily: "montserrat",
+                },
                 startAdornment: (
-                  <InputAdornment position="start">
+                  <InputAdornment position="start" style={{ color: "#7BC950" }}>
                     <NearMeIcon />
                   </InputAdornment>
                 ),
@@ -58,7 +89,7 @@ const AutoComplete = ({ start, dest, setStart, setDest }) => {
               {loading && <div>Loading...</div>}
               {suggestions.map((suggestion) => {
                 const style = {
-                  backgroundColor: "#F0F0F0",
+                  backgroundColor: "transparent",
                   cursor: "pointer",
                 };
 
@@ -92,8 +123,16 @@ const AutoComplete = ({ start, dest, setStart, setDest }) => {
                 placeholder="Destination"
                 id="destination"
                 InputProps={{
+                  style: {
+                    color: "black",
+                    fontWeight: "bolder",
+                    fontFamily: "montserrat",
+                  },
                   startAdornment: (
-                    <InputAdornment position="start">
+                    <InputAdornment
+                      position="start"
+                      style={{ color: "#7BC950" }}
+                    >
                       <LocationOnIcon />
                     </InputAdornment>
                   ),
@@ -104,7 +143,7 @@ const AutoComplete = ({ start, dest, setStart, setDest }) => {
                 {loading && <div>Loading...</div>}
                 {suggestions.map((suggestion) => {
                   const style = {
-                    backgroundColor: "#F0F0F0",
+                    backgroundColor: "transparent",
                     cursor: "pointer",
                   };
 

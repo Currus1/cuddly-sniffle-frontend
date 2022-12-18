@@ -477,6 +477,7 @@ const PlanningComponent = () => {
               type="submit"
               className={styles.button}
               onClick={handleClick}
+              style={{ height: "100%", width: "50%" }}
             >
               CREATE
             </button>
