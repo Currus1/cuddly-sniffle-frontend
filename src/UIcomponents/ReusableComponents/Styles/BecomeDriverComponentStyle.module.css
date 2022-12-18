@@ -42,6 +42,7 @@
 
 .image_container {
   height: 40vh;
+  margin-bottom: 1vh;
   background-image: url("../../../Images/VariousImages/trip.svg");
   background-repeat: no-repeat;
   background-size: contain;

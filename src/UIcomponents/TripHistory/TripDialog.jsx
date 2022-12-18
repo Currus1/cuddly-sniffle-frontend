@@ -36,8 +36,8 @@ export default function TripDialog({ trip, driver, open, onClose, google }) {
               center={center}
               zoom={11}
               mapContainerStyle={{
-                height: "30vh",
-                width: "30vh",
+                height: "40vh",
+                width: "50vh",
                 position: "relative",
               }}
             >
@@ -60,8 +60,8 @@ export default function TripDialog({ trip, driver, open, onClose, google }) {
             Driver Information
           </DialogTitle>
           <DialogContent className={styles.dialogText}>
-            <Typography>Driver Id: {driver.id}</Typography>
-            <Typography>
+            <Typography style={{fontFamily: "montserrat", fontWeight: "bold"}}>Driver Id: {driver.id}</Typography>
+            <Typography style={{fontFamily: "montserrat", fontWeight: "bold"}}>
               Personal Name: {driver.name} {driver.surname}
             </Typography>
             <Typography></Typography>
@@ -69,12 +69,15 @@ export default function TripDialog({ trip, driver, open, onClose, google }) {
           <DialogTitle style={{ color: "#7BC950" }}>
             Trip Information
           </DialogTitle>
-          <DialogContent className={styles.dialogText}>
-            <Typography>
+          <DialogContent
+            style={{ marginBottom: "3vh" }}
+            className={styles.dialogText}
+          >
+            <Typography style={{fontFamily: "montserrat", fontWeight: "bold"}}>
               Duration: {trip.hours}h {trip.minutes}min
             </Typography>
-            <Typography>Distance: {trip.distance} km</Typography>
-            <Typography>Price: {trip.estimatedTripPrice}€</Typography>
+            <Typography style={{fontFamily: "montserrat", fontWeight: "bold"}}>Distance: {trip.distance} km</Typography>
+            <Typography style={{fontFamily: "montserrat", fontWeight: "bold"}}>Price: {trip.estimatedTripPrice}€</Typography>
           </DialogContent>
         </DialogContent>
       </div>

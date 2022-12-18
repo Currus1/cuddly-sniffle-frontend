@@ -7,8 +7,8 @@ const HomePageCardsComponent = () => {
   return (
     <div className={styles.half_page_container}>
       <div>
-        <h1>Ready to carpool?</h1>
-        <a href="/register" className={AttributeStyle.shadowPropButton}>
+        <h1 className={AttributeStyle.header_text}>Ready to carpool?</h1>
+        <a href="/register" className={AttributeStyle.button}>
           Sign up now
         </a>
         <br />
