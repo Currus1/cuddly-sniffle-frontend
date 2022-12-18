@@ -37,7 +37,7 @@ export default function ProfileCardComponent() {
                 {status == "Driver" ? (
                   <button
                     onClick={() => {
-                      navigate("/home");
+                      navigate("/planning");
                     }}
                     className={styles.learnMoreButton}
                   >
