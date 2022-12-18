@@ -7,6 +7,7 @@ import { useUserValidation } from "../../CustomHooks/useUserValidation";
 import BecomeDriverComponent from "../ReusableComponents/BecomeDriverComponent";
 import InfoCardsComponent from "../ReusableComponents/InfoCardsComponent";
 import HomePageTripsComponent from "./HomePageTripsComponent";
+import LeaveReviewComponent from "../ReusableComponents/LeaveReviewComponent";
 
 const TripsComponent = () => {
   const navigate = useNavigate("");
@@ -24,6 +25,7 @@ const TripsComponent = () => {
       <HeaderComponent />
       <HomePageBannerComponent />
       <HomePageTripsComponent />
+      <LeaveReviewComponent />
       <FooterComponent />
     </div>
   );

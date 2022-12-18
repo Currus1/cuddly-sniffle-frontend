@@ -10,7 +10,7 @@
 
 .image_container {
   height: 40vh;
-  background-image: url("../../../Images/VariousImages/trip.svg");
+  background-image: url("../../../Images/VariousImages/review.svg");
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
@@ -56,13 +56,13 @@
   transition-duration: 0.15s;
   border: none;
   text-decoration: none;
-  background-color: #47682C;
+  background-color: #47682c;
   color: white;
 }
 
 .learnMoreButton:hover {
   border-radius: 10px;
-  border-color: #8AC53F;
+  background-color: #8ac53f;
   -ms-transform: scale(1.05); /* IE 9 */
   -webkit-transform: scale(1.05); /* Safari 3-8 */
   transform: scale(1.05);

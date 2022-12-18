@@ -9,6 +9,7 @@ import AuthService from "../../Services/AuthServices/auth.service";
 import LandingTextComponent from "./LandingTextComponent";
 import BecomeDriverComponent from "../ReusableComponents/BecomeDriverComponent";
 import InfoCardsComponent from "../ReusableComponents/InfoCardsComponent";
+import AboutCompanyComponent from "../ReusableComponents/AboutCompanyComponent";
 
 const HomePageComponent = () => {
   const navigate = useNavigate();
@@ -24,7 +25,7 @@ const HomePageComponent = () => {
       <CssBaseline />
       <LandingHeaderComponent />
       <LandingBannerComponent />
-      <LandingTextComponent />
+      <AboutCompanyComponent />
       <InfoCardsComponent />
       <BecomeDriverComponent />
       <SignUpComponent />

@@ -10,10 +10,11 @@
 
 .image_container {
   height: 40vh;
-  background-image: url("../../../Images/VariousImages/trip.svg");
+  background-image: url("../../../Images/VariousImages/order.svg");
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
+  margin-top: 3vh;
 }
 
 .text_container {
@@ -21,11 +22,16 @@
   height: fit-content;
   margin-left: auto;
   margin-right: auto;
+  margin-top: 3vh;
   padding: 1vh;
   font-size: 1.9vh;
-  text-align: center;
+  text-align: justify;
   font-weight: bold;
   opacity: 75%;
+}
+
+.header_text {
+    text-align: center;
 }
 
 .button_container {
@@ -56,13 +62,13 @@
   transition-duration: 0.15s;
   border: none;
   text-decoration: none;
-  background-color: #47682C;
+  background-color: #47682c;
   color: white;
 }
 
 .learnMoreButton:hover {
   border-radius: 10px;
-  border-color: #8AC53F;
+  border-color: #8ac53f;
   -ms-transform: scale(1.05); /* IE 9 */
   -webkit-transform: scale(1.05); /* Safari 3-8 */
   transform: scale(1.05);

@@ -12,7 +12,7 @@ class TripAPI {
 
   addUserToTrip(tripId) {
     const http = getCustomHttp();
-    return http.post(`/Trip/UserAdd`, { params: {tripId: tripId}})
+    return http.post(`/Trip/UserAdd?tripId=${tripId}`)
   }
 
   getOneTripById(id) {
