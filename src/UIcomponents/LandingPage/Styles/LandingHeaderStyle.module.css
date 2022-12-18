@@ -79,6 +79,7 @@
 }
 
 .registerButton:hover {
+    background-color: #7BC950;
     border-radius: 10px;
     border-color: #7BC950;
     -ms-transform: scale(1.05); /* IE 9 */
@@ -90,6 +91,8 @@
 .buttonsContainer {
     align-items: right;
     margin-left: auto;
+    margin-top: 1vh;
+    margin-bottom: 1vh;
 }
 
 .iconsContainer {
