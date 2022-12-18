@@ -19,8 +19,8 @@ const Transition = React.forwardRef((props, ref) => {
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
-const startCoordsVals = { lat: 54.731461, lng: 25.2621 };
-const destCoordsVals = { lat: 54.726421, lng: 25.3288 };
+const startCoordsVals = { lat: 54.687157, lng: 25.279652 };
+const destCoordsVals = { lat: 54.687157, lng: 25.279652 };
 
 export default function AutocompleteDialog({
   text,
@@ -28,8 +28,8 @@ export default function AutocompleteDialog({
   setDestination,
 }) {
   const [open, setOpen] = useState(false);
-  const [start, setStart] = useState("Didlaukio g. 59, Vilnius");
-  const [dest, setDest] = useState("Saulėtekio al. 4, Vilnius");
+  const [start, setStart] = useState("");
+  const [dest, setDest] = useState("");
   const [startCoords, setStartCoords] = useState(startCoordsVals);
   const [destCoords, setDestCoords] = useState(destCoordsVals);
 
@@ -67,7 +67,12 @@ export default function AutocompleteDialog({
       setOpen(false);
       setStartingPoint("");
       setDestination("");
-      sessionStorage.clear();
+      sessionStorage.removeItem("SLatitude");
+      sessionStorage.removeItem("SLongitude");
+      sessionStorage.removeItem("DLatitude");
+      sessionStorage.removeItem("DLongitude");
+      sessionStorage.removeItem("start");
+      sessionStorage.removeItem("dest");
     }
   };
 

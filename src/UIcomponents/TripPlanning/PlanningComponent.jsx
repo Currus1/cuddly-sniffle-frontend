@@ -119,7 +119,12 @@ const PlanningComponent = () => {
       setStartingPoint(sessionStorage.getItem("start"));
       setDestination(sessionStorage.getItem("dest"));
     } else {
-      sessionStorage.clear();
+      sessionStorage.removeItem("SLatitude");
+      sessionStorage.removeItem("SLongitude");
+      sessionStorage.removeItem("DLatitude");
+      sessionStorage.removeItem("DLongitude");
+      sessionStorage.removeItem("start");
+      sessionStorage.removeItem("dest");
     }
   }, []);
 
