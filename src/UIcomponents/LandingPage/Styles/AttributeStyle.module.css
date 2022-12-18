@@ -2,6 +2,40 @@
     color: black;
     margin-left: 250px;
     box-shadow: 4px 2px 4px 0px #888888;
+    font-family: "montserrat" !important;
+}
+
+.header_text {
+    color: black;
+    font-family: "montserrat" !important;
+}
+
+.button {
+    color: white;
+    width: 15vh;
+    height: 4vh;
+    border: none;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+    background-color: #47682C;
+    border: 2px solid #47682C;
+    margin-left: 20vh;
+    border-radius: 30px;
+    font-family: "montserrat" !important;
+    font-size: 15px !important;
+    transition-duration: 0.15s;
+}
+
+.button:hover {
+    border-radius: 10px;
+    border-color: #7BC950;
+    background-color:#7BC950;
+    -ms-transform: scale(1.05); /* IE 9 */
+    -webkit-transform: scale(1.05); /* Safari 3-8 */
+    transform: scale(1.05);
+    transition-duration: 0.15s;
 }
 
 .arrowProp {
