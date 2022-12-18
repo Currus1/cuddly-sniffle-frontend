@@ -207,8 +207,8 @@ export default function AutocompleteDialog({
             center={center}
             zoom={11}
             mapContainerStyle={{
-              height: "50vh",
-              width: "50vh",
+              height: "100%",
+              width: "100%",
               position: "relative",
             }}
           >
