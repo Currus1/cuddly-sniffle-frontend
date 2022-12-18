@@ -108,13 +108,13 @@ export default function AutocompleteDialog({
 
   return (
     <div>
-      <Button
-        className={styles.createButton}
-        variant="outlined"
+      <button
+        style={{ width: "20vh" }}
+        className={styles.button}
         onClick={handleClickOpen}
       >
         {text}
-      </Button>
+      </button>
 
       <Dialog
         fullScreen

@@ -15,6 +15,14 @@ import Button from "@mui/material/Button";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import TripAPI from "../../Services/TripServices/TripAPI";
+import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import { DateTimePicker } from "@mui/x-date-pickers/DateTimePicker";
+import TextField from "@mui/material/TextField";
+import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
+
+var tomorrow = new Date();
+tomorrow.setDate(tomorrow.getDate() + 1);
 
 const driverLicenseRegExp = /^\d{8}$/;
 const tripDateRegExp = /^\d{4}-\d{2}-\d{2}$/;
@@ -35,7 +43,7 @@ const PlanningComponent = () => {
   const [alertSuccessOpen, setAlertSuccessOpen] = useState(false);
   const [errorAlertText, setErrorAlertText] = useState("Error");
   const [successAlertText, setSuccessAlertText] = useState("Success");
-  const [tripDate, setTripDate] = useState("");
+  const [tripDate, setTripDate] = useState(tomorrow);
   const [price, setPrice] = useState("");
   const [seats, setSeats] = useState("");
   const [vehicleType, setVehicleType] = useState("");
@@ -44,7 +52,6 @@ const PlanningComponent = () => {
 
   const handleClick = () => {
     if (
-      tripDate.match(tripDateRegExp) &&
       price > 0 &&
       seats > 0 &&
       seats <= getSeatNumber(vehicleType) &&
@@ -55,6 +62,7 @@ const PlanningComponent = () => {
       sessionStorage.getItem("start") != null &&
       sessionStorage.getItem("dest") != null
     ) {
+      tripDate.setHours(tripDate.getHours() + 2);
       TripAPI.addTrip(
         sessionStorage.getItem("SLatitude"),
         sessionStorage.getItem("SLongitude"),
@@ -213,37 +221,107 @@ const PlanningComponent = () => {
           alignItems: "center",
         }}
       >
-        <Typography component="h1" variant="h5">
+        <Typography style={{ color: "#7BC950" }} component="h1" variant="h5">
           Planner
         </Typography>
-        <ValidatorForm onSubmit={handleSubmit}>
+
+        <ValidatorForm onSubmit={handleSubmit} style={{ marginTop: "5vh" }}>
+          <LocalizationProvider dateAdapter={AdapterDayjs}>
+            <DateTimePicker
+              PopperProps={{
+                sx: {
+                  "& .MuiPaper-root": {
+                    border: "1px solid #7BC950",
+                  },
+                  "& .MuiPaper-root": {
+                    backgroundColor: "#E8E5DA",
+                  },
+                  "& .MuiPickersDay-dayWithMargin": {
+                    color: "white",
+                    backgroundColor: "#47682C",
+                  },
+                  ".Mui-selected": {
+                    backgroundColor: "#7BC950 !important",
+                  },
+                  ".MuiClock-pmButton": {
+                    color: "white",
+                    backgroundColor: "#47682C",
+                  },
+                  ".MuiClock-pmButton:hover": {
+                    backgroundColor: "#7BC950",
+                  },
+                  ".MuiClock-amButton:hover": {
+                    backgroundColor: "#7BC950",
+                  },
+                  ".MuiClock-amButton": {
+                    color: "white",
+                    backgroundColor: "#47682C",
+                  },
+                  ".MuiClock-pin": {
+                    backgroundColor: "#7BC950",
+                  },
+                  ".MuiClockPointer-root": {
+                    backgroundColor: "#7BC950",
+                  },
+                  ".MuiClockPointer-root": {
+                    backgroundColor: "#7BC950 !important",
+                  },
+                  ".MuiClockPointer-thumb": {
+                    backgroundColor: "#7BC950 !important",
+                    border: "16px solid #47682C",
+                  },
+                },
+              }}
+              InputProps={{
+                sx: {
+                  "& .MuiSvgIcon-root": { color: "#47682C" },
+                  ".MuiOutlinedInput-notchedOutline": {
+                    borderColor: "#7BC950",
+                  },
+                  "&:hover .MuiOutlinedInput-notchedOutline": {
+                    borderColor: "#47682C",
+                  },
+                },
+              }}
+              components={{
+                OpenPickerIcon: CalendarMonthIcon,
+              }}
+              label="Trip Date"
+              value={tripDate}
+              onChange={(newValue) => {
+                setTripDate(newValue);
+              }}
+              renderInput={(props) => <TextField {...props} />}
+              minDate={tomorrow}
+            ></DateTimePicker>
+          </LocalizationProvider>
           <TextValidator
-            InputLabelProps={{ shrink: true }}
-            margin="normal"
-            fullWidth
-            id="tripDate"
-            label="Trip Date"
-            name="tripDate"
-            autoFocus
-            type="date"
-            validators={[
-              "tripDateRegEx",
-              "tripDatePast",
-              "tripDateClose",
-              "tripDateLong",
-            ]}
-            errorMessages={[
-              "Trip Date should match format mm/dd/yyyy",
-              "Trip Date cannot be in the past",
-              "Trip Date should be at least 3 days from now",
-              "Trip Date should not be more than two months from now",
-            ]}
-            onChange={(event) => {
-              setTripDate(event.target.value);
+            sx={{
+              ".MuiOutlinedInput-notchedOutline": {
+                borderColor: "#7BC950",
+              },
+              "&:hover .MuiOutlinedInput-notchedOutline": {
+                borderColor: "#47682C",
+              },
+              "&:hover .Mui-focused .MuiOutlinedInput-notchedOutline": {
+                borderColor: "#47682C !important",
+              },
+              ".Mui-focused .MuiOutlinedInput-notchedOutline": {
+                borderColor: "#7BC950 !important",
+              },
             }}
-            value={tripDate}
-          />
-          <TextValidator
+            InputProps={{
+              style: {
+                color: "black",
+                fontFamily: "montserrat",
+              },
+            }}
+            InputLabelProps={{
+              style: {
+                color: "black",
+                fontFamily: "montserrat",
+              },
+            }}
             margin="normal"
             fullWidth
             id="price"
@@ -259,6 +337,32 @@ const PlanningComponent = () => {
             value={price}
           />
           <TextValidator
+            sx={{
+              ".MuiOutlinedInput-notchedOutline": {
+                borderColor: "#7BC950",
+              },
+              "&:hover .MuiOutlinedInput-notchedOutline": {
+                borderColor: "#47682C",
+              },
+              "&:hover .Mui-focused .MuiOutlinedInput-notchedOutline": {
+                borderColor: "#47682C !important",
+              },
+              ".Mui-focused .MuiOutlinedInput-notchedOutline": {
+                borderColor: "#7BC950 !important",
+              },
+            }}
+            InputProps={{
+              style: {
+                color: "black",
+                fontFamily: "montserrat",
+              },
+            }}
+            InputLabelProps={{
+              style: {
+                color: "black",
+                fontFamily: "montserrat",
+              },
+            }}
             margin="normal"
             fullWidth
             id="seats"
@@ -274,6 +378,33 @@ const PlanningComponent = () => {
             value={seats}
           />
           <TextValidator
+            sx={{
+              ".MuiOutlinedInput-notchedOutline": {
+                borderColor: "#7BC950",
+              },
+              "&:hover .MuiOutlinedInput-notchedOutline": {
+                borderColor: "#47682C",
+              },
+              "&:hover .Mui-focused .MuiOutlinedInput-notchedOutline": {
+                borderColor: "#47682C !important",
+              },
+              ".Mui-focused .MuiOutlinedInput-notchedOutline": {
+                borderColor: "#7BC950 !important",
+              },
+            }}
+            InputProps={{
+              style: {
+                color: "black",
+                fontFamily: "montserrat",
+              },
+              readOnly: true,
+            }}
+            InputLabelProps={{
+              style: {
+                color: "black",
+                fontFamily: "montserrat",
+              },
+            }}
             margin="normal"
             fullWidth
             id="seats"
@@ -282,11 +413,35 @@ const PlanningComponent = () => {
             validators={["empty"]}
             errorMessages={["Starting Point should not be empty"]}
             value={startingPoint}
-            InputProps={{
-              readOnly: true,
-            }}
           />
           <TextValidator
+            sx={{
+              ".MuiOutlinedInput-notchedOutline": {
+                borderColor: "#7BC950",
+              },
+              "&:hover .MuiOutlinedInput-notchedOutline": {
+                borderColor: "#47682C",
+              },
+              "&:hover .Mui-focused .MuiOutlinedInput-notchedOutline": {
+                borderColor: "#47682C !important",
+              },
+              ".Mui-focused .MuiOutlinedInput-notchedOutline": {
+                borderColor: "#7BC950 !important",
+              },
+            }}
+            InputProps={{
+              style: {
+                color: "black",
+                fontFamily: "montserrat",
+              },
+              readOnly: true,
+            }}
+            InputLabelProps={{
+              style: {
+                color: "black",
+                fontFamily: "montserrat",
+              },
+            }}
             margin="normal"
             fullWidth
             id="seats"
@@ -295,9 +450,6 @@ const PlanningComponent = () => {
             validators={["empty"]}
             errorMessages={["Destination should not be empty"]}
             value={destination}
-            InputProps={{
-              readOnly: true,
-            }}
           />
 
           <div
@@ -321,14 +473,13 @@ const PlanningComponent = () => {
               marginTop: "10%",
             }}
           >
-            <Button
+            <button
               type="submit"
-              className={styles.createButton}
-              variant="outlined"
+              className={styles.button}
               onClick={handleClick}
             >
               CREATE
-            </Button>
+            </button>
           </div>
         </ValidatorForm>
       </Box>
