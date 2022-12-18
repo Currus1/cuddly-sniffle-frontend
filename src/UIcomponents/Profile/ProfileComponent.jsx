@@ -12,6 +12,7 @@ import ErrorAlertComponent from "../ReusableComponents/ErrorAlertComponent";
 import SuccessAlertComponent from "../ReusableComponents/SuccessAlertComponent";
 import Box from "@mui/material/Box";
 import useMediaQuery from "@mui/material/useMediaQuery";
+import ProfileCardComponent from "../ReusableComponents/ProfileComponent";
 
 const driverLicenseRegExp = /^\d{8}$/;
 
@@ -78,11 +79,11 @@ const ProfileComponent = () => {
           "& .MuiTextField-root": { m: 1, width: "25ch" },
           display: "flex",
           justifyContent: "center",
-          marginTop: "20%",
+          marginTop: "5%",
+          marginBottom: "5%",
         }}
       >
         <Grid container spacing={2} style={{ width: "50vh" }}>
-          {/* <AccountBoxIcon sx={{ fontSize: 70 }} /> */}
           <Grid item xs={12}>
             {matches ? (
               <h3 style={{ color: "#7BC950", fontFamily: "montserrat" }}>
@@ -121,7 +122,6 @@ const ProfileComponent = () => {
                   fontFamily: "montserrat",
                 },
                 readOnly: true,
-                disableUnderline: true,
               }}
               label="First Name"
               id="Name"
@@ -158,7 +158,6 @@ const ProfileComponent = () => {
                   fontFamily: "montserrat",
                 },
                 readOnly: true,
-                disableUnderline: true,
               }}
               value={user.surname}
               onChange={() => {}}
@@ -190,7 +189,6 @@ const ProfileComponent = () => {
                   fontFamily: "montserrat",
                 },
                 readOnly: true,
-                disableUnderline: true,
               }}
               onChange={() => {}}
             />
@@ -219,7 +217,6 @@ const ProfileComponent = () => {
                   fontFamily: "montserrat",
                 },
                 readOnly: true,
-                disableUnderline: true,
               }}
               id="Status"
               variant="filled"
@@ -269,7 +266,6 @@ const ProfileComponent = () => {
                   fontFamily: "montserrat",
                 },
                 readOnly: true,
-                disableUnderline: true,
               }}
               id="PhoneNumber"
               variant="filled"
@@ -294,7 +290,6 @@ const ProfileComponent = () => {
                   fontFamily: "montserrat",
                 },
                 shrink: true,
-                disableUnderline: true,
               }}
               InputProps={{
                 style: {
@@ -302,7 +297,6 @@ const ProfileComponent = () => {
                   fontFamily: "montserrat",
                 },
                 readOnly: true,
-                disableUnderline: true,
               }}
               id="Email"
               variant="filled"
@@ -352,7 +346,6 @@ const ProfileComponent = () => {
                     fontFamily: "montserrat",
                   },
                   readOnly: true,
-                  disableUnderline: true,
                 }}
                 id="DriversLicense"
                 variant="filled"
@@ -386,7 +379,6 @@ const ProfileComponent = () => {
                     fontFamily: "montserrat",
                   },
                   readOnly: true,
-                  disableUnderline: true,
                 }}
                 id="VehicleType"
                 variant="filled"
@@ -421,8 +413,6 @@ const ProfileComponent = () => {
                     fontFamily: "montserrat",
                   },
                   readOnly: true,
-
-                  disableUnderline: true,
                 }}
                 id="LicenseNumber"
                 variant="filled"
@@ -440,6 +430,7 @@ const ProfileComponent = () => {
           </Grid>
         </Grid>
       </Box>
+      <ProfileCardComponent />
       <FooterComponent />
     </div>
   );

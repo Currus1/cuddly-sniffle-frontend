@@ -8,6 +8,24 @@
   z-index: 1;
 }
 
+.profileContainer {
+  width: 100%;
+  height: fit-content;
+  background-color: #E8E5DA;
+  position: relative;
+  margin: auto;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.profile_image_container {
+  height: 40vh;
+  background-image: url("../../../Images/profile.svg");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+}
+
 .image_container {
   height: 40vh;
   background-image: url("../../../Images/VariousImages/driver_masks.svg");
@@ -56,13 +74,14 @@
   transition-duration: 0.15s;
   border: none;
   text-decoration: none;
-  background-color: #3bd16f;
+  background-color: #47682C;
   color: white;
 }
 
 .learnMoreButton:hover {
+  background-color: #7BC950;
   border-radius: 10px;
-  border-color: #8AC53F;
+  border-color: #47682C;
   -ms-transform: scale(1.05); /* IE 9 */
   -webkit-transform: scale(1.05); /* Safari 3-8 */
   transform: scale(1.05);

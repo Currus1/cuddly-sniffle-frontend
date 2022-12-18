@@ -64,7 +64,9 @@ export default function TemporaryDrawer() {
             onClick={() => handleNavigation(item.navigation)}
           >
             <ListItemButton>
-              <ListItemIcon>{item.icon}</ListItemIcon>
+              <ListItemIcon style={{ color: "#47682C" }}>
+                {item.icon}
+              </ListItemIcon>
               <ListItemText primary={item.name} />
             </ListItemButton>
           </ListItem>
@@ -78,7 +80,9 @@ export default function TemporaryDrawer() {
           >
             <ListItemButton>
               <ListItemIcon>
-                <AddCircleOutlineIcon></AddCircleOutlineIcon>
+                <AddCircleOutlineIcon
+                  style={{ color: "#47682C" }}
+                ></AddCircleOutlineIcon>
               </ListItemIcon>
               <ListItemText>Create a trip</ListItemText>
             </ListItemButton>
@@ -87,7 +91,7 @@ export default function TemporaryDrawer() {
         <ListItem disablePadding onClick={() => handleLogOut()}>
           <ListItemButton>
             <ListItemIcon>
-              <LogoutIcon></LogoutIcon>
+              <LogoutIcon style={{ color: "#47682C" }}></LogoutIcon>
             </ListItemIcon>
             <ListItemText>Sign out</ListItemText>
           </ListItemButton>
