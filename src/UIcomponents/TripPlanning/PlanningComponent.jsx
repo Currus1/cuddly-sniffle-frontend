@@ -77,10 +77,22 @@ const PlanningComponent = () => {
         .then((res) => {
           setSuccessAlertText("You have created trip succesfully!");
           setAlertSuccessOpen(true);
+          sessionStorage.removeItem("SLatitude");
+          sessionStorage.removeItem("SLongitude");
+          sessionStorage.removeItem("DLatitude");
+          sessionStorage.removeItem("DLongitude");
+          sessionStorage.removeItem("start");
+          sessionStorage.removeItem("dest");
         })
         .catch((err) => {
           setErrorAlertText("Server refused your request!");
           setAlertErrorOpen(true);
+          sessionStorage.removeItem("SLatitude");
+          sessionStorage.removeItem("SLongitude");
+          sessionStorage.removeItem("DLatitude");
+          sessionStorage.removeItem("DLongitude");
+          sessionStorage.removeItem("start");
+          sessionStorage.removeItem("dest");
         });
     } else {
       setErrorAlertText("You have to fill in all the fields!");
