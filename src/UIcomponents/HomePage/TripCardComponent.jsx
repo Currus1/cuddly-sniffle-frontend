@@ -10,16 +10,14 @@ import Button from "mui-button";
 import TripAPI from "../../Services/TripServices/TripAPI";
 
 const TripCardComponent = (trip) => {
-
   const [showJoinButton, setShowJoinButton] = useState(true);
 
-  const seats: JSX.Element[] = [];
+  const seats = [];
   for (let i = 1; i <= trip.trip.occupied; i++) {
-    if (i== 7) {
+    if (i == 7) {
       seats.push(<img src={BlackSeat} className={styles.seatIcon}></img>);
-      <div className={styles.break}></div>
-    }
-    else {
+      <div className={styles.break}></div>;
+    } else {
       seats.push(<img src={BlackSeat} className={styles.seatIcon}></img>);
     }
   }
@@ -77,10 +75,7 @@ const TripCardComponent = (trip) => {
           </div>
           <div className={styles.button_container}>
             {showJoinButton == true ? (
-              <Button
-                className={styles.join_button}
-                onClick={handleJoin}
-              >
+              <Button className={styles.join_button} onClick={handleJoin}>
                 Join!
               </Button>
             ) : (
