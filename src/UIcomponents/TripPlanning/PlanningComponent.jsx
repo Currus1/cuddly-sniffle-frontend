@@ -50,6 +50,9 @@ const PlanningComponent = () => {
   const [startingPoint, setStartingPoint] = useState("");
   const [destination, setDestination] = useState("");
 
+  const [errorMessage, setErrorMessage] = useState("");
+  const [successMessage, setSuccessMessage] = useState("");
+
   const handleClick = () => {
     if (
       price > 0 &&
@@ -86,6 +89,8 @@ const PlanningComponent = () => {
           setPrice("");
           setStartingPoint("");
           setDestination("");
+          setSuccessMessage("You have created trip succesfully!");
+          setErrorMessage("");
         })
         .catch((err) => {
           setErrorAlertText("Server refused your request!");
@@ -99,8 +104,12 @@ const PlanningComponent = () => {
           setPrice("");
           setStartingPoint("");
           setDestination("");
+          setSuccessMessage("");
+          setErrorMessage("Failed creating the trip!");
         });
     } else {
+      setSuccessMessage("");
+      setErrorMessage("");
       setErrorAlertText("You have to fill in all the fields!");
       setAlertErrorOpen(true);
     }
@@ -123,6 +132,8 @@ const PlanningComponent = () => {
         setSeats(number);
       })
       .catch((error) => {
+        setSuccessMessage("");
+        setErrorMessage("");
         setErrorAlertText("Server error! Please comeback later!");
         setAlertErrorOpen(true);
       });
@@ -505,6 +516,8 @@ const PlanningComponent = () => {
               CREATE
             </button>
           </div>
+          <div style={{ color: "red" }}>{errorMessage}</div>
+          <div style={{ color: "green" }}>{successMessage}</div>
         </ValidatorForm>
       </Box>
       <FooterComponent />
