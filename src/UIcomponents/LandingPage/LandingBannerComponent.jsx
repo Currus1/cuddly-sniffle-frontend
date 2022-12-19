@@ -9,10 +9,12 @@ const LandingComponent = () => {
   return (
     <div className={styles.banner_container}>
       <div className={bannerStyles.banner_image}>
+        <div className={bannerStyles.black}></div>
+        <div className={bannerStyles.image}></div>
         <div className={bannerStyles.banner_text_container}>
           <div className={bannerStyles.banner_big_text}>
             <h1>
-              Co<span className={bannerStyles.red_text}>mm</span>útify
+              Commútify
             </h1>
           </div>
           <div className={bannerStyles.banner_small_text}>

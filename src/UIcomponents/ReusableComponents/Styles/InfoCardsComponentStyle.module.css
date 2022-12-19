@@ -1,5 +1,10 @@
-:root {
-  --container_height: 35vh;
+.background {
+  width: 100%;
+  height: fit-content;
+  background-color: white;
+  position: relative;
+  margin: auto;
+  overflow: hidden;
 }
 
 .container {
@@ -14,7 +19,6 @@
 
 .item_container {
   width: 100%;
-  height: var(--container_height);;
   position: relative;
   text-align: center;
 }

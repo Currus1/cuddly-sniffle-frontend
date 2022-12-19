@@ -1,13 +1,34 @@
 .banner_image {
     width: 100%;
     height: 100%;
-    background-image: url("../../../Images/VariousImages/banner_design_2.jpg");
     background-size: cover;
     background-repeat: no-repeat;
+    
 }
 
-.red_text {
-    color: #FF5757;
+.black {
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    position: absolute;
+    z-index: -1;
+    opacity: 40%;
+}
+
+@media only screen and (min-width: 1000px) {
+    .image{
+        background-position-y: 50%;
+    }
+  }
+
+.image {
+    width: 100%;
+    height: 100%;
+    background-image: url("../../../Images/VariousImages/banner_design_4.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: absolute;
+    z-index: -2;
 }
 
 .banner_text_container {
@@ -52,7 +73,7 @@
     display: inline-block;
     cursor: pointer;
     background-color: transparent;
-    border: 2px solid #FF5757;
+    border: 2px solid #8AC53F;
     border-radius: 30px;
     color: white;
     font-family: "montserrat";
@@ -63,7 +84,7 @@
 
 .banner_button:hover {
     border-radius: 10px;
-    border-color: #e23f3f;
+    border-color: #47682C;
     -ms-transform: scale(1.05); /* IE 9 */
     -webkit-transform: scale(1.05); /* Safari 3-8 */
     transform: scale(1.05);
