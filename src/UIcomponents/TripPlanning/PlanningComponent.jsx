@@ -83,6 +83,9 @@ const PlanningComponent = () => {
           sessionStorage.removeItem("DLongitude");
           sessionStorage.removeItem("start");
           sessionStorage.removeItem("dest");
+          setPrice("");
+          setStartingPoint("");
+          setDestination("");
         })
         .catch((err) => {
           setErrorAlertText("Server refused your request!");
@@ -93,6 +96,9 @@ const PlanningComponent = () => {
           sessionStorage.removeItem("DLongitude");
           sessionStorage.removeItem("start");
           sessionStorage.removeItem("dest");
+          setPrice("");
+          setStartingPoint("");
+          setDestination("");
         });
     } else {
       setErrorAlertText("You have to fill in all the fields!");
