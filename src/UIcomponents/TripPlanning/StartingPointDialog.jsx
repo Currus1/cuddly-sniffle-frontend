@@ -1,6 +1,5 @@
 import * as React from "react";
 import { useState } from "react";
-import Button from "@mui/material/Button";
 import Dialog from "@mui/material/Dialog";
 import DialogContent from "@mui/material/DialogContent";
 import styles from "./Styles/PlanTripStyle.module.css";
@@ -10,10 +9,10 @@ import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import CloseIcon from "@mui/icons-material/Close";
 import Slide from "@mui/material/Slide";
-import GoogleAutoComplete from "../GoogleMapIntegration/GoogleAutoComplete";
+import GoogleAutoComplete from "./GoogleAutoComplete";
 import Box from "@mui/material/Box";
 import { geocodeByAddress, getLatLng } from "react-places-autocomplete";
-import { GoogleMap, Marker, LoadScript } from "@react-google-maps/api";
+import { GoogleMap, Marker } from "@react-google-maps/api";
 
 const Transition = React.forwardRef((props, ref) => {
   return <Slide direction="up" ref={ref} {...props} />;
