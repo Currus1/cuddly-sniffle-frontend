@@ -1,6 +1,6 @@
 import React from "react";
 import PlacesAutocomplete from "react-places-autocomplete";
-import { Input, TextField } from "@material-ui/core";
+import { TextField } from "@material-ui/core";
 import InputAdornment from "@mui/material/InputAdornment";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import NearMeIcon from "@mui/icons-material/NearMe";

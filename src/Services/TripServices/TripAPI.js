@@ -20,11 +20,6 @@ class TripAPI {
     return http.get(`/Trip/${id}`);
   }
 
-  getVehicleTypes() {
-    const http = getCustomHttp();
-    return http.get("/VehicleType");
-  }
-
   getTrips(tripStatus) {
     const http = getCustomHttp();
     return http.get("/Trip/Trips", { params: { tripStatus: tripStatus } });
