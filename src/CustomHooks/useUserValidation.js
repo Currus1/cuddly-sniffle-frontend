@@ -1,14 +1,14 @@
-import AuthService from "../Services/AuthServices/auth.service";
+import authAPI from "../Services/AuthServices/authAPI";
 
 export const useUserValidation = () => {
-  const currentUser = AuthService.getCurrentUser();
+  const currentUser = authAPI.getCurrentUser();
   if (!currentUser) {
     return false;
   }
   if (currentUser) {
     var decodedJwt = parseJwt(currentUser);
     if (decodedJwt.exp * 1000 < Date.now()) {
-      AuthService.logout();
+      authAPI.logout();
       return false;
     }
   }

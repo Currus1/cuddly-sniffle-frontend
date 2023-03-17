@@ -1,19 +1,22 @@
 import { getCustomHttp } from "../../CustomHooks/useCustomHttp";
+
+const base = "/User";
+
 class UserAPI {
-
-  UpdateDriver(LicenseNumber, DriversLicense, VehicleType) {
+  updateDriver = (licenseNumber, driversLicense, vehicleType) => {
     const http = getCustomHttp();
-    http.put("/User/Driver", {
-      VehicleType: VehicleType,
-      LicenseNumber: LicenseNumber,
-      DriversLicense: DriversLicense,
-    })
-  }
+    const data = {
+      LicenseNumber: licenseNumber,
+      DriversLicense: driversLicense,
+      VehicleType: vehicleType,
+    };
+    return http.put(`${base}/Driver`, data);
+  };
 
-  GetUser() {
+  getUser = () => {
     const http = getCustomHttp();
-    return http.get(`/User`);
-  }
+    return http.get(base);
+  };
 }
 
 export default new UserAPI();

@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
-import AuthService from "../../Services/AuthServices/auth.service";
+import authAPI from "../../Services/AuthServices/authAPI";
 import Avatar from "@mui/material/Avatar";
-import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
 import Link from "@mui/material/Link";
 import Box from "@mui/material/Box";
@@ -116,7 +115,7 @@ export default function RegisterComponent() {
   });
 
   useEffect(() => {
-    if (AuthService.getCurrentUser() != null) {
+    if (authAPI.getCurrentUser() != null) {
       navigate("/home");
     }
   }, []);
@@ -124,7 +123,7 @@ export default function RegisterComponent() {
   const handleSubmit = (event) => {
     setErrorMessage("");
     event.preventDefault();
-    AuthService.register(name, surname, email, password, birthdate, phoneNumber)
+    authAPI.register(name, surname, email, password, birthdate, phoneNumber)
       .then((success) => {
         handleClose();
         setErrorMessage("");

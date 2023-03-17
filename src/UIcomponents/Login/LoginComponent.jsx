@@ -1,15 +1,11 @@
 import React, { useState, useEffect } from "react";
-import AuthService from "../../Services/AuthServices/auth.service";
+import authAPI from "../../Services/AuthServices/authAPI";
 import Avatar from "@mui/material/Avatar";
-import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import Checkbox from "@mui/material/Checkbox";
 import Link from "@mui/material/Link";
 import Box from "@mui/material/Box";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
-import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { useNavigate } from "react-router-dom";
 import { TextValidator, ValidatorForm } from "react-material-ui-form-validator";
@@ -47,14 +43,14 @@ export default function LoginComponent() {
   };
 
   useEffect(() => {
-    if (AuthService.getCurrentUser() != null) {
+    if (authAPI.getCurrentUser() != null) {
       navigate("/home");
     }
   }, []);
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    AuthService.login(email, password)
+    authAPI.login(email, password)
       .then(() => {
         handleClose();
         navigate("/home");

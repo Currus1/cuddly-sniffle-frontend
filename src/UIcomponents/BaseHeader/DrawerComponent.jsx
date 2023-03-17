@@ -14,7 +14,7 @@ import ListItemText from "@mui/material/ListItemText";
 import MenuIcon from "@mui/icons-material/Menu";
 import style from "./Styles/HeaderStyle.module.css";
 import LogoutIcon from "@mui/icons-material/Logout";
-import AuthService from "../../Services/AuthServices/auth.service.js";
+import authAPI from "../../Services/AuthServices/authAPI";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import UserAPI from "../../Services/UserServices/UserAPI.js";
 
@@ -48,7 +48,7 @@ export default function TemporaryDrawer() {
   };
 
   const handleLogOut = () => {
-    AuthService.logout();
+    authAPI.logout();
     navigate("/");
     window.location.reload();
   };

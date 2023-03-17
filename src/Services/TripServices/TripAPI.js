@@ -1,46 +1,61 @@
 import { getCustomHttp } from "../../CustomHooks/useCustomHttp";
+
+const base = "/Trip";
+
 class TripAPI {
-  getAllTripsByUserId() {
+  getAllTripsByUserId = () => {
     const http = getCustomHttp();
-    return http.get(`/Trip/GetAll`);
-  }
+    return http.get(`${base}/GetAll`);
+  };
 
-  getTripDriver(driverId) {
+  getTripDriver = (driverId) => {
     const http = getCustomHttp();
-    return http.get(`/Trip/Driver`, { params: {driverId: driverId}})
-  }
+    return http.get(`${base}/Driver`, { params: { driverId } })
+      .catch(error => {
+        console.error(`Error getting trip driver: ${error}`);
+      });
+  };
 
-  addUserToTrip(tripId) {
+  addUserToTrip = (tripId) => {
     const http = getCustomHttp();
-    return http.post(`/Trip/UserAdd?tripId=${tripId}`)
-  }
+    return http.post(`${base}/UserAdd?tripId=${tripId}`)
+      .catch(error => {
+        console.error(`Error adding user to trip: ${error}`);
+      });
+  };
 
-  getOneTripById(id) {
+  getOneTripById = (id) => {
     const http = getCustomHttp();
-    return http.get(`/Trip/${id}`);
-  }
+    return http.get(`${base}/${id}`);
+  };
 
-  getTrips(tripStatus) {
+  getTrips = (tripStatus) => {
     const http = getCustomHttp();
-    return http.get("/Trip/Trips", { params: { tripStatus: tripStatus } });
-  }
+    return http.get(`${base}/Trips`, { params: { tripStatus } })
+      .catch(error => {
+        console.error(`Error getting trips: ${error}`);
+      });
+  };
 
-  addTrip(sLatitude, sLongitude, dLatitude, dLongitude, startingPoint,
-          destination, estimatedTripPrice, seats, tripDate) {
+  addTrip = (sLatitude, sLongitude, dLatitude, dLongitude, startingPoint,
+          destination, estimatedTripPrice, seats, tripDate) => {
     const http = getCustomHttp();
     const content = {
-      sLatitude: sLatitude,
-      sLongitude: sLongitude,
-      dLatitude: dLatitude,
-      dLongitude: dLongitude,
-      startingPoint: startingPoint,
-      destination: destination,
-      estimatedTripPrice: estimatedTripPrice,
-      seats: seats,
-      tripDate: tripDate,
-    }
-    return http.post("/Trip/Adding", content);
-  }
+      sLatitude,
+      sLongitude,
+      dLatitude,
+      dLongitude,
+      startingPoint,
+      destination,
+      estimatedTripPrice,
+      seats,
+      tripDate,
+    };
+    return http.post(`${base}/Adding`, content)
+      .catch(error => {
+        console.error(`Error adding trip: ${error}`);
+      });
+  };
 }
 
 export default new TripAPI();
