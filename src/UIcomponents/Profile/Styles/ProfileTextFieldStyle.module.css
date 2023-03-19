@@ -1,0 +1,9 @@
+.text {
+    color: black;
+    font-family: montserrat;
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+}

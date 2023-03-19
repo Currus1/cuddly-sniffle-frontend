@@ -1,36 +1,3 @@
-.paperStyle {
-    width: 30%;
-    padding: 30px 20px;
-    margin: 100px auto;
-}
-  
-.errorStyle {
-    color: green;
-    text-align: center;
-    margin-top: 20px;
-}
-  
-.driverButtonStyle {
-    color: #0099cc;
-    border: 2px solid #0099cc;
-    padding: 10px;
-    margin-top: 15px;
-}
-
-.marginTop {
-    margin-top: 5%;
-}
-
-.saveButtonStyle {
-    background-color: #0099cc;
-    padding: 10px;
-    margin-top: 15px;
-}
-
-.textFieldStyle {
-    width: 95%;
-}
-
 .driveButton {
     color: white;
     width: 15vh;
@@ -60,11 +27,35 @@
     transition-duration: 0.15s;
 }
 
-.dialog {
-    background-color: "#E8E5DA" !important; 
-}
-
 .textColor {
     color: black;
     font-family: montserrat;
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+}
+
+.primaryText {
+    margin-left: 20vh;
+    color: #7BC950;
+    font-family: montserrat;
+}
+
+.primaryTextMobileMargin {
+    color: #7BC950;
+    font-family: montserrat;
+    margin-left: 5vh;
+}
+
+.halfViewportWidth {
+    width: 50vh;
+}
+
+.box {
+    display: flex;
+    justify-content: center;
+    margin-top: 5%;
+    margin-bottom: 5%;
 }
