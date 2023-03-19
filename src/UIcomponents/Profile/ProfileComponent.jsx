@@ -1,9 +1,7 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import { Grid } from "@material-ui/core";
 import UserAPI from "../../Services/UserServices/UserAPI.js";
 import { useNavigate } from "react-router-dom";
-import { TextField } from "@material-ui/core";
-import AccountBoxIcon from "@mui/icons-material/AccountBox";
 import DriverDialog from "./DriverDialog";
 import { useUserValidation } from "../../CustomHooks/useUserValidation";
 import HeaderComponent from "../BaseHeader/HeaderComponent";
@@ -11,8 +9,10 @@ import FooterComponent from "../BaseFooter/FooterComponent";
 import ErrorAlertComponent from "../ReusableComponents/ErrorAlertComponent";
 import SuccessAlertComponent from "../ReusableComponents/SuccessAlertComponent";
 import Box from "@mui/material/Box";
-import useMediaQuery from "@mui/material/useMediaQuery";
 import ProfileCardComponent from "../ReusableComponents/ProfileCardComponent";
+import { ProfileGridTextField } from "./ReusableComponents/ProfileGridTextField.jsx";
+import styles from "./Styles/ProfileStyle.module.css";
+import { ProfileCaptionField } from "./ReusableComponents/ProfileCaptionField.jsx";
 
 const driverLicenseRegExp = /^\d{8}$/;
 
@@ -34,8 +34,6 @@ const ProfileComponent = () => {
   const [errorAlertText, setErrorAlertText] = useState("Error!");
   const [successAlertText, SetSuccessAlertText] = useState("Error!");
   var isValid = useUserValidation();
-  const hasReloaded = sessionStorage.getItem("hasReloaded");
-  const matches = useMediaQuery("(min-width:600px)");
 
   useEffect(() => {
     if (!isValid) {
@@ -50,23 +48,19 @@ const ProfileComponent = () => {
           setStatus("Driver");
         } else {
           setStatus("User");
-          if (!hasReloaded) {
-            sessionStorage.setItem("hasReloaded", true);
-            window.location.reload();
-          }
         }
         var array = userInfo.data.birthdate.split("T");
         userInfo.data.birthdate = array[0];
         setUser(userInfo.data);
       })
-      .catch((error) => {
+      .catch(() => {
         setErrorAlertText("Server failed loading the data!");
         setAlertErrorOpen(true);
       });
   }, []);
 
   return (
-    <div style={{ backgroundColor: "#E8E5DA" }}>
+    <div>
       <HeaderComponent />
       {alertErrorOpen == true ? (
         <ErrorAlertComponent text={errorAlertText} />
@@ -74,360 +68,52 @@ const ProfileComponent = () => {
       {alertSuccessOpen == true ? (
         <SuccessAlertComponent text={successAlertText} />
       ) : null}
-      <Box
-        sx={{
-          "& .MuiTextField-root": { m: 1, width: "25ch" },
-          display: "flex",
-          justifyContent: "center",
-          marginTop: "5%",
-          marginBottom: "5%",
-        }}
-      >
-        <Grid container spacing={2} style={{ width: "50vh" }}>
-          <Grid item xs={12}>
-            {matches ? (
-              <h3 style={{ color: "#7BC950", fontFamily: "montserrat" }}>
-                User Information
-              </h3>
-            ) : (
-              <h3
-                style={{
-                  color: "#7BC950",
-                  fontFamily: "montserrat",
-                  marginLeft: "5vh",
-                }}
-              >
-                User Information
-              </h3>
-            )}
-          </Grid>
-          <Grid
-            style={{ display: "flex", justifyContent: "center" }}
-            item
-            xs={12}
-            sm={6}
-            md={6}
-          >
-            <TextField
-              InputLabelProps={{
-                style: {
-                  color: "black",
-                  fontFamily: "montserrat",
-                },
-                shrink: true,
-              }}
-              InputProps={{
-                style: {
-                  color: "black",
-                  fontFamily: "montserrat",
-                },
-                readOnly: true,
-              }}
-              label="First Name"
-              id="Name"
-              value={user.name}
-              size="small"
-              variant="filled"
-              margin="dense"
-              onChange={() => {}}
-            />
-          </Grid>
-          <Grid
-            style={{ display: "flex", justifyContent: "center" }}
-            item
-            xs={12}
-            sm={6}
-            md={6}
-          >
-            <TextField
-              margin="dense"
-              label="Last Name"
-              id="Surname"
-              variant="filled"
-              size="small"
-              InputLabelProps={{
-                style: {
-                  color: "black",
-                  fontFamily: "montserrat",
-                },
-                shrink: true,
-              }}
-              InputProps={{
-                style: {
-                  color: "black",
-                  fontFamily: "montserrat",
-                },
-                readOnly: true,
-              }}
-              value={user.surname}
-              onChange={() => {}}
-            />
-          </Grid>
-          <Grid
-            item
-            xs={12}
-            sm={6}
-            md={6}
-            style={{ display: "flex", justifyContent: "center" }}
-          >
-            <TextField
-              margin="dense"
-              id="Birthdate"
-              label="Birth Date"
-              variant="filled"
-              value={user.birthdate}
-              InputLabelProps={{
-                style: {
-                  color: "black",
-                  fontFamily: "montserrat",
-                },
-                shrink: true,
-              }}
-              InputProps={{
-                style: {
-                  color: "black",
-                  fontFamily: "montserrat",
-                },
-                readOnly: true,
-              }}
-              onChange={() => {}}
-            />
-          </Grid>
-          <Grid
-            style={{ display: "flex", justifyContent: "center" }}
-            item
-            xs={12}
-            sm={6}
-            md={6}
-          >
-            <TextField
-              margin="dense"
-              label="Status"
-              size="small"
-              InputLabelProps={{
-                style: {
-                  color: "black",
-                  fontFamily: "montserrat",
-                },
-                shrink: true,
-              }}
-              InputProps={{
-                style: {
-                  color: "black",
-                  fontFamily: "montserrat",
-                },
-                readOnly: true,
-              }}
-              id="Status"
-              variant="filled"
-              value={status}
-              onChange={() => {}}
-            />
-          </Grid>
-          <Grid item xs={12}>
-            {matches ? (
-              <h3 style={{ color: "#7BC950", fontFamily: "montserrat" }}>
-                Contact Information
-              </h3>
-            ) : (
-              <h3
-                style={{
-                  color: "#7BC950",
-                  fontFamily: "montserrat",
-                  marginLeft: "5vh",
-                }}
-              >
-                Contact Information
-              </h3>
-            )}
-          </Grid>
-
-          <Grid
-            style={{ display: "flex", justifyContent: "center" }}
-            item
-            xs={12}
-            sm={6}
-            md={6}
-          >
-            <TextField
-              size="small"
-              margin="dense"
-              label="Phone number"
-              InputLabelProps={{
-                style: {
-                  color: "black",
-                  fontFamily: "montserrat",
-                },
-                shrink: true,
-              }}
-              InputProps={{
-                style: {
-                  color: "black",
-                  fontFamily: "montserrat",
-                },
-                readOnly: true,
-              }}
-              id="PhoneNumber"
-              variant="filled"
-              value={user.phoneNumber}
-              onChange={() => {}}
-            />
-          </Grid>
-          <Grid
-            style={{ display: "flex", justifyContent: "center" }}
-            item
-            xs={12}
-            sm={6}
-            md={6}
-          >
-            <TextField
-              size="small"
-              margin="dense"
-              label="Email"
-              InputLabelProps={{
-                style: {
-                  color: "black",
-                  fontFamily: "montserrat",
-                },
-                shrink: true,
-              }}
-              InputProps={{
-                style: {
-                  color: "black",
-                  fontFamily: "montserrat",
-                },
-                readOnly: true,
-              }}
-              id="Email"
-              variant="filled"
-              value={user.email}
-              onChange={() => {}}
-            />
-          </Grid>
-          <Grid item xs={12}>
-            {matches ? (
-              <h3 style={{ color: "#7BC950", fontFamily: "montserrat" }}>
-                Driver Information
-              </h3>
-            ) : (
-              <h3
-                style={{
-                  color: "#7BC950",
-                  fontFamily: "montserrat",
-                  marginLeft: "5vh",
-                }}
-              >
-                Driver Information
-              </h3>
-            )}
-          </Grid>
+      <Box className={styles.box}>
+        <Grid container spacing={3} className={styles.halfViewportWidth}>
+          <ProfileCaptionField value="User Information" />
+          <ProfileGridTextField label="Name" id="name" value={user.name} />
+          <ProfileGridTextField
+            label="Last Name"
+            id="surname"
+            value={user.surname}
+          />
+          <ProfileGridTextField
+            label="Birth Date"
+            id="birthdate"
+            value={user.birthdate}
+          />
+          <ProfileGridTextField label="Status" id="status" value={status} />
+          <ProfileCaptionField value="Contact Information" />
+          <ProfileGridTextField
+            label="Phone Number"
+            id="phoneNumber"
+            value={user.phoneNumber}
+          />
+          <ProfileGridTextField label="Email" id="email" value={user.email} />
+          <ProfileCaptionField value="Driver Information" />
           {status == "Driver" ? (
-            <Grid
-              style={{ display: "flex", justifyContent: "center" }}
-              item
-              xs={12}
-              sm={6}
-              md={6}
-            >
-              <TextField
-                size="small"
-                margin="dense"
+            <>
+              <ProfileGridTextField
                 label="Drivers License"
-                InputLabelProps={{
-                  style: {
-                    color: "black",
-                    fontFamily: "montserrat",
-                  },
-                  shrink: true,
-                }}
-                InputProps={{
-                  style: {
-                    color: "black",
-                    fontFamily: "montserrat",
-                  },
-                  readOnly: true,
-                }}
-                id="DriversLicense"
-                variant="filled"
+                id="driversLicense"
                 value={user.driversLicense}
-                onChange={() => {}}
               />
-            </Grid>
-          ) : null}
-          {status == "Driver" ? (
-            <Grid
-              style={{ display: "flex", justifyContent: "center" }}
-              item
-              xs={12}
-              sm={6}
-              md={6}
-            >
-              <TextField
-                size="small"
-                margin="dense"
+              <ProfileGridTextField
                 label="Vehicle Type"
-                InputLabelProps={{
-                  style: {
-                    color: "black",
-                    fontFamily: "montserrat",
-                  },
-                  shrink: true,
-                }}
-                InputProps={{
-                  style: {
-                    color: "black",
-                    fontFamily: "montserrat",
-                  },
-                  readOnly: true,
-                }}
-                id="VehicleType"
-                variant="filled"
+                id="vehicleType"
                 value={user.vehicleType}
-                onChange={() => {}}
               />
-            </Grid>
-          ) : null}
-
-          {status == "Driver" ? (
-            <Grid
-              style={{ display: "flex", justifyContent: "center" }}
-              item
-              xs={12}
-              sm={6}
-              md={6}
-            >
-              <TextField
-                size="small"
-                margin="dense"
-                label="License Number"
-                InputLabelProps={{
-                  style: {
-                    color: "black",
-                    fontFamily: "montserrat",
-                  },
-                  shrink: true,
-                }}
-                InputProps={{
-                  style: {
-                    color: "black",
-                    fontFamily: "montserrat",
-                  },
-                  readOnly: true,
-                }}
-                id="LicenseNumber"
-                variant="filled"
+              <ProfileGridTextField
+                label="Car License Number"
+                id="licenseNumber"
                 value={user.licenseNumber}
-                onChange={() => {}}
               />
+            </>
+          ) : (
+            <Grid className={styles.center} item xs={12}>
+              <DriverDialog />
             </Grid>
-          ) : null}
-          <Grid
-            style={{ display: "flex", justifyContent: "center" }}
-            item
-            xs={12}
-          >
-            {status == "User" ? <DriverDialog /> : null}
-          </Grid>
+          )}
         </Grid>
       </Box>
       <ProfileCardComponent />
