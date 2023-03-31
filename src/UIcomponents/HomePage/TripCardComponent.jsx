@@ -66,7 +66,13 @@ const TripCardComponent = (trip) => {
             <p className={styles.point_text}>{trip.trip.destination}</p>
           </div>
         </Grid>
-        <Grid item md={2}>
+        <Grid
+          item
+          md={2}
+          style={{
+            marginLeft: "auto",
+          }}
+        >
           <div className={styles.car_info_container}>{seats}</div>
           <div className={styles.price_container}>
             <p className={styles.est_price_text}>est. price:</p>
