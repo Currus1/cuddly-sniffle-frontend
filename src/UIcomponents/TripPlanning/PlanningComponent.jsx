@@ -494,7 +494,7 @@ const PlanningComponent = () => {
             }}
           >
             <StartingPointDialog
-              text="Select Trip Route"
+              text="Select Route"
               setStartingPoint={setStartingPoint}
               setDestination={setDestination}
             />
@@ -511,7 +511,6 @@ const PlanningComponent = () => {
               type="submit"
               className={styles.button}
               onClick={handleClick}
-              style={{ height: "100%", width: "50%" }}
             >
               CREATE
             </button>

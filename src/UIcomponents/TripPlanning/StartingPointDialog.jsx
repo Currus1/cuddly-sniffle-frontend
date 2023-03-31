@@ -53,26 +53,15 @@ export default function AutocompleteDialog({
   };
 
   const handleClose = () => {
-    if (
-      sessionStorage.getItem("SLatitude") != null &&
-      sessionStorage.getItem("SLongitude") != null &&
-      sessionStorage.getItem("DLatitude") != null &&
-      sessionStorage.getItem("DLongitude") != null &&
-      sessionStorage.getItem("start") != null &&
-      sessionStorage.getItem("dest") != null
-    ) {
-      setOpen(false);
-    } else {
-      setOpen(false);
-      setStartingPoint("");
-      setDestination("");
-      sessionStorage.removeItem("SLatitude");
-      sessionStorage.removeItem("SLongitude");
-      sessionStorage.removeItem("DLatitude");
-      sessionStorage.removeItem("DLongitude");
-      sessionStorage.removeItem("start");
-      sessionStorage.removeItem("dest");
-    }
+    setOpen(false);
+    setStartingPoint("");
+    setDestination("");
+    sessionStorage.removeItem("SLatitude");
+    sessionStorage.removeItem("SLongitude");
+    sessionStorage.removeItem("DLatitude");
+    sessionStorage.removeItem("DLongitude");
+    sessionStorage.removeItem("start");
+    sessionStorage.removeItem("dest");
   };
 
   const handleSaveClose = () => {
@@ -134,11 +123,7 @@ export default function AutocompleteDialog({
 
   return (
     <div>
-      <button
-        style={{ width: "100%", height: "100%" }}
-        className={styles.button}
-        onClick={handleClickOpen}
-      >
+      <button className={styles.button} onClick={handleClickOpen}>
         {text}
       </button>
 

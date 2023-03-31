@@ -3,7 +3,7 @@ import styles from "../Styles/ProfileStyle.module.css";
 import useMediaQuery from "@mui/material/useMediaQuery";
 
 export const ProfileCaptionField = ({ value }) => {
-  const matches = useMediaQuery("(min-width:600px)");
+  const matches = useMediaQuery("(min-width:800px)");
 
   return (
     <Grid item xs={12}>

@@ -38,7 +38,7 @@
 }
 
 .primaryText {
-    margin-left: 20vh;
+    margin-left: 40vw;
     color: #7BC950;
     font-family: montserrat;
 }
@@ -46,7 +46,7 @@
 .primaryTextMobileMargin {
     color: #7BC950;
     font-family: montserrat;
-    margin-left: 5vh;
+    margin-left: 5dvw;
 }
 
 .halfViewportWidth {
